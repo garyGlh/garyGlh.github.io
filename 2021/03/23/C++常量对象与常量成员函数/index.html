@@ -23,15 +23,15 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
-<meta name="description" content="常量对象，常量成员函数常量对象定义对象前加const 常量成员函数在类的成员函数说明后加const 性质 执行期间不应修改其所作用的对象 常量成员函数中不能修改成员变量的值（除静态成员变量），也不能调用同类的非常量成员函数（除静态成员函数）  例123456789101112131415161718192021class Sample&amp;#123;public:    int value;    v">
+<meta name="description" content="C++ 常量对象，常量成员函数常量对象定义对象前加const 常量成员函数在类的成员函数说明后加const 性质 执行期间不应修改其所作用的对象 常量成员函数中不能修改成员变量的值（除静态成员变量），也不能调用同类的非常量成员函数（除静态成员函数）  例123456789101112131415161718192021class Sample&amp;#123;public:    int value;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++常量对象与常量成员函数">
 <meta property="og:url" content="http://example.com/2021/03/23/C++%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="常量对象，常量成员函数常量对象定义对象前加const 常量成员函数在类的成员函数说明后加const 性质 执行期间不应修改其所作用的对象 常量成员函数中不能修改成员变量的值（除静态成员变量），也不能调用同类的非常量成员函数（除静态成员函数）  例123456789101112131415161718192021class Sample&amp;#123;public:    int value;    v">
+<meta property="og:description" content="C++ 常量对象，常量成员函数常量对象定义对象前加const 常量成员函数在类的成员函数说明后加const 性质 执行期间不应修改其所作用的对象 常量成员函数中不能修改成员变量的值（除静态成员变量），也不能调用同类的非常量成员函数（除静态成员函数）  例123456789101112131415161718192021class Sample&amp;#123;public:    int value;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-23T03:03:03.000Z">
-<meta property="article:modified_time" content="2021-03-23T03:07:48.885Z">
+<meta property="article:modified_time" content="2021-03-23T04:47:55.966Z">
 <meta property="article:author" content="JennyKQ">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="面向对象">
@@ -160,7 +160,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1%EF%BC%8C%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">常量对象，常量成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">常量对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">常量成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="nav-number">1.2.3.</span> <span class="nav-text">常量成员函数的重载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E5%BC%95%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">常引用</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1%EF%BC%8C%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">C++ 常量对象，常量成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">常量对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">常量成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B"><span class="nav-number">1.2.2.</span> <span class="nav-text">例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="nav-number">1.2.3.</span> <span class="nav-text">常量成员函数的重载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E5%BC%95%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">常引用</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -251,7 +251,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-03-23 11:03:03 / Modified: 11:07:48" itemprop="dateCreated datePublished" datetime="2021-03-23T11:03:03+08:00">2021-03-23</time>
+      <time title="Created: 2021-03-23 11:03:03 / Modified: 12:47:55" itemprop="dateCreated datePublished" datetime="2021-03-23T11:03:03+08:00">2021-03-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -273,7 +273,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="常量对象，常量成员函数"><a href="#常量对象，常量成员函数" class="headerlink" title="常量对象，常量成员函数"></a>常量对象，常量成员函数</h1><h2 id="常量对象"><a href="#常量对象" class="headerlink" title="常量对象"></a>常量对象</h2><p>定义对象前加const</p>
+        <h1 id="C-常量对象，常量成员函数"><a href="#C-常量对象，常量成员函数" class="headerlink" title="C++ 常量对象，常量成员函数"></a>C++ 常量对象，常量成员函数</h1><h2 id="常量对象"><a href="#常量对象" class="headerlink" title="常量对象"></a>常量对象</h2><p>定义对象前加const</p>
 <h2 id="常量成员函数"><a href="#常量成员函数" class="headerlink" title="常量成员函数"></a>常量成员函数</h2><p>在类的成员函数说明后加const</p>
 <h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ol>
 <li>执行期间不应修改其所作用的对象</li>
