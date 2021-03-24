@@ -167,20 +167,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -209,6 +209,928 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-title-link" itemprop="url">R字符串</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:50 / Modified: 16:42:10" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:50+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">paste(<span class="string">&#x27;one plus one is&#x27;</span>, <span class="number">1</span>+<span class="number">1</span>, <span class="string">&#x27;!&#x27;</span>)</span><br><span class="line">//one plus one equals <span class="number">2</span> !，连接各段</span><br><span class="line"></span><br><span class="line">paste(<span class="string">&#x27;one plus one is&#x27;</span>, <span class="number">1</span>+<span class="number">1</span>, sep=<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line">//one plus one=<span class="number">2</span>，分隔符</span><br><span class="line"></span><br><span class="line">sprintf(<span class="string">&#x27;one plus one=%d&#x27;</span>, <span class="number">1</span>+<span class="number">1</span>)</span><br><span class="line">//one plus one=<span class="number">2</span>，C语言</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">filename=<span class="string">&#x27;some_file.csv&#x27;</span></span><br><span class="line">paste0(<span class="string">&#x27;path/to/&#x27;</span>, filename)</span><br><span class="line">//path/to/some_file.csv</span><br><span class="line"></span><br><span class="line">file.path(<span class="string">&#x27;path&#x27;</span>, <span class="string">&#x27;to&#x27;</span>, filename)</span><br><span class="line">//path/to/some_file.csv</span><br></pre></td></tr></table></figure>
+
+<h3 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h3><ul>
+<li>小写转大写：toupper(s)</li>
+<li>大写转小写：tolower(s)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">R数据类型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:45 / Modified: 16:41:51" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:45+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-数据类型"><a href="#R-数据类型" class="headerlink" title="R 数据类型"></a>R 数据类型</h1><h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p><strong>同类型</strong>序列</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h4 id="seq"><a href="#seq" class="headerlink" title="seq()"></a>seq()</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vtr1=<span class="built_in">c</span>(<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>)（num）</span><br><span class="line">vtr2=seq(<span class="number">1</span>, <span class="number">5</span>)//<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>（int）</span><br><span class="line">vtr3=seq(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>)//<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>（int）第三个参数是间隔</span><br><span class="line">vtr4=<span class="built_in">c</span>(<span class="number">1</span>:<span class="number">5</span>)//<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>（int）</span><br></pre></td></tr></table></figure>
+
+<h4 id="rep"><a href="#rep" class="headerlink" title="rep()"></a>rep()</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vtr1=<span class="built_in">rep</span>(<span class="number">13</span>, <span class="number">4</span>)//<span class="number">13</span>, <span class="number">13</span>, <span class="number">13</span>, <span class="number">13</span></span><br><span class="line">vtr2=<span class="built_in">rep</span>(<span class="built_in">c</span>(<span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>), <span class="number">2</span>)//Sat, Sun, Sat, Sun</span><br></pre></td></tr></table></figure>
+
+<h4 id="rdist"><a href="#rdist" class="headerlink" title="rdist()"></a>r<em>dist</em>()</h4><p>查看分布的指令：<code>?Distributions</code></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//标准分布</span><br><span class="line">runif(n=<span class="number">10</span>)//<span class="number">10</span>个样本from Unif(<span class="number">0</span>, <span class="number">1</span>)，均匀分布</span><br><span class="line">rnorm(n=<span class="number">10</span>)//<span class="number">10</span>个样本from Norm(<span class="number">0</span>, <span class="number">1</span>)，正态分布</span><br><span class="line">rpois(n=<span class="number">10</span>)//<span class="number">10</span>个样本from Poission(<span class="number">1</span>)，泊松分布</span><br><span class="line">rexp(n=<span class="number">10</span>)//<span class="number">10</span>个样本from Exp(<span class="number">1</span>)，指数分布</span><br><span class="line"></span><br><span class="line">//自定义分布</span><br><span class="line">rnorm(n=<span class="number">10</span>, mean=<span class="number">20</span>, sd=<span class="number">5</span>)//<span class="number">10</span>个样本from Norm(<span class="number">20</span>, <span class="number">5</span>)，正态分布</span><br></pre></td></tr></table></figure>
+
+<h3 id="可存储数据类型"><a href="#可存储数据类型" class="headerlink" title="可存储数据类型"></a>可存储数据类型</h3><ul>
+<li>logical逻辑：TRUE, FALSE</li>
+<li>numeric数值（float或int）：5, 3.14</li>
+<li>integer整数：2L, 34L（<strong>后面要加L</strong>表示是整数）</li>
+<li>complex复数：3+2i</li>
+<li>character字符或字符串：”Hello”, ‘a’</li>
+</ul>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
+<li>默认全部转为character型：vtr1=c(“hi”, 3, TRUE)</li>
+</ul>
+<h4 id="数量操作（每个元素）"><a href="#数量操作（每个元素）" class="headerlink" title="数量操作（每个元素）"></a>数量操作（每个元素）</h4><p>+, -, ^, *, %*%（数量积）</p>
+<pre><code><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X=<span class="built_in">c</span>(<span class="number">1</span>:<span class="number">4</span>)</span><br><span class="line">X+X//<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span></span><br><span class="line">X-X//<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">X^<span class="number">3</span>//<span class="number">1</span>, <span class="number">8</span>, <span class="number">27</span>, <span class="number">64</span></span><br><span class="line">X*X//<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span></span><br><span class="line">X%*%//<span class="number">30</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<h4 id="比较（每个元素）"><a href="#比较（每个元素）" class="headerlink" title="比较（每个元素）"></a>比较（每个元素）</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">c</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)&lt;<span class="built_in">c</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>)//<span class="literal">FALSE</span>, <span class="literal">FALSE</span>, <span class="literal">TRUE</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="访问元素"><a href="#访问元素" class="headerlink" title="访问元素"></a>访问元素</h4><ol>
+<li>访问某个位置的元素：vtr[2]（<strong>下标从1开始</strong>，而非从0开始）</li>
+<li>访问某个范围的元素：vtr[2:6]（<strong>闭区间</strong>）</li>
+</ol>
+<ul>
+<li>若插入元素<strong>越界</strong>，则在有元素之后到新访问的元素之间都显示<strong>NA</strong></li>
+<li>replace多个元素：X[2:3]=c(22, 33)</li>
+</ul>
+<ol start="3">
+<li><p>排除该位元素：下标为<strong>负</strong></p>
+</li>
+<li><p>取多个位置的元素：下标为c(a, b)</p>
+</li>
+<li><p>增加元素：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X=(<span class="number">1</span>:<span class="number">4</span>)</span><br><span class="line">X[<span class="number">5</span>]=<span class="number">555</span>//插入</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><h5 id="一般函数"><a href="#一般函数" class="headerlink" title="一般函数"></a>一般函数</h5><ul>
+<li>排序：sort(X)</li>
+<li>长度：length(X)</li>
+<li>范围：range(X)</li>
+<li>取前n个元素：head(X, n=5)</li>
+<li>取后n个元素：tail(X, n=5)</li>
+<li>展示vector类型及元素：str(X)</li>
+</ul>
+<h5 id="数学函数（整体）"><a href="#数学函数（整体）" class="headerlink" title="数学函数（整体）"></a>数学函数（整体）</h5><ul>
+<li>均值：mean(X)</li>
+<li>标准差：sd(X)</li>
+<li>方差：var(X)</li>
+<li>最大值/最小值：max(X)/min(X)</li>
+<li>中位数：median（X）</li>
+<li>求和：sum(X)</li>
+<li>求积：prod(X)</li>
+<li>百分比：quantitlle(X, probs=0.5)</li>
+<li>均值及四个分位点：summary(X)</li>
+</ul>
+<h5 id="数学函数（每个元素）"><a href="#数学函数（每个元素）" class="headerlink" title="数学函数（每个元素）"></a>数学函数（每个元素）</h5><ul>
+<li>log(X)</li>
+<li>exp(X)</li>
+<li>sqrt(X)</li>
+</ul>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p><strong>不同类型</strong>元素构成的序列</p>
+<ul>
+<li>list<strong>不能排序</strong></li>
+</ul>
+<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>x=list(“hi”, 3, TRUE)</p>
+<h3 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h3><h4 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h4><ul>
+<li>合并两个list：<ul>
+<li>merge（list1, list2）</li>
+<li>list3=c(list1, list2)</li>
+</ul>
+</li>
+</ul>
+<h2 id="array"><a href="#array" class="headerlink" title="array"></a>array</h2><p>存储两维及以上的数据，通常以<strong>vector</strong>作为输入</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>result=array(c(vtr1, vtr2), dim=c(3, 3, 2))</p>
+<ul>
+<li>dim是维</li>
+</ul>
+<h2 id="matrice"><a href="#matrice" class="headerlink" title="matrice"></a>matrice</h2><p>二维</p>
+<h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>x=matrix(data, nrow, ncol, byrow, dimnames)</p>
+<ul>
+<li>byrow是逻辑：默认FALSE（按列）</li>
+</ul>
+<h4 id="例-1"><a href="#例-1" class="headerlink" title="例"></a>例</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vtr1=<span class="built_in">c</span>(<span class="number">2</span>, <span class="number">6</span>, <span class="number">14</span>, <span class="number">18</span>, <span class="number">22</span>)</span><br><span class="line">vtr2=<span class="built_in">c</span>(<span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">45</span>, <span class="number">36</span>)</span><br><span class="line">mtr=matrix(<span class="built_in">c</span>(vtr1, vtr2),<span class="number">5</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="factor"><a href="#factor" class="headerlink" title="factor"></a>factor</h2><p>将元素按等级分类</p>
+<h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><p>fct=factor(vtr1)</p>
+<h2 id="data-frame"><a href="#data-frame" class="headerlink" title="data frame"></a>data frame</h2><p>变量属性表（多个变量，多个属性）</p>
+<h3 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h3><p>x=data.frame(<u>属性1</u>，<u>属性2</u>）</p>
+<ul>
+<li>不同属性的<strong>元素数量</strong>一定要<strong>相同</strong></li>
+</ul>
+<h4 id="例-2"><a href="#例-2" class="headerlink" title="例"></a>例</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id=<span class="built_in">c</span>(<span class="number">100</span>:<span class="number">150</span>)</span><br><span class="line">name=<span class="built_in">c</span>(<span class="string">&quot;Neel&quot;</span>, <span class="string">&quot;Eric&quot;</span>, <span class="string">&quot;Dave&quot;</span>, <span class="string">&quot;Roshni&quot;</span>, <span class="string">&quot;Pankaj&quot;</span>, <span class="string">&quot;Rashma&quot;</span>)</span><br><span class="line">classstd=data.frame(id, name)</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数-2"><a href="#函数-2" class="headerlink" title="函数"></a>函数</h3><ul>
+<li>展示：str(X)<br>#Name=c(“唐碧泉”,”金军”,”郭礼华”,”金可乔”,”纪灵希”),</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-title-link" itemprop="url">R数据可视化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:40 / Modified: 16:41:18" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:40+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-数据可视化"><a href="#R-数据可视化" class="headerlink" title="R 数据可视化"></a>R 数据可视化</h1><h2 id="饼图Pie-Chart"><a href="#饼图Pie-Chart" class="headerlink" title="饼图Pie Chart"></a>饼图Pie Chart</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vtr=<span class="built_in">c</span>(<span class="number">14</span>, <span class="number">28</span>, <span class="number">11</span>, <span class="number">30</span>)</span><br><span class="line">name=<span class="built_in">c</span>(<span class="string">&quot;R&amp;D&quot;</span>, <span class="string">&quot;Marketing&quot;</span>, <span class="string">&quot;Sales&quot;</span>, <span class="string">&quot;Support&quot;</span>)</span><br><span class="line">pie(vtr, name, col=rainbow(<span class="built_in">length</span>(vtr)))//rainbow是用来使图片变成彩色</span><br></pre></td></tr></table></figure>
+
+<h2 id="条形图Bar-Chart"><a href="#条形图Bar-Chart" class="headerlink" title="条形图Bar Chart"></a>条形图Bar Chart</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vtr=<span class="built_in">c</span>(<span class="number">14</span>, <span class="number">28</span>, <span class="number">11</span>, <span class="number">30</span>)</span><br><span class="line">name=<span class="built_in">c</span>(<span class="string">&quot;R&amp;D&quot;</span>, <span class="string">&quot;Marketing&quot;</span>, <span class="string">&quot;Sales&quot;</span>, <span class="string">&quot;Support&quot;</span>)</span><br><span class="line">barplot(vtr)</span><br></pre></td></tr></table></figure>
+
+<h2 id="箱型图Boxplot"><a href="#箱型图Boxplot" class="headerlink" title="箱型图Boxplot"></a>箱型图Boxplot</h2><p>总结从不同来源获得的数据</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boxplot(mpg=cy1, data=mtcars, xlab=<span class="string">&quot;Number of Cylinders, ylab=&quot;</span>Miles Per Gallon<span class="string">&quot;, main=&quot;</span>Mileage Data, col=<span class="built_in">c</span>(<span class="string">&quot;Red&quot;</span>, <span class="string">&quot;Yellow&quot;</span>, <span class="string">&quot;Blue&quot;</span>)//最后一段是给图上色</span><br></pre></td></tr></table></figure>
+
+<h2 id="直方图Histogram"><a href="#直方图Histogram" class="headerlink" title="直方图Histogram"></a>直方图Histogram</h2><p>频率</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vtr1=(<span class="number">9</span>, <span class="number">11</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">11</span> , <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">9</span>)</span><br><span class="line">hist(vtr1, col=<span class="string">&quot;blue&quot;</span>, border=<span class="string">&quot;red&quot;</span>)//最后一段是底线颜色</span><br></pre></td></tr></table></figure>
+
+<h2 id="折线图Line-Graph"><a href="#折线图Line-Graph" class="headerlink" title="折线图Line Graph"></a>折线图Line Graph</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vtr1=(<span class="number">9</span>, <span class="number">11</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">11</span> , <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">9</span>)</span><br><span class="line">plot(vtr1, type=<span class="string">&quot;o&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="散点图Scatterplot"><a href="#散点图Scatterplot" class="headerlink" title="散点图Scatterplot"></a>散点图Scatterplot</h2><p>一个变量受另一个变量的影响</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vtr1=(<span class="number">9</span>, <span class="number">11</span>, <span class="number">25</span>, <span class="number">70</span>, <span class="number">11</span> , <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">9</span>)</span><br><span class="line">vtr2=(<span class="number">5</span>, <span class="number">4</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">14</span>, <span class="number">20</span>)</span><br><span class="line">plot(vtr1, vtr2)</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>去掉NA：na.rm=TRUE</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5/" class="post-title-link" itemprop="url">R数据导入</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:33 / Modified: 16:40:45" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:33+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-数据导入"><a href="#R-数据导入" class="headerlink" title="R 数据导入"></a>R 数据导入</h1><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library(realxl)</span><br></pre></td></tr></table></figure>
+
+<h2 id="存Data-frame"><a href="#存Data-frame" class="headerlink" title="存Data frame"></a>存Data frame</h2><h3 id="csv"><a href="#csv" class="headerlink" title="csv"></a>csv</h3><ul>
+<li>read.csv(“<u>文件</u>“)：用逗号/制表符分隔（<strong>可修改</strong>，加sep=” “）</li>
+<li>write.csv(“<u>文件</u>“)：用逗号/制表符分隔（<strong>不可修改</strong>）</li>
+</ul>
+<h3 id="table"><a href="#table" class="headerlink" title="table"></a>table</h3><ul>
+<li>read.table(“<u>文件</u>“, header=TRUE)：用空格分隔（header=TRUE是第一行是名字）</li>
+<li>write.table(“<u>文件</u>“)：用空格分隔</li>
+<li>.和下划线都可以</li>
+</ul>
+<h2 id="存数据"><a href="#存数据" class="headerlink" title="存数据"></a>存数据</h2><h3 id="rds"><a href="#rds" class="headerlink" title="rds"></a>rds</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">saveRDS(x, <span class="string">&quot;x.rds&quot;</span>)</span><br><span class="line">y=readRDS(<span class="string">&quot;x,rds&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="rda"><a href="#rda" class="headerlink" title="rda"></a>rda</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">save.image(<span class="string">&quot;everything.Rdata&quot;</span>)</span><br><span class="line">load(<span class="string">&quot;everything.Rdata&quot;</span>)//也可以直接open</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/" class="post-title-link" itemprop="url">R流程控制与</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:26 / Modified: 16:40:23" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:26+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h1><h2 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><p>同C++</p>
+<h3 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h3><p>同C++</p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">switch</span>(<span class="built_in">expression</span>,</span><br><span class="line">value1: Stament <span class="number">1</span></span><br><span class="line">value2: Stament <span class="number">2</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">, default-Stament</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h3><p>相当于while(1)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repeat</span>&#123;</span><br><span class="line">    commands//退出条件</span><br><span class="line">    <span class="keyword">if</span>(condition)&#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(commands)&#123;//退出条件</span><br><span class="line">    \\操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><p>知道循环几次</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vtr=<span class="built_in">c</span>(<span class="number">7</span>, <span class="number">9</span>, <span class="number">25</span>, <span class="number">65</span>, <span class="number">45</span>)</span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> vtr)&#123;</span><br><span class="line">    \\操作</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:<span class="number">15</span>)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>同C++</p>
+<h3 id="next"><a href="#next" class="headerlink" title="next"></a>next</h3><p>同continue</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">R函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:20 / Modified: 16:40:00" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:20+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-函数"><a href="#R-函数" class="headerlink" title="R 函数"></a>R 函数</h1><h2 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name_of_fuction=<span class="keyword">function</span>(形参表)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span>(result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多次运行同一函数"><a href="#多次运行同一函数" class="headerlink" title="多次运行同一函数"></a>多次运行同一函数</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replicate(<span class="number">1000</span>, some_function)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">R变量</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:14 / Modified: 16:39:30" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:14+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-变量"><a href="#R-变量" class="headerlink" title="R 变量"></a>R 变量</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
+<li>X=25</li>
+<li>Y&lt;-“Hello”</li>
+<li>TRUE-&gt;B</li>
+</ol>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ul>
+<li>+-*/：加减乘除</li>
+<li>^：幂</li>
+<li>%%：求余</li>
+<li>%/%：整除</li>
+<li>%&gt;%：左边作为右边函数的第一个参数</li>
+</ul>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ul>
+<li>=</li>
+<li>&lt;-</li>
+<li>&lt;&lt;-</li>
+<li>-&gt;</li>
+<li>-&gt;&gt;</li>
+</ul>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><ul>
+<li><blockquote>
+</blockquote>
+</li>
+<li><p>&lt;</p>
+</li>
+<li><p>==</p>
+</li>
+<li><p>!=</p>
+</li>
+<li><blockquote>
+<p>=</p>
+</blockquote>
+</li>
+<li><p>&lt;=：</p>
+</li>
+</ul>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
+<li>&amp;</li>
+<li>|</li>
+<li>！</li>
+</ul>
+<h2 id="特殊运算符"><a href="#特殊运算符" class="headerlink" title="特殊运算符"></a>特殊运算符</h2><ul>
+<li>a:b：创造从a到b的序列vector（<strong>闭区间</strong>）</li>
+<li>%in%：检查某个值是否在vector里</li>
+</ul>
+<h1 id="package"><a href="#package" class="headerlink" title="package"></a>package</h1><h2 id="安装package"><a href="#安装package" class="headerlink" title="安装package"></a>安装package</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages(<span class="string">&quot;package name&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="导入package"><a href="#导入package" class="headerlink" title="导入package"></a>导入package</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library(<span class="string">&quot;package name&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用package（不导入）"><a href="#使用package（不导入）" class="headerlink" title="使用package（不导入）"></a>使用package（不导入）</h2><p>用名空间 ::</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plyr::round_any()//名空间</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%20ggplot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%20ggplot/" class="post-title-link" itemprop="url">R ggplot</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:07 / Modified: 16:39:09" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:07+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-ggplot"><a href="#R-ggplot" class="headerlink" title="R ggplot"></a>R ggplot</h1><h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><ul>
+<li>Data</li>
+<li>Layers图形类型</li>
+<li>Scales标度</li>
+<li>Coordinates坐标</li>
+<li>Faceting分面</li>
+<li>Themes主题</li>
+</ul>
+<h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><ul>
+<li>一张统计图形就是<strong>数据</strong>（data）到<strong>几何对象</strong>（geopmetric object，缩写为geom，包含点、线、条形等）的<strong>图形属性</strong>（aesthetic attributes，缩写为aes，包含横坐标，纵坐标，颜色、形状、大小等）的一个映射。</li>
+<li>图形中还可能包含<strong>统计变换</strong>（statictical transformation，缩写为stats），最后绘制在某个<strong>坐标系</strong>（coordinate system，缩写为cord）中，而<strong>分面</strong>（facet，指将绘图窗口划分成若干个子窗口）则可以用来生成数据不同子集的图形。</li>
+</ul>
+<h3 id="Aesthetics"><a href="#Aesthetics" class="headerlink" title="Aesthetics"></a>Aesthetics</h3><ul>
+<li>X-axis</li>
+<li>Y-axis</li>
+<li>fill</li>
+<li>col</li>
+<li>shape</li>
+<li>size</li>
+<li>alpha</li>
+</ul>
+<h3 id="几何对象"><a href="#几何对象" class="headerlink" title="几何对象"></a>几何对象</h3><ul>
+<li>柱状图、饼图：geom_bar</li>
+<li>箱型图：geom_boxplot</li>
+<li>直方图：geom_histogram</li>
+<li>频线图：geom_freqpoly</li>
+<li>密度函数平滑估计图：geom_density</li>
+<li>散点图：geom_point</li>
+<li>线图（数据出现顺序/横坐标大小）：geom_path/geom_line</li>
+<li>平滑曲线拟合图：geom_smooth</li>
+<li>等高线：geom_contour</li>
+</ul>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ggplot(data, aes(x=variable,y=variable, size/fill/color=variable))</span><br><span class="line">+geom_bar/histogram/…(color=, size=, fill=, shape=)</span><br><span class="line">+facet_warp(~变量，ncol=,nrow=) +labs(x=,y=,title=)</span><br></pre></td></tr></table></figure>
+
+<h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><h4 id="组距"><a href="#组距" class="headerlink" title="组距"></a>组距</h4><p><code>binwidth</code></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="密度直方图"><a href="#密度直方图" class="headerlink" title="密度直方图"></a>密度直方图</h4><p><code>y=..density..</code></p>
+<ul>
+<li>默认是<code>y=..count..</code>（计数）</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>, aes(y = ..density..))</span><br></pre></td></tr></table></figure>
+
+<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p>Popular aesthetics for geom_point() are </p>
+<ul>
+<li>alpha: point visibility; 0 = invisible, 1 = opaque（不透明）</li>
+<li>color: color of the points (try colors() to see a list of some pre-defined colors) </li>
+<li>shape: shape of the points (predefined)【shape编号】</li>
+<li>size: size of the points【变量/fixed value】</li>
+<li>fill: color used to fill-in the points (only applies to certain shapes, i.e., shape numbers 21 to 25)</li>
+</ul>
+<h3 id="线图"><a href="#线图" class="headerlink" title="线图"></a>线图</h3><p>Popular aesthetics for geom_point() are </p>
+<ul>
+<li>alpha: line visibility; 0 = invisible, 1 = opaque </li>
+<li>color: color of the lines </li>
+<li>linetype: shape of lines (predefined)</li>
+<li>size: size (thickness) of the lines</li>
+</ul>
+<h3 id="平滑曲线拟合图geom-smooth"><a href="#平滑曲线拟合图geom-smooth" class="headerlink" title="平滑曲线拟合图geom_smooth"></a>平滑曲线拟合图geom_smooth</h3><ul>
+<li>去除置信区间：<code>se=FALSE</code></li>
+</ul>
+<h2 id="Labels"><a href="#Labels" class="headerlink" title="Labels"></a>Labels</h2><p><code>labs(title=&#39;title&#39;, x=&#39;x label&#39;, y=&#39;y label&#39;)</code></p>
+<ul>
+<li>用<code>\n</code>改变轴名和轴的距离</li>
+</ul>
+<h2 id="Scales"><a href="#Scales" class="headerlink" title="Scales"></a>Scales</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">scales_&#123;aes name&#125;_&#123;some option&#125;( </span><br><span class="line">	<span class="comment"># name of legend/axis </span></span><br><span class="line">	name = ... </span><br><span class="line">    </span><br><span class="line">	<span class="comment"># range of data values to map </span></span><br><span class="line">	limits = ...</span><br><span class="line">    </span><br><span class="line">	<span class="comment"># what aesthetic values to use for the limits </span></span><br><span class="line">	values = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># where to mark legend/axis </span></span><br><span class="line">	breaks = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># what to label the marks (breaks) ，图例</span></span><br><span class="line">	labels = ... </span><br><span class="line">) </span><br></pre></td></tr></table></figure>
+
+<h3 id="常见Scales"><a href="#常见Scales" class="headerlink" title="常见Scales"></a>常见Scales</h3><p>There are scales specifically for controling the x/y-axes (examples are given for <code>x</code>, but can be used for y by substituting x for y) </p>
+<ul>
+<li>scale_x_log10(): Plot x on log10 scale </li>
+<li>scale_x_reverse(): Reverse the direction of the x axis </li>
+<li>scale_x_sqrt(): Plot x on square root scale </li>
+<li>scale_x_date(labels=date_format(“%Y/%m/%d”),<br>breaks=date_breaks(“2 weeks”)): For axes in date format. <ul>
+<li><code>date_format</code>是日期格式，<code>date_breaks</code>是坐标间隔</li>
+</ul>
+</li>
+</ul>
+<p>See <code>?strptime</code> for label formats, and scale_x_date for more details</p>
+<h3 id="常见功能Scales"><a href="#常见功能Scales" class="headerlink" title="常见功能Scales"></a>常见功能Scales</h3><p>Scales for specific <strong>aesthetics</strong> can be controled with the following functions (where * should be replaced with the desired aesthetic, e.g., color, shape) </p>
+<ul>
+<li><p>scale_*_continuous(): map continuous values to visual values </p>
+</li>
+<li><p>scale_*_discrete(): map discrete values to visual values </p>
+</li>
+<li><p>scale_*_identity(): map raw data to visual values (e.g., a data value of 1 equals shape #1) </p>
+</li>
+<li><p>scale_*_manual(): map discrete values to manually assigned visual values</p>
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(mpg_suv, aes(x = hwy, y = cty)) + </span><br><span class="line">	geom_point(aes(color = issuv)) + </span><br><span class="line">	scale_color_manual(limits = <span class="built_in">c</span>(<span class="literal">FALSE</span>, <span class="literal">TRUE</span>),</span><br><span class="line">			                values = <span class="built_in">c</span>(<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>),</span><br><span class="line">					         breaks = <span class="built_in">c</span>(<span class="literal">TRUE</span>, <span class="literal">FALSE</span>), </span><br><span class="line">					         labels = <span class="built_in">c</span>(<span class="string">&#x27;SUV&#x27;</span>, <span class="string">&#x27;Other&#x27;</span>)</span><br><span class="line">			               ) </span><br></pre></td></tr></table></figure>
+
+<h2 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h2><ul>
+<li>坐标轴旋转：<br><code>coord_flip()</code></li>
+</ul>
+<h2 id="主题theme"><a href="#主题theme" class="headerlink" title="主题theme"></a>主题theme</h2><ul>
+<li>标题居中：<br><code>theme(plot.title=element_text(hjust=0.5))</code></li>
+<li>背景为白色：<br><code>theme_bw()</code></li>
+</ul>
+<h3 id="图例位置"><a href="#图例位置" class="headerlink" title="图例位置"></a>图例位置</h3><p>用一个0-1vector表示位置，第一位left(0)/right(1)，第二位bottom(0)/top(1)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># specify either top/left/bottom/right, e.g., </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="string">&#x27;top&#x27;</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># or set x/y coordinates to position within plot </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">1</span>), </span><br><span class="line">                           legend.justification=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="分面facet"><a href="#分面facet" class="headerlink" title="分面facet"></a>分面facet</h2><h3 id="facet-grid"><a href="#facet-grid" class="headerlink" title="facet_grid()"></a><code>facet_grid()</code></h3><p><strong>二维</strong>分面<br>例：行根据<code>year </code>，列根据<code>cyl</code>分面</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">facet_grid(year ~ cyl)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>若只想一维分面，则用<code>.</code>代替变量<br>如：<code>facet_grid(year ~ .)</code></li>
+</ul>
+<h3 id="facet-wrap"><a href="#facet-wrap" class="headerlink" title="facet_wrap()"></a><code>facet_wrap()</code></h3><ul>
+<li>facet_wrap(~变量)</li>
+<li>facet_wrap(变量1~变量2)</li>
+<li>facet_wrap(~变量, nrow=行数, ncol=列数)</li>
+</ul>
+<h2 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h2><p>无法直接显示，应先手动算出来<br><code>prop.table(table(titanic$Survived))</code></p>
+<h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><p>用<code>ggsave()</code>保存图片，图片比例更好</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggsave(<span class="string">&quot;my_plot.png&quot;</span>,</span><br><span class="line">         width=<span class="number">5</span>,</span><br><span class="line">         height=<span class="number">5</span>,</span><br><span class="line">         plot=p)<span class="comment">#p是图片</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="地图ggmap"><a href="#地图ggmap" class="headerlink" title="地图ggmap"></a>地图ggmap</h2><p>Use the qmap function to initialize a ggplot object with a map layer </p>
+<ul>
+<li>The main arguments for qmap are <ul>
+<li><strong>location</strong>: an address, vector of longitude/latitude pair (in that order), or vector of left/bottom/right/top bounding box </li>
+<li><strong>zoom</strong>: the zoom level in integer values from 3 (continent) to 21 (building) </li>
+<li><strong>color</strong>: either ‘color’ or ‘bw’ (for grayscale) </li>
+<li><strong>maptype</strong>: character string providing map theme, e.g.,‘terrain’, ‘satellite’,‘roadmap’,‘hybrid’, etc. </li>
+<li><strong>legend</strong>: position for the legend, e.g.,‘top’,‘right’,‘topleft’,‘bottomright’,‘none’, etc. </li>
+<li><strong>source</strong>: Source to load maps from; google by default, but not recommended due to API requirements </li>
+</ul>
+</li>
+</ul>
+<p>see <code>?qmap</code>, <code>?ggmap</code>, and<code> ?get_map</code> for more details</p>
+<p>例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Bounding box around the US (I Googled the numbers) </span></span><br><span class="line">us &lt;- <span class="built_in">c</span>(left = -<span class="number">125</span>, bottom = <span class="number">25.75</span>, right = -<span class="number">67</span>, top = <span class="number">49</span>) </span><br><span class="line">p &lt;- qmap(us, zoom = <span class="number">5</span>, maptype = <span class="string">&quot;toner-lite&quot;</span>, </span><br><span class="line">		  source = <span class="string">&quot;stamen&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>factor类型在导入数据之后先as.factor()或as.character()</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -405,725 +1327,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Qt%E6%96%87%E4%BB%B6IO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E6%96%87%E4%BB%B6IO/" class="post-title-link" itemprop="url">Qt文件IO</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-24 16:28:09 / Modified: 16:33:49" itemprop="dateCreated datePublished" datetime="2021-03-24T16:28:09+08:00">2021-03-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Qt-文件I-O"><a href="#Qt-文件I-O" class="headerlink" title="Qt 文件I/O"></a>Qt 文件I/O</h1><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
-<li>文件必须要<strong>关闭</strong></li>
-</ul>
-<h2 id="QFile"><a href="#QFile" class="headerlink" title="QFile"></a>QFile</h2><p>用<code>QFileDialog</code></p>
-<ul>
-<li>最常用</li>
-</ul>
-<h2 id="QDataStream"><a href="#QDataStream" class="headerlink" title="QDataStream"></a>QDataStream</h2><p><strong>二进制</strong>方式读写</p>
-<h2 id="QTextStream"><a href="#QTextStream" class="headerlink" title="QTextStream"></a>QTextStream</h2><p>不要用来读文件（没有分隔符）</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Qt%E6%95%B0%E6%8D%AE%E5%BA%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-title-link" itemprop="url">Qt数据库</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-24 16:28:04" itemprop="dateCreated datePublished" datetime="2021-03-24T16:28:04+08:00">2021-03-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Qt%E4%BA%8B%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E4%BA%8B%E4%BB%B6/" class="post-title-link" itemprop="url">Qt事件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-24 16:27:57 / Modified: 16:32:51" itemprop="dateCreated datePublished" datetime="2021-03-24T16:27:57+08:00">2021-03-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><ul>
-<li>所有事件类都继承于QEvent</li>
-<li>事件处理函数都是<strong>protected</strong></li>
-<li>事件处理函数都是<strong>虚函数</strong></li>
-</ul>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>事件-&gt;对象-&gt;event()-&gt;事件处理器（类似switch）-&gt;相应的时间函数</p>
-<h2 id="QWidget中的事件回调函数"><a href="#QWidget中的事件回调函数" class="headerlink" title="QWidget中的事件回调函数"></a>QWidget中的事件回调函数</h2><ul>
-<li>keyPressEvent()</li>
-<li>keyReleaseEvent()</li>
-<li>mouseDoubleClickEvent()</li>
-<li>mouseMoveEvent()</li>
-<li>mousePressEvent()</li>
-<li>mouseReleaseEvent()</li>
-</ul>
-<h2 id="事件的过滤"><a href="#事件的过滤" class="headerlink" title="事件的过滤"></a>事件的过滤</h2><h3 id="重写event"><a href="#重写event" class="headerlink" title="重写event()"></a>重写event()</h3><ul>
-<li>返回值可以设为<code>bool</code>，不想继续就return true，想继续就return 父类::event(e)</li>
-<li>已定义的事件要将e<strong>强制类型转换</strong>成该事件类型<br>如：<code>QKeyEvent *env=static_cast&lt;QKeyEvent *&gt;(e); </code>将e转为<code>QEvent*</code>类型</li>
-</ul>
-<h3 id="事件过滤器"><a href="#事件过滤器" class="headerlink" title="事件过滤器"></a>事件过滤器</h3><p><code>virtual bool QObject::eventFilter(QObject *watched, QEvent *event);</code><br>可以监视过滤哪个控件</p>
-<ul>
-<li>一进去就追踪鼠标：<code>setMouseTracking(tr)</code></li>
-</ul>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
-<li>在.h中定义<code>eventFilter()</code></li>
-<li>在窗口构造函数中安装过滤器，用<code>installEventFilter()</code><br>例：<code>ui-&gt;label_2-&gt;installEventFilter(this);</code></li>
-<li>改写<code>eventFilter()</code>，要停止传播的return true，不用传播的return 父类::eventFilter(obj, e)</li>
-</ol>
-<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><ul>
-<li>事件过滤器和被安装过滤器的组件必须在<strong>同一线程</strong>，否则过滤器不起作用。</li>
-<li>如果在安装过滤器之后，这两个组件到了不同的线程，那只有等二者重新<strong>回到同一线程</strong>的时候过滤器才有效</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Qt%E6%8E%A7%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E6%8E%A7%E4%BB%B6/" class="post-title-link" itemprop="url">Qt控件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-24 16:27:48 / Modified: 16:32:32" itemprop="dateCreated datePublished" datetime="2021-03-24T16:27:48+08:00">2021-03-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="控件"><a href="#控件" class="headerlink" title="控件"></a>控件</h1><h2 id="按钮QPushBotton"><a href="#按钮QPushBotton" class="headerlink" title="按钮QPushBotton"></a>按钮QPushBotton</h2><ul>
-<li>文字：<code>b.setText(&quot;&lt;u&gt;文字&lt;/u&gt;&quot;);</code></li>
-<li>移动：<code>b.move(100, 100);</code>//单位是<strong>像素</strong></li>
-<li>设置大小：<code>b.resize(100, 100);</code></li>
-</ul>
-<p>定义按钮对象（子对象）时可在父类中定义成员（private），不可在构造函数中直接定义<br>（定义指针时要new：<code>b= new QPushButton(this)</code>）</p>
-<ul>
-<li>最后一个括号的参数是<strong>父对象</strong>，可以为空（默认this）</li>
-<li>动态分配的变量直接或间接继承于QObject，则空间自动释放</li>
-</ul>
-<h2 id="标签QLabel"><a href="#标签QLabel" class="headerlink" title="标签QLabel"></a>标签QLabel</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Qt%E7%A9%BA%E9%97%B4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E7%A9%BA%E9%97%B4/" class="post-title-link" itemprop="url">Qt空间</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-03-24 16:27:44" itemprop="dateCreated datePublished" datetime="2021-03-24T16:27:44+08:00">2021-03-24</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Qt%E7%88%B6%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E7%88%B6%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB/" class="post-title-link" itemprop="url">Qt父类和子类</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-24 16:27:38 / Modified: 16:32:11" itemprop="dateCreated datePublished" datetime="2021-03-24T16:27:38+08:00">2021-03-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Qt-父类和子类"><a href="#Qt-父类和子类" class="headerlink" title="Qt 父类和子类"></a>Qt 父类和子类</h1><p>指定父对象的方法：</p>
-<ol>
-<li>setParent函数：<code>b=setParent(&amp;w);</code></li>
-<li>构造函数：<code>QPushButton b(&amp;w);</code></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Qt%E7%AA%97%E5%8F%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E7%AA%97%E5%8F%A3/" class="post-title-link" itemprop="url">Qt窗口</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-24 16:27:30 / Modified: 16:31:47" itemprop="dateCreated datePublished" datetime="2021-03-24T16:27:30+08:00">2021-03-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Qt-窗口"><a href="#Qt-窗口" class="headerlink" title="Qt 窗口"></a>Qt 窗口</h1><h2 id="主窗口与子窗口"><a href="#主窗口与子窗口" class="headerlink" title="主窗口与子窗口"></a>主窗口与子窗口</h2><p>子窗口是父窗口的成员对象，在父窗口中show</p>
-<h3 id="主窗口与子窗口间的切换"><a href="#主窗口与子窗口间的切换" class="headerlink" title="主窗口与子窗口间的切换"></a>主窗口与子窗口间的切换</h3><h4 id="主窗口-gt-子窗口"><a href="#主窗口-gt-子窗口" class="headerlink" title="主窗口-&gt;子窗口"></a>主窗口-&gt;子窗口</h4><p>子窗口显示，本窗口隐藏</p>
-<h4 id="子窗口-gt-主窗口"><a href="#子窗口-gt-主窗口" class="headerlink" title="子窗口-&gt;主窗口"></a>子窗口-&gt;主窗口</h4><ol>
-<li>子窗口中根据<strong>真实信号</strong>定义槽函数，给主窗口发“邮件”</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SubWidget::<span class="built_in">SubWidget</span>(QWidget *parent) : <span class="built_in">QWidget</span>(parent)</span><br><span class="line">&#123;    </span><br><span class="line">    <span class="built_in">setWindowTitle</span>(<span class="string">&quot;小弟&quot;</span>);   </span><br><span class="line">    b4.<span class="built_in">setParent</span>(<span class="keyword">this</span>);   </span><br><span class="line">    b4.<span class="built_in">setText</span>(<span class="string">&quot;切换到主窗口&quot;</span>);                                       <span class="built_in">connect</span>(&amp;b4,&amp;QPushButton::clicked,<span class="keyword">this</span> ,&amp;SubWidget::sendSlot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SubWidget::sendSlot</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="function">emit <span class="title">mySignal</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>在主窗口connect子窗口发来的“邮件”</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理子窗口的信号    connect(&amp;w,&amp;SubWidget::mySignal,this,&amp;MyWidget::dealSub);</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="模态对话框和非模态对话框"><a href="#模态对话框和非模态对话框" class="headerlink" title="模态对话框和非模态对话框"></a>模态对话框和非模态对话框</h2><h3 id="模态对话框"><a href="#模态对话框" class="headerlink" title="模态对话框"></a>模态对话框</h3><p>只能操作当前窗口，无法操作其他窗口<br><code>dlg.exec();</code></p>
-<h3 id="非模态对话框"><a href="#非模态对话框" class="headerlink" title="非模态对话框"></a>非模态对话框</h3><ol>
-<li>将dlg定义为成员【好】</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类里定义QDialog dlg;</span></span><br><span class="line">dlg.<span class="built_in">show</span>();               </span><br><span class="line"><span class="built_in">qDebug</span>()&lt;&lt;<span class="built_in">QStringLiteral</span>(<span class="string">&quot;非模态对话框&quot;</span>);   </span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>动态分配空间（指定父对象）【不好】   </li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> <span class="built_in">QDialog</span>(<span class="keyword">this</span>);<span class="comment">//多次点击会内存越界</span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();     </span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>动态分配空间（不指定父对象）【好】</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> QDialog;              </span><br><span class="line">p-&gt;<span class="built_in">setAttribute</span>(Qt::WA_DeleteOnClose);<span class="comment">//关闭才释放  </span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/Qt%E6%A0%B7%E5%BC%8F%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E6%A0%B7%E5%BC%8F%E8%A1%A8/" class="post-title-link" itemprop="url">Qt样式表</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2021-03-24 16:27:23 / Modified: 16:31:19" itemprop="dateCreated datePublished" datetime="2021-03-24T16:27:23+08:00">2021-03-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Qt-样式表"><a href="#Qt-样式表" class="headerlink" title="Qt 样式表"></a>Qt 样式表</h1><p>通过调用<code>QWidget::setStyleSheet()</code>为一个独立的子部件、整个窗口，或调用<code>QApplication::setStyleSheet()</code>，为整个应用程序指定一个样式表</p>
-<h2 id="样式表语法基础"><a href="#样式表语法基础" class="headerlink" title="样式表语法基础"></a>样式表语法基础</h2><p>与CSS语法规则几乎完全相同<br><code>selector&#123; attribute: value&#125;</code></p>
-<ul>
-<li>selector：通常是<strong>类名</strong></li>
-<li>attribute：属性名</li>
-<li>value：赋给该属性的值</li>
-</ul>
-<p>例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">QCheckBox, QComboBox, QSpinBox&#123;</span><br><span class="line">    color: red;</span><br><span class="line">    background-color: white;</span><br><span class="line">    font: bold;<span class="comment">//字体：加粗</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="方箱模型"><a href="#方箱模型" class="headerlink" title="方箱模型"></a>方箱模型</h2><p>样式表中，每个部件被看做是一个由四个同心相似的矩阵组成的箱体</p>
-<ul>
-<li><p>空白margin：<br>空白区域位于边框外，是透明的</p>
-</li>
-<li><p>边框border：<br>边框为部件提供了四周的框架，其border-style属性可以设置为一些内置框架风格，如inset, outset, solid和ridge</p>
-</li>
-<li><p>填充padding：<br>填充在边框和内容区域之间提供了空白间隔</p>
-</li>
-<li><p>内容content：<br>对于一个平面部件，例如一个空白、边框和填充都是0像素的部件而言，这四个矩形是完全重合的</p>
-</li>
-</ul>
-<h2 id="前景与背景"><a href="#前景与背景" class="headerlink" title="前景与背景"></a>前景与背景</h2><h3 id="前景色：color"><a href="#前景色：color" class="headerlink" title="前景色：color"></a>前景色：color</h3><p>可以用rgb配（0-255）<br>例：<br><code>ui-&gt;label-&gt;setStyleSheet(&quot;QLabel&#123;color:rgb(0,255,255);&#125;&quot;);</code></p>
-<ul>
-<li>如果把<code>ui</code>改成<code>this</code>，则<strong>窗口</strong>中所有label都是这个样式<ul>
-<li><code>this</code>是通用，仍可通过<code>ui</code>对某些进行特殊处理</li>
-</ul>
-</li>
-<li>如果要设定<strong>整个应用程序</strong>的，则在main函数里<code>a.setStyleSheet();</code></li>
-</ul>
-<h3 id="背景色：background-color"><a href="#背景色：background-color" class="headerlink" title="背景色：background-color"></a>背景色：background-color</h3><h3 id="背景图片background-image"><a href="#背景图片background-image" class="headerlink" title="背景图片background-image"></a>背景图片background-image</h3><p><code>&quot;background-image: url(图片路径);&quot;</code>（不用双引号）</p>
-<ul>
-<li>对齐：background-position</li>
-<li>平铺方式：background-repeat<br>默认重复平铺</li>
-</ul>
-<h2 id="创建可缩放样式"><a href="#创建可缩放样式" class="headerlink" title="创建可缩放样式"></a>创建可缩放样式</h2><p>例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;QPushButton&#123;&quot;</span></span><br><span class="line">   <span class="string">&quot;border-width: 4px;&quot;</span></span><br><span class="line">   <span class="string">&quot; border-image: url(图片路径) ;&quot;</span></span><br><span class="line"> <span class="string">&quot;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>裁剪原图片：<br><code>border-image: url(图片路径) 4 4 4 4 strech strrech;</code></li>
-</ul>
-<h2 id="控制大小"><a href="#控制大小" class="headerlink" title="控制大小"></a>控制大小</h2><p><code>min-width</code>和<code>min-height</code>指定一个部件内容区域的最小大小。这两个值将影响部件的<code>minimumSizeHint()</code>。</p>
-<h2 id="处理伪状态"><a href="#处理伪状态" class="headerlink" title="处理伪状态"></a>处理伪状态</h2><p>部件的<strong>外观</strong>按照用户界面元素<strong>状态</strong>的不同来分别定义</p>
-<p>格式：<code>selector: 伪状态&#123; attribute: value&#125;</code><br>例（按压改变图片）：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;pushButton-&gt;<span class="built_in">setStyleSheet</span>(<span class="string">&quot;QPushButton&#123;&quot;</span>                       </span><br><span class="line">                                         <span class="string">&quot;border-image:url(图片路径);&quot;</span></span><br><span class="line">                                         <span class="string">&quot;&#125;&quot;</span>                   </span><br><span class="line">                                         <span class="string">&quot;QPushButton: hover&#123;&quot;</span></span><br><span class="line">                                         <span class="string">&quot;border-image:url(图片路径);&quot;</span></span><br><span class="line">                                         <span class="string">&quot;&#125;&quot;</span>                                </span><br><span class="line">                                         )</span><br></pre></td></tr></table></figure>
-
-<h3 id="可用伪状态列表"><a href="#可用伪状态列表" class="headerlink" title="可用伪状态列表"></a>可用伪状态列表</h3><ul>
-<li>checked：button部件被选中</li>
-<li>disabled：部件被禁用</li>
-<li>enabled：部件被启用</li>
-<li>focus：部件获得焦点</li>
-<li>hover：鼠标位于部件上</li>
-<li>indeterminate：checkbox或radiobutton被选中</li>
-<li>off：部件可以切换，且处于off状态</li>
-<li>on：部件可以切换，且处于on状态</li>
-<li>pressed：部件被鼠标按下</li>
-<li>unchecked：button部件未被选中</li>
-</ul>
-<h2 id="使用子部件定义微观样式"><a href="#使用子部件定义微观样式" class="headerlink" title="使用子部件定义微观样式"></a>使用子部件定义微观样式</h2><ul>
-<li>用法类似伪状态<br>例：<code>QDateTimeEdit::up-button</code></li>
-<li>可和伪状态联合使用<br>例：<code>QDateTimeEdit::up-button: hover</code></li>
-</ul>
-<h3 id="子部件列表"><a href="#子部件列表" class="headerlink" title="子部件列表"></a>子部件列表</h3><ul>
-<li>down-arrow：combo box或spin box的下拉箭头</li>
-<li>up-arrow：combo box或spin box的向上箭头</li>
-<li>down-button：spin box的向下按钮</li>
-<li>up-button：spin box的向上按钮</li>
-<li>drop-down：combo box的下拉箭头</li>
-<li>indicatior：checkbox, radio button或可选择group box的指示器</li>
-<li>item：menu, menu bar或status bar的子项目</li>
-<li>menu-indicator：push button的菜单指示器</li>
-<li>title：group box的标题</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 

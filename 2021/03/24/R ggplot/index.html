@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="R ggplot构成 Data Layers图形类型 Scales标度 Coordinates坐标 Faceting分面 Themes主题  核心思想 一张统计图形就是数据（data）到几何对象（geopmetric object，缩写为geom，包含点、线、条形等）的图形属性（aesthetic attributes，缩写为aes，包含横坐标，纵坐标，颜色、形状、大小等）的一个映射。 图形中还可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R ggplot">
+<meta property="og:url" content="http://example.com/2021/03/24/R%20ggplot/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="R ggplot构成 Data Layers图形类型 Scales标度 Coordinates坐标 Faceting分面 Themes主题  核心思想 一张统计图形就是数据（data）到几何对象（geopmetric object，缩写为geom，包含点、线、条形等）的图形属性（aesthetic attributes，缩写为aes，包含横坐标，纵坐标，颜色、形状、大小等）的一个映射。 图形中还可">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-24T08:37:07.000Z">
+<meta property="article:modified_time" content="2021-03-24T08:39:09.916Z">
+<meta property="article:author" content="JennyKQ">
+<meta property="article:tag" content="R">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/03/24/R%20ggplot/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>R ggplot | Hexo</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">Tags</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#R-ggplot"><span class="nav-number">1.</span> <span class="nav-text">R ggplot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E6%88%90"><span class="nav-number">1.1.</span> <span class="nav-text">构成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.1.</span> <span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Aesthetics"><span class="nav-number">1.1.2.</span> <span class="nav-text">Aesthetics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.3.</span> <span class="nav-text">几何对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">画图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.3.1.</span> <span class="nav-text">直方图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E8%B7%9D"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">组距</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E5%BA%A6%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">密度直方图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="nav-number">1.3.2.</span> <span class="nav-text">散点图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E5%9B%BE"><span class="nav-number">1.3.3.</span> <span class="nav-text">线图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E6%BB%91%E6%9B%B2%E7%BA%BF%E6%8B%9F%E5%90%88%E5%9B%BEgeom-smooth"><span class="nav-number">1.3.4.</span> <span class="nav-text">平滑曲线拟合图geom_smooth</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Labels"><span class="nav-number">1.4.</span> <span class="nav-text">Labels</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scales"><span class="nav-number">1.5.</span> <span class="nav-text">Scales</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81Scales"><span class="nav-number">1.5.2.</span> <span class="nav-text">常见Scales</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%8A%9F%E8%83%BDScales"><span class="nav-number">1.5.3.</span> <span class="nav-text">常见功能Scales</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9D%90%E6%A0%87%E8%BD%B4"><span class="nav-number">1.6.</span> <span class="nav-text">坐标轴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98theme"><span class="nav-number">1.7.</span> <span class="nav-text">主题theme</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E4%BE%8B%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.7.1.</span> <span class="nav-text">图例位置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E9%9D%A2facet"><span class="nav-number">1.8.</span> <span class="nav-text">分面facet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#facet-grid"><span class="nav-number">1.8.1.</span> <span class="nav-text">facet_grid()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#facet-wrap"><span class="nav-number">1.8.2.</span> <span class="nav-text">facet_wrap()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BE%E5%88%86%E6%AF%94"><span class="nav-number">1.9.</span> <span class="nav-text">百分比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87"><span class="nav-number">1.10.</span> <span class="nav-text">保存图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%B0%E5%9B%BEggmap"><span class="nav-number">1.11.</span> <span class="nav-text">地图ggmap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">1.12.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JennyKQ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/R%20ggplot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          R ggplot
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:37:07 / Modified: 16:39:09" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:07+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="R-ggplot"><a href="#R-ggplot" class="headerlink" title="R ggplot"></a>R ggplot</h1><h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><ul>
+<li>Data</li>
+<li>Layers图形类型</li>
+<li>Scales标度</li>
+<li>Coordinates坐标</li>
+<li>Faceting分面</li>
+<li>Themes主题</li>
+</ul>
+<h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><ul>
+<li>一张统计图形就是<strong>数据</strong>（data）到<strong>几何对象</strong>（geopmetric object，缩写为geom，包含点、线、条形等）的<strong>图形属性</strong>（aesthetic attributes，缩写为aes，包含横坐标，纵坐标，颜色、形状、大小等）的一个映射。</li>
+<li>图形中还可能包含<strong>统计变换</strong>（statictical transformation，缩写为stats），最后绘制在某个<strong>坐标系</strong>（coordinate system，缩写为cord）中，而<strong>分面</strong>（facet，指将绘图窗口划分成若干个子窗口）则可以用来生成数据不同子集的图形。</li>
+</ul>
+<h3 id="Aesthetics"><a href="#Aesthetics" class="headerlink" title="Aesthetics"></a>Aesthetics</h3><ul>
+<li>X-axis</li>
+<li>Y-axis</li>
+<li>fill</li>
+<li>col</li>
+<li>shape</li>
+<li>size</li>
+<li>alpha</li>
+</ul>
+<h3 id="几何对象"><a href="#几何对象" class="headerlink" title="几何对象"></a>几何对象</h3><ul>
+<li>柱状图、饼图：geom_bar</li>
+<li>箱型图：geom_boxplot</li>
+<li>直方图：geom_histogram</li>
+<li>频线图：geom_freqpoly</li>
+<li>密度函数平滑估计图：geom_density</li>
+<li>散点图：geom_point</li>
+<li>线图（数据出现顺序/横坐标大小）：geom_path/geom_line</li>
+<li>平滑曲线拟合图：geom_smooth</li>
+<li>等高线：geom_contour</li>
+</ul>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ggplot(data, aes(x=variable,y=variable, size/fill/color=variable))</span><br><span class="line">+geom_bar/histogram/…(color=, size=, fill=, shape=)</span><br><span class="line">+facet_warp(~变量，ncol=,nrow=) +labs(x=,y=,title=)</span><br></pre></td></tr></table></figure>
+
+<h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><h4 id="组距"><a href="#组距" class="headerlink" title="组距"></a>组距</h4><p><code>binwidth</code></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="密度直方图"><a href="#密度直方图" class="headerlink" title="密度直方图"></a>密度直方图</h4><p><code>y=..density..</code></p>
+<ul>
+<li>默认是<code>y=..count..</code>（计数）</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>, aes(y = ..density..))</span><br></pre></td></tr></table></figure>
+
+<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p>Popular aesthetics for geom_point() are </p>
+<ul>
+<li>alpha: point visibility; 0 = invisible, 1 = opaque（不透明）</li>
+<li>color: color of the points (try colors() to see a list of some pre-defined colors) </li>
+<li>shape: shape of the points (predefined)【shape编号】</li>
+<li>size: size of the points【变量/fixed value】</li>
+<li>fill: color used to fill-in the points (only applies to certain shapes, i.e., shape numbers 21 to 25)</li>
+</ul>
+<h3 id="线图"><a href="#线图" class="headerlink" title="线图"></a>线图</h3><p>Popular aesthetics for geom_point() are </p>
+<ul>
+<li>alpha: line visibility; 0 = invisible, 1 = opaque </li>
+<li>color: color of the lines </li>
+<li>linetype: shape of lines (predefined)</li>
+<li>size: size (thickness) of the lines</li>
+</ul>
+<h3 id="平滑曲线拟合图geom-smooth"><a href="#平滑曲线拟合图geom-smooth" class="headerlink" title="平滑曲线拟合图geom_smooth"></a>平滑曲线拟合图geom_smooth</h3><ul>
+<li>去除置信区间：<code>se=FALSE</code></li>
+</ul>
+<h2 id="Labels"><a href="#Labels" class="headerlink" title="Labels"></a>Labels</h2><p><code>labs(title=&#39;title&#39;, x=&#39;x label&#39;, y=&#39;y label&#39;)</code></p>
+<ul>
+<li>用<code>\n</code>改变轴名和轴的距离</li>
+</ul>
+<h2 id="Scales"><a href="#Scales" class="headerlink" title="Scales"></a>Scales</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">scales_&#123;aes name&#125;_&#123;some option&#125;( </span><br><span class="line">	<span class="comment"># name of legend/axis </span></span><br><span class="line">	name = ... </span><br><span class="line">    </span><br><span class="line">	<span class="comment"># range of data values to map </span></span><br><span class="line">	limits = ...</span><br><span class="line">    </span><br><span class="line">	<span class="comment"># what aesthetic values to use for the limits </span></span><br><span class="line">	values = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># where to mark legend/axis </span></span><br><span class="line">	breaks = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># what to label the marks (breaks) ，图例</span></span><br><span class="line">	labels = ... </span><br><span class="line">) </span><br></pre></td></tr></table></figure>
+
+<h3 id="常见Scales"><a href="#常见Scales" class="headerlink" title="常见Scales"></a>常见Scales</h3><p>There are scales specifically for controling the x/y-axes (examples are given for <code>x</code>, but can be used for y by substituting x for y) </p>
+<ul>
+<li>scale_x_log10(): Plot x on log10 scale </li>
+<li>scale_x_reverse(): Reverse the direction of the x axis </li>
+<li>scale_x_sqrt(): Plot x on square root scale </li>
+<li>scale_x_date(labels=date_format(“%Y/%m/%d”),<br>breaks=date_breaks(“2 weeks”)): For axes in date format. <ul>
+<li><code>date_format</code>是日期格式，<code>date_breaks</code>是坐标间隔</li>
+</ul>
+</li>
+</ul>
+<p>See <code>?strptime</code> for label formats, and scale_x_date for more details</p>
+<h3 id="常见功能Scales"><a href="#常见功能Scales" class="headerlink" title="常见功能Scales"></a>常见功能Scales</h3><p>Scales for specific <strong>aesthetics</strong> can be controled with the following functions (where * should be replaced with the desired aesthetic, e.g., color, shape) </p>
+<ul>
+<li><p>scale_*_continuous(): map continuous values to visual values </p>
+</li>
+<li><p>scale_*_discrete(): map discrete values to visual values </p>
+</li>
+<li><p>scale_*_identity(): map raw data to visual values (e.g., a data value of 1 equals shape #1) </p>
+</li>
+<li><p>scale_*_manual(): map discrete values to manually assigned visual values</p>
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(mpg_suv, aes(x = hwy, y = cty)) + </span><br><span class="line">	geom_point(aes(color = issuv)) + </span><br><span class="line">	scale_color_manual(limits = <span class="built_in">c</span>(<span class="literal">FALSE</span>, <span class="literal">TRUE</span>),</span><br><span class="line">			                values = <span class="built_in">c</span>(<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>),</span><br><span class="line">					         breaks = <span class="built_in">c</span>(<span class="literal">TRUE</span>, <span class="literal">FALSE</span>), </span><br><span class="line">					         labels = <span class="built_in">c</span>(<span class="string">&#x27;SUV&#x27;</span>, <span class="string">&#x27;Other&#x27;</span>)</span><br><span class="line">			               ) </span><br></pre></td></tr></table></figure>
+
+<h2 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h2><ul>
+<li>坐标轴旋转：<br><code>coord_flip()</code></li>
+</ul>
+<h2 id="主题theme"><a href="#主题theme" class="headerlink" title="主题theme"></a>主题theme</h2><ul>
+<li>标题居中：<br><code>theme(plot.title=element_text(hjust=0.5))</code></li>
+<li>背景为白色：<br><code>theme_bw()</code></li>
+</ul>
+<h3 id="图例位置"><a href="#图例位置" class="headerlink" title="图例位置"></a>图例位置</h3><p>用一个0-1vector表示位置，第一位left(0)/right(1)，第二位bottom(0)/top(1)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># specify either top/left/bottom/right, e.g., </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="string">&#x27;top&#x27;</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># or set x/y coordinates to position within plot </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">1</span>), </span><br><span class="line">                           legend.justification=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="分面facet"><a href="#分面facet" class="headerlink" title="分面facet"></a>分面facet</h2><h3 id="facet-grid"><a href="#facet-grid" class="headerlink" title="facet_grid()"></a><code>facet_grid()</code></h3><p><strong>二维</strong>分面<br>例：行根据<code>year </code>，列根据<code>cyl</code>分面</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">facet_grid(year ~ cyl)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>若只想一维分面，则用<code>.</code>代替变量<br>如：<code>facet_grid(year ~ .)</code></li>
+</ul>
+<h3 id="facet-wrap"><a href="#facet-wrap" class="headerlink" title="facet_wrap()"></a><code>facet_wrap()</code></h3><ul>
+<li>facet_wrap(~变量)</li>
+<li>facet_wrap(变量1~变量2)</li>
+<li>facet_wrap(~变量, nrow=行数, ncol=列数)</li>
+</ul>
+<h2 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h2><p>无法直接显示，应先手动算出来<br><code>prop.table(table(titanic$Survived))</code></p>
+<h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><p>用<code>ggsave()</code>保存图片，图片比例更好</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggsave(<span class="string">&quot;my_plot.png&quot;</span>,</span><br><span class="line">         width=<span class="number">5</span>,</span><br><span class="line">         height=<span class="number">5</span>,</span><br><span class="line">         plot=p)<span class="comment">#p是图片</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="地图ggmap"><a href="#地图ggmap" class="headerlink" title="地图ggmap"></a>地图ggmap</h2><p>Use the qmap function to initialize a ggplot object with a map layer </p>
+<ul>
+<li>The main arguments for qmap are <ul>
+<li><strong>location</strong>: an address, vector of longitude/latitude pair (in that order), or vector of left/bottom/right/top bounding box </li>
+<li><strong>zoom</strong>: the zoom level in integer values from 3 (continent) to 21 (building) </li>
+<li><strong>color</strong>: either ‘color’ or ‘bw’ (for grayscale) </li>
+<li><strong>maptype</strong>: character string providing map theme, e.g.,‘terrain’, ‘satellite’,‘roadmap’,‘hybrid’, etc. </li>
+<li><strong>legend</strong>: position for the legend, e.g.,‘top’,‘right’,‘topleft’,‘bottomright’,‘none’, etc. </li>
+<li><strong>source</strong>: Source to load maps from; google by default, but not recommended due to API requirements </li>
+</ul>
+</li>
+</ul>
+<p>see <code>?qmap</code>, <code>?ggmap</code>, and<code> ?get_map</code> for more details</p>
+<p>例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Bounding box around the US (I Googled the numbers) </span></span><br><span class="line">us &lt;- <span class="built_in">c</span>(left = -<span class="number">125</span>, bottom = <span class="number">25.75</span>, right = -<span class="number">67</span>, top = <span class="number">49</span>) </span><br><span class="line">p &lt;- qmap(us, zoom = <span class="number">5</span>, maptype = <span class="string">&quot;toner-lite&quot;</span>, </span><br><span class="line">		  source = <span class="string">&quot;stamen&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>factor类型在导入数据之后先as.factor()或as.character()</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/R/" rel="tag"># R</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/24/Qt%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" rel="prev" title="Qt坐标系统">
+                  <i class="fa fa-chevron-left"></i> Qt坐标系统
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/24/R%E5%8F%98%E9%87%8F/" rel="next" title="R变量">
+                  R变量 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JennyKQ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
