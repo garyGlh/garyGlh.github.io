@@ -207,465 +207,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">Python数据类型</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-24 16:14:54 / 修改时间：16:20:10" itemprop="dateCreated datePublished" datetime="2021-03-24T16:14:54+08:00">2021-03-24</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Python-数据类型"><a href="#Python-数据类型" class="headerlink" title="Python 数据类型"></a>Python 数据类型</h1><h2 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h2><p>整型和长整型不严格区分（一般不会溢出）</p>
-<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><p>rue或False（大写））</p>
-<h2 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h2><p>可以直接科学记数法e</p>
-<h2 id="复数型"><a href="#复数型" class="headerlink" title="复数型"></a>复数型</h2><p>a+bj（虚数部分必须有<strong>j</strong>）</p>
-<ul>
-<li>复数的实部：<u>复数</u>.real</li>
-<li>复数的虚部：<u>复数</u>.imag</li>
-<li>复数的共轭：<u>复数</u>.conjugate()</li>
-</ul>
-<h2 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h2><h3 id="序列通用"><a href="#序列通用" class="headerlink" title="序列通用"></a>序列通用</h3><h4 id="序列类型运算符"><a href="#序列类型运算符" class="headerlink" title="序列类型运算符"></a>序列类型运算符</h4><ul>
-<li><p>下标</p>
-<ul>
-<li>负数表示从最后一个算起，最后一个是-1，第一个是-n</li>
-<li>week[1:4]：取出下标1-3（4-1）的元素</li>
-<li>week[:6}：取出下标0-5（6-1）的元素</li>
-<li>week[::-1]：把原序列逆序</li>
-</ul>
-</li>
-<li><p>重复<br>“apple”*3-&gt;”appleappleapple”</p>
-</li>
-<li>拼接<br>“pine”+”apple”-&gt;”pineapple”</li>
-<li>包含<br>“BA” in (“BA”, “CD”)-&gt;True</li>
-</ul>
-<h4 id="序列类型转换函数"><a href="#序列类型转换函数" class="headerlink" title="序列类型转换函数"></a>序列类型转换函数</h4><ul>
-<li>list(x)</li>
-<li>str(x)</li>
-<li>tuple(x)</li>
-</ul>
-<p>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">list</span>(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">[<span class="string">&quot;H&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;l&quot;</span>, <span class="string">&quot;l&quot;</span>, <span class="string">&quot;o&quot;</span>]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;<span class="built_in">tuple</span>(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">(<span class="string">&quot;H&quot;</span>, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;l&quot;</span>, <span class="string">&quot;l&quot;</span>, <span class="string">&quot;o&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="序列类型常用内建函数"><a href="#序列类型常用内建函数" class="headerlink" title="序列类型常用内建函数"></a>序列类型常用内建函数</h4><ul>
-<li>enumerate(list, start)：返回enumerate对象，是由索引和元素构成的元组，index平移到从start开始</li>
-<li>len(x)：字符串长度</li>
-<li>max(x)</li>
-<li>minx()</li>
-<li>reversed(x)：逆序</li>
-<li>sorted(x)：排序，不改变原序列</li>
-<li>x.sort(reverse=False)：排序，改变原序列</li>
-<li>sum(x)</li>
-<li>zip(x)：把对象打包成元组</li>
-</ul>
-<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>单引号，双引号，三引号（多行）均可</p>
-<ul>
-<li><p>可通过+连接</p>
-</li>
-<li><p>可用r避免转义：<code>r&quot;c:\Users\11546&quot;</code></p>
-</li>
-</ul>
-<h3 id="列表list（元素可变）"><a href="#列表list（元素可变）" class="headerlink" title="列表list（元素可变）"></a>列表list（元素可变）</h3><ul>
-<li>.pop(index=n-1)：去掉索引为index的元素（默认是最后一个）</li>
-<li>.append(x)：最后加上元素x</li>
-<li>.extend(x)：合并列表x</li>
-<li>.copy()：浅拷贝</li>
-<li>.deepcopy()：【copy模块】深拷贝</li>
-</ul>
-<h4 id="列表解析"><a href="#列表解析" class="headerlink" title="列表解析"></a>列表解析</h4><p>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;[x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#类型转换</span></span><br><span class="line">&gt;&gt;&gt;[<span class="built_in">eval</span>(item) <span class="keyword">for</span> item <span class="keyword">in</span> lst]</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">&gt;&gt;&gt;list1=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">eval</span>,lst))</span><br><span class="line">&gt;&gt;&gt;list1=<span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">str</span>,lst))</span><br><span class="line"></span><br><span class="line"><span class="comment">#增加条件</span></span><br><span class="line">&gt;&gt;&gt;[x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>) <span class="keyword">if</span> x**<span class="number">2</span>&lt;<span class="number">10</span>]</span><br><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;[(x+<span class="number">1</span>, y+<span class="number">1</span>) <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>) <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>)]</span><br><span class="line">[(<span class="number">1</span>,<span class="number">1</span>), (<span class="number">1</span>,<span class="number">2</span>), (<span class="number">2</span>,<span class="number">1</span>), (<span class="number">2</span>,<span class="number">2</span>)]]</span><br></pre></td></tr></table></figure>
-<h3 id="元组tuple（元素不可变）"><a href="#元组tuple（元素不可变）" class="headerlink" title="元组tuple（元素不可变）"></a>元组tuple（元素不可变）</h3><ul>
-<li>创建只有一个元素的元组：2014,</li>
-<li>没有.sort()方法</li>
-</ul>
-<h4 id="元组的作用"><a href="#元组的作用" class="headerlink" title="元组的作用"></a>元组的作用</h4><ul>
-<li>在映射类型中当做<strong>键</strong>使用</li>
-<li>函数的特殊类型参数（可变长位置参数）<ul>
-<li>星号可以收集参数<br>例：</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">args1, *argst</span>):</span></span><br><span class="line">            <span class="built_in">print</span>(args1)</span><br><span class="line">            <span class="built_in">print</span>(argst)</span><br><span class="line">&gt;&gt;&gt;foo(<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;xiaoming&quot;</span>, <span class="string">&quot;xiaohong&quot;</span>, <span class="string">&quot;xiaofang&quot;</span>)</span><br><span class="line"></span><br><span class="line">Hello</span><br><span class="line">(<span class="string">&quot;xiaoming&quot;</span>, <span class="string">&quot;xiaohong&quot;</span>, <span class="string">&quot;xiaofang&quot;</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>作为函数的特殊返回值<br>例：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="function"><span class="keyword">def</span> <span class="title">foo</span>():</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">&gt;&gt;&gt;foo()</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="字典（映射）"><a href="#字典（映射）" class="headerlink" title="字典（映射）"></a>字典（映射）</h2><p>用大括号{}界别，成员都是<strong>键值对应</strong>的形式</p>
-<ul>
-<li>形如：<code>d=&#123;&#39;sine:&#39;sin&#39;,&#39;PI&#39;:3.14&#125;</code></li>
-</ul>
-<h3 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h3><ul>
-<li>直接<br><code>aInfo=&#123;&quot;xiaoming&quot;:300, &quot;xiaoha&quot;: 400&#125;</code></li>
-<li>dict函数（元组的列表、列表的列表或元组的元组）</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">info=[(<span class="string">&quot;xiaoming&quot;</span>, <span class="number">300</span>), (<span class="string">&quot;xiaoha&quot;</span>: <span class="number">400</span>)]</span><br><span class="line">bInfo = <span class="built_in">dict</span>(info)</span><br><span class="line"></span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">dInfo=<span class="built_in">dict</span>(xiaoming=<span class="number">300</span>, xiaoha=<span class="number">400</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="设置默认值"><a href="#设置默认值" class="headerlink" title="设置默认值"></a>设置默认值</h4><ul>
-<li>.fromkeys(<u>所有key</u>, <u>value默认值</u>)<br>例：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aDict=&#123;&#125;.fromkeys((<span class="string">&quot;xiaoming&quot;</span>, <span class="string">&quot;xiaoha&quot;</span>), <span class="number">300</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="生成字典"><a href="#生成字典" class="headerlink" title="生成字典"></a>生成字典</h4><ul>
-<li>zip(list1, list2)：打包（拉链咬合）</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">names=[<span class="string">&quot;xiaom&quot;</span>, <span class="string">&quot;xiaoh&quot;</span>]</span><br><span class="line">salaries=[<span class="number">300</span>, <span class="number">400</span>]</span><br><span class="line"><span class="built_in">dict</span>(<span class="built_in">zip</span>(names, salaries))</span><br></pre></td></tr></table></figure>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
-<li>根据键取值（不推荐）<br><code>d[&#39;sine&#39;]</code>，没有会出现异常</li>
-<li>用.get(key)方法取值（推荐）<br><code>d.get(&quot;sine&quot;)</code>，没有返回None</li>
-<li>添加新成员<br><code>d[&quot;mayun&quot;]=100</code></li>
-<li>成员判断<br><code>&quot;mayun&quot; in d</code></li>
-<li>删除成员<br><code>del d[&quot;mayun&quot;]</code></li>
-<li>清空字典<ul>
-<li><code>aStock=&#123;&#125;</code>，不会清空引用对象</li>
-<li><code>aStock.clear()</code>，会清空引用对象</li>
-</ul>
-</li>
-</ul>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
-<li>sorted(dict)：返回列表，排序默认是key内部存储顺序<ul>
-<li>按照key排序：<code>sorted(dict.items(), key=lambda d: d[0]</code></li>
-<li>按照value排序：<code>sorted(dict.items(), key=lambda d: d[1]</code></li>
-<li>先按照value排序，再按照key排序：<code>sorted(dict.items(), key=lambda d: (d[1], d[0])</code></li>
-</ul>
-</li>
-<li>len(dict)：字典元素个数</li>
-<li>hash(key)：判断某个对象是不是可哈希的（可变的）</li>
-</ul>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
-<li>.keys()：所有key，返回列表</li>
-<li>.values()：所有value，返回列表</li>
-<li>.items()：把字典每对key-value组成一个元组，放到列表中（<strong>多用于for循环</strong>）</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#输出所有key和value</span></span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> aInfo.item():</span><br><span class="line">    <span class="built_in">print</span>(k, v)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>.update(other_dict)：把other_dict中的更新合并到当前字典</li>
-</ul>
-<h3 id="可变长关键字参数（字典）"><a href="#可变长关键字参数（字典）" class="headerlink" title="可变长关键字参数（字典）"></a>可变长关键字参数（字典）</h3><ul>
-<li>用两个星号</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>(<span class="params">args1, *argst, **argsd</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(argsd)</span><br><span class="line">func(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;xiaoming&quot;</span> ,<span class="string">&quot;mayun&quot;</span>, a1=<span class="number">1</span>, a2=<span class="number">2</span>, a3=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">&gt;&#123;<span class="string">&quot;a1: 1, &quot;</span>a2<span class="string">&quot;: 2, &quot;</span>a3<span class="string">&quot;: 3&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="字典相关使用小案例"><a href="#字典相关使用小案例" class="headerlink" title="字典相关使用小案例"></a>字典相关使用小案例</h3><h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><h5 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h5><ul>
-<li>.load(json_file)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;1.json&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = json.load(f)</span><br></pre></td></tr></table></figure>
-<h5 id="变回JSON文件"><a href="#变回JSON文件" class="headerlink" title="变回JSON文件"></a>变回JSON文件</h5><ul>
-<li>.dumps(dict)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json_str = json.dumps(x)</span><br></pre></td></tr></table></figure>
-<h4 id="搜索引擎关键词查询"><a href="#搜索引擎关键词查询" class="headerlink" title="搜索引擎关键词查询"></a>搜索引擎关键词查询</h4><h2 id="可变长字典Series"><a href="#可变长字典Series" class="headerlink" title="可变长字典Series"></a>可变长字典Series</h2><ul>
-<li>类似一维数组的对象</li>
-</ul>
-<h3 id="Series的创建"><a href="#Series的创建" class="headerlink" title="Series的创建"></a>Series的创建</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="comment">#自动生成索引</span></span><br><span class="line">aSer=pd.Series([<span class="number">1</span>, <span class="number">2.0</span>, <span class="string">&quot;a&quot;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#自定义索引</span></span><br><span class="line">bSer=pd.Series([<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;lemon&quot;</span>], index=[<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>])</span><br></pre></td></tr></table></figure>
-<h3 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
-<li>.index：查看所有index</li>
-<li>.values：查看所有value</li>
-</ul>
-<h4 id="数据对齐"><a href="#数据对齐" class="headerlink" title="数据对齐"></a>数据对齐</h4><p>在运算中自动对齐不同索引的数据，缺省值设为NaN</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;<span class="string">&quot;a&quot;</span>: <span class="number">86</span>, <span class="string">&quot;b&quot;</span>: <span class="number">76</span>&#125;</span><br><span class="line">sindex=[<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>]</span><br><span class="line">aSer=pd.Series(data, index=sindex)</span><br><span class="line"><span class="comment">#缺省值为NaN，可用.isnull(ser)检测空值</span></span><br></pre></td></tr></table></figure>
-<h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><p>+-*/</p>
-<ul>
-<li>.exp(series)：e的幂次</li>
-</ul>
-<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><ul>
-<li>用大括号表示<br>例：删除列表中重复元素</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">id</span>=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>]</span><br><span class="line">idSet = <span class="built_in">set</span>(<span class="built_in">id</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="基本操作-2"><a href="#基本操作-2" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
-<li>比较<ul>
-<li>in：判断元素是否在集合里</li>
-<li>==/&lt;/&gt;</li>
-</ul>
-</li>
-</ul>
-<h3 id="关系运算（运算符可复合）"><a href="#关系运算（运算符可复合）" class="headerlink" title="关系运算（运算符可复合）"></a>关系运算（运算符可复合）</h3><ul>
-<li>&amp;：交</li>
-<li>|：并</li>
-<li>-：-或\</li>
-<li>^：对称差</li>
-</ul>
-<h3 id="通用内建函数（面向所有集合）"><a href="#通用内建函数（面向所有集合）" class="headerlink" title="通用内建函数（面向所有集合）"></a>通用内建函数（面向所有集合）</h3><ul>
-<li>.issubset(bSet)：是不是bSet的子集</li>
-<li>.intersection(bSet)：交集</li>
-<li>.difference(bSet)：差补</li>
-<li>.copy()：拷贝集合</li>
-</ul>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><h4 id="可变集合set"><a href="#可变集合set" class="headerlink" title="可变集合set"></a>可变集合set</h4><ul>
-<li>用set(<u>序列</u>)创建</li>
-</ul>
-<h5 id="内建函数（面向可变集合）"><a href="#内建函数（面向可变集合）" class="headerlink" title="内建函数（面向可变集合）"></a>内建函数（面向可变集合）</h5><ul>
-<li>.add(element)：添加某个元素</li>
-<li>.remove(element)：删除某个元素</li>
-<li>.update(sequence)：增加新元素（序列中的每个元素）</li>
-<li>.clear()：清空</li>
-</ul>
-<h4 id="不可变集合"><a href="#不可变集合" class="headerlink" title="不可变集合"></a>不可变集合</h4><p>用frozenset(<u>序列</u>)创建frozenset</p>
-<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>array模块</p>
-<ul>
-<li>通过array函数创建数组<br><code>array.array(&quot;B&quot;, range(5))</code></li>
-<li>提供append、insert和read等方法</li>
-<li>不支持多维数组</li>
-</ul>
-<h3 id="ndarray"><a href="#ndarray" class="headerlink" title="ndarray"></a>ndarray</h3><ul>
-<li>所有元素是同一种类型</li>
-<li>别名为array</li>
-<li>利于节省内存和提高CPU计算</li>
-<li>有丰富的函数</li>
-</ul>
-<h4 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h4><ul>
-<li>ndarray.ndim：秩（轴的个数），如2</li>
-<li>ndarray.shape：维度（轴），如(2, 2)<ul>
-<li>axis=0：对每一列操作</li>
-<li>axis=1：对每一行操作</li>
-</ul>
-</li>
-<li>ndarray.size：元素个数</li>
-<li>ndarray.dtype：元素类型</li>
-<li>ndarray.itemsize：元素字节大小</li>
-</ul>
-<h4 id="ndarray的创建"><a href="#ndarray的创建" class="headerlink" title="ndarray的创建"></a>ndarray的创建</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">impory numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建一维数组</span></span><br><span class="line">aArray=np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建二维数组</span></span><br><span class="line">bArray=np.array([(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>)])</span><br><span class="line"></span><br><span class="line"><span class="comment">#arrange，类似range，但可以处理浮点数</span></span><br><span class="line">np.arrange(<span class="number">1</span>, <span class="number">5</span>, <span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#random，随机数</span></span><br><span class="line">np.random.random((<span class="number">2</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#linspace，从起始点到终止点，个数确定，等差数组</span></span><br><span class="line">np.linspace(<span class="number">1</span>, <span class="number">2</span>, <span class="number">10</span>, endpoint=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#全1数组</span></span><br><span class="line">np.ones([<span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#全0数组</span></span><br><span class="line">np.zeros((<span class="number">2</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#10*10全pi数组（扩展性更好）</span></span><br><span class="line">x = np.full((<span class="number">10</span>, <span class="number">10</span>), np.pi)</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建一个类型跟x一样的数组，值为3</span></span><br><span class="line">np.full_like(x, <span class="number">4</span>)<span class="comment">#ones和zeros同理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#从函数创建某个维度的数组</span></span><br><span class="line"><span class="comment">#乘法口诀表9*9</span></span><br><span class="line">np.fromfunction(<span class="keyword">lambda</span> i, j: (i+<span class="number">1</span>)*(j+<span class="number">1</span>), (<span class="number">9</span>, <span class="number">9</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#单位数组，k是对角线上移几层</span></span><br><span class="line">np.eye(<span class="number">8</span>, k=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="基本操作-3"><a href="#基本操作-3" class="headerlink" title="基本操作"></a>基本操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#第0-1行</span></span><br><span class="line">aArray[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#所有行，第0、1列</span></span><br><span class="line">aArray[:[<span class="number">0</span>, <span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment">#第1行，第0、1列</span></span><br><span class="line">aArray[<span class="number">1</span>, [<span class="number">0</span>, <span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line"><span class="comment">#遍历，打印每行</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> aArray:</span><br><span class="line">    <span class="built_in">print</span>(row)</span><br><span class="line">    </span><br><span class="line"><span class="comment">#奇数行（加上步长）</span></span><br><span class="line">aArray[::<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#奇数列</span></span><br><span class="line">aArray[:, ::<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#交换行</span></span><br><span class="line">aArray[::-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#交换列</span></span><br><span class="line">aArray[:, ::-<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<h5 id="布尔索引"><a href="#布尔索引" class="headerlink" title="布尔索引"></a>布尔索引</h5><p><code>x[(x&gt;=50) &amp; (x % 2 == 0)]</code></p>
-<h4 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h4><h5 id="改变维度"><a href="#改变维度" class="headerlink" title="改变维度"></a>改变维度</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#改变维度（不是真正改变原来的维度）</span></span><br><span class="line">bArray=aArray.reshape(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#改变维度（真正改变原来的维度）</span></span><br><span class="line">aArray.resize(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建1-16,4*4数组</span></span><br><span class="line">x=np.arrange(<span class="number">1</span>, <span class="number">17</span>).reshape(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#转换成2行n列</span></span><br><span class="line">x.reshape(<span class="number">2</span>, -<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h5 id="拼接"><a href="#拼接" class="headerlink" title="拼接"></a>拼接</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#水平方向拼接</span></span><br><span class="line">np.hstack(bArray, cArray)</span><br><span class="line"></span><br><span class="line"><span class="comment">#垂直方向拼接</span></span><br><span class="line">np.vstack(bArray, cArray)</span><br></pre></td></tr></table></figure>
-<h5 id="批量修改元素值"><a href="#批量修改元素值" class="headerlink" title="批量修改元素值"></a>批量修改元素值</h5><ul>
-<li>条件语句矢量化形式</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果原来的值是偶数，则设为-1，否则为原始数据x</span></span><br><span class="line">np.where(x%<span class="number">2</span> == <span class="number">0</span>, -<span class="number">1</span> ,x)</span><br></pre></td></tr></table></figure>
-<h5 id="ufunc函数"><a href="#ufunc函数" class="headerlink" title="ufunc函数"></a>ufunc函数</h5><ul>
-<li>C语言级别实现，计算速度很快</li>
-</ul>
-<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><p>+-*、</p>
-<ul>
-<li>维度不同时用到<strong>广播</strong>特性，自动扩展成维度一样（重复）</li>
-<li>mean等方法有(keepdims=False)，使得保持原来维度便于广播</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#按行/列求和</span></span><br><span class="line">aArray.<span class="built_in">sum</span>(axis=<span class="number">0</span>)</span><br><span class="line">aArray.<span class="built_in">sum</span>(axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#返回最小值</span></span><br><span class="line">aArray.<span class="built_in">min</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">#返回最大值的索引</span></span><br><span class="line">aArray.argmax()</span><br><span class="line"></span><br><span class="line">aArray.mean()</span><br><span class="line"></span><br><span class="line">aArray.var()</span><br><span class="line"></span><br><span class="line">aArray.std()</span><br></pre></td></tr></table></figure>
-<h4 id="线性代数应用"><a href="#线性代数应用" class="headerlink" title="线性代数应用"></a>线性代数应用</h4><ul>
-<li>.dot(array1, array2)：矩阵内积</li>
-<li>.linalg.det(array)：行列式</li>
-<li>.linalg.inv(array)：逆矩阵</li>
-<li>.linalg.solve：多元一次方程求根</li>
-<li>.linalg.elg：求特征值和特征向量</li>
-</ul>
-<h2 id="DataFrame"><a href="#DataFrame" class="headerlink" title="DataFrame"></a>DataFrame</h2><p>基本特征：</p>
-<ul>
-<li>表格型</li>
-<li>含有一组有序的列（类似index）</li>
-<li>可看成共享同一个index的Series的集合</li>
-</ul>
-<h3 id="DataFrame的创建"><a href="#DataFrame的创建" class="headerlink" title="DataFrame的创建"></a>DataFrame的创建</h3><ul>
-<li>可以由列表、元组、字典、ndarray、Series或文件创建<br><code>.DateDrame(列表/…, index=…, columns=列表)</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data=&#123;<span class="string">&quot;name: [&quot;</span>xiaoming<span class="string">&quot;, &quot;</span>xiaoha<span class="string">&quot;], &quot;</span>pay: [<span class="number">100</span>, <span class="number">200</span>]&#125;</span><br><span class="line">frame=pd.DataFrame(data)</span><br></pre></td></tr></table></figure>
-<h3 id="基本操作-4"><a href="#基本操作-4" class="headerlink" title="基本操作"></a>基本操作</h3><ul>
-<li>.index：行索引</li>
-<li>.columns：列索引</li>
-<li>.values：值</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#取一列</span></span><br><span class="line">frame[<span class="string">&quot;name&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#取一列</span></span><br><span class="line">frame.pay</span><br><span class="line"></span><br><span class="line"><span class="comment">#取一个区域（第0、1行的第1列）</span></span><br><span class="line">frame.iloc[: <span class="number">2</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除一列</span></span><br><span class="line"><span class="comment">#del</span></span><br><span class="line"><span class="keyword">del</span> frame[<span class="string">&quot;name&quot;</span>]</span><br><span class="line"><span class="comment">#iloc方法</span></span><br><span class="line">quotesdf_nan.iloc[:, <span class="number">0</span>:<span class="number">4</span>]</span><br><span class="line"><span class="comment">#drop方法</span></span><br><span class="line">quotesdf_nan.drop(<span class="string">&quot;Volumn&quot;</span>, axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>切片连续用”:”，不连续用”,”</li>
-</ul>
-<h3 id="统计功能"><a href="#统计功能" class="headerlink" title="统计功能"></a>统计功能</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#找pay列的最小值</span></span><br><span class="line">frame.pay,<span class="built_in">min</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">#找出pay&gt;=5000的数据</span></span><br><span class="line">frame[frame.pay&gt;=<span class="string">&quot;5000&quot;</span>]</span><br></pre></td></tr></table></figure>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><ul>
-<li>内层屏蔽外层</li>
-</ul>
-<h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><ul>
-<li>函数体内用<code>global</code>关键字强调全局变量，使其可被修改</li>
-<li>- </li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-title-link" itemprop="url">Python数据可视化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-24 16:14:45 / 修改时间：16:19:39" itemprop="dateCreated datePublished" datetime="2021-03-24T16:14:45+08:00">2021-03-24</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Python-数据可视化"><a href="#Python-数据可视化" class="headerlink" title="Python 数据可视化"></a>Python 数据可视化</h1><h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><h3 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h3><ul>
-<li>主要用于<strong>二维</strong>绘图</li>
-<li>绘图API：pyplot模块</li>
-</ul>
-<h4 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot([<span class="number">3</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">9</span>])</span><br><span class="line"><span class="comment">#相当于plt.plot(range(7), [3, 4, 7, 6, 2, 8, 9])</span></span><br><span class="line"></span><br><span class="line">plt.show()<span class="comment">#不加这条看不到图</span></span><br><span class="line"></span><br><span class="line">plt.savefig(<span class="string">&quot;test.jpg&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h5 id="多组数据"><a href="#多组数据" class="headerlink" title="多组数据"></a>多组数据</h5><ul>
-<li>NumPy数组可以作为Matplotlib的参数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">t=np.arange(<span class="number">0.</span>, <span class="number">4.</span>, <span class="number">0.1</span>)</span><br><span class="line">plt.plot(t, t, t, t+<span class="number">2</span>, t, t**<span class="number">2</span>)</span><br><span class="line"><span class="comment">#3条曲线在同一个图，两两一组</span></span><br></pre></td></tr></table></figure>
-<h4 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h4><h5 id="scatter函数"><a href="#scatter函数" class="headerlink" title="scatter函数"></a>scatter函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.scatter([<span class="number">3</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">9</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h5 id="plot函数加参数”o”"><a href="#plot函数加参数”o”" class="headerlink" title="plot函数加参数”o”"></a>plot函数加参数”o”</h5><h4 id="条形图"><a href="#条形图" class="headerlink" title="条形图"></a>条形图</h4><p>plot函数换成bar</p>
-<h4 id="Matplotlib属性"><a href="#Matplotlib属性" class="headerlink" title="Matplotlib属性"></a>Matplotlib属性</h4><ul>
-<li>文字和字体</li>
-<li>坐标轴和网格</li>
-<li>子图</li>
-<li>子区</li>
-<li>色彩和样式</li>
-<li>线宽</li>
-<li>每英寸点数</li>
-<li>图像大小</li>
-</ul>
-<h5 id="色彩和样式（字符串形式）"><a href="#色彩和样式（字符串形式）" class="headerlink" title="色彩和样式（字符串形式）"></a>色彩和样式（字符串形式）</h5><ul>
-<li>plot函数的第3个参数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绿色虚线</span></span><br><span class="line">plt.plot(x, y, <span class="string">&quot;g--&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#红色钻石散点</span></span><br><span class="line">plt.plot(x, y, <span class="string">&quot;rD&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h5 id="色彩和样式（参数形式）"><a href="#色彩和样式（参数形式）" class="headerlink" title="色彩和样式（参数形式）"></a>色彩和样式（参数形式）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># figsize是图的大小，dpi是图的精度</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>), dpi=<span class="number">100</span>)</span><br><span class="line">t = np.arange(<span class="number">0.</span>, <span class="number">4.</span>, <span class="number">0.1</span>)</span><br><span class="line">plt.plot(t, t, color=<span class="string">&quot;red&quot;</span>, linestyle=<span class="string">&quot;-&quot;</span>, linewidth=<span class="number">3</span>, label=<span class="string">&quot;Line1&quot;</span>)</span><br><span class="line">plt.plot(t, t+<span class="number">2</span>, color=<span class="string">&quot;green&quot;</span>, linestyle=<span class="string">&quot;&quot;</span>,</span><br><span class="line">         marker=<span class="string">&quot;*&quot;</span>, linewidth=<span class="number">3</span>, label=<span class="string">&quot;Line2&quot;</span>)</span><br><span class="line">plt.plot(t, t**<span class="number">2</span>, color=<span class="string">&quot;blue&quot;</span>, linestyle=<span class="string">&quot;&quot;</span>,</span><br><span class="line">         marker=<span class="string">&quot;+&quot;</span>, linewidth=<span class="number">3</span>, label=<span class="string">&quot;Line3&quot;</span>)</span><br><span class="line">         </span><br><span class="line"><span class="comment"># 图例，best是自动找最佳位置</span></span><br><span class="line">plt.legend(loc=<span class="string">&quot;upper left&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h5 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h5><h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><ul>
-<li>标题：<code>plt.title(&quot;title&quot;)</code></li>
-<li>x轴名：<code>plt.xlabel(&quot;X&quot;)</code></li>
-<li>y轴名：<code>plt.ylabel(&quot;Y&quot;)</code></li>
-</ul>
-<h5 id="图对象的set方法"><a href="#图对象的set方法" class="headerlink" title="图对象的set方法"></a>图对象的set方法</h5><p><code>ax.set(title=&quot;title&quot;, xlabel=&quot;x&quot;)</code></p>
-<h5 id="绘制子图"><a href="#绘制子图" class="headerlink" title="绘制子图"></a>绘制子图</h5><ul>
-<li>subplot()/subplots()函数（区域完全分开）<ul>
-<li>3个分别为行数、列数、所在区域编号</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#均匀产生区间内一组数据</span></span><br><span class="line">x=np.linspace(-np.pi, np.pi, <span class="number">300</span>)</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">1</span>)<span class="comment">#默认创建，缺省</span></span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">211</span>)<span class="comment">#第一个子图</span></span><br><span class="line">plt.plot(x, np.sin(x), color=<span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">212</span>)<span class="comment">#第二个子图</span></span><br><span class="line">plt.plot(x, np.cos(x), color=<span class="string">&quot;g&quot;</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>subplots()函数（区域完全分开）</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#均匀产生区间内一组数据</span></span><br><span class="line">x=np.linspace(-np.pi, np.pi, <span class="number">300</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#产生2行1列的两个子图（ax为子图对象）</span></span><br><span class="line">fig, (ax0, ax1)=plt.subplots(<span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第一个子图</span></span><br><span class="line">ax0.plot(x, np.sin(x), color=<span class="string">&quot;r&quot;</span>)</span><br><span class="line">ax0.set_title(<span class="string">&quot;subplot1&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置垂直间距</span></span><br><span class="line">plt.subplots_adjust(hspace=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第二个子图</span></span><br><span class="line">ax1.plot(x, np.cos(x), color=<span class="string">&quot;g&quot;</span>)</span><br><span class="line">ax1.set_title(<span class="string">&quot;subplot2&quot;</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>axes()函数（子图区域可能重叠）<ul>
-<li><code>axes([left, bottom, width, height])</code>，参数范围为(0, 1)，是<strong>相对坐标轴的百分比</strong></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#均匀产生区间内一组数据</span></span><br><span class="line">x=np.linspace(-np.pi, np.pi, <span class="number">300</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第一个子图</span></span><br><span class="line">plt.axes([<span class="number">.1</span>, <span class="number">.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])</span><br><span class="line">plt.plot(x, np.sin(x), color = <span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第二个子图</span></span><br><span class="line">plt.axes([<span class="number">.3</span>, <span class="number">.15</span>, <span class="number">0.4</span>, <span class="number">0.3</span>])</span><br><span class="line">plt.plot(x, np.cos(x), color = <span class="string">&quot;g&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h3><ul>
-<li>基于<strong>DataFrame</strong>或<strong>Series</strong>绘图</li>
-</ul>
-<h4 id="用DataFrame的loc方法"><a href="#用DataFrame的loc方法" class="headerlink" title="用DataFrame的loc方法"></a>用DataFrame的loc方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选择前10条记录中的收盘价close</span></span><br><span class="line"><span class="comment">#DataFrame的loc方法是基于标签选择数据（行标签为0-9，列标签为close）</span></span><br><span class="line">quotesdf.loc[:<span class="number">9</span>, <span class="string">&quot;close&quot;</span>].plot()</span><br><span class="line"></span><br><span class="line"><span class="comment">#选择前10条记录中的收盘价close和开盘价open</span></span><br><span class="line">quotesdf.loc[:<span class="number">9</span>, [<span class="string">&quot;close&quot;</span>, <span class="string">&quot;open&quot;</span>]].plot()</span><br></pre></td></tr></table></figure>
-<h4 id="用plot方法的参数"><a href="#用plot方法的参数" class="headerlink" title="用plot方法的参数"></a>用plot方法的参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ax=djidf.plot(kind=<span class="string">&quot;bar&quot;</span>, x=<span class="string">&quot;code&quot;</span>, y=<span class="string">&quot;price&quot;</span>, color=<span class="string">&quot;g&quot;</span>)</span><br><span class="line">ax.<span class="built_in">set</span>(ylabel=<span class="string">&quot;Price&quot;</span>, title=<span class="string">&quot;Stock Statistics of ^DJI)</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/Python%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1566,7 +1107,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/23/C++%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9A%E4%B9%89/">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/23/Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1579,7 +1120,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/23/C++%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%AE%9A%E4%B9%89/" class="post-title-link" itemprop="url">C++类与对象的定义</a>
+          <a href="/2021/03/23/Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Git远程仓库操作</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1591,7 +1132,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-03-23 11:03:51 / 修改时间：11:25:03" itemprop="dateCreated datePublished" datetime="2021-03-23T11:03:51+08:00">2021-03-23</time>
+      <time title="创建时间：2021-03-23 10:32:24 / 修改时间：10:37:23" itemprop="dateCreated datePublished" datetime="2021-03-23T10:32:24+08:00">2021-03-23</time>
     </span>
 
   
@@ -1601,7 +1142,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
         </span>
     </span>
 
@@ -1615,23 +1156,230 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="C-类与对象的定义"><a href="#C-类与对象的定义" class="headerlink" title="C++ 类与对象的定义"></a>C++ 类与对象的定义</h1><h2 id="一、类的定义"><a href="#一、类的定义" class="headerlink" title="一、类的定义"></a>一、类的定义</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CRectangle</span>&#123;</span>  </span><br><span class="line">    <span class="keyword">private</span>：（私有属性和函数）  </span><br><span class="line">    <span class="keyword">public</span>：（公有属性和函数）  </span><br><span class="line">    <span class="keyword">protected</span>：（保护属性和函数）     </span><br><span class="line">    定义属性，声明函数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>成员函数写在类定义的外面</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> CRectangle :: <span class="built_in">Area</span>()&#123;   </span><br><span class="line">    <span class="keyword">return</span> w*h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="二、类成员可被访问范围"><a href="#二、类成员可被访问范围" class="headerlink" title="二、类成员可被访问范围"></a>二、类成员可被访问范围</h2><p><strong>private</strong>：私有成员，只能在成员函数内访问</p>
-<p><strong>public</strong>：公有成员，可以在任何地方访问</p>
-<p><strong>protected</strong>：保护成员     </p>
-<p>1、成员没有关键字：缺省地被认为是私有成员 </p>
-<p> 2、在类的成员函数内部，能够访问当前对象的全部属性、函数同类其他对象的全部属性、函数  </p>
-<p>3、在类的成员函数以外的地方，只能访问该类对象的公有成员</p>
-<h2 id="三、成员函数的重载及参数缺省"><a href="#三、成员函数的重载及参数缺省" class="headerlink" title="三、成员函数的重载及参数缺省"></a>三、成员函数的重载及参数缺省</h2><p>避免函数重载导致的二义性</p>
-<h2 id="四、对象的引用传参"><a href="#四、对象的引用传参" class="headerlink" title="四、对象的引用传参"></a>四、对象的引用传参</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span> <span class="params">( A&amp; a, A&amp; b)</span></span>;</span><br></pre></td></tr></table></figure>
-<h2 id="五、对象的定义-Type为类名）"><a href="#五、对象的定义-Type为类名）" class="headerlink" title="五、对象的定义(Type为类名）"></a>五、对象的定义(Type为类名）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Type a;</span><br><span class="line">Type *a=<span class="keyword">new</span> Type;</span><br></pre></td></tr></table></figure>
-<h2 id="六、访问成员"><a href="#六、访问成员" class="headerlink" title="六、访问成员"></a>六、访问成员</h2><p>1、对象名.成员名</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r1.w=<span class="number">5</span>;</span><br><span class="line">r2.<span class="built_in">init</span>(w,h); </span><br></pre></td></tr></table></figure>
-<p>2、指针-&gt;成员名</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Rectangle r1;</span><br><span class="line">Rectangle *p1 = &amp;r1;</span><br><span class="line">P1-&gt;w = <span class="number">5</span>;</span><br><span class="line">P1-&gt;<span class="built_in">init</span>(<span class="number">5</span>,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="七、成员函数的初始化列表"><a href="#七、成员函数的初始化列表" class="headerlink" title="七、成员函数的初始化列表"></a>七、成员函数的初始化列表</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CType</span>( <span class="keyword">int</span> r, <span class="keyword">int</span> w): <span class="built_in">radius</span>(r), <span class="built_in">width</span>(w)&#123;&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="Git远程仓库操作"><a href="#Git远程仓库操作" class="headerlink" title="Git远程仓库操作"></a>Git远程仓库操作</h1><ul>
+<li>远程仓库可看成一个普通<strong>分支</strong>，只是形式为<code>&lt;远程仓库名&gt;/master</code></li>
+<li>远程分支可通过<code>git remote</code>查看，无法通过<code>git branch</code>查看</li>
+<li>远程仓库是<strong>惰性</strong>的，需要手动更新，无法自动同步更新</li>
+</ul>
+<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><h3 id="法一：git-remote-add命令"><a href="#法一：git-remote-add命令" class="headerlink" title="法一：git remote add命令"></a>法一：<code>git remote add</code>命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add &lt;远程仓库名&gt; &lt;远程仓库链接&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可将远程仓库与本地<strong>已有</strong>仓库关联起来</li>
+</ul>
+<h3 id="法二：git-clone命令"><a href="#法二：git-clone命令" class="headerlink" title="法二：git clone命令"></a>法二：<code>git clone</code>命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;远程仓库链接&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>相当于先<code>git init</code>，再<code>git remote add</code>，再<code>git fetch</code>，最后<code>git checkout</code>。克隆一个远程仓库到本地，会自动将远程仓库命名为origin。使用频率更高。</li>
+</ul>
+<h2 id="把本地内容推送到远程仓库（上传）"><a href="#把本地内容推送到远程仓库（上传）" class="headerlink" title="把本地内容推送到远程仓库（上传）"></a>把本地内容推送到远程仓库（上传）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;远程仓库名&gt; &lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="拉取远程仓库（下载）"><a href="#拉取远程仓库（下载）" class="headerlink" title="拉取远程仓库（下载）"></a>拉取远程仓库（下载）</h2><h4 id="法一：git-fetch命令"><a href="#法一：git-fetch命令" class="headerlink" title="法一：git fetch命令"></a>法一：<code>git fetch</code>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch &lt;远程仓库名&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>仅仅拉取仓库，不会同步master和文件</li>
+</ul>
+<h5 id="master迁移到远程仓库的master"><a href="#master迁移到远程仓库的master" class="headerlink" title="master迁移到远程仓库的master"></a>master迁移到远程仓库的master</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -B master origin/master</span><br></pre></td></tr></table></figure>
+<h4 id="法二：git-pull命令"><a href="#法二：git-pull命令" class="headerlink" title="法二：git pull命令"></a>法二：<code>git pull</code>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull &lt;远程仓库名&gt; &lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>git pull</code>的功能是在<code>git fetch</code>的基础上自动应用远程修改，不过要谨慎使用，当心远程的修改和本地有冲突</li>
+</ul>
+<h2 id="远程仓库之间的交流"><a href="#远程仓库之间的交流" class="headerlink" title="远程仓库之间的交流"></a>远程仓库之间的交流</h2><h3 id="把别人的仓库复制到自己的账户下"><a href="#把别人的仓库复制到自己的账户下" class="headerlink" title="把别人的仓库复制到自己的账户下"></a>把别人的仓库复制到自己的账户下</h3><ul>
+<li>用<code>fork</code></li>
+</ul>
+<h3 id="把自己账户下的修改提交给上游维护者，由他审核后并入他的远程仓库内"><a href="#把自己账户下的修改提交给上游维护者，由他审核后并入他的远程仓库内" class="headerlink" title="把自己账户下的修改提交给上游维护者，由他审核后并入他的远程仓库内"></a>把自己账户下的修改提交给上游维护者，由他审核后并入他的远程仓库内</h3><ul>
+<li>用<code>pull request</code></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/23/Git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/23/Git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Git分支操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-23 10:32:17 / 修改时间：10:37:16" itemprop="dateCreated datePublished" datetime="2021-03-23T10:32:17+08:00">2021-03-23</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Git分支操作"><a href="#Git分支操作" class="headerlink" title="Git分支操作"></a>Git分支操作</h1><h2 id="分支的本质"><a href="#分支的本质" class="headerlink" title="分支的本质"></a>分支的本质</h2><p>分支的本质是指向<code>commit</code>的引用（指针）</p>
+<ul>
+<li>可通过<code>git branch</code>命令查看分支</li>
+</ul>
+<h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><h3 id="只创建分支，不切换过去"><a href="#只创建分支，不切换过去" class="headerlink" title="只创建分支，不切换过去"></a>只创建分支，不切换过去</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch &lt;分支名&gt; &lt;所基于commit&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不带<code>&lt;所基于commit&gt;</code>参数时默认从距当前最近的commit创建分支</li>
+</ul>
+<h3 id="创建分支的同时切换到新分支"><a href="#创建分支的同时切换到新分支" class="headerlink" title="创建分支的同时切换到新分支"></a>创建分支的同时切换到新分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><ul>
+<li>切换分支前必须先<code>git status</code>保证工作区是干净的（先add,，commit）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可用<code>git log &lt;分支名&gt;</code>查看该分支的log</li>
+</ul>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><ul>
+<li>先切换到主干分支，再吸收被合并吸收的分支</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;主干分支&gt;</span><br><span class="line"></span><br><span class="line">$ git merge &lt;被合并吸收的分支&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="合并时有冲突的情况"><a href="#合并时有冲突的情况" class="headerlink" title="合并时有冲突的情况"></a>合并时有冲突的情况</h3><p>例：初始a.txt中内容为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hh</span><br></pre></td></tr></table></figure>
+<p>切换到<code>bugfix</code>分支并将a.txt内容改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hha</span><br></pre></td></tr></table></figure>
+<p>切换到<code>master</code>分支并将a.txt中内容改为：</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hhh</span></span><br></pre></td></tr></table></figure>
+<h4 id="合并有冲突的分支步骤如下："><a href="#合并有冲突的分支步骤如下：" class="headerlink" title="合并有冲突的分支步骤如下："></a>合并有冲突的分支步骤如下：</h4><ol>
+<li><p>用命令<code>git merge &lt;分支名&gt;</code>，令<code>master</code>分支吸收<code>bugfix</code>分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge bugfix</span><br><span class="line">Auto-merging a.txt</span><br><span class="line">CONFLICT (content): Merge conflict <span class="keyword">in</span> a.txt</span><br><span class="line">Automatic merge failed; fix conflicts and <span class="keyword">then</span> commit the result.</span><br></pre></td></tr></table></figure>
+<p>此时a.txt中变成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="string">HEAD</span></span><br><span class="line"><span class="string">hhh</span></span><br><span class="line"><span class="string">=======</span></span><br><span class="line"><span class="string">hha</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;&gt;&gt;&gt;&gt; bugfix</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需手动编辑共同修改的文件，处理被</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt; ...（主干分支）</span><br><span class="line"></span><br><span class="line">=====</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;&gt;&gt; ...（被吸收分支）</span><br></pre></td></tr></table></figure>
+<p>包裹的内容</p>
+</li>
+<li><p>最后再将手动修改后的文件<code>add</code>和<code>commit</code></p>
+</li>
+</ol>
+<ul>
+<li>可用<code>git log --graph</code>命令直观地查看分支合并过程</li>
+</ul>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d &lt;分支&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除分支不会删除其commit（删除指针不会删除指针所指对象）</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/22/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/22/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-22 18:54:22" itemprop="dateCreated datePublished" datetime="2021-03-22T18:54:22+08:00">2021-03-22</time>
+    </span>
+
+  
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       
     </div>

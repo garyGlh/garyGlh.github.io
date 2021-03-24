@@ -207,7 +207,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/23/Git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/03/10/C++%E5%87%BD%E6%95%B0%E7%9A%84%E7%BC%BA%E7%9C%81%E5%8F%82%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -220,7 +220,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/23/Git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Git分支操作</a>
+          <a href="/2019/03/10/C++%E5%87%BD%E6%95%B0%E7%9A%84%E7%BC%BA%E7%9C%81%E5%8F%82%E6%95%B0/" class="post-title-link" itemprop="url">C++函数的缺省参数</a>
         </h2>
 
         <div class="post-meta-container">
@@ -230,9 +230,8 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-03-23 10:32:17 / 修改时间：10:37:16" itemprop="dateCreated datePublished" datetime="2021-03-23T10:32:17+08:00">2021-03-23</time>
+      <time title="创建时间：2019-03-10 11:03:36" itemprop="dateCreated datePublished" datetime="2019-03-10T11:03:36+08:00">2019-03-10</time>
     </span>
 
   
@@ -242,7 +241,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
         </span>
     </span>
 
@@ -256,52 +255,86 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Git分支操作"><a href="#Git分支操作" class="headerlink" title="Git分支操作"></a>Git分支操作</h1><h2 id="分支的本质"><a href="#分支的本质" class="headerlink" title="分支的本质"></a>分支的本质</h2><p>分支的本质是指向<code>commit</code>的引用（指针）</p>
-<ul>
-<li>可通过<code>git branch</code>命令查看分支</li>
-</ul>
-<h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><h3 id="只创建分支，不切换过去"><a href="#只创建分支，不切换过去" class="headerlink" title="只创建分支，不切换过去"></a>只创建分支，不切换过去</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch &lt;分支名&gt; &lt;所基于commit&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>不带<code>&lt;所基于commit&gt;</code>参数时默认从距当前最近的commit创建分支</li>
-</ul>
-<h3 id="创建分支的同时切换到新分支"><a href="#创建分支的同时切换到新分支" class="headerlink" title="创建分支的同时切换到新分支"></a>创建分支的同时切换到新分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><ul>
-<li>切换分支前必须先<code>git status</code>保证工作区是干净的（先add,，commit）</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>可用<code>git log &lt;分支名&gt;</code>查看该分支的log</li>
-</ul>
-<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><ul>
-<li>先切换到主干分支，再吸收被合并吸收的分支</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;主干分支&gt;</span><br><span class="line"></span><br><span class="line">$ git merge &lt;被合并吸收的分支&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="合并时有冲突的情况"><a href="#合并时有冲突的情况" class="headerlink" title="合并时有冲突的情况"></a>合并时有冲突的情况</h3><p>例：初始a.txt中内容为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hh</span><br></pre></td></tr></table></figure>
-<p>切换到<code>bugfix</code>分支并将a.txt内容改为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hha</span><br></pre></td></tr></table></figure>
-<p>切换到<code>master</code>分支并将a.txt中内容改为：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hhh</span></span><br></pre></td></tr></table></figure>
-<h4 id="合并有冲突的分支步骤如下："><a href="#合并有冲突的分支步骤如下：" class="headerlink" title="合并有冲突的分支步骤如下："></a>合并有冲突的分支步骤如下：</h4><ol>
-<li><p>用命令<code>git merge &lt;分支名&gt;</code>，令<code>master</code>分支吸收<code>bugfix</code>分支：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge bugfix</span><br><span class="line">Auto-merging a.txt</span><br><span class="line">CONFLICT (content): Merge conflict <span class="keyword">in</span> a.txt</span><br><span class="line">Automatic merge failed; fix conflicts and <span class="keyword">then</span> commit the result.</span><br></pre></td></tr></table></figure>
-<p>此时a.txt中变成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="string">HEAD</span></span><br><span class="line"><span class="string">hhh</span></span><br><span class="line"><span class="string">=======</span></span><br><span class="line"><span class="string">hha</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;&gt;&gt;&gt;&gt; bugfix</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>需手动编辑共同修改的文件，处理被</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt; ...（主干分支）</span><br><span class="line"></span><br><span class="line">=====</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;&gt;&gt; ...（被吸收分支）</span><br></pre></td></tr></table></figure>
-<p>包裹的内容</p>
-</li>
-<li><p>最后再将手动修改后的文件<code>add</code>和<code>commit</code></p>
-</li>
-</ol>
-<ul>
-<li>可用<code>git log --graph</code>命令直观地查看分支合并过程</li>
-</ul>
-<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d &lt;分支&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除分支不会删除其commit（删除指针不会删除指针所指对象）</li>
-</ul>
+          <h1 id="C-函数的缺省参数"><a href="#C-函数的缺省参数" class="headerlink" title="C++ 函数的缺省参数"></a>C++ 函数的缺省参数</h1><p>定义：函数最右边连续若干个参数可以有缺省值。（作用：提高可扩充性）</p>
+<p><strong>例子</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> n1, <span class="keyword">int</span> n2=<span class="number">2</span>, <span class="keyword">int</span> n3=<span class="number">3</span>)</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">func</span><span class="params">(<span class="number">10</span>)</span></span>;<span class="comment">//相当于func(10,2,3)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">func</span>(<span class="number">10</span>,<span class="number">8</span>);<span class="comment">//相当于func(10,8,3)</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/03/09/C++%E6%8C%87%E9%92%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/03/09/C++%E6%8C%87%E9%92%88/" class="post-title-link" itemprop="url">C++指针</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-09 10:46:19" itemprop="dateCreated datePublished" datetime="2019-03-09T10:46:19+08:00">2019-03-09</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="指针和引用"><a href="#指针和引用" class="headerlink" title="指针和引用"></a>指针和引用</h1><h2 id="指针的引用"><a href="#指针的引用" class="headerlink" title="指针的引用"></a>指针的引用</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span> <span class="params">( <span class="keyword">int</span> *&amp;p, <span class="keyword">int</span>*&amp; q)</span></span></span><br></pre></td></tr></table></figure>
+<p>改变指针所<strong>指向的地方</strong>，而不是改变指针所指变量的值</p>
+<h2 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h2><p>函数：<code>void fun(int);</code><br>函数指针：<code>void (*p)(int)=fun;</code></p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;a = b;<span class="comment">//a和b等价，同时修改引用有传递性</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -328,7 +361,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/22/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/03/05/C++vector/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -341,7 +374,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/22/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+          <a href="/2019/03/05/C++vector/" class="post-title-link" itemprop="url">C++vector</a>
         </h2>
 
         <div class="post-meta-container">
@@ -352,81 +385,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-22 18:54:22" itemprop="dateCreated datePublished" datetime="2021-03-22T18:54:22+08:00">2021-03-22</time>
-    </span>
-
-  
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/03/23/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/03/23/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Git基本操作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-03-23 10:32:09" itemprop="dateCreated datePublished" datetime="2019-03-23T10:32:09+08:00">2019-03-23</time>
+      <time title="创建时间：2019-03-05 16:51:55" itemprop="dateCreated datePublished" datetime="2019-03-05T16:51:55+08:00">2019-03-05</time>
     </span>
 
   
@@ -436,7 +395,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
         </span>
     </span>
 
@@ -450,86 +409,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
-<li>工作区：电脑里看到的目录，如myrepo文件夹</li>
-<li>暂存区：add后commit前的存储区域</li>
-<li>master：commit以后的存储区域</li>
-<li>版本库：暂存区与master的并集</li>
-</ul>
-<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><h3 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir myrepo//创建文件夹</span><br><span class="line">$ <span class="built_in">cd</span> myrepo//进入文件夹</span><br><span class="line">$ <span class="built_in">pwd</span>//显示当前目录</span><br><span class="line">/c/Users/11546/Desktop/myrepo</span><br><span class="line"></span><br><span class="line">$ git init//创建Git仓库</span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> C:/Users/11546/Desktop/myrepo/.git/</span><br></pre></td></tr></table></figure>
-<ul>
-<li>.git目录默认隐藏，可用<code>ls-ah</code>命令看见</li>
-</ul>
-<h3 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a>把文件添加到版本库</h3><p>编写一个泊船瓜洲.txt文件，内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又到江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
-<p>把文件添加到Git仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git add 泊船瓜洲.txt//把文件添加到暂存区</span><br><span class="line"></span><br><span class="line">$ git commit -m 新建文件，包含<span class="string">&quot;春风又到江南岸&quot;</span></span><br><span class="line">[master (root-commit) 1fa6029] 新建文件，包含“春风又到江南岸”</span><br><span class="line"> 1 file changed, 3 insertions(+)</span><br><span class="line"> create mode 100644 <span class="string">&quot;\346\263\212\350\210\271\347\223\234\346\264\262.txt&quot;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>可以add多次再统一commit</li>
-</ul>
-<h2 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h2><p>把泊船瓜洲.txt文件更改如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
-<p>运行<code>git status</code>查看状态：</p>
-<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309161334543.png" alt="image-20200309161334543"></p>
-<ul>
-<li><code>git status</code>可知有无需要commit的文件</li>
-</ul>
-<p>运行<code>git diff</code>查看修改内容：</p>
-<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309161549405.png" alt="image-20200309161549405"></p>
-<p>再将修改add与commit</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git add 泊船瓜洲.txt</span><br><span class="line"></span><br><span class="line">$ git commit -m 把“到”改为“满”</span><br><span class="line">[master e7e5a3f] 把“到”改为“满”</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line"> </span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
-<h2 id="时间穿梭"><a href="#时间穿梭" class="headerlink" title="时间穿梭"></a>时间穿梭</h2><h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>再将泊船瓜洲.txt改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又绿江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
-<p>将上述修改add并commit</p>
-<p>使用<code>git log</code>命令查看记录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">commit 05fc749e076386a404963258b9a61bdb724fa48c (HEAD -&gt; master)</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:21:23 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“满”改为“绿”</span><br><span class="line"></span><br><span class="line">commit e7e5a3fd383391a777d7b964f3ce74a50e01ec2b</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:00:39 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“到”改为“满”</span><br><span class="line"></span><br><span class="line">commit 1fa6029ec6f9557e83fe0f63dbeece9b04def210</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 16:00:35 2020 +0800</span><br><span class="line"></span><br><span class="line">    新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure>
-<ul>
-<li>若想一次修改显示在一行，则使用<code>$ git log --pretty=oneline</code>命令</li>
-</ul>
-<h4 id="回到上一个版本"><a href="#回到上一个版本" class="headerlink" title="回到上一个版本"></a>回到上一个版本</h4><h5 id="整个仓库"><a href="#整个仓库" class="headerlink" title="整个仓库"></a>整个仓库</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD~1</span><br><span class="line">HEAD is now at e7e5a3f 把“到”改为“满”</span><br><span class="line"></span><br><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">commit e7e5a3fd383391a777d7b964f3ce74a50e01ec2b (HEAD -&gt; master)</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:00:39 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“到”改为“满”</span><br><span class="line"></span><br><span class="line">commit 1fa6029ec6f9557e83fe0f63dbeece9b04def210</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 16:00:35 2020 +0800</span><br><span class="line"></span><br><span class="line">    新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure>
-<ul>
-<li>HEAD~1表示上一个版本</li>
-</ul>
-<h5 id="单个文件"><a href="#单个文件" class="headerlink" title="单个文件"></a>单个文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout HEAD~1 -- 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
-<h4 id="后悔回到上一个版本，想去未来版本（想去任何版本都通用）"><a href="#后悔回到上一个版本，想去未来版本（想去任何版本都通用）" class="headerlink" title="后悔回到上一个版本，想去未来版本（想去任何版本都通用）"></a>后悔回到上一个版本，想去未来版本（想去任何版本都通用）</h4><p>找到想去到版本的commit id</p>
-<ol>
-<li><p>若未关闭git bash，则直接往上找commit id</p>
-</li>
-<li><p>若已关闭git bash，则使用<code>git reflog</code>命令查看commit id</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">e7e5a3f (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to HEAD~1</span><br><span class="line">05fc749 HEAD@&#123;1&#125;: commit: 把“满”改为“绿”</span><br><span class="line">e7e5a3f (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: 把“到”改为“满”</span><br><span class="line">1fa6029 HEAD@&#123;3&#125;: commit (initial): 新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>将泊船瓜洲.txt改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br><span class="line">不开心</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>文件修改后还未放到暂存区，撤销修改回到跟版本库一样的状态（上一次commit）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- 泊船瓜洲.txt</span><br><span class="line"></span><br><span class="line">$ cat 泊船瓜洲.txt</span><br><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件add到暂存区后又做了修改，撤销修改回到add到暂存区后状态</p>
-<p>​    （1）先使得暂存区变干净，工作区有修改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD 泊船瓜洲.txt</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M       泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
-<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309182733019.png" alt="image-20200309182733019">    </p>
-<ul>
-<li>HEAD表示当前版本</li>
-</ul>
-<p>​    （2）再将工作区的修改用<code>git checkout -- 泊船瓜洲.txt</code>命令清除</p>
-</li>
-</ol>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>从文件管理器中删除泊船瓜洲.txt</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
-<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309183612834.png" alt="image-20200309183612834">    </p>
-<ol>
-<li><p>误删</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
-<ul>
-<li>实质是用版本库里的版本替换工作区里的版本</li>
-</ul>
-</li>
-<li><p>确实要从版本库中删除</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm 泊船瓜洲.txt</span><br><span class="line">rm <span class="string">&#x27;泊船瓜洲.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">$ git commit -m 删除泊船瓜洲.txt</span><br><span class="line">[master 99387e8] 删除泊船瓜洲.txt</span><br><span class="line"> 1 file changed, 3 deletions(-)</span><br><span class="line"> delete mode 100644 <span class="string">&quot;\346\263\212\350\210\271\347\223\234\346\264\262.txt&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
+          <h1 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; a,b;</span><br><span class="line"><span class="comment">//b为向量，将b的0-2个元素赋值给向量a</span></span><br><span class="line">a.<span class="built_in">assign</span>(b.<span class="built_in">begin</span>(),b.<span class="built_in">begin</span>()+<span class="number">3</span>);</span><br><span class="line"><span class="comment">//a含有4个值为2的元素</span></span><br><span class="line">a.<span class="built_in">assign</span>(<span class="number">4</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//返回a的最后一个元素</span></span><br><span class="line">a.<span class="built_in">back</span>();</span><br><span class="line"><span class="comment">//返回a的第一个元素</span></span><br><span class="line">a.<span class="built_in">front</span>();</span><br><span class="line"><span class="comment">//返回a的第i元素,当且仅当a存在</span></span><br><span class="line">a[i];</span><br><span class="line"><span class="comment">//清空a中的元素</span></span><br><span class="line">a.<span class="built_in">clear</span>();</span><br><span class="line"><span class="comment">//判断a是否为空，空则返回true，非空则返回false</span></span><br><span class="line">a.<span class="built_in">empty</span>();</span><br><span class="line"><span class="comment">//删除a向量的最后一个元素</span></span><br><span class="line">a.<span class="built_in">pop_back</span>();</span><br><span class="line"><span class="comment">//删除a中第一个（从第0个算起）到第二个元素，也就是说删除的元素从a.begin()+1算起（包括它）一直到a.begin()+3（不包括它）结束</span></span><br><span class="line">a.<span class="built_in">erase</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,a.<span class="built_in">begin</span>()+<span class="number">3</span>);</span><br><span class="line"><span class="comment">//在a的最后一个向量后插入一个元素，其值为5</span></span><br><span class="line">a.<span class="built_in">push_back</span>(<span class="number">5</span>);</span><br><span class="line"><span class="comment">//在a的第一个元素（从第0个算起）位置插入数值5,</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//在a的第一个元素（从第0个算起）位置插入3个数，其值都为5</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//b为数组，在a的第一个元素（从第0个元素算起）的位置插入b的第三个元素到第5个元素（不包括b+6）</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,b+<span class="number">3</span>,b+<span class="number">6</span>);</span><br><span class="line"><span class="comment">//返回a中元素的个数</span></span><br><span class="line">a.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//返回a在内存中总共可以容纳的元素个数</span></span><br><span class="line">a.<span class="built_in">capacity</span>();</span><br><span class="line"><span class="comment">//将a的现有元素个数调整至10个，多则删，少则补，其值随机</span></span><br><span class="line">a.<span class="built_in">resize</span>(<span class="number">10</span>);</span><br><span class="line"><span class="comment">//将a的现有元素个数调整至10个，多则删，少则补，其值为2</span></span><br><span class="line">a.<span class="built_in">resize</span>(<span class="number">10</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//将a的容量扩充至100，</span></span><br><span class="line">a.<span class="built_in">reserve</span>(<span class="number">100</span>);</span><br><span class="line"><span class="comment">//b为向量，将a中的元素和b中的元素整体交换</span></span><br><span class="line">a.<span class="built_in">swap</span>(b);</span><br><span class="line"><span class="comment">//b为向量，向量的比较操作还有 != &gt;= &gt; &lt;= &lt;</span></span><br><span class="line">a==b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"> <span class="comment">//对a中的从a.begin()（包括它）到a.end()（不包括它）的元素进行从小到大排列</span></span><br><span class="line"> <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>());</span><br><span class="line"> <span class="comment">//对a中的从a.begin()（包括它）到a.end()（不包括它）的元素倒置，但不排列，如a中元素为1,3,2,4,倒置后为4,2,3,1</span></span><br><span class="line"> <span class="built_in">reverse</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>());</span><br><span class="line">  <span class="comment">//把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开始复制，覆盖掉原有元素</span></span><br><span class="line"> <span class="built_in">copy</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>(),b.<span class="built_in">begin</span>()+<span class="number">1</span>);</span><br><span class="line"> <span class="comment">//在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置</span></span><br><span class="line">  <span class="built_in">find</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>(),<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
       
     </div>
 

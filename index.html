@@ -746,332 +746,6 @@ r_{ij}=\left| a_{ij}-\beta _j \right|-\frac{\min_i \left| a_{ij}-\beta _j \right
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/C++vector/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/C++vector/" class="post-title-link" itemprop="url">C++vector</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-24 16:51:55 / 修改时间：16:58:11" itemprop="dateCreated datePublished" datetime="2021-03-24T16:51:55+08:00">2021-03-24</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; a,b;</span><br><span class="line"><span class="comment">//b为向量，将b的0-2个元素赋值给向量a</span></span><br><span class="line">a.<span class="built_in">assign</span>(b.<span class="built_in">begin</span>(),b.<span class="built_in">begin</span>()+<span class="number">3</span>);</span><br><span class="line"><span class="comment">//a含有4个值为2的元素</span></span><br><span class="line">a.<span class="built_in">assign</span>(<span class="number">4</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//返回a的最后一个元素</span></span><br><span class="line">a.<span class="built_in">back</span>();</span><br><span class="line"><span class="comment">//返回a的第一个元素</span></span><br><span class="line">a.<span class="built_in">front</span>();</span><br><span class="line"><span class="comment">//返回a的第i元素,当且仅当a存在</span></span><br><span class="line">a[i];</span><br><span class="line"><span class="comment">//清空a中的元素</span></span><br><span class="line">a.<span class="built_in">clear</span>();</span><br><span class="line"><span class="comment">//判断a是否为空，空则返回true，非空则返回false</span></span><br><span class="line">a.<span class="built_in">empty</span>();</span><br><span class="line"><span class="comment">//删除a向量的最后一个元素</span></span><br><span class="line">a.<span class="built_in">pop_back</span>();</span><br><span class="line"><span class="comment">//删除a中第一个（从第0个算起）到第二个元素，也就是说删除的元素从a.begin()+1算起（包括它）一直到a.begin()+3（不包括它）结束</span></span><br><span class="line">a.<span class="built_in">erase</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,a.<span class="built_in">begin</span>()+<span class="number">3</span>);</span><br><span class="line"><span class="comment">//在a的最后一个向量后插入一个元素，其值为5</span></span><br><span class="line">a.<span class="built_in">push_back</span>(<span class="number">5</span>);</span><br><span class="line"><span class="comment">//在a的第一个元素（从第0个算起）位置插入数值5,</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//在a的第一个元素（从第0个算起）位置插入3个数，其值都为5</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//b为数组，在a的第一个元素（从第0个元素算起）的位置插入b的第三个元素到第5个元素（不包括b+6）</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,b+<span class="number">3</span>,b+<span class="number">6</span>);</span><br><span class="line"><span class="comment">//返回a中元素的个数</span></span><br><span class="line">a.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//返回a在内存中总共可以容纳的元素个数</span></span><br><span class="line">a.<span class="built_in">capacity</span>();</span><br><span class="line"><span class="comment">//将a的现有元素个数调整至10个，多则删，少则补，其值随机</span></span><br><span class="line">a.<span class="built_in">resize</span>(<span class="number">10</span>);</span><br><span class="line"><span class="comment">//将a的现有元素个数调整至10个，多则删，少则补，其值为2</span></span><br><span class="line">a.<span class="built_in">resize</span>(<span class="number">10</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//将a的容量扩充至100，</span></span><br><span class="line">a.<span class="built_in">reserve</span>(<span class="number">100</span>);</span><br><span class="line"><span class="comment">//b为向量，将a中的元素和b中的元素整体交换</span></span><br><span class="line">a.<span class="built_in">swap</span>(b);</span><br><span class="line"><span class="comment">//b为向量，向量的比较操作还有 != &gt;= &gt; &lt;= &lt;</span></span><br><span class="line">a==b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"> <span class="comment">//对a中的从a.begin()（包括它）到a.end()（不包括它）的元素进行从小到大排列</span></span><br><span class="line"> <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>());</span><br><span class="line"> <span class="comment">//对a中的从a.begin()（包括它）到a.end()（不包括它）的元素倒置，但不排列，如a中元素为1,3,2,4,倒置后为4,2,3,1</span></span><br><span class="line"> <span class="built_in">reverse</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>());</span><br><span class="line">  <span class="comment">//把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开始复制，覆盖掉原有元素</span></span><br><span class="line"> <span class="built_in">copy</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>(),b.<span class="built_in">begin</span>()+<span class="number">1</span>);</span><br><span class="line"> <span class="comment">//在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置</span></span><br><span class="line">  <span class="built_in">find</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>(),<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/C++Stirng/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/C++Stirng/" class="post-title-link" itemprop="url">C++Stirng</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-24 16:51:48 / 修改时间：16:56:59" itemprop="dateCreated datePublished" datetime="2021-03-24T16:51:48+08:00">2021-03-24</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="C-字符串常用操作"><a href="#C-字符串常用操作" class="headerlink" title="C++ 字符串常用操作"></a>C++ 字符串常用操作</h1><h2 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"></span><br><span class="line">cin &gt;&gt; s;<span class="comment">//遇到空格，tab，换行就停止</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">getline</span>(cin,s)<span class="comment">//读入一整行</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//三个参数的getline，以某个标志结束读取，且标志会被读掉</span></span><br><span class="line">string str1,str2,str3;</span><br><span class="line">getline(cin,str1,&#x27;&#x27;);</span><br><span class="line"><span class="built_in">getline</span>(cin,str2,<span class="string">&#x27;&quot;&#x27;</span>);</span><br><span class="line"><span class="built_in">getline</span>(cin,str3,<span class="string">&#x27;&quot;&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>getline示例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>[input]:Hello World!</p>
-<p>[output]:Hello World!</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str, <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>[input]:Hello World!</p>
-<p>[output]:Hello</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>[input]:www.csdn.net</p>
-<p>[output]:www</p>
-</blockquote>
-<p><strong>getline()</strong>的用处：c++中没有自带的split函数，运用getline()函数可以帮助处理输入时需要切割的情况</p>
-<h2 id="获取字符"><a href="#获取字符" class="headerlink" title="获取字符"></a>获取字符</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;12345678&quot;</span>;</span><br><span class="line"><span class="comment">//str.at(int index);</span></span><br><span class="line"><span class="comment">//str[index]</span></span><br><span class="line">cout &lt;&lt; str[<span class="number">3</span>] &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">at</span>(<span class="number">2</span>) &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<h2 id="获取长度"><a href="#获取长度" class="headerlink" title="获取长度"></a>获取长度</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">cin &gt;&gt; str;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">length</span>() &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">size</span>() &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>[input]:hello</p>
-<p>[output]:5</p>
-<p>[output]:5</p>
-</blockquote>
-<p><strong>注意</strong>：length()和size()返回的是均以字节的形式返回字符串的长度，两种方式返回的值是相同的，当字符串的字符编码包含如utf-8时返回的值将不等于字符串的长度</p>
-<p>example:</p>
-<blockquote>
-<p>input: 中国</p>
-<p>output：4</p>
-<p>output：4</p>
-</blockquote>
-<h2 id="替换-replace"><a href="#替换-replace" class="headerlink" title="替换 replace"></a>替换 replace</h2><p><strong><em>case1</em></strong>:  从pos开始，替换len个位置的字符为str</p>
-<p>即：string[pos:pos+len] -&gt; str</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//string&amp; replace (size_t pos,  size_t len,  const string&amp; str);</span></span><br><span class="line">string str = <span class="string">&quot;this is a test string&quot;</span>;</span><br><span class="line">string str2 = <span class="string">&quot;n example&quot;</span>;</span><br><span class="line">str.<span class="built_in">replace</span>(<span class="number">9</span>,<span class="number">5</span>,str2);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>output: this is an example string</p>
-</blockquote>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">0</th>
-<th>1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-<th>7</th>
-<th style="text-align:center">8</th>
-<th style="text-align:center">9</th>
-<th style="text-align:center">10</th>
-<th style="text-align:center">11</th>
-<th style="text-align:center">12</th>
-<th style="text-align:center">13</th>
-<th>14</th>
-<th style="text-align:center">15</th>
-<th style="text-align:center">…</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">t</td>
-<td>h</td>
-<td style="text-align:center">i</td>
-<td style="text-align:center">s</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">i</td>
-<td style="text-align:center">s</td>
-<td></td>
-<td style="text-align:center">a</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">t</td>
-<td style="text-align:center">e</td>
-<td style="text-align:center">s</td>
-<td style="text-align:center">t</td>
-<td></td>
-<td style="text-align:center">s</td>
-<td style="text-align:center">…</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong><em>case2</em></strong>：从pos开始，替换len个位置的字符为str的从subpos开始长度为sublen的字符</p>
-<p>即：string[pos:pos+len] -&gt; str[subpos:subpos+sublen]</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//string&amp; replace (size_t pos,  size_t len,  const string&amp; str, size_t subpos, size_t sublen);</span></span><br><span class="line">str3 = <span class="string">&quot;example phrase&quot;</span>;</span><br><span class="line">str.<span class="built_in">replace</span>(<span class="number">19</span>,<span class="number">6</span>,str3,<span class="number">7</span>,<span class="number">6</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>output: this is an example phrase</p>
-</blockquote>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">…</th>
-<th>13</th>
-<th style="text-align:center">14</th>
-<th style="text-align:center">15</th>
-<th style="text-align:center">16</th>
-<th style="text-align:center">17</th>
-<th style="text-align:center">18</th>
-<th>19</th>
-<th style="text-align:center">20</th>
-<th style="text-align:center">21</th>
-<th style="text-align:center">22</th>
-<th style="text-align:center">231</th>
-<th style="text-align:center">24</th>
-<th style="text-align:center">25</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">…</td>
-<td>x</td>
-<td style="text-align:center">a</td>
-<td style="text-align:center">m</td>
-<td style="text-align:center">p</td>
-<td style="text-align:center">l</td>
-<td style="text-align:center">e</td>
-<td></td>
-<td style="text-align:center">s</td>
-<td style="text-align:center">t</td>
-<td style="text-align:center">r</td>
-<td style="text-align:center">i</td>
-<td style="text-align:center">n</td>
-<td style="text-align:center">g</td>
-</tr>
-<tr>
-<td style="text-align:center"><strong>0</strong></td>
-<td><strong>1</strong></td>
-<td style="text-align:center"><strong>2</strong></td>
-<td style="text-align:center"><strong>3</strong></td>
-<td style="text-align:center"><strong>4</strong></td>
-<td style="text-align:center"><strong>5</strong></td>
-<td style="text-align:center"><strong>6</strong></td>
-<td><strong>7</strong></td>
-<td style="text-align:center"><strong>8</strong></td>
-<td style="text-align:center"><strong>9</strong></td>
-<td style="text-align:center"><strong>10</strong></td>
-<td style="text-align:center"><strong>11</strong></td>
-<td style="text-align:center"><strong>12</strong></td>
-<td style="text-align:center"><strong>13</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">e</td>
-<td>x</td>
-<td style="text-align:center">a</td>
-<td style="text-align:center">m</td>
-<td style="text-align:center">p</td>
-<td style="text-align:center">l</td>
-<td style="text-align:center">e</td>
-<td></td>
-<td style="text-align:center">p</td>
-<td style="text-align:center">h</td>
-<td style="text-align:center">r</td>
-<td style="text-align:center">a</td>
-<td style="text-align:center">s</td>
-<td style="text-align:center">e</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong><em>case3</em></strong>： </p>
-<h2 id="删除-erase"><a href="#删除-erase" class="headerlink" title="删除 erase"></a>删除 erase</h2><h2 id="插入-insert"><a href="#插入-insert" class="headerlink" title="插入 insert"></a>插入 insert</h2><h2 id="比较-compare"><a href="#比较-compare" class="headerlink" title="比较 compare"></a>比较 compare</h2><h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><h2 id="查找-find-rfind"><a href="#查找-find-rfind" class="headerlink" title="查找 find,rfind"></a>查找 find,rfind</h2><h2 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h2><h2 id="转换-stoi-stol-stoll-stof-stod"><a href="#转换-stoi-stol-stoll-stof-stod" class="headerlink" title="转换 stoi,stol,stoll,stof,stod"></a>转换 stoi,stol,stoll,stof,stod</h2><p>string库内带函数可以将字符串转换为对应的数字类型</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//stoi: string to integer</span></span><br><span class="line"><span class="comment">//stol: string to long</span></span><br><span class="line"><span class="comment">//stoll:string to long long</span></span><br><span class="line"><span class="comment">//stof: string to float</span></span><br><span class="line"><span class="comment">//stof：string to stof</span></span><br><span class="line"><span class="comment">//stod: string to double</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> string&amp;  str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>其中，idx指向字符串中读取出一个整数后的下一个字符的下标，base可指定转换的基数，默认为10</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;2020 welcome!&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">std::string::size_type sz;</span><br><span class="line">a = <span class="built_in">stoi</span>(str, &amp;sz, <span class="number">10</span>);</span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; sz &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>output: 2002</p>
-<p>output: 4</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;101&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">a = <span class="built_in">stoi</span>(str, <span class="literal">nullptr</span>, <span class="number">2</span>);</span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>output: 5</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/R%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1552,6 +1226,204 @@ r_{ij}=\left| a_{ij}-\beta _j \right|-\frac{\min_i \left| a_{ij}-\beta _j \right
 <h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>同C++</p>
 <h3 id="next"><a href="#next" class="headerlink" title="next"></a>next</h3><p>同continue</p>
 
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/R%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">R函数</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-24 16:37:20 / 修改时间：16:40:00" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:20+08:00">2021-03-24</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-函数"><a href="#R-函数" class="headerlink" title="R 函数"></a>R 函数</h1><h2 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name_of_fuction=<span class="keyword">function</span>(形参表)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span>(result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多次运行同一函数"><a href="#多次运行同一函数" class="headerlink" title="多次运行同一函数"></a>多次运行同一函数</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replicate(<span class="number">1000</span>, some_function)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/R%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">R变量</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-24 16:37:14 / 修改时间：16:39:30" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:14+08:00">2021-03-24</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-变量"><a href="#R-变量" class="headerlink" title="R 变量"></a>R 变量</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
+<li>X=25</li>
+<li>Y&lt;-“Hello”</li>
+<li>TRUE-&gt;B</li>
+</ol>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ul>
+<li>+-*/：加减乘除</li>
+<li>\^：幂</li>
+<li>%%：求余</li>
+<li>%/%：整除</li>
+<li>%&gt;%：左边作为右边函数的第一个参数</li>
+</ul>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ul>
+<li>=</li>
+<li>&lt;-</li>
+<li>&lt;&lt;-</li>
+<li>-&gt;</li>
+<li>-&gt;&gt;</li>
+</ul>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><ul>
+<li><p>&gt;</p>
+</li>
+<li><p>&lt;</p>
+</li>
+<li><p>==</p>
+</li>
+<li><p>!=</p>
+</li>
+<li><blockquote>
+<p>=</p>
+</blockquote>
+</li>
+<li><p>&lt;=：</p>
+</li>
+</ul>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
+<li>&amp;</li>
+<li>|</li>
+<li>！</li>
+</ul>
+<h2 id="特殊运算符"><a href="#特殊运算符" class="headerlink" title="特殊运算符"></a>特殊运算符</h2><ul>
+<li>a:b：创造从a到b的序列vector（<strong>闭区间</strong>）</li>
+<li>%in%：检查某个值是否在vector里</li>
+</ul>
+<h1 id="package"><a href="#package" class="headerlink" title="package"></a>package</h1><h2 id="安装package"><a href="#安装package" class="headerlink" title="安装package"></a>安装package</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages(<span class="string">&quot;package name&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="导入package"><a href="#导入package" class="headerlink" title="导入package"></a>导入package</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library(<span class="string">&quot;package name&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="使用package（不导入）"><a href="#使用package（不导入）" class="headerlink" title="使用package（不导入）"></a>使用package（不导入）</h2><p>用名空间 ::</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plyr::round_any()//名空间</span><br></pre></td></tr></table></figure>
       
     </div>
 
