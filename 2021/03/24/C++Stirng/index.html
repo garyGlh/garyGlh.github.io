@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="C++ 字符串常用操作读入1234567891011string str;cin &gt;&gt; s;&#x2F;&#x2F;遇到空格，tab，换行就停止getline(cin,s)&#x2F;&#x2F;读入一整行    &#x2F;&#x2F;三个参数的getline，以某个标志结束读取，且标志会被读掉string str1,str2,str3;getline(cin,str1,&amp;#x27;&amp;#x27;);getline(cin,str2,&amp;#x27">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++Stirng">
+<meta property="og:url" content="http://example.com/2021/03/24/C++Stirng/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="C++ 字符串常用操作读入1234567891011string str;cin &gt;&gt; s;&#x2F;&#x2F;遇到空格，tab，换行就停止getline(cin,s)&#x2F;&#x2F;读入一整行    &#x2F;&#x2F;三个参数的getline，以某个标志结束读取，且标志会被读掉string str1,str2,str3;getline(cin,str1,&amp;#x27;&amp;#x27;);getline(cin,str2,&amp;#x27">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-24T08:51:48.000Z">
+<meta property="article:modified_time" content="2021-03-24T08:56:59.929Z">
+<meta property="article:author" content="JennyKQ">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/03/24/C++Stirng/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<title>C++Stirng | Hexo</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Hexo</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">Archives</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">Tags</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">C++ 字符串常用操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">读入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6"><span class="nav-number">1.2.</span> <span class="nav-text">获取字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E9%95%BF%E5%BA%A6"><span class="nav-number">1.3.</span> <span class="nav-text">获取长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2-replace"><span class="nav-number">1.4.</span> <span class="nav-text">替换 replace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4-erase"><span class="nav-number">1.5.</span> <span class="nav-text">删除 erase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5-insert"><span class="nav-number">1.6.</span> <span class="nav-text">插入 insert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83-compare"><span class="nav-number">1.7.</span> <span class="nav-text">比较 compare</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.8.</span> <span class="nav-text">连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE-find-rfind"><span class="nav-number">1.9.</span> <span class="nav-text">查找 find,rfind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2"><span class="nav-number">1.10.</span> <span class="nav-text">子串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2-stoi-stol-stoll-stof-stod"><span class="nav-number">1.11.</span> <span class="nav-text">转换 stoi,stol,stoll,stof,stod</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JennyKQ</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/24/C++Stirng/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++Stirng
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-03-24 16:51:48 / Modified: 16:56:59" itemprop="dateCreated datePublished" datetime="2021-03-24T16:51:48+08:00">2021-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="C-字符串常用操作"><a href="#C-字符串常用操作" class="headerlink" title="C++ 字符串常用操作"></a>C++ 字符串常用操作</h1><h2 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"></span><br><span class="line">cin &gt;&gt; s;<span class="comment">//遇到空格，tab，换行就停止</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">getline</span>(cin,s)<span class="comment">//读入一整行</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//三个参数的getline，以某个标志结束读取，且标志会被读掉</span></span><br><span class="line">string str1,str2,str3;</span><br><span class="line">getline(cin,str1,&#x27;&#x27;);</span><br><span class="line"><span class="built_in">getline</span>(cin,str2,<span class="string">&#x27;&quot;&#x27;</span>);</span><br><span class="line"><span class="built_in">getline</span>(cin,str3,<span class="string">&#x27;&quot;&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>getline示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="www.csdn.net">input</a>:Hello World!</p>
+<p><a href="Hello">output</a>:Hello World!</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str, <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="www.csdn.net">input</a>:Hello World!</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+</blockquote>
+<p>**getline()**的用处：c++中没有自带的split函数，运用getline()函数可以帮助处理输入时需要切割的情况</p>
+<h2 id="获取字符"><a href="#获取字符" class="headerlink" title="获取字符"></a>获取字符</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;12345678&quot;</span>;</span><br><span class="line"><span class="comment">//str.at(int index);</span></span><br><span class="line"><span class="comment">//str[index]</span></span><br><span class="line">cout &lt;&lt; str[<span class="number">3</span>] &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">at</span>(<span class="number">2</span>) &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取长度"><a href="#获取长度" class="headerlink" title="获取长度"></a>获取长度</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">cin &gt;&gt; str;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">length</span>() &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">size</span>() &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+</blockquote>
+<p><strong>注意</strong>：length()和size()返回的是均以字节的形式返回字符串的长度，两种方式返回的值是相同的，当字符串的字符编码包含如utf-8时返回的值将不等于字符串的长度</p>
+<p>example:</p>
+<blockquote>
+<p>input: 中国</p>
+<p>output：4</p>
+<p>output：4</p>
+</blockquote>
+<h2 id="替换-replace"><a href="#替换-replace" class="headerlink" title="替换 replace"></a>替换 replace</h2><p><em><strong>case1</strong></em>:  从pos开始，替换len个位置的字符为str</p>
+<p>即：string[pos:pos+len] -&gt; str</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//string&amp; replace (size_t pos,  size_t len,  const string&amp; str);</span></span><br><span class="line">string str = <span class="string">&quot;this is a test string&quot;</span>;</span><br><span class="line">string str2 = <span class="string">&quot;n example&quot;</span>;</span><br><span class="line">str.<span class="built_in">replace</span>(<span class="number">9</span>,<span class="number">5</span>,str2);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output: this is an example string</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">0</th>
+<th>1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th>7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+<th align="center">12</th>
+<th align="center">13</th>
+<th>14</th>
+<th align="center">15</th>
+<th align="center">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">t</td>
+<td>h</td>
+<td align="center">i</td>
+<td align="center">s</td>
+<td align="center"></td>
+<td align="center">i</td>
+<td align="center">s</td>
+<td></td>
+<td align="center">a</td>
+<td align="center"></td>
+<td align="center">t</td>
+<td align="center">e</td>
+<td align="center">s</td>
+<td align="center">t</td>
+<td></td>
+<td align="center">s</td>
+<td align="center">…</td>
+</tr>
+</tbody></table>
+<p><em><strong>case2</strong></em>：从pos开始，替换len个位置的字符为str的从subpos开始长度为sublen的字符</p>
+<p>即：string[pos:pos+len] -&gt; str[subpos:subpos+sublen]</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//string&amp; replace (size_t pos,  size_t len,  const string&amp; str, size_t subpos, size_t sublen);</span></span><br><span class="line">str3 = <span class="string">&quot;example phrase&quot;</span>;</span><br><span class="line">str.<span class="built_in">replace</span>(<span class="number">19</span>,<span class="number">6</span>,str3,<span class="number">7</span>,<span class="number">6</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output: this is an example phrase</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">…</th>
+<th>13</th>
+<th align="center">14</th>
+<th align="center">15</th>
+<th align="center">16</th>
+<th align="center">17</th>
+<th align="center">18</th>
+<th>19</th>
+<th align="center">20</th>
+<th align="center">21</th>
+<th align="center">22</th>
+<th align="center">231</th>
+<th align="center">24</th>
+<th align="center">25</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">…</td>
+<td>x</td>
+<td align="center">a</td>
+<td align="center">m</td>
+<td align="center">p</td>
+<td align="center">l</td>
+<td align="center">e</td>
+<td></td>
+<td align="center">s</td>
+<td align="center">t</td>
+<td align="center">r</td>
+<td align="center">i</td>
+<td align="center">n</td>
+<td align="center">g</td>
+</tr>
+<tr>
+<td align="center"><strong>0</strong></td>
+<td><strong>1</strong></td>
+<td align="center"><strong>2</strong></td>
+<td align="center"><strong>3</strong></td>
+<td align="center"><strong>4</strong></td>
+<td align="center"><strong>5</strong></td>
+<td align="center"><strong>6</strong></td>
+<td><strong>7</strong></td>
+<td align="center"><strong>8</strong></td>
+<td align="center"><strong>9</strong></td>
+<td align="center"><strong>10</strong></td>
+<td align="center"><strong>11</strong></td>
+<td align="center"><strong>12</strong></td>
+<td align="center"><strong>13</strong></td>
+</tr>
+<tr>
+<td align="center">e</td>
+<td>x</td>
+<td align="center">a</td>
+<td align="center">m</td>
+<td align="center">p</td>
+<td align="center">l</td>
+<td align="center">e</td>
+<td></td>
+<td align="center">p</td>
+<td align="center">h</td>
+<td align="center">r</td>
+<td align="center">a</td>
+<td align="center">s</td>
+<td align="center">e</td>
+</tr>
+</tbody></table>
+<p><em><strong>case3</strong></em>： </p>
+<h2 id="删除-erase"><a href="#删除-erase" class="headerlink" title="删除 erase"></a>删除 erase</h2><h2 id="插入-insert"><a href="#插入-insert" class="headerlink" title="插入 insert"></a>插入 insert</h2><h2 id="比较-compare"><a href="#比较-compare" class="headerlink" title="比较 compare"></a>比较 compare</h2><h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><h2 id="查找-find-rfind"><a href="#查找-find-rfind" class="headerlink" title="查找 find,rfind"></a>查找 find,rfind</h2><h2 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h2><h2 id="转换-stoi-stol-stoll-stof-stod"><a href="#转换-stoi-stol-stoll-stof-stod" class="headerlink" title="转换 stoi,stol,stoll,stof,stod"></a>转换 stoi,stol,stoll,stof,stod</h2><p>string库内带函数可以将字符串转换为对应的数字类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//stoi: string to integer</span></span><br><span class="line"><span class="comment">//stol: string to long</span></span><br><span class="line"><span class="comment">//stoll:string to long long</span></span><br><span class="line"><span class="comment">//stof: string to float</span></span><br><span class="line"><span class="comment">//stof：string to stof</span></span><br><span class="line"><span class="comment">//stod: string to double</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> string&amp;  str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>其中，idx指向字符串中读取出一个整数后的下一个字符的下标，base可指定转换的基数，默认为10</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;2020 welcome!&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">std::string::size_type sz;</span><br><span class="line">a = <span class="built_in">stoi</span>(str, &amp;sz, <span class="number">10</span>);</span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; sz &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output: 2002</p>
+<p>output: 4</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;101&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">a = <span class="built_in">stoi</span>(str, <span class="literal">nullptr</span>, <span class="number">2</span>);</span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>output: 5</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/24/R%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="R字符串">
+                  <i class="fa fa-chevron-left"></i> R字符串
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/24/C++vector/" rel="next" title="C++vector">
+                  C++vector <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JennyKQ</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
