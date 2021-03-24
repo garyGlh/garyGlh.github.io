@@ -97,14 +97,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -122,14 +118,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -170,20 +158,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -353,24 +338,20 @@
 <li>子窗口中根据<strong>真实信号</strong>定义槽函数，给主窗口发“邮件”</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SubWidget::<span class="built_in">SubWidget</span>(QWidget *parent) : <span class="built_in">QWidget</span>(parent)</span><br><span class="line">&#123;    </span><br><span class="line">    <span class="built_in">setWindowTitle</span>(<span class="string">&quot;小弟&quot;</span>);   </span><br><span class="line">    b4.<span class="built_in">setParent</span>(<span class="keyword">this</span>);   </span><br><span class="line">    b4.<span class="built_in">setText</span>(<span class="string">&quot;切换到主窗口&quot;</span>);                                       <span class="built_in">connect</span>(&amp;b4,&amp;QPushButton::clicked,<span class="keyword">this</span> ,&amp;SubWidget::sendSlot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SubWidget::sendSlot</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="function">emit <span class="title">mySignal</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol>
 <li>在主窗口connect子窗口发来的“邮件”</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理子窗口的信号    connect(&amp;w,&amp;SubWidget::mySignal,this,&amp;MyWidget::dealSub);</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="模态对话框和非模态对话框"><a href="#模态对话框和非模态对话框" class="headerlink" title="模态对话框和非模态对话框"></a>模态对话框和非模态对话框</h2><h3 id="模态对话框"><a href="#模态对话框" class="headerlink" title="模态对话框"></a>模态对话框</h3><p>只能操作当前窗口，无法操作其他窗口<br><code>dlg.exec();</code></p>
 <h3 id="非模态对话框"><a href="#非模态对话框" class="headerlink" title="非模态对话框"></a>非模态对话框</h3><ol>
 <li>将dlg定义为成员【好】</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类里定义QDialog dlg;</span></span><br><span class="line">dlg.<span class="built_in">show</span>();               </span><br><span class="line"><span class="built_in">qDebug</span>()&lt;&lt;<span class="built_in">QStringLiteral</span>(<span class="string">&quot;非模态对话框&quot;</span>);   </span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol>
 <li>动态分配空间（指定父对象）【不好】   </li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> <span class="built_in">QDialog</span>(<span class="keyword">this</span>);<span class="comment">//多次点击会内存越界</span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();     </span><br></pre></td></tr></table></figure>
-
-<ol start="3">
+<ol>
 <li>动态分配空间（不指定父对象）【好】</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> QDialog;              </span><br><span class="line">p-&gt;<span class="built_in">setAttribute</span>(Qt::WA_DeleteOnClose);<span class="comment">//关闭才释放  </span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();</span><br></pre></td></tr></table></figure>
@@ -455,11 +436,9 @@
 </ul>
 <p>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">QCheckBox, QComboBox, QSpinBox&#123;</span><br><span class="line">    color: red;</span><br><span class="line">    background-color: white;</span><br><span class="line">    font: bold;<span class="comment">//字体：加粗</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="方箱模型"><a href="#方箱模型" class="headerlink" title="方箱模型"></a>方箱模型</h2><p>样式表中，每个部件被看做是一个由四个同心相似的矩阵组成的箱体</p>
 <ul>
-<li><p>空白margin：<br>空白区域位于边框外，是透明的</p>
-</li>
+<li>空白margin：<br>空白区域位于边框外，是透明的</li>
 <li><p>边框border：<br>边框为部件提供了四周的框架，其border-style属性可以设置为一些内置框架风格，如inset, outset, solid和ridge</p>
 </li>
 <li><p>填充padding：<br>填充在边框和内容区域之间提供了空白间隔</p>
@@ -482,7 +461,6 @@
 </ul>
 <h2 id="创建可缩放样式"><a href="#创建可缩放样式" class="headerlink" title="创建可缩放样式"></a>创建可缩放样式</h2><p>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;QPushButton&#123;&quot;</span></span><br><span class="line">   <span class="string">&quot;border-width: 4px;&quot;</span></span><br><span class="line">   <span class="string">&quot; border-image: url(图片路径) ;&quot;</span></span><br><span class="line"> <span class="string">&quot;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>裁剪原图片：<br><code>border-image: url(图片路径) 4 4 4 4 strech strrech;</code></li>
 </ul>
@@ -490,7 +468,6 @@
 <h2 id="处理伪状态"><a href="#处理伪状态" class="headerlink" title="处理伪状态"></a>处理伪状态</h2><p>部件的<strong>外观</strong>按照用户界面元素<strong>状态</strong>的不同来分别定义</p>
 <p>格式：<code>selector: 伪状态&#123; attribute: value&#125;</code><br>例（按压改变图片）：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;pushButton-&gt;<span class="built_in">setStyleSheet</span>(<span class="string">&quot;QPushButton&#123;&quot;</span>                       </span><br><span class="line">                                         <span class="string">&quot;border-image:url(图片路径);&quot;</span></span><br><span class="line">                                         <span class="string">&quot;&#125;&quot;</span>                   </span><br><span class="line">                                         <span class="string">&quot;QPushButton: hover&#123;&quot;</span></span><br><span class="line">                                         <span class="string">&quot;border-image:url(图片路径);&quot;</span></span><br><span class="line">                                         <span class="string">&quot;&#125;&quot;</span>                                </span><br><span class="line">                                         )</span><br></pre></td></tr></table></figure>
-
 <h3 id="可用伪状态列表"><a href="#可用伪状态列表" class="headerlink" title="可用伪状态列表"></a>可用伪状态列表</h3><ul>
 <li>checked：button部件被选中</li>
 <li>disabled：部件被禁用</li>
@@ -592,7 +569,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="Qt基础"><a href="#Qt基础" class="headerlink" title="Qt基础"></a>Qt基础</h1><h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="qDebug-gt-cout"><a href="#qDebug-gt-cout" class="headerlink" title="qDebug()-&gt;cout"></a>qDebug()-&gt;cout</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cout qDebug()&lt;&lt;<span class="meta-string">&quot;[&quot;</span>&lt;&lt;__FILE__&lt;&lt;<span class="meta-string">&quot;: &quot;</span>&lt;&lt;__LINE__&lt;&lt;<span class="meta-string">&quot;]&quot;</span></span></span><br></pre></td></tr></table></figure>
-
 <h2 id="基类"><a href="#基类" class="headerlink" title="基类"></a>基类</h2><ul>
 <li>QMainWindow：有菜单栏</li>
 <li>QWidget：最简单</li>
@@ -602,27 +578,22 @@
 <li><code>toUtf8()</code><br>转换为utf8编码<br>例：</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QString buf=<span class="string">&quot;123&quot;</span>;</span><br><span class="line">QByteArray a=buf.<span class="built_in">toUtf8</span>();<span class="comment">//中文</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol>
 <li><code>toLocal8Bit()</code><br>转换为本地平台编码<br>例：</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QString buf=<span class="string">&quot;123&quot;</span>;</span><br><span class="line">QByteArray a=buf.<span class="built_in">toLocal8Bit</span>();<span class="comment">//本地编码</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="QByteArray-gt-char"><a href="#QByteArray-gt-char" class="headerlink" title="QByteArray-&gt;char*"></a>QByteArray-&gt;char*</h3><ol>
 <li><code>data()</code><br>例：</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QByteArray a=<span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *b=a.<span class="built_in">data</span>();</span><br></pre></td></tr></table></figure>
-
 <h3 id="char-gt-QString"><a href="#char-gt-QString" class="headerlink" title="char*-&gt;QString"></a>char*-&gt;QString</h3><p>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>*p=<span class="string">&quot;abc&quot;</span>;</span><br><span class="line">QString c=<span class="built_in">QString</span>(p);</span><br></pre></td></tr></table></figure>
-
 <h2 id="输出（打印）"><a href="#输出（打印）" class="headerlink" title="输出（打印）"></a>输出（打印）</h2><p><QDebug>：qDebug()，用法同cout，默认换行</p>
 <h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>%<u>数字</u>，<code>.arg()</code>输入替代%<u>数字</u>的值<br>例：<br><code>QString str=QString(&quot;abc %1 haha %2&quot;).arg(123).arg(&quot;mike&quot;);</code></p>
 <h3 id="打印中文"><a href="#打印中文" class="headerlink" title="打印中文"></a>打印中文</h3><h4 id="toUtf8"><a href="#toUtf8" class="headerlink" title="toUtf8"></a>toUtf8</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">QString a=<span class="string">&quot;哈哈&quot;</span>;</span><br><span class="line"><span class="built_in">qDebug</span>()&lt;&lt;a.<span class="built_in">toUtf8</span>().<span class="built_in">data</span>();</span><br><span class="line"><span class="comment">//a.toUtf8()-&gt;字节数组QByteArray</span></span><br><span class="line"><span class="comment">//.......data()-&gt;QByteArray-&gt;char*</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="QString函数-宏"><a href="#QString函数-宏" class="headerlink" title="QString函数/宏"></a>QString函数/宏</h4><p>在QString 类中</p>
 <ol>
-<li>有个静态字符转码函数  <code>QString::fromLocal8Bit</code>  –&gt; 转码成Unicode 这样就能解决中文乱码问题了</li>
+<li>有个静态字符转码函数  <code>QString::fromLocal8Bit</code>  —&gt; 转码成Unicode 这样就能解决中文乱码问题了</li>
 <li>QStringLiteral<br>在Qt5中，提供了一个专门的处理宏，来支持中文<strong>常量</strong>。<br><code>QMessageBox::information(this, QString::fromLocal8Bit(&quot;提示&quot;), QStringLiteral(&quot;中文显示&quot;));</code></li>
 </ol>
 <h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>int，而非enum</p>
@@ -711,7 +682,6 @@
 <li>转到槽：右键点按钮，自动生成槽函数<br>例（自动生成的槽函数）：</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> i=<span class="number">0</span>;<span class="comment">//静态</span></span><br><span class="line">ui-&gt;stackedWidget-&gt;<span class="built_in">setCurrentIndex</span>(++i % <span class="number">4</span>);<span class="comment">//假设stackedWidget有4页</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="Tool-Button"><a href="#Tool-Button" class="headerlink" title="Tool Button"></a>Tool Button</h4><p>与Push Button无大区别</p>
 <h4 id="Ratio-Button"><a href="#Ratio-Button" class="headerlink" title="Ratio Button"></a>Ratio Button</h4><p>单选按钮</p>
 <h4 id="Check-Box"><a href="#Check-Box" class="headerlink" title="Check Box"></a>Check Box</h4><p>多选按钮</p>
@@ -751,7 +721,6 @@
 <li>单位是像素</li>
 </ul>
 <h5 id="设置提示"><a href="#设置提示" class="headerlink" title="设置提示"></a>设置提示</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QStringList&gt;</span><span class="comment">//字符串列表</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QCompleter&gt;</span></span></span><br><span class="line"></span><br><span class="line">QStringList list;</span><br><span class="line">list&lt;&lt;&quot;hello&quot;&lt;&lt;&quot;How are you&quot;&lt;&lt;&quot;hehe&quot;;//类似cin</span><br><span class="line"></span><br><span class="line">QCompleter *com=<span class="keyword">new</span> QCompleter(list, <span class="keyword">this</span>);</span><br><span class="line">com-&gt;<span class="built_in">setCaseSensitivity</span>(Qt::CaseInsensitive);<span class="comment">//区分大小写</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="Text-Edit"><a href="#Text-Edit" class="headerlink" title="Text Edit"></a>Text Edit</h4><p>文本编辑区，可以写多行</p>
 <ul>
 <li>可显示图片、网页</li>
@@ -779,17 +748,14 @@
 </li>
 </ul>
 </li>
-<li><p>代码</p>
-<ul>
+<li>代码<ul>
 <li>添加图片：<code>ui-&gt;labelImage-&gt;setPixmap(QPixmap(&quot;图片路径&quot;));</code></li>
 <li>使图片自动适应Label大小：<code>ui-&gt;labelImage-&gt;setScaledContents(true)</code></li>
 </ul>
 </li>
 </ol>
 <h5 id="动画（gif）"><a href="#动画（gif）" class="headerlink" title="动画（gif）"></a>动画（gif）</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建动画</span></span><br><span class="line">QMovie *myMovie=<span class="keyword">new</span> <span class="built_in">QMovie</span>(<span class="string">&quot;动画路径&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置动画</span></span><br><span class="line">ui-&gt;labelGif-&gt;<span class="built_in">setMovie</span>(myMovie);</span><br><span class="line"></span><br><span class="line"><span class="comment">//启动动画</span></span><br><span class="line">myMovie-&gt;<span class="built_in">start</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//自动适应Label大小</span></span><br><span class="line">ui-&gt;labelGif-&gt;<span class="built_in">setScaledContents</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-
 <h5 id="链接（HTML格式的字符串）"><a href="#链接（HTML格式的字符串）" class="headerlink" title="链接（HTML格式的字符串）"></a>链接（HTML格式的字符串）</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;labelUrl-&gt;<span class="built_in">setText</span>(&lt;h1&gt;&lt;a href=\<span class="string">&quot;https://www.baidu.com\&quot;&gt;百度一下&lt;/a&gt;&lt;/h1&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//点击链接自动打开</span></span><br><span class="line">ui-&gt;labelUrl-&gt;<span class="built_in">setOpenExternalLinks</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-
 <h4 id="Text-Browser"><a href="#Text-Browser" class="headerlink" title="Text Browser"></a>Text Browser</h4><p>文本浏览器，显示文本</p>
 <h4 id="Calender-Widget"><a href="#Calender-Widget" class="headerlink" title="Calender Widget"></a>Calender Widget</h4><p>日历</p>
 <h4 id="LCD-Number"><a href="#LCD-Number" class="headerlink" title="LCD Number"></a>LCD Number</h4><p>数码管（比分）</p>
@@ -797,13 +763,11 @@
 <li>可显示字符串、整型</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;lcdNumber-&gt;<span class="built_in">display</span>(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
-
 <h4 id="Progress-Bar"><a href="#Progress-Bar" class="headerlink" title="Progress Bar"></a>Progress Bar</h4><p>进度条（显示百分比）</p>
 <ul>
 <li>默认0~100</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置最小值</span></span><br><span class="line">ui-&gt;progressBar-&gt;<span class="built_in">setMinumum</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置最大值</span></span><br><span class="line">ui-&gt;progressBar-&gt;<span class="built_in">setMaximum</span>(<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置当前值</span></span><br><span class="line">ui-&gt;progressBar-&gt;<span class="built_in">setValue</span>(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
-
 <h4 id="Horizontal-Line"><a href="#Horizontal-Line" class="headerlink" title="Horizontal Line"></a>Horizontal Line</h4><p>水平分隔线</p>
 <h4 id="Vertical-Line"><a href="#Vertical-Line" class="headerlink" title="Vertical Line"></a>Vertical Line</h4><p>垂直分隔线</p>
 <h4 id="QDeclarativeView"><a href="#QDeclarativeView" class="headerlink" title="QDeclarativeView"></a>QDeclarativeView</h4><p>多用于qml</p>
@@ -813,7 +777,6 @@
 <li>项目文件加上模块：<code>QT+=webkitwidgets</code></li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;webView-&gt;<span class="built_in">load</span>(<span class="built_in">QUrl</span>(<span class="string">&quot;http://www.baidu.com&quot;</span>));</span><br></pre></td></tr></table></figure>
-
 <h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>Qt有两种组件定位机制：绝对定位和布局定位</p>
 <h3 id="布局分类"><a href="#布局分类" class="headerlink" title="布局分类"></a>布局分类</h3><p>水平/垂直/网格/分裂器布局</p>
 <ul>
@@ -906,7 +869,6 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="Qt-Lamda表达式"><a href="#Qt-Lamda表达式" class="headerlink" title="Qt Lamda表达式"></a>Qt Lamda表达式</h1><p>直接在connect时自定义槽函数<br>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">QPushButton *b4=<span class="keyword">new</span> <span class="built_in">QPushButton</span>(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">connect</span>(b4,&amp;QPushButton::released,           </span><br><span class="line">            [b4]()<span class="comment">//[ ]是把外部变量传入 ，逗号分隔   </span></span><br><span class="line">            &#123;               </span><br><span class="line">                b4-&gt;<span class="built_in">setText</span>(<span class="string">&quot;123&quot;</span>);              </span><br><span class="line">                <span class="built_in">qDebug</span>()&lt;&lt;<span class="string">&quot;11111&quot;</span>;          </span><br><span class="line">            &#125;           </span><br><span class="line">            );</span><br></pre></td></tr></table></figure>
-
 <p>中括号：</p>
 <ul>
 <li>[=]：可将外部所有局部变量、类中所有成员以<strong>值传递</strong>方式传入（只读，不可修改，除非是指针指向的内容）</li>
@@ -988,57 +950,42 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="Django-开发流程"><a href="#Django-开发流程" class="headerlink" title="Django 开发流程"></a>Django 开发流程</h1><h6 id="创建app"><a href="#创建app" class="headerlink" title="创建app"></a>创建app</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py startapp sales</span><br></pre></td></tr></table></figure>
-
 <h6 id="在app-view-py里写处理对应url的响应函数-放入（-html）模板文件"><a href="#在app-view-py里写处理对应url的响应函数-放入（-html）模板文件" class="headerlink" title="在app/view.py里写处理对应url的响应函数/放入（.html）模板文件"></a>在app/view.py里写处理对应url的响应函数/放入（.html）模板文件</h6><ul>
 <li>响应函数：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listorders</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">&quot;下面是系统中所有订单信息&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>导入模板文件（.html）</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listorders</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> render(request,<span class="string">&quot;index.html&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <p>或</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="comment"># 导入 Customer 对象定义</span></span><br><span class="line"><span class="keyword">from</span> common.models <span class="keyword">import</span> Customer</span><br><span class="line"><span class="keyword">from</span> django.template.loader <span class="keyword">import</span> get_template</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listcustomers</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="comment"># 返回一个QuerySet对象，包含所有的表记录</span></span><br><span class="line">    <span class="comment"># 每条表记录都是是一个dict对象，</span></span><br><span class="line">    <span class="comment"># key是字段名，value是字段值</span></span><br><span class="line">    qs = Customer.objects.values()</span><br><span class="line">    <span class="comment"># 检查url中是否有参数name</span></span><br><span class="line">    nm = request.GET.get(<span class="string">&quot;name&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">    <span class="comment"># 如果有，添加过滤条件</span></span><br><span class="line">    <span class="keyword">if</span> nm:</span><br><span class="line">        qs = qs.<span class="built_in">filter</span>(name=nm)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 模板</span></span><br><span class="line">    <span class="keyword">try</span>: </span><br><span class="line">        tpl = get_template(<span class="string">&quot;customers.html&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span>: </span><br><span class="line">        <span class="keyword">return</span> HttpResponse(<span class="string">&quot;&lt;h1&gt;自定义的404&lt;/h1&gt;&quot;</span>) </span><br><span class="line">    </span><br><span class="line">    html = tpl.render(&#123;<span class="string">&quot;customers&quot;</span>:qs&#125;, request) </span><br><span class="line">    <span class="keyword">return</span> HttpResponse(html)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h6 id="在app里创建路由子表app-urls-py，把app-views-py里的处理函数导入"><a href="#在app里创建路由子表app-urls-py，把app-views-py里的处理函数导入" class="headerlink" title="在app里创建路由子表app/urls.py，把app/views.py里的处理函数导入"></a>在app里创建路由子表app/urls.py，把app/views.py里的处理函数导入</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;orders/&#x27;</span>, views.listorders),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
 <h6 id="在主路由表urls-py中导入include函数，添加路由子表"><a href="#在主路由表urls-py中导入include函数，添加路由子表" class="headerlink" title="在主路由表urls.py中导入include函数，添加路由子表"></a>在主路由表urls.py中导入include函数，添加路由子表</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入一个include函数</span></span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">&#x27;admin/&#x27;</span>, admin.site.urls),</span><br><span class="line">    <span class="comment"># 当前端过来的请求 url地址是/sales/orders/, </span></span><br><span class="line">    <span class="comment"># 都根据 sales.urls 里面的子路由表进行路由</span></span><br><span class="line">    path(<span class="string">&quot;sales/&quot;</span>,include(<span class="string">&quot;sales.urls&quot;</span>))</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
 <h6 id="设置模板路径，让Django框架找到模板所在目录"><a href="#设置模板路径，让Django框架找到模板所在目录" class="headerlink" title="设置模板路径，让Django框架找到模板所在目录"></a>设置模板路径，让Django框架找到模板所在目录</h6><ul>
 <li>在app文件夹里创建文件夹templates</li>
 <li>在settings.py中的TEMPLATES设置模板路径</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;DIRS&#x27;</span>: [os.path.join(BASE_DIR,<span class="string">&quot;sales/templates&quot;</span>)],</span><br></pre></td></tr></table></figure>
-
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h6 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
-
 <h6 id="在app-models-py里创建数据库表（类）"><a href="#在app-models-py里创建数据库表（类）" class="headerlink" title="在app/models.py里创建数据库表（类）"></a>在app/models.py里创建数据库表（类）</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Customer</span>(<span class="params">models.Model</span>):</span></span><br><span class="line">    <span class="comment"># 客户名称</span></span><br><span class="line">    name = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 联系电话</span></span><br><span class="line">    phonenumber = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 地址</span></span><br><span class="line">    address = models.CharField(max_length=<span class="number">200</span>)</span><br></pre></td></tr></table></figure>
-
 <h6 id="在setting-py的INSTALLED-APPS里加入app配置类"><a href="#在setting-py的INSTALLED-APPS里加入app配置类" class="headerlink" title="在setting.py的INSTALLED_APPS里加入app配置类"></a>在setting.py的INSTALLED_APPS里加入app配置类</h6><p>告诉 Django，CommonConfig是 common/apps.py 文件中定义的一个应用配置的类（这个app的配置类）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">&#x27;django.contrib.admin&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.auth&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.contenttypes&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.sessions&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.messages&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;django.contrib.staticfiles&#x27;</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 加入下面这行</span></span><br><span class="line">   <span class="string">&#x27;common.apps.CommonConfig&#x27;</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
 <h6 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Django更新脚本（数据库）</span></span><br><span class="line">python manage.py makemigrations common</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建数据库表</span></span><br><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
-
 <h6 id="读取数据库数据"><a href="#读取数据库数据" class="headerlink" title="读取数据库数据"></a>读取数据库数据</h6><ul>
 <li>在app/view.py定义响应函数（添加过滤条件）</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span>  common.models <span class="keyword">import</span>  Customer</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">listcustomers</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="comment"># 返回一个 QuerySet 对象 ，包含所有的表记录</span></span><br><span class="line">    <span class="comment"># 每条表记录都是是一个dict对象</span></span><br><span class="line">    <span class="comment"># key 是字段名，value 是 字段值</span></span><br><span class="line">    qs = Customer.objects.values()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 检查url中是否有参数name</span></span><br><span class="line">    nm = request.GET.get(<span class="string">&quot;name&quot;</span>, <span class="literal">None</span>)</span><br><span class="line">    <span class="comment"># 如果有，添加过滤条件</span></span><br><span class="line">    <span class="keyword">if</span> nm:</span><br><span class="line">        qs = qs.<span class="built_in">filter</span>(name=nm)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义返回字符串</span></span><br><span class="line">    retStr = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> customer <span class="keyword">in</span>  qs:</span><br><span class="line">        <span class="keyword">for</span> name,value <span class="keyword">in</span> customer.items():</span><br><span class="line">            retStr += <span class="string">f&#x27;<span class="subst">&#123;name&#125;</span> : <span class="subst">&#123;value&#125;</span> | &#x27;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># &lt;br&gt; 表示换行</span></span><br><span class="line">        retStr += <span class="string">&#x27;&lt;br&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(retStr)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>在路由子表app/urls.py添加url对应响应函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">&#x27;customers/&#x27;</span>, views.listcustomers)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>访问<a target="_blank" rel="noopener" href="http://127.0.0.1/sales/customers/?name=JKQ">http://127.0.0.1/sales/customers/?name=JKQ</a></li>
 </ul>
 <h2 id="Admin管理数据"><a href="#Admin管理数据" class="headerlink" title="Admin管理数据"></a>Admin管理数据</h2><h6 id="创建超级管理员账号"><a href="#创建超级管理员账号" class="headerlink" title="创建超级管理员账号"></a>创建超级管理员账号</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py createsuperuser</span><br></pre></td></tr></table></figure>
-
-<p>Username：jkq<br>Email：<a href="mailto:&#x31;&#50;&#x33;&#52;&#x35;&#54;&#x37;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#x31;&#50;&#x33;&#52;&#x35;&#54;&#x37;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a><br>Password：jkqjkqjkq</p>
+<p>Username：jkq<br>Email：1234567@qq.com<br>Password：jkqjkqjkq</p>
 <h6 id="在app-admin-py注册定义的model类"><a href="#在app-admin-py注册定义的model类" class="headerlink" title="在app/admin.py注册定义的model类"></a>在app/admin.py注册定义的model类</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Customer</span><br><span class="line"></span><br><span class="line">admin.site.register(Customer)</span><br></pre></td></tr></table></figure>
-
 <h6 id="访问http-127-0-0-1-8000-admin"><a href="#访问http-127-0-0-1-8000-admin" class="headerlink" title="访问http://127.0.0.1:8000/admin/"></a>访问<a target="_blank" rel="noopener" href="http://127.0.0.1:8000/admin/">http://127.0.0.1:8000/admin/</a></h6><p>想使用中文admin界面可在settings.py的MIDDLEWARE加上</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># admin界面语言本地化</span></span><br><span class="line">    <span class="string">&#x27;django.middleware.locale.LocaleMiddleware&#x27;</span>,</span><br></pre></td></tr></table></figure>
       
@@ -1118,18 +1065,13 @@
 </ul>
 <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="raise"><a href="#raise" class="headerlink" title="raise"></a>raise</h3><p>抛出异常<br>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">raise</span> StopIteration</span><br></pre></td></tr></table></figure>
-
 <h3 id="try-except语句"><a href="#try-except语句" class="headerlink" title="try-except语句"></a>try-except语句</h3><p>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    num1=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;first number:&quot;</span>))</span><br><span class="line">    num2=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;second number:&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(num1/num2)</span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> err:</span><br><span class="line">    <span class="built_in">print</span>(err)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> err:</span><br><span class="line">    <span class="built_in">print</span>(err)</span><br><span class="line"><span class="comment">#except Exception as err:空except检查所有错误</span></span><br><span class="line">    <span class="comment">#print(err)</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="else语句"><a href="#else语句" class="headerlink" title="else语句"></a>else语句</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    num1=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;first number:&quot;</span>))</span><br><span class="line">    num2=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;second number:&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(num1/num2)</span><br><span class="line"><span class="keyword">except</span> (ValueError, ZeroDivisionError):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;invalid input&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;everything is ok&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h3 id="finally语句"><a href="#finally语句" class="headerlink" title="finally语句"></a>finally语句</h3><p>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    num1=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;first number:&quot;</span>))</span><br><span class="line">    num2=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;second number:&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(num1/num2)</span><br><span class="line"><span class="keyword">except</span> IOError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;fail open&quot;</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    f.close()</span><br><span class="line">    <span class="comment">#如果文件打开失败还是会报错，因为f没有值</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="上下文管理器和with语句（多用于文件、数据库）"><a href="#上下文管理器和with语句（多用于文件、数据库）" class="headerlink" title="上下文管理器和with语句（多用于文件、数据库）"></a>上下文管理器和with语句（多用于文件、数据库）</h3><p>定义和控制代码块执行前的准备动作及执行后的收尾工作<br>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="comment">#将文件对象赋给f</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(line, end=<span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="断言assert"><a href="#断言assert" class="headerlink" title="断言assert"></a>断言assert</h3><ul>
 <li>多用于测试函数<br>例：</li>
 </ul>
@@ -1216,8 +1158,7 @@
 </li>
 <li><p>Requests第三方库（中小型）</p>
 </li>
-<li><p>Scapy框架（大型）</p>
-</li>
+<li>Scapy框架（大型）</li>
 </ul>
 </li>
 <li><p>解析</p>
@@ -1242,18 +1183,15 @@
 <li>json：<code>r.json()</code></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解码成中文</span></span><br><span class="line">r.text.encode(<span class="string">&quot;utf-8&quot;</span>).decode(<span class="string">&quot;unicode-escape&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="抓取网站的情况"><a href="#抓取网站的情况" class="headerlink" title="抓取网站的情况"></a>抓取网站的情况</h4><p>列举几种情况：</p>
 <ul>
 <li>假设获取的是二进制文件，则可以借鉴如下方法保存数据：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"> </span><br><span class="line">r = requests.get(<span class="string">&#x27;https://www.baidu.com/img/bd_logo1.png&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;baidu.png&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">   fp.write(r.content)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>有些网站会对http请求的Headers的User-Agent进行检测，需将<strong>headers</strong>信息传递给get函数的headers参数，例如豆瓣最近也有了此要求，例如知乎，直接访问会返回400，加上headers参数后可正确返回：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>re = requests.get(<span class="string">&#x27;https://www.zhihu.com&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.status_code</span><br><span class="line"><span class="number">400</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># headers可从http测试网站https://httpbin.org或浏览器的“开发者工具”获得</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>headers=&#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re = requests.get(<span class="string">&#x27;https://www.zhihu.com&#x27;</span>, headers = headers)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.status_code</span><br><span class="line"><span class="number">200</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>被JS渲染过的页面内容获取<br>可以通过浏览器的“开发者工具”功能寻找真正提供数据的页面，有时会有一定的难度。</li>
 </ul>
@@ -1263,7 +1201,6 @@
 </ul>
 <p>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">markup=<span class="string">&quot;&lt;p class=&quot;</span>title<span class="string">&quot;&gt;&lt;b&gt;The Little Prince&lt;/b&gt;&lt;/p&gt;&quot;</span></span><br><span class="line">soup=BeautifulSoup(markup, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line"></span><br><span class="line">soup.b</span><br><span class="line">&gt;&gt;&gt;&lt;b&gt;The Little Prince</span><br><span class="line"></span><br><span class="line">soup.find(<span class="string">&quot;b&quot;</span>)</span><br><span class="line"><span class="comment"># 找到第一个&lt;b&gt;的内容</span></span><br><span class="line"></span><br><span class="line">soup.find_all(<span class="string">&quot;b&quot;</span>)</span><br><span class="line"><span class="comment"># 找到所有&lt;b&gt;的内容，返回列表</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h4><ul>
 <li>Tag：标签</li>
 <li>NavigableString：Tag中的字符串</li>
@@ -1289,36 +1226,28 @@
 <li>pandas_datareader.data. DataReader( , )</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas_datareader.data <span class="keyword">as</span> web</span><br><span class="line"></span><br><span class="line">f = web.DataReader(<span class="string">&quot;AXP&quot;</span>, <span class="string">&quot;stooq&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>tushare</li>
 </ul>
 <h3 id="Restful-API"><a href="#Restful-API" class="headerlink" title="Restful API"></a>Restful API</h3><p>基于网页的API，返回类型是JSON（JavaScript Notation）<br>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tianqi</span>(<span class="params">city</span>):</span></span><br><span class="line">    <span class="string">&quot;获取天气预报&quot;</span></span><br><span class="line">    url=<span class="string">&quot;http://t.weather.sojson.com/api/weather/city/101210101&quot;</span></span><br><span class="line">    <span class="keyword">import</span> requests</span><br><span class="line">    res=requests.get(url)</span><br><span class="line">    tq_text = res.text</span><br><span class="line">    <span class="keyword">import</span> json</span><br><span class="line">    <span class="comment">#把text转换为json对象</span></span><br><span class="line">    tq_json = json.loads(tq_text)</span><br><span class="line">    wendu=tq_json[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;wendu&quot;</span>]</span><br><span class="line">    pm25=tq_json[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;pm25&quot;</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;city&#125;</span>：温度是<span class="subst">&#123;wendu&#125;</span>，PM2.5是<span class="subst">&#123;pm25&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="数据获取有用的库-模块"><a href="#数据获取有用的库-模块" class="headerlink" title="数据获取有用的库/模块"></a>数据获取有用的库/模块</h2><h3 id="sklearn模块的datasets子模块"><a href="#sklearn模块的datasets子模块" class="headerlink" title="sklearn模块的datasets子模块"></a>sklearn模块的datasets子模块</h3><p>例：获取iris数据集</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"><span class="comment">#数据存储在data属性中</span></span><br><span class="line"><span class="built_in">print</span>(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(iris.feature_names)</span><br><span class="line"><span class="built_in">print</span>(iris.data.shape)</span><br><span class="line"><span class="comment">#数据所属种类在target属性中</span></span><br><span class="line"><span class="built_in">print</span>(iris.target)</span><br></pre></td></tr></table></figure>
-
 <h3 id="NLTK语料库"><a href="#NLTK语料库" class="headerlink" title="NLTK语料库"></a>NLTK语料库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"></span><br><span class="line"><span class="comment">#打开下载器</span></span><br><span class="line">nltk.download()</span><br><span class="line"></span><br><span class="line"><span class="comment">#在下载器中打开Corpora选项卡，都是可下载的语料库</span></span><br></pre></td></tr></table></figure>
-
 <p>例：加载古腾堡语料库</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> gutenberg</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看语料库中收录了哪些古藤堡项目的图书</span></span><br><span class="line"><span class="built_in">print</span>(gutenberg.fileids())</span><br><span class="line"></span><br><span class="line"><span class="comment">#把《哈姆雷特》中的单词列出来</span></span><br><span class="line">texts=gutenberg.words(<span class="string">&quot;shakespeare-hamlet.txt&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(texts)</span><br></pre></td></tr></table></figure>
-
 <h2 id="本地文件"><a href="#本地文件" class="headerlink" title="本地文件"></a>本地文件</h2><h3 id="csv文件"><a href="#csv文件" class="headerlink" title="csv文件"></a>csv文件</h3><h4 id="csv-gt-DataFrame"><a href="#csv-gt-DataFrame" class="headerlink" title="csv-&gt;DataFrame"></a>csv-&gt;DataFrame</h4><ul>
 <li>.read_csv(path, sep=”,”)</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&quot;../test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="DataFrame-gt-csv"><a href="#DataFrame-gt-csv" class="headerlink" title="DataFrame-&gt;csv"></a>DataFrame-&gt;csv</h4><ul>
 <li>.to_csv(path)</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&quot;../test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h3 id="excel文件"><a href="#excel文件" class="headerlink" title="excel文件"></a>excel文件</h3><h4 id="excel-gt-DataFrame"><a href="#excel-gt-DataFrame" class="headerlink" title="excel-&gt;DataFrame"></a>excel-&gt;DataFrame</h4><ul>
 <li>.read_excel(path, sheet_name)</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_excel(<span class="string">&quot;../test.xls&quot;</span>, sheet_name=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="DataFrame-gt-excel"><a href="#DataFrame-gt-excel" class="headerlink" title="DataFrame-&gt;excel"></a>DataFrame-&gt;excel</h4><ul>
 <li>.to_excel(path)</li>
 </ul>
@@ -1423,7 +1352,6 @@
 </li>
 </ul>
 <h5 id="DataFrame缺失值处理"><a href="#DataFrame缺失值处理" class="headerlink" title="DataFrame缺失值处理"></a>DataFrame缺失值处理</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">quotesdf_nan=pd.read_csv(<span class="string">&quot;AXP_NaN.csv&quot;</span>, index_col=<span class="string">&quot;Date&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除缺失值</span></span><br><span class="line">quotesdf_nan.dropna(how=<span class="string">&quot;any&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#填充缺失值</span></span><br><span class="line"><span class="comment">#用均值填充</span></span><br><span class="line">quotesdf_nan.fillna(quotesdf_nan.mean(), inplace = <span class="literal">True</span>)<span class="comment">#inplace是修不修改原来的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用上一个非缺失值填充</span></span><br><span class="line">quotesdf_nan.fillna(method=<span class="string">&quot;ffill&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#用下一个非缺失值填充</span></span><br><span class="line">quotesdf_nan.fillna(method=<span class="string">&quot;bfill&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="异常值处理"><a href="#异常值处理" class="headerlink" title="异常值处理"></a>异常值处理</h4><h5 id="异常值的检测"><a href="#异常值的检测" class="headerlink" title="异常值的检测"></a>异常值的检测</h5><ul>
 <li>简单统计</li>
 <li>绘图</li>
@@ -1435,7 +1363,6 @@
 <li>用<strong>布尔索引</strong>筛选数据</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quotesdf_san[<span class="built_in">abs</span>(quotesdf_nan-quotesdf_nan.mean())&gt;<span class="number">3</span>*quotesdf_nan.std()]</span><br></pre></td></tr></table></figure>
-
 <h3 id="数据变换"><a href="#数据变换" class="headerlink" title="数据变换"></a>数据变换</h3><p>常见方式：</p>
 <ul>
 <li>规范化</li>
@@ -1450,37 +1377,32 @@
 <li>z-score规范化（标准化））</li>
 <li>小数定标规范化</li>
 </ul>
-<h5 id="最小-最大规范化"><a href="#最小-最大规范化" class="headerlink" title="最小-最大规范化"></a>最小-最大规范化</h5><p>$$<br>x’=\frac{x-\min}{\max -\min}<br>$$</p>
-<p>将属性值调整到[0, 1]范围内</p>
+<h5 id="最小-最大规范化"><a href="#最小-最大规范化" class="headerlink" title="最小-最大规范化"></a>最小-最大规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x-\min}{\max -\min}</script><p>将属性值调整到[0, 1]范围内</p>
 <ul>
 <li>适合不涉及距离度量的场景</li>
 </ul>
 <h6 id="自己写代码"><a href="#自己写代码" class="headerlink" title="自己写代码"></a>自己写代码</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最小-最大规范化</span></span><br><span class="line">(df-df.<span class="built_in">min</span>())/(df.<span class="built_in">max</span>()-df.<span class="built_in">min</span>())</span><br></pre></td></tr></table></figure>
-
 <h6 id="sklearn的preprocessing模块"><a href="#sklearn的preprocessing模块" class="headerlink" title="sklearn的preprocessing模块"></a>sklearn的preprocessing模块</h6><ul>
 <li>minmax_scale(df)函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最小-最大规范化</span></span><br><span class="line"><span class="built_in">print</span>(preprocessing.minmax_scale(df))</span><br></pre></td></tr></table></figure>
-
-<h5 id="z-score规范化"><a href="#z-score规范化" class="headerlink" title="z-score规范化"></a>z-score规范化</h5><p>$$<br>x’=\frac{x-\overline{x}}{\sigma}<br>$$</p>
-<ul>
+<h5 id="z-score规范化"><a href="#z-score规范化" class="headerlink" title="z-score规范化"></a>z-score规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x-\overline{x}}{\sigma}</script><ul>
 <li>处理后数据均值为0，标准差为1</li>
 </ul>
 <h6 id="自己写代码-1"><a href="#自己写代码-1" class="headerlink" title="自己写代码"></a>自己写代码</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#z-score规范化</span></span><br><span class="line"><span class="built_in">print</span>((df-df.mean())/df.std())</span><br></pre></td></tr></table></figure>
-
 <h6 id="sklearn的preprocessing模块-1"><a href="#sklearn的preprocessing模块-1" class="headerlink" title="sklearn的preprocessing模块"></a>sklearn的preprocessing模块</h6><ul>
 <li>scale(df)函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#z-score规范化</span></span><br><span class="line"><span class="built_in">print</span>(preprocessing.scale(df))</span><br></pre></td></tr></table></figure>
-
-<h5 id="小数定标规范化"><a href="#小数定标规范化" class="headerlink" title="小数定标规范化"></a>小数定标规范化</h5><p>$$<br>x’=\frac{x}{10^j}<br>$$</p>
-<p>（j是移动位数）</p>
+<h5 id="小数定标规范化"><a href="#小数定标规范化" class="headerlink" title="小数定标规范化"></a>小数定标规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x}{10^j}</script><p>（j是移动位数）</p>
 <ul>
 <li>移动小数点位置，移动位数取决于<strong>属性绝对值的最大值</strong></li>
 <li>常见落在[-1, 1]之间</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment">#10的多少次方是绝对值最大值</span></span><br><span class="line"><span class="built_in">print</span>(df/<span class="number">10</span>**np.ceil(np.log10(df.<span class="built_in">abs</span>().<span class="built_in">max</span>())))</span><br></pre></td></tr></table></figure>
-
 <h5 id="连续属性离散化"><a href="#连续属性离散化" class="headerlink" title="连续属性离散化"></a>连续属性离散化</h5><p>方法：</p>
 <ul>
 <li>分箱（binning）：等宽法、等频法<ul>
@@ -1495,7 +1417,6 @@
 <li>等频：qcut函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 等宽法，标签分别是0,1,2,3,4</span></span><br><span class="line"><span class="built_in">print</span>(pd.cut(df.AGE, <span class="number">5</span>, labels=<span class="built_in">range</span>(<span class="number">5</span>)))</span><br><span class="line"><span class="comment"># 分成五个区间，(1,2],(3,4],…</span></span><br><span class="line">bins = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#等频法</span></span><br><span class="line">pd.qcut(df.AGE, <span class="number">5</span>, labels=<span class="built_in">range</span>(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
-
 <h5 id="特征二值化binarization"><a href="#特征二值化binarization" class="headerlink" title="特征二值化binarization"></a>特征二值化binarization</h5><p>设定阈值threshold，大于阈值赋值为1，小于等于阈值赋值为0</p>
 <ul>
 <li>适用于将多分类问题转换成<strong>二分类</strong>问题</li>
@@ -1526,7 +1447,6 @@
 <li>用sklearn.decomposition模块中的PCA()函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">x=preprocessing.scale(boston.data)</span><br><span class="line"></span><br><span class="line"><span class="comment">#”mle&quot;：自动选择满足所要求的方差百分比的特征个数</span></span><br><span class="line">pca=PCA(n_components=<span class="string">&quot;mle&quot;</span>)</span><br><span class="line"><span class="comment">#用x训练pca</span></span><br><span class="line">pca.fit(x)</span><br><span class="line"><span class="comment">#各个成分的方差贡献率</span></span><br><span class="line"><span class="built_in">print</span>(pca.explained_variance_ratio_)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>(pca.explained_variance_ratio_))</span><br></pre></td></tr></table></figure>
-
 <h4 id="数值规约"><a href="#数值规约" class="headerlink" title="数值规约"></a>数值规约</h4><p>方法：</p>
 <ul>
 <li>有参方法（回归法，对数线性模型）<ul>
@@ -1542,7 +1462,6 @@
 <li>本质是分箱（每个箱子表示一个属性-频率对）</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line">bins = np.linspace(data.<span class="built_in">min</span>(), data.<span class="built_in">max</span>(), <span class="number">3</span>, endpoint=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(bins)</span><br><span class="line"><span class="comment">#&gt;[1. 5. 9.]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [1, 5)，[5, 9]</span></span><br><span class="line">plt.hist(data, bins=bins, rwidth=<span class="number">0.95</span>, edgecolor=<span class="string">&quot;k&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <h5 id="无参法"><a href="#无参法" class="headerlink" title="无参法"></a>无参法</h5><h6 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h6><p>方式：</p>
 <ul>
 <li>随机抽样（放回/不放回）</li>
@@ -1558,10 +1477,8 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#有放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>, replace = <span class="literal">True</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>, replace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
 <p>分层抽样：<br>先分层（利用DataFrame的<strong>筛选</strong>功能和<strong>append方法</strong>），再用sample()抽样</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A=iris_df[iris_df.target==<span class="number">0</span>].sample(frac=<span class="number">0.3</span>)</span><br><span class="line">B=iris_df[iris_df.target==<span class="number">1</span>].sample(frac=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">A.append(B)</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -1642,6 +1559,8 @@
 
 
 
+
+  
 
 
 </body>

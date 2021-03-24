@@ -97,14 +97,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -122,14 +118,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -170,20 +158,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -274,17 +259,14 @@
 <li>可通过<code>git branch</code>命令查看分支</li>
 </ul>
 <h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><h3 id="只创建分支，不切换过去"><a href="#只创建分支，不切换过去" class="headerlink" title="只创建分支，不切换过去"></a>只创建分支，不切换过去</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch &lt;分支名&gt; &lt;所基于commit&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>不带<code>&lt;所基于commit&gt;</code>参数时默认从距当前最近的commit创建分支</li>
 </ul>
 <h3 id="创建分支的同时切换到新分支"><a href="#创建分支的同时切换到新分支" class="headerlink" title="创建分支的同时切换到新分支"></a>创建分支的同时切换到新分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-
 <h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><ul>
 <li>切换分支前必须先<code>git status</code>保证工作区是干净的（先add,，commit）</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>可用<code>git log &lt;分支名&gt;</code>查看该分支的log</li>
 </ul>
@@ -292,25 +274,20 @@
 <li>先切换到主干分支，再吸收被合并吸收的分支</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;主干分支&gt;</span><br><span class="line"></span><br><span class="line">$ git merge &lt;被合并吸收的分支&gt;</span><br></pre></td></tr></table></figure>
-
 <h3 id="合并时有冲突的情况"><a href="#合并时有冲突的情况" class="headerlink" title="合并时有冲突的情况"></a>合并时有冲突的情况</h3><p>例：初始a.txt中内容为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hh</span><br></pre></td></tr></table></figure>
-
 <p>切换到<code>bugfix</code>分支并将a.txt内容改为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hha</span><br></pre></td></tr></table></figure>
-
 <p>切换到<code>master</code>分支并将a.txt中内容改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hhh</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hhh</span></span><br></pre></td></tr></table></figure>
 <h4 id="合并有冲突的分支步骤如下："><a href="#合并有冲突的分支步骤如下：" class="headerlink" title="合并有冲突的分支步骤如下："></a>合并有冲突的分支步骤如下：</h4><ol>
 <li><p>用命令<code>git merge &lt;分支名&gt;</code>，令<code>master</code>分支吸收<code>bugfix</code>分支：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge bugfix</span><br><span class="line">Auto-merging a.txt</span><br><span class="line">CONFLICT (content): Merge conflict <span class="keyword">in</span> a.txt</span><br><span class="line">Automatic merge failed; fix conflicts and <span class="keyword">then</span> commit the result.</span><br></pre></td></tr></table></figure>
-
 <p>此时a.txt中变成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="string">HEAD</span></span><br><span class="line"><span class="string">hhh</span></span><br><span class="line"><span class="string">=======</span></span><br><span class="line"><span class="string">hha</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;&gt;&gt;&gt;&gt; bugfix</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="string">HEAD</span></span><br><span class="line"><span class="string">hhh</span></span><br><span class="line"><span class="string">=======</span></span><br><span class="line"><span class="string">hha</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;&gt;&gt;&gt;&gt; bugfix</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>需手动编辑共同修改的文件，处理被</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt; ...（主干分支）</span><br><span class="line"></span><br><span class="line">=====</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;&gt;&gt; ...（被吸收分支）</span><br></pre></td></tr></table></figure>
-
 <p>包裹的内容</p>
 </li>
 <li><p>最后再将手动修改后的文件<code>add</code>和<code>commit</code></p>
@@ -320,172 +297,9 @@
 <li>可用<code>git log --graph</code>命令直观地查看分支合并过程</li>
 </ul>
 <h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d &lt;分支&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>删除分支不会删除其commit（删除指针不会删除指针所指对象）</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/23/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/23/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Git基本操作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-23 10:32:09 / 修改时间：10:37:10" itemprop="dateCreated datePublished" datetime="2021-03-23T10:32:09+08:00">2021-03-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
-<li>工作区：电脑里看到的目录，如myrepo文件夹</li>
-<li>暂存区：add后commit前的存储区域</li>
-<li>master：commit以后的存储区域</li>
-<li>版本库：暂存区与master的并集</li>
-</ul>
-<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><h3 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir myrepo//创建文件夹</span><br><span class="line">$ <span class="built_in">cd</span> myrepo//进入文件夹</span><br><span class="line">$ <span class="built_in">pwd</span>//显示当前目录</span><br><span class="line">/c/Users/11546/Desktop/myrepo</span><br><span class="line"></span><br><span class="line">$ git init//创建Git仓库</span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> C:/Users/11546/Desktop/myrepo/.git/</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>.git目录默认隐藏，可用<code>ls-ah</code>命令看见</li>
-</ul>
-<h3 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a>把文件添加到版本库</h3><p>编写一个泊船瓜洲.txt文件，内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又到江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
-
-<p>把文件添加到Git仓库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git add 泊船瓜洲.txt//把文件添加到暂存区</span><br><span class="line"></span><br><span class="line">$ git commit -m 新建文件，包含<span class="string">&quot;春风又到江南岸&quot;</span></span><br><span class="line">[master (root-commit) 1fa6029] 新建文件，包含“春风又到江南岸”</span><br><span class="line"> 1 file changed, 3 insertions(+)</span><br><span class="line"> create mode 100644 <span class="string">&quot;\346\263\212\350\210\271\347\223\234\346\264\262.txt&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>可以add多次再统一commit</li>
-</ul>
-<h2 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h2><p>把泊船瓜洲.txt文件更改如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
-
-<p>运行<code>git status</code>查看状态：</p>
-<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309161334543.png" alt="image-20200309161334543"></p>
-<ul>
-<li><code>git status</code>可知有无需要commit的文件</li>
-</ul>
-<p>运行<code>git diff</code>查看修改内容：</p>
-<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309161549405.png" alt="image-20200309161549405"></p>
-<p>再将修改add与commit</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git add 泊船瓜洲.txt</span><br><span class="line"></span><br><span class="line">$ git commit -m 把“到”改为“满”</span><br><span class="line">[master e7e5a3f] 把“到”改为“满”</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line"> </span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
-
-<h2 id="时间穿梭"><a href="#时间穿梭" class="headerlink" title="时间穿梭"></a>时间穿梭</h2><h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>再将泊船瓜洲.txt改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又绿江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
-
-<p>将上述修改add并commit</p>
-<p>使用<code>git log</code>命令查看记录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">commit 05fc749e076386a404963258b9a61bdb724fa48c (HEAD -&gt; master)</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:21:23 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“满”改为“绿”</span><br><span class="line"></span><br><span class="line">commit e7e5a3fd383391a777d7b964f3ce74a50e01ec2b</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:00:39 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“到”改为“满”</span><br><span class="line"></span><br><span class="line">commit 1fa6029ec6f9557e83fe0f63dbeece9b04def210</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 16:00:35 2020 +0800</span><br><span class="line"></span><br><span class="line">    新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>若想一次修改显示在一行，则使用<code>$ git log --pretty=oneline</code>命令</li>
-</ul>
-<h4 id="回到上一个版本"><a href="#回到上一个版本" class="headerlink" title="回到上一个版本"></a>回到上一个版本</h4><h5 id="整个仓库"><a href="#整个仓库" class="headerlink" title="整个仓库"></a>整个仓库</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD~1</span><br><span class="line">HEAD is now at e7e5a3f 把“到”改为“满”</span><br><span class="line"></span><br><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">commit e7e5a3fd383391a777d7b964f3ce74a50e01ec2b (HEAD -&gt; master)</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:00:39 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“到”改为“满”</span><br><span class="line"></span><br><span class="line">commit 1fa6029ec6f9557e83fe0f63dbeece9b04def210</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 16:00:35 2020 +0800</span><br><span class="line"></span><br><span class="line">    新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>HEAD~1表示上一个版本</li>
-</ul>
-<h5 id="单个文件"><a href="#单个文件" class="headerlink" title="单个文件"></a>单个文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout HEAD~1 -- 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
-
-<h4 id="后悔回到上一个版本，想去未来版本（想去任何版本都通用）"><a href="#后悔回到上一个版本，想去未来版本（想去任何版本都通用）" class="headerlink" title="后悔回到上一个版本，想去未来版本（想去任何版本都通用）"></a>后悔回到上一个版本，想去未来版本（想去任何版本都通用）</h4><p>找到想去到版本的commit id</p>
-<ol>
-<li><p>若未关闭git bash，则直接往上找commit id</p>
-</li>
-<li><p>若已关闭git bash，则使用<code>git reflog</code>命令查看commit id</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">e7e5a3f (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to HEAD~1</span><br><span class="line">05fc749 HEAD@&#123;1&#125;: commit: 把“满”改为“绿”</span><br><span class="line">e7e5a3f (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: 把“到”改为“满”</span><br><span class="line">1fa6029 HEAD@&#123;3&#125;: commit (initial): 新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>将泊船瓜洲.txt改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br><span class="line">不开心</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><p>文件修改后还未放到暂存区，撤销修改回到跟版本库一样的状态（上一次commit）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- 泊船瓜洲.txt</span><br><span class="line"></span><br><span class="line">$ cat 泊船瓜洲.txt</span><br><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure></li>
-<li><p>文件add到暂存区后又做了修改，撤销修改回到add到暂存区后状态</p>
-<p>​    （1）先使得暂存区变干净，工作区有修改：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD 泊船瓜洲.txt</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M       泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309182733019.png" alt="image-20200309182733019">    </p>
-<ul>
-<li>HEAD表示当前版本</li>
-</ul>
-<p>​    （2）再将工作区的修改用<code>git checkout -- 泊船瓜洲.txt</code>命令清除</p>
-</li>
-</ol>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>从文件管理器中删除泊船瓜洲.txt</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
-
-<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309183612834.png" alt="image-20200309183612834">    </p>
-<ol>
-<li><p>误删</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>实质是用版本库里的版本替换工作区里的版本</li>
-</ul>
-</li>
-<li><p>确实要从版本库中删除</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm 泊船瓜洲.txt</span><br><span class="line">rm <span class="string">&#x27;泊船瓜洲.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">$ git commit -m 删除泊船瓜洲.txt</span><br><span class="line">[master 99387e8] 删除泊船瓜洲.txt</span><br><span class="line"> 1 file changed, 3 deletions(-)</span><br><span class="line"> delete mode 100644 <span class="string">&quot;\346\263\212\350\210\271\347\223\234\346\264\262.txt&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
 
       
     </div>
@@ -551,17 +365,171 @@
     <div class="post-body" itemprop="articleBody">
           <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/03/23/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/03/23/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Git基本操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-23 10:32:09" itemprop="dateCreated datePublished" datetime="2019-03-23T10:32:09+08:00">2019-03-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-24 17:40:29" itemprop="dateModified" datetime="2021-03-24T17:40:29+08:00">2021-03-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>工作区：电脑里看到的目录，如myrepo文件夹</li>
+<li>暂存区：add后commit前的存储区域</li>
+<li>master：commit以后的存储区域</li>
+<li>版本库：暂存区与master的并集</li>
+</ul>
+<h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><h3 id="创建git仓库"><a href="#创建git仓库" class="headerlink" title="创建git仓库"></a>创建git仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir myrepo//创建文件夹</span><br><span class="line">$ <span class="built_in">cd</span> myrepo//进入文件夹</span><br><span class="line">$ <span class="built_in">pwd</span>//显示当前目录</span><br><span class="line">/c/Users/11546/Desktop/myrepo</span><br><span class="line"></span><br><span class="line">$ git init//创建Git仓库</span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> C:/Users/11546/Desktop/myrepo/.git/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>.git目录默认隐藏，可用<code>ls-ah</code>命令看见</li>
+</ul>
+<h3 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a>把文件添加到版本库</h3><p>编写一个泊船瓜洲.txt文件，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又到江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
+<p>把文件添加到Git仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git add 泊船瓜洲.txt//把文件添加到暂存区</span><br><span class="line"></span><br><span class="line">$ git commit -m 新建文件，包含<span class="string">&quot;春风又到江南岸&quot;</span></span><br><span class="line">[master (root-commit) 1fa6029] 新建文件，包含“春风又到江南岸”</span><br><span class="line"> 1 file changed, 3 insertions(+)</span><br><span class="line"> create mode 100644 <span class="string">&quot;\346\263\212\350\210\271\347\223\234\346\264\262.txt&quot;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以add多次再统一commit</li>
+</ul>
+<h2 id="修改文件"><a href="#修改文件" class="headerlink" title="修改文件"></a>修改文件</h2><p>把泊船瓜洲.txt文件更改如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
+<p>运行<code>git status</code>查看状态：</p>
+<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309161334543.png" alt="image-20200309161334543"></p>
+<ul>
+<li><code>git status</code>可知有无需要commit的文件</li>
+</ul>
+<p>运行<code>git diff</code>查看修改内容：</p>
+<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309161549405.png" alt="image-20200309161549405"></p>
+<p>再将修改add与commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git add 泊船瓜洲.txt</span><br><span class="line"></span><br><span class="line">$ git commit -m 把“到”改为“满”</span><br><span class="line">[master e7e5a3f] 把“到”改为“满”</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line"> </span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
+<h2 id="时间穿梭"><a href="#时间穿梭" class="headerlink" title="时间穿梭"></a>时间穿梭</h2><h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>再将泊船瓜洲.txt改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又绿江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
+<p>将上述修改add并commit</p>
+<p>使用<code>git log</code>命令查看记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">commit 05fc749e076386a404963258b9a61bdb724fa48c (HEAD -&gt; master)</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:21:23 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“满”改为“绿”</span><br><span class="line"></span><br><span class="line">commit e7e5a3fd383391a777d7b964f3ce74a50e01ec2b</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:00:39 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“到”改为“满”</span><br><span class="line"></span><br><span class="line">commit 1fa6029ec6f9557e83fe0f63dbeece9b04def210</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 16:00:35 2020 +0800</span><br><span class="line"></span><br><span class="line">    新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure>
+<ul>
+<li>若想一次修改显示在一行，则使用<code>$ git log --pretty=oneline</code>命令</li>
+</ul>
+<h4 id="回到上一个版本"><a href="#回到上一个版本" class="headerlink" title="回到上一个版本"></a>回到上一个版本</h4><h5 id="整个仓库"><a href="#整个仓库" class="headerlink" title="整个仓库"></a>整个仓库</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD~1</span><br><span class="line">HEAD is now at e7e5a3f 把“到”改为“满”</span><br><span class="line"></span><br><span class="line">$ git <span class="built_in">log</span></span><br><span class="line">commit e7e5a3fd383391a777d7b964f3ce74a50e01ec2b (HEAD -&gt; master)</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 17:00:39 2020 +0800</span><br><span class="line"></span><br><span class="line">    把“到”改为“满”</span><br><span class="line"></span><br><span class="line">commit 1fa6029ec6f9557e83fe0f63dbeece9b04def210</span><br><span class="line">Author: jkq &lt;1154609706@qq.com&gt;</span><br><span class="line">Date:   Mon Mar 9 16:00:35 2020 +0800</span><br><span class="line"></span><br><span class="line">    新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure>
+<ul>
+<li>HEAD~1表示上一个版本</li>
+</ul>
+<h5 id="单个文件"><a href="#单个文件" class="headerlink" title="单个文件"></a>单个文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout HEAD~1 -- 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
+<h4 id="后悔回到上一个版本，想去未来版本（想去任何版本都通用）"><a href="#后悔回到上一个版本，想去未来版本（想去任何版本都通用）" class="headerlink" title="后悔回到上一个版本，想去未来版本（想去任何版本都通用）"></a>后悔回到上一个版本，想去未来版本（想去任何版本都通用）</h4><p>找到想去到版本的commit id</p>
+<ol>
+<li><p>若未关闭git bash，则直接往上找commit id</p>
+</li>
+<li><p>若已关闭git bash，则使用<code>git reflog</code>命令查看commit id</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">e7e5a3f (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to HEAD~1</span><br><span class="line">05fc749 HEAD@&#123;1&#125;: commit: 把“满”改为“绿”</span><br><span class="line">e7e5a3f (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: 把“到”改为“满”</span><br><span class="line">1fa6029 HEAD@&#123;3&#125;: commit (initial): 新建文件，包含“春风又到江南岸”</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>将泊船瓜洲.txt改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br><span class="line">不开心</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>文件修改后还未放到暂存区，撤销修改回到跟版本库一样的状态（上一次commit）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- 泊船瓜洲.txt</span><br><span class="line"></span><br><span class="line">$ cat 泊船瓜洲.txt</span><br><span class="line">《泊船瓜洲》</span><br><span class="line">京口瓜洲一水间，钟山只隔数重山。</span><br><span class="line">春风又满江南岸，明月何时照我还。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件add到暂存区后又做了修改，撤销修改回到add到暂存区后状态</p>
+<p>​    （1）先使得暂存区变干净，工作区有修改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD 泊船瓜洲.txt</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M       泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309182733019.png" alt="image-20200309182733019">    </p>
+<ul>
+<li>HEAD表示当前版本</li>
+</ul>
+<p>​    （2）再将工作区的修改用<code>git checkout -- 泊船瓜洲.txt</code>命令清除</p>
+</li>
+</ol>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>从文件管理器中删除泊船瓜洲.txt</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\11546\AppData\Roaming\Typora\typora-user-images\image-20200309183612834.png" alt="image-20200309183612834">    </p>
+<ol>
+<li><p>误删</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- 泊船瓜洲.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>实质是用版本库里的版本替换工作区里的版本</li>
+</ul>
+</li>
+<li><p>确实要从版本库中删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm 泊船瓜洲.txt</span><br><span class="line">rm <span class="string">&#x27;泊船瓜洲.txt&#x27;</span></span><br><span class="line"></span><br><span class="line">$ git commit -m 删除泊船瓜洲.txt</span><br><span class="line">[master 99387e8] 删除泊船瓜洲.txt</span><br><span class="line"> 1 file changed, 3 deletions(-)</span><br><span class="line"> delete mode 100644 <span class="string">&quot;\346\263\212\350\210\271\347\223\234\346\264\262.txt&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
@@ -642,6 +610,8 @@
 
 
 
+
+  
 
 
 </body>

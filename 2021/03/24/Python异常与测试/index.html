@@ -23,12 +23,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"colahua.tech","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="Python 异常与测试 可用循环重复输入  异常raise抛出异常例： 1raise StopIteration  try-except语句例： 12345678910try:    num1&#x3D;int(input(&quot;first number:&quot;))    num2&#x3D;int(input(&quot;second number:&quot;))    print(num1&#x2F;num">
+<meta name="description" content="Python 异常与测试 可用循环重复输入  异常raise抛出异常例： 1raise StopIteration try-except语句例： 12345678910try:    num1&#x3D;int(input(&quot;first number:&quot;))    num2&#x3D;int(input(&quot;second number:&quot;))    print(num1&#x2F;num2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python异常与测试">
 <meta property="og:url" content="http://colahua.tech/2021/03/24/Python%E5%BC%82%E5%B8%B8%E4%B8%8E%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="JKQ&#39;s Blog">
-<meta property="og:description" content="Python 异常与测试 可用循环重复输入  异常raise抛出异常例： 1raise StopIteration  try-except语句例： 12345678910try:    num1&#x3D;int(input(&quot;first number:&quot;))    num2&#x3D;int(input(&quot;second number:&quot;))    print(num1&#x2F;num">
+<meta property="og:description" content="Python 异常与测试 可用循环重复输入  异常raise抛出异常例： 1raise StopIteration try-except语句例： 12345678910try:    num1&#x3D;int(input(&quot;first number:&quot;))    num2&#x3D;int(input(&quot;second number:&quot;))    print(num1&#x2F;num2">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-24T08:15:18.000Z">
 <meta property="article:modified_time" content="2021-03-24T08:21:44.825Z">
@@ -100,14 +100,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -125,14 +121,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -174,20 +162,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -279,18 +264,13 @@
 </ul>
 <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><h3 id="raise"><a href="#raise" class="headerlink" title="raise"></a>raise</h3><p>抛出异常<br>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">raise</span> StopIteration</span><br></pre></td></tr></table></figure>
-
 <h3 id="try-except语句"><a href="#try-except语句" class="headerlink" title="try-except语句"></a>try-except语句</h3><p>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    num1=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;first number:&quot;</span>))</span><br><span class="line">    num2=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;second number:&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(num1/num2)</span><br><span class="line"><span class="keyword">except</span> ValueError <span class="keyword">as</span> err:</span><br><span class="line">    <span class="built_in">print</span>(err)</span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> err:</span><br><span class="line">    <span class="built_in">print</span>(err)</span><br><span class="line"><span class="comment">#except Exception as err:空except检查所有错误</span></span><br><span class="line">    <span class="comment">#print(err)</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="else语句"><a href="#else语句" class="headerlink" title="else语句"></a>else语句</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    num1=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;first number:&quot;</span>))</span><br><span class="line">    num2=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;second number:&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(num1/num2)</span><br><span class="line"><span class="keyword">except</span> (ValueError, ZeroDivisionError):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;invalid input&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;everything is ok&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h3 id="finally语句"><a href="#finally语句" class="headerlink" title="finally语句"></a>finally语句</h3><p>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    num1=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;first number:&quot;</span>))</span><br><span class="line">    num2=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;second number:&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(num1/num2)</span><br><span class="line"><span class="keyword">except</span> IOError:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;fail open&quot;</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    f.close()</span><br><span class="line">    <span class="comment">#如果文件打开失败还是会报错，因为f没有值</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="上下文管理器和with语句（多用于文件、数据库）"><a href="#上下文管理器和with语句（多用于文件、数据库）" class="headerlink" title="上下文管理器和with语句（多用于文件、数据库）"></a>上下文管理器和with语句（多用于文件、数据库）</h3><p>定义和控制代码块执行前的准备动作及执行后的收尾工作<br>例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;data.txt&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="comment">#将文件对象赋给f</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">        <span class="built_in">print</span>(line, end=<span class="string">&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="断言assert"><a href="#断言assert" class="headerlink" title="断言assert"></a>断言assert</h3><ul>
 <li>多用于测试函数<br>例：</li>
 </ul>
@@ -387,6 +367,8 @@
 
 
 
+
+  
 
 
 </body>

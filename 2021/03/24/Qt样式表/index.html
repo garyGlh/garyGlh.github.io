@@ -101,14 +101,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -126,14 +122,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -175,20 +163,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -284,11 +269,9 @@
 </ul>
 <p>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">QCheckBox, QComboBox, QSpinBox&#123;</span><br><span class="line">    color: red;</span><br><span class="line">    background-color: white;</span><br><span class="line">    font: bold;<span class="comment">//字体：加粗</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="方箱模型"><a href="#方箱模型" class="headerlink" title="方箱模型"></a>方箱模型</h2><p>样式表中，每个部件被看做是一个由四个同心相似的矩阵组成的箱体</p>
 <ul>
-<li><p>空白margin：<br>空白区域位于边框外，是透明的</p>
-</li>
+<li>空白margin：<br>空白区域位于边框外，是透明的</li>
 <li><p>边框border：<br>边框为部件提供了四周的框架，其border-style属性可以设置为一些内置框架风格，如inset, outset, solid和ridge</p>
 </li>
 <li><p>填充padding：<br>填充在边框和内容区域之间提供了空白间隔</p>
@@ -311,7 +294,6 @@
 </ul>
 <h2 id="创建可缩放样式"><a href="#创建可缩放样式" class="headerlink" title="创建可缩放样式"></a>创建可缩放样式</h2><p>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;QPushButton&#123;&quot;</span></span><br><span class="line">   <span class="string">&quot;border-width: 4px;&quot;</span></span><br><span class="line">   <span class="string">&quot; border-image: url(图片路径) ;&quot;</span></span><br><span class="line"> <span class="string">&quot;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>裁剪原图片：<br><code>border-image: url(图片路径) 4 4 4 4 strech strrech;</code></li>
 </ul>
@@ -319,7 +301,6 @@
 <h2 id="处理伪状态"><a href="#处理伪状态" class="headerlink" title="处理伪状态"></a>处理伪状态</h2><p>部件的<strong>外观</strong>按照用户界面元素<strong>状态</strong>的不同来分别定义</p>
 <p>格式：<code>selector: 伪状态&#123; attribute: value&#125;</code><br>例（按压改变图片）：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;pushButton-&gt;<span class="built_in">setStyleSheet</span>(<span class="string">&quot;QPushButton&#123;&quot;</span>                       </span><br><span class="line">                                         <span class="string">&quot;border-image:url(图片路径);&quot;</span></span><br><span class="line">                                         <span class="string">&quot;&#125;&quot;</span>                   </span><br><span class="line">                                         <span class="string">&quot;QPushButton: hover&#123;&quot;</span></span><br><span class="line">                                         <span class="string">&quot;border-image:url(图片路径);&quot;</span></span><br><span class="line">                                         <span class="string">&quot;&#125;&quot;</span>                                </span><br><span class="line">                                         )</span><br></pre></td></tr></table></figure>
-
 <h3 id="可用伪状态列表"><a href="#可用伪状态列表" class="headerlink" title="可用伪状态列表"></a>可用伪状态列表</h3><ul>
 <li>checked：button部件被选中</li>
 <li>disabled：部件被禁用</li>
@@ -441,6 +422,8 @@
 
 
 
+
+  
 
 
 </body>

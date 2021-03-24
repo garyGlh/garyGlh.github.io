@@ -101,14 +101,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -126,14 +122,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -175,20 +163,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -286,7 +271,6 @@
 <li>转到槽：右键点按钮，自动生成槽函数<br>例（自动生成的槽函数）：</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> i=<span class="number">0</span>;<span class="comment">//静态</span></span><br><span class="line">ui-&gt;stackedWidget-&gt;<span class="built_in">setCurrentIndex</span>(++i % <span class="number">4</span>);<span class="comment">//假设stackedWidget有4页</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="Tool-Button"><a href="#Tool-Button" class="headerlink" title="Tool Button"></a>Tool Button</h4><p>与Push Button无大区别</p>
 <h4 id="Ratio-Button"><a href="#Ratio-Button" class="headerlink" title="Ratio Button"></a>Ratio Button</h4><p>单选按钮</p>
 <h4 id="Check-Box"><a href="#Check-Box" class="headerlink" title="Check Box"></a>Check Box</h4><p>多选按钮</p>
@@ -326,7 +310,6 @@
 <li>单位是像素</li>
 </ul>
 <h5 id="设置提示"><a href="#设置提示" class="headerlink" title="设置提示"></a>设置提示</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QStringList&gt;</span><span class="comment">//字符串列表</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QCompleter&gt;</span></span></span><br><span class="line"></span><br><span class="line">QStringList list;</span><br><span class="line">list&lt;&lt;&quot;hello&quot;&lt;&lt;&quot;How are you&quot;&lt;&lt;&quot;hehe&quot;;//类似cin</span><br><span class="line"></span><br><span class="line">QCompleter *com=<span class="keyword">new</span> QCompleter(list, <span class="keyword">this</span>);</span><br><span class="line">com-&gt;<span class="built_in">setCaseSensitivity</span>(Qt::CaseInsensitive);<span class="comment">//区分大小写</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="Text-Edit"><a href="#Text-Edit" class="headerlink" title="Text Edit"></a>Text Edit</h4><p>文本编辑区，可以写多行</p>
 <ul>
 <li>可显示图片、网页</li>
@@ -354,17 +337,14 @@
 </li>
 </ul>
 </li>
-<li><p>代码</p>
-<ul>
+<li>代码<ul>
 <li>添加图片：<code>ui-&gt;labelImage-&gt;setPixmap(QPixmap(&quot;图片路径&quot;));</code></li>
 <li>使图片自动适应Label大小：<code>ui-&gt;labelImage-&gt;setScaledContents(true)</code></li>
 </ul>
 </li>
 </ol>
 <h5 id="动画（gif）"><a href="#动画（gif）" class="headerlink" title="动画（gif）"></a>动画（gif）</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建动画</span></span><br><span class="line">QMovie *myMovie=<span class="keyword">new</span> <span class="built_in">QMovie</span>(<span class="string">&quot;动画路径&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置动画</span></span><br><span class="line">ui-&gt;labelGif-&gt;<span class="built_in">setMovie</span>(myMovie);</span><br><span class="line"></span><br><span class="line"><span class="comment">//启动动画</span></span><br><span class="line">myMovie-&gt;<span class="built_in">start</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//自动适应Label大小</span></span><br><span class="line">ui-&gt;labelGif-&gt;<span class="built_in">setScaledContents</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-
 <h5 id="链接（HTML格式的字符串）"><a href="#链接（HTML格式的字符串）" class="headerlink" title="链接（HTML格式的字符串）"></a>链接（HTML格式的字符串）</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;labelUrl-&gt;<span class="built_in">setText</span>(&lt;h1&gt;&lt;a href=\<span class="string">&quot;https://www.baidu.com\&quot;&gt;百度一下&lt;/a&gt;&lt;/h1&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//点击链接自动打开</span></span><br><span class="line">ui-&gt;labelUrl-&gt;<span class="built_in">setOpenExternalLinks</span>(<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-
 <h4 id="Text-Browser"><a href="#Text-Browser" class="headerlink" title="Text Browser"></a>Text Browser</h4><p>文本浏览器，显示文本</p>
 <h4 id="Calender-Widget"><a href="#Calender-Widget" class="headerlink" title="Calender Widget"></a>Calender Widget</h4><p>日历</p>
 <h4 id="LCD-Number"><a href="#LCD-Number" class="headerlink" title="LCD Number"></a>LCD Number</h4><p>数码管（比分）</p>
@@ -372,13 +352,11 @@
 <li>可显示字符串、整型</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;lcdNumber-&gt;<span class="built_in">display</span>(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
-
 <h4 id="Progress-Bar"><a href="#Progress-Bar" class="headerlink" title="Progress Bar"></a>Progress Bar</h4><p>进度条（显示百分比）</p>
 <ul>
 <li>默认0~100</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置最小值</span></span><br><span class="line">ui-&gt;progressBar-&gt;<span class="built_in">setMinumum</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置最大值</span></span><br><span class="line">ui-&gt;progressBar-&gt;<span class="built_in">setMaximum</span>(<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置当前值</span></span><br><span class="line">ui-&gt;progressBar-&gt;<span class="built_in">setValue</span>(<span class="number">100</span>);</span><br></pre></td></tr></table></figure>
-
 <h4 id="Horizontal-Line"><a href="#Horizontal-Line" class="headerlink" title="Horizontal Line"></a>Horizontal Line</h4><p>水平分隔线</p>
 <h4 id="Vertical-Line"><a href="#Vertical-Line" class="headerlink" title="Vertical Line"></a>Vertical Line</h4><p>垂直分隔线</p>
 <h4 id="QDeclarativeView"><a href="#QDeclarativeView" class="headerlink" title="QDeclarativeView"></a>QDeclarativeView</h4><p>多用于qml</p>
@@ -388,7 +366,6 @@
 <li>项目文件加上模块：<code>QT+=webkitwidgets</code></li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;webView-&gt;<span class="built_in">load</span>(<span class="built_in">QUrl</span>(<span class="string">&quot;http://www.baidu.com&quot;</span>));</span><br></pre></td></tr></table></figure>
-
 <h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>Qt有两种组件定位机制：绝对定位和布局定位</p>
 <h3 id="布局分类"><a href="#布局分类" class="headerlink" title="布局分类"></a>布局分类</h3><p>水平/垂直/网格/分裂器布局</p>
 <ul>
@@ -500,6 +477,8 @@
 
 
 
+
+  
 
 
 </body>

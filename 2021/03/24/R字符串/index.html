@@ -100,14 +100,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -125,14 +121,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -174,20 +162,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -275,9 +260,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">paste(<span class="string">&#x27;one plus one is&#x27;</span>, <span class="number">1</span>+<span class="number">1</span>, <span class="string">&#x27;!&#x27;</span>)</span><br><span class="line">//one plus one equals <span class="number">2</span> !，连接各段</span><br><span class="line"></span><br><span class="line">paste(<span class="string">&#x27;one plus one is&#x27;</span>, <span class="number">1</span>+<span class="number">1</span>, sep=<span class="string">&#x27;=&#x27;</span>)</span><br><span class="line">//one plus one=<span class="number">2</span>，分隔符</span><br><span class="line"></span><br><span class="line">sprintf(<span class="string">&#x27;one plus one=%d&#x27;</span>, <span class="number">1</span>+<span class="number">1</span>)</span><br><span class="line">//one plus one=<span class="number">2</span>，C语言</span><br></pre></td></tr></table></figure>
-
 <h3 id="文件名"><a href="#文件名" class="headerlink" title="文件名"></a>文件名</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">filename=<span class="string">&#x27;some_file.csv&#x27;</span></span><br><span class="line">paste0(<span class="string">&#x27;path/to/&#x27;</span>, filename)</span><br><span class="line">//path/to/some_file.csv</span><br><span class="line"></span><br><span class="line">file.path(<span class="string">&#x27;path&#x27;</span>, <span class="string">&#x27;to&#x27;</span>, filename)</span><br><span class="line">//path/to/some_file.csv</span><br></pre></td></tr></table></figure>
-
 <h3 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h3><ul>
 <li>小写转大写：toupper(s)</li>
 <li>大写转小写：tolower(s)</li>
@@ -375,6 +358,8 @@
 
 
 
+
+  
 
 
 </body>

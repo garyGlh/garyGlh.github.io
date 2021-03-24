@@ -117,7 +117,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/07/30/oGtaL2YPkEBNfcM.png">
 <meta property="og:image" content="https://i.loli.net/2020/07/30/r2Adtij7WnHOSlM.png">
 <meta property="article:published_time" content="2021-03-24T09:21:58.000Z">
-<meta property="article:modified_time" content="2021-03-24T09:22:47.386Z">
+<meta property="article:modified_time" content="2021-03-24T09:32:08.399Z">
 <meta property="article:author" content="JennyKQ">
 <meta property="article:tag" content="数学模型">
 <meta name="twitter:card" content="summary">
@@ -187,14 +187,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -212,14 +208,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -261,20 +249,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -339,7 +324,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-03-24 17:21:58 / 修改时间：17:22:47" itemprop="dateCreated datePublished" datetime="2021-03-24T17:21:58+08:00">2021-03-24</time>
+      <time title="创建时间：2021-03-24 17:21:58 / 修改时间：17:32:08" itemprop="dateCreated datePublished" datetime="2021-03-24T17:21:58+08:00">2021-03-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -425,20 +410,26 @@
 <p>令</p>
 </li>
 </ul>
-<p>  $$<br>  r_{ij}=\frac{a_{ij}}{\underset{i}{\max a_{ij}}}<br>  $$<br>  或<br>  $$<br>  r_{ij}=\frac{a_{ij}-\underset{i}{\min}a_{ij}}{\underset{i}\max a_{ij}-\underset{i}{\min}a_{ij}}<br>  $$</p>
-<ul>
+<script type="math/tex; mode=display">
+  r_{ij}=\frac{a_{ij}}{\underset{i}{\max a_{ij}}}</script><p>  或</p>
+<script type="math/tex; mode=display">
+  r_{ij}=\frac{a_{ij}-\underset{i}{\min}a_{ij}}{\underset{i}\max a_{ij}-\underset{i}{\min}a_{ij}}</script><ul>
 <li><p>成本型：越小越好</p>
 <p>令</p>
 </li>
 </ul>
-<p>  $$<br>  r_{ij}=\frac{\underset{i}\min a_{ij}}{a_{ij}}<br>  $$<br>  或<br>  $$<br>  r_{ij}=\frac{\underset{i}{\max}a_{ij}-a_{ij}}{\underset{i}{\max}a_{ij}-\underset{i}{\min}a_{ij}}<br>  $$</p>
-<ul>
+<script type="math/tex; mode=display">
+  r_{ij}=\frac{\underset{i}\min a_{ij}}{a_{ij}}</script><p>  或</p>
+<script type="math/tex; mode=display">
+  r_{ij}=\frac{\underset{i}{\max}a_{ij}-a_{ij}}{\underset{i}{\max}a_{ij}-\underset{i}{\min}a_{ij}}</script><ul>
 <li><p>固定型：越接近某个固定值$\alpha_{j}$越好</p>
-<p>令<br>$$<br>r_{ij}=1-\frac{a_{ij}-\alpha <em>j}{\underset{i}{\max}\left| a</em>{ij}-\alpha _j \right|}<br>$$</p>
-</li>
+<p>令</p>
+<script type="math/tex; mode=display">
+r_{ij}=1-\frac{a_{ij}-\alpha _j}{\underset{i}{\max}\left| a_{ij}-\alpha _j \right|}</script></li>
 <li><p>偏离型：越接近某个固定值$\beta_{j}$越好</p>
-<p>令<br>$$<br>r_{ij}=\left| a_{ij}-\beta <em>j \right|-\frac{\min_i \left| a</em>{ij}-\beta <em>j \right|}{\underset{i}{\max}\left| a</em>{ij}-\beta <em>j \right|-\min_i \left| a</em>{ij}-\beta _j \right|}<br>$$</p>
-</li>
+<p>令</p>
+<script type="math/tex; mode=display">
+r_{ij}=\left| a_{ij}-\beta _j \right|-\frac{\min_i \left| a_{ij}-\beta _j \right|}{\underset{i}{\max}\left| a_{ij}-\beta _j \right|-\min_i \left| a_{ij}-\beta _j \right|}</script></li>
 <li><p>区间型：越接近某个固定区间[$q_{1}$，$q_{2}$]越好（包括落入区间）</p>
 <p>令</p>
 <p><img src="https://i.loli.net/2020/07/23/blCKrgDjdYnNapw.png" alt="image-20200723110552166"></p>
@@ -453,11 +444,11 @@
 <li>属性值归一化处理</li>
 </ol>
 <p><img src="https://i.loli.net/2020/07/23/Yk6jI7MFAqxiarv.png" alt="image-20200723110753010"></p>
-<ol start="2">
+<ol>
 <li>计算属性权重（层次分析法）</li>
 </ol>
 <p><img src="https://i.loli.net/2020/07/23/nwPykEYl1ZSUW3D.png" alt="image-20200723110919904"></p>
-<ol start="3">
+<ol>
 <li><p>由属性权重和属性值计算总得分</p>
 <p><img src="https://i.loli.net/2020/07/23/RaSWu8ktLdKXVHl.png" alt="image-20200723111135697"></p>
 </li>
@@ -470,7 +461,13 @@
 <p>例：</p>
 <p><img src="https://i.loli.net/2020/07/23/xweO5H8VjSQITCo.png" alt="image-20200723113440369"></p>
 <h4 id="GM（1-1）模型（一阶微分方程）"><a href="#GM（1-1）模型（一阶微分方程）" class="headerlink" title="GM（1,1）模型（一阶微分方程）"></a>GM（1,1）模型（一阶微分方程）</h4><p>灰色系统对离散序列建立的微分方程</p>
-<p>GM（1,1）形式为<br>$$<br>\frac{dx}{dt}+ax=u<br>$$<br>离散形式：<br>$$<br>\varDelta ^{\left( 1 \right)}\left( x^{\left( 1 \right)}\left( k+1 \right) \right) +a\left( x\left( k+1 \right) \right) =u<br>$$<br>预测公式：<br>$$<br>\hat{x}^{\left( 1 \right)}\left( k+1 \right) =\left[ x^{\left( 1 \right)}\left( 1 \right) -\frac{\hat{u}}{\hat{a}} \right] e^{-\hat{a}k}+\frac{\hat{u}}{\hat{a}}<br>$$<br><img src="https://i.loli.net/2020/07/23/R897TnrKXZV4P3Q.png" alt="image-20200723114402681"></p>
+<p>GM（1,1）形式为</p>
+<script type="math/tex; mode=display">
+\frac{dx}{dt}+ax=u</script><p>离散形式：</p>
+<script type="math/tex; mode=display">
+\varDelta ^{\left( 1 \right)}\left( x^{\left( 1 \right)}\left( k+1 \right) \right) +a\left( x\left( k+1 \right) \right) =u</script><p>预测公式：</p>
+<script type="math/tex; mode=display">
+\hat{x}^{\left( 1 \right)}\left( k+1 \right) =\left[ x^{\left( 1 \right)}\left( 1 \right) -\frac{\hat{u}}{\hat{a}} \right] e^{-\hat{a}k}+\frac{\hat{u}}{\hat{a}}</script><p><img src="https://i.loli.net/2020/07/23/R897TnrKXZV4P3Q.png" alt="image-20200723114402681"></p>
 <p><img src="https://i.loli.net/2020/07/23/2KyTcp3bnrloGLB.png" alt="image-20200723114426251"></p>
 <h5 id="GM（1-1）模型的精度检验"><a href="#GM（1-1）模型的精度检验" class="headerlink" title="GM（1,1）模型的精度检验"></a>GM（1,1）模型的精度检验</h5><p>相对误差大小检验法、关联度检验法和后验差检验法</p>
 <h6 id="后验差检验法"><a href="#后验差检验法" class="headerlink" title="后验差检验法"></a>后验差检验法</h6><p><img src="https://i.loli.net/2020/07/23/tZjYsIhvn2EbTLW.png" alt="image-20200723114557727"></p>
@@ -541,7 +538,7 @@
 <li>状态概率</li>
 </ol>
 <p><img src="https://i.loli.net/2020/07/24/3XgKfeYcwZi7kqu.png" alt="image-20200724090152269"></p>
-<ol start="2">
+<ol>
 <li><p>主要运行指标</p>
 <p><img src="https://i.loli.net/2020/07/24/vT2yBDktGMI84ol.png" alt="image-20200724090304332"></p>
 </li>
@@ -554,7 +551,6 @@
 <h5 id="举例-4"><a href="#举例-4" class="headerlink" title="举例"></a>举例</h5><p><img src="https://i.loli.net/2020/07/24/ZKXiTe7oqytDYh8.png" alt="image-20200724100239700"></p>
 <p><img src="https://i.loli.net/2020/07/24/hyYsJwdEXcI8bTl.png" alt="image-20200724100344648"></p>
 <h3 id="线性规划-1"><a href="#线性规划-1" class="headerlink" title="线性规划"></a>线性规划</h3><h4 id="Lingo操作"><a href="#Lingo操作" class="headerlink" title="Lingo操作"></a>Lingo操作</h4><h5 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@gin(x1);&#x2F;&#x2F;x1为整数</span><br></pre></td></tr></table></figure>
-
 <h3 id="0-1规划"><a href="#0-1规划" class="headerlink" title="0-1规划"></a>0-1规划</h3><h4 id="举例-5"><a href="#举例-5" class="headerlink" title="举例"></a>举例</h4><p><img src="https://i.loli.net/2020/07/29/Hzf6ScrqOWBxdGE.png" alt="image-20200729171620238"></p>
 <p>目标函数和约束条件：</p>
 <p><img src="https://i.loli.net/2020/07/29/KvZzSYxulTUAD8m.png" alt="image-20200729171658998"></p>
@@ -698,6 +694,39 @@
   
 
 
+
+
+  <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'none'
+      },
+      options: {
+        renderActions: {
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
 

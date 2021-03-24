@@ -101,14 +101,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -126,14 +122,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -175,20 +163,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -281,24 +266,20 @@
 <li>子窗口中根据<strong>真实信号</strong>定义槽函数，给主窗口发“邮件”</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SubWidget::<span class="built_in">SubWidget</span>(QWidget *parent) : <span class="built_in">QWidget</span>(parent)</span><br><span class="line">&#123;    </span><br><span class="line">    <span class="built_in">setWindowTitle</span>(<span class="string">&quot;小弟&quot;</span>);   </span><br><span class="line">    b4.<span class="built_in">setParent</span>(<span class="keyword">this</span>);   </span><br><span class="line">    b4.<span class="built_in">setText</span>(<span class="string">&quot;切换到主窗口&quot;</span>);                                       <span class="built_in">connect</span>(&amp;b4,&amp;QPushButton::clicked,<span class="keyword">this</span> ,&amp;SubWidget::sendSlot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SubWidget::sendSlot</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="function">emit <span class="title">mySignal</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol>
 <li>在主窗口connect子窗口发来的“邮件”</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理子窗口的信号    connect(&amp;w,&amp;SubWidget::mySignal,this,&amp;MyWidget::dealSub);</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="模态对话框和非模态对话框"><a href="#模态对话框和非模态对话框" class="headerlink" title="模态对话框和非模态对话框"></a>模态对话框和非模态对话框</h2><h3 id="模态对话框"><a href="#模态对话框" class="headerlink" title="模态对话框"></a>模态对话框</h3><p>只能操作当前窗口，无法操作其他窗口<br><code>dlg.exec();</code></p>
 <h3 id="非模态对话框"><a href="#非模态对话框" class="headerlink" title="非模态对话框"></a>非模态对话框</h3><ol>
 <li>将dlg定义为成员【好】</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类里定义QDialog dlg;</span></span><br><span class="line">dlg.<span class="built_in">show</span>();               </span><br><span class="line"><span class="built_in">qDebug</span>()&lt;&lt;<span class="built_in">QStringLiteral</span>(<span class="string">&quot;非模态对话框&quot;</span>);   </span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol>
 <li>动态分配空间（指定父对象）【不好】   </li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> <span class="built_in">QDialog</span>(<span class="keyword">this</span>);<span class="comment">//多次点击会内存越界</span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();     </span><br></pre></td></tr></table></figure>
-
-<ol start="3">
+<ol>
 <li>动态分配空间（不指定父对象）【好】</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> QDialog;              </span><br><span class="line">p-&gt;<span class="built_in">setAttribute</span>(Qt::WA_DeleteOnClose);<span class="comment">//关闭才释放  </span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();</span><br></pre></td></tr></table></figure>
@@ -395,6 +376,8 @@
 
 
 
+
+  
 
 
 </body>

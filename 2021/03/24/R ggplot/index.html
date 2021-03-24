@@ -100,14 +100,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -125,14 +121,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -174,20 +162,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -307,16 +292,13 @@
 <li>等高线：geom_contour</li>
 </ul>
 <h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ggplot(data, aes(x=variable,y=variable, size/fill/color=variable))</span><br><span class="line">+geom_bar/histogram/…(color=, size=, fill=, shape=)</span><br><span class="line">+facet_warp(~变量，ncol=,nrow=) +labs(x=,y=,title=)</span><br></pre></td></tr></table></figure>
-
 <h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><h4 id="组距"><a href="#组距" class="headerlink" title="组距"></a>组距</h4><p><code>binwidth</code></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="密度直方图"><a href="#密度直方图" class="headerlink" title="密度直方图"></a>密度直方图</h4><p><code>y=..density..</code></p>
 <ul>
 <li>默认是<code>y=..count..</code>（计数）</li>
 </ul>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>, aes(y = ..density..))</span><br></pre></td></tr></table></figure>
-
 <h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p>Popular aesthetics for geom_point() are </p>
 <ul>
 <li>alpha: point visibility; 0 = invisible, 1 = opaque（不透明）</li>
@@ -340,7 +322,6 @@
 <li>用<code>\n</code>改变轴名和轴的距离</li>
 </ul>
 <h2 id="Scales"><a href="#Scales" class="headerlink" title="Scales"></a>Scales</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">scales_&#123;aes name&#125;_&#123;some option&#125;( </span><br><span class="line">	<span class="comment"># name of legend/axis </span></span><br><span class="line">	name = ... </span><br><span class="line">    </span><br><span class="line">	<span class="comment"># range of data values to map </span></span><br><span class="line">	limits = ...</span><br><span class="line">    </span><br><span class="line">	<span class="comment"># what aesthetic values to use for the limits </span></span><br><span class="line">	values = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># where to mark legend/axis </span></span><br><span class="line">	breaks = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># what to label the marks (breaks) ，图例</span></span><br><span class="line">	labels = ... </span><br><span class="line">) </span><br></pre></td></tr></table></figure>
-
 <h3 id="常见Scales"><a href="#常见Scales" class="headerlink" title="常见Scales"></a>常见Scales</h3><p>There are scales specifically for controling the x/y-axes (examples are given for <code>x</code>, but can be used for y by substituting x for y) </p>
 <ul>
 <li>scale_x_log10(): Plot x on log10 scale </li>
@@ -365,7 +346,6 @@
 </ul>
 <p>例：</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(mpg_suv, aes(x = hwy, y = cty)) + </span><br><span class="line">	geom_point(aes(color = issuv)) + </span><br><span class="line">	scale_color_manual(limits = <span class="built_in">c</span>(<span class="literal">FALSE</span>, <span class="literal">TRUE</span>),</span><br><span class="line">			                values = <span class="built_in">c</span>(<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>),</span><br><span class="line">					         breaks = <span class="built_in">c</span>(<span class="literal">TRUE</span>, <span class="literal">FALSE</span>), </span><br><span class="line">					         labels = <span class="built_in">c</span>(<span class="string">&#x27;SUV&#x27;</span>, <span class="string">&#x27;Other&#x27;</span>)</span><br><span class="line">			               ) </span><br></pre></td></tr></table></figure>
-
 <h2 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h2><ul>
 <li>坐标轴旋转：<br><code>coord_flip()</code></li>
 </ul>
@@ -375,10 +355,8 @@
 </ul>
 <h3 id="图例位置"><a href="#图例位置" class="headerlink" title="图例位置"></a>图例位置</h3><p>用一个0-1vector表示位置，第一位left(0)/right(1)，第二位bottom(0)/top(1)</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># specify either top/left/bottom/right, e.g., </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="string">&#x27;top&#x27;</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># or set x/y coordinates to position within plot </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">1</span>), </span><br><span class="line">                           legend.justification=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
-
-<h2 id="分面facet"><a href="#分面facet" class="headerlink" title="分面facet"></a>分面facet</h2><h3 id="facet-grid"><a href="#facet-grid" class="headerlink" title="facet_grid()"></a><code>facet_grid()</code></h3><p><strong>二维</strong>分面<br>例：行根据<code>year </code>，列根据<code>cyl</code>分面</p>
+<h2 id="分面facet"><a href="#分面facet" class="headerlink" title="分面facet"></a>分面facet</h2><h3 id="facet-grid"><a href="#facet-grid" class="headerlink" title="facet_grid()"></a><code>facet_grid()</code></h3><p><strong>二维</strong>分面<br>例：行根据<code>year</code>，列根据<code>cyl</code>分面</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">facet_grid(year ~ cyl)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>若只想一维分面，则用<code>.</code>代替变量<br>如：<code>facet_grid(year ~ .)</code></li>
 </ul>
@@ -390,7 +368,6 @@
 <h2 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h2><p>无法直接显示，应先手动算出来<br><code>prop.table(table(titanic$Survived))</code></p>
 <h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><p>用<code>ggsave()</code>保存图片，图片比例更好</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggsave(<span class="string">&quot;my_plot.png&quot;</span>,</span><br><span class="line">         width=<span class="number">5</span>,</span><br><span class="line">         height=<span class="number">5</span>,</span><br><span class="line">         plot=p)<span class="comment">#p是图片</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="地图ggmap"><a href="#地图ggmap" class="headerlink" title="地图ggmap"></a>地图ggmap</h2><p>Use the qmap function to initialize a ggplot object with a map layer </p>
 <ul>
 <li>The main arguments for qmap are <ul>
@@ -403,10 +380,9 @@
 </ul>
 </li>
 </ul>
-<p>see <code>?qmap</code>, <code>?ggmap</code>, and<code> ?get_map</code> for more details</p>
+<p>see <code>?qmap</code>, <code>?ggmap</code>, and<code>?get_map</code> for more details</p>
 <p>例：</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Bounding box around the US (I Googled the numbers) </span></span><br><span class="line">us &lt;- <span class="built_in">c</span>(left = -<span class="number">125</span>, bottom = <span class="number">25.75</span>, right = -<span class="number">67</span>, top = <span class="number">49</span>) </span><br><span class="line">p &lt;- qmap(us, zoom = <span class="number">5</span>, maptype = <span class="string">&quot;toner-lite&quot;</span>, </span><br><span class="line">		  source = <span class="string">&quot;stamen&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
 <li>factor类型在导入数据之后先as.factor()或as.character()</li>
 </ul>
@@ -503,6 +479,8 @@
 
 
 
+
+  
 
 
 </body>

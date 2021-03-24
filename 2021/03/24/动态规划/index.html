@@ -101,14 +101,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -126,14 +122,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -175,20 +163,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -301,9 +286,9 @@
         &#125;
     &#125;
 &#125;
-</code></pre>
-<p>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 硬币</span><br><span class="line"></span><br><span class="line">问题：用1分、5分、10分、20分凑成n分的方法数</span><br><span class="line"></span><br><span class="line">* f(i,v)表示用**前i种币**凑成价值为v的方法数，c[i]是第i种币的价值</span><br><span class="line">* if c[i]&gt;v，f(i,v)&#x3D;f(i-1,v)</span><br><span class="line">* if c[i]&lt;&#x3D;v，f(i,v)&#x3D;f(i-1,v)+f(i,v-c[i])&#x2F;&#x2F;f(i,v-c[i])表示至少用1个第i种币凑成v，所以在v-c[i]里减掉了</span><br><span class="line"></span><br><span class="line">### 连续子数组的最大和</span><br><span class="line"></span><br><span class="line">问题：求nums[]数组的连续子数组的最大和</span><br><span class="line"></span><br><span class="line">* dp[i]是**以nums[i]结尾**的最大子数组和</span><br><span class="line">* dp[i]&#x3D;max(dp[i]+nums[i], nums[i])</span><br><span class="line"></span><br><span class="line">### 零钱兑换</span><br><span class="line"></span><br><span class="line">问题：给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</span><br><span class="line"></span><br><span class="line">* dp[i]是**金额i**的最小使用张数</span><br><span class="line"></span><br><span class="line">* dp[i]&#x3D;min(dp[i-1], dp[i-2], dp[i-5], dp[i-7], dp[i-10])+1【假设coins&#x3D;[1, 2, 5, 7, 10]时】</span><br><span class="line"></span><br><span class="line">* &#96;&#96;&#96;c++</span><br><span class="line">  int coinChange(vector&lt;int&gt;&amp; coins, int amount) &#123;</span><br><span class="line">      &#x2F;&#x2F; 数组大小为 amount + 1，初始值也为 amount + 1</span><br><span class="line">      vector&lt;int&gt; dp(amount + 1, amount + 1);</span><br><span class="line">      &#x2F;&#x2F; base case</span><br><span class="line">      dp[0] &#x3D; 0;</span><br><span class="line">      for (int i &#x3D; 0; i &lt; dp.size(); i++) &#123;</span><br><span class="line">          &#x2F;&#x2F; 内层 for 在求所有子问题 + 1 的最小值</span><br><span class="line">          for (int coin : coins) &#123;</span><br><span class="line">              &#x2F;&#x2F; 子问题无解，跳过</span><br><span class="line">              if (i - coin &lt; 0) continue;</span><br><span class="line">              dp[i] &#x3D; min(dp[i], 1 + dp[i - coin]);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return (dp[amount] &#x3D;&#x3D; amount + 1) ? -1 : dp[amount];</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+</code></pre><p>}</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 硬币</span><br><span class="line"></span><br><span class="line">问题：用1分、5分、10分、20分凑成n分的方法数</span><br><span class="line"></span><br><span class="line">* f(i,v)表示用**前i种币**凑成价值为v的方法数，c<span class="comment">[i]</span>是第i种币的价值</span><br><span class="line">* if c<span class="comment">[i]</span>&gt;v，f(i,v)=f(i-1,v)</span><br><span class="line">* if c<span class="comment">[i]</span>&lt;=v，f(i,v)=f(i-1,v)+f(i,v-c<span class="comment">[i]</span>)//f(i,v-c<span class="comment">[i]</span>)表示至少用1个第i种币凑成v，所以在v-c<span class="comment">[i]</span>里减掉了</span><br><span class="line"></span><br><span class="line">### 连续子数组的最大和</span><br><span class="line"></span><br><span class="line">问题：求nums<span class="comment">[]</span>数组的连续子数组的最大和</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>是**以nums<span class="comment">[i]</span>结尾**的最大子数组和</span><br><span class="line">* dp<span class="comment">[i]</span>=max(dp<span class="comment">[i]</span>+nums<span class="comment">[i]</span>, nums<span class="comment">[i]</span>)</span><br><span class="line"></span><br><span class="line">### 零钱兑换</span><br><span class="line"></span><br><span class="line">问题：给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>是**金额i**的最小使用张数</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>=min(dp<span class="comment">[i-1]</span>, dp<span class="comment">[i-2]</span>, dp<span class="comment">[i-5]</span>, dp<span class="comment">[i-7]</span>, dp<span class="comment">[i-10]</span>)+1【假设coins=<span class="comment">[1, 2, 5, 7, 10]</span>时】</span><br><span class="line"></span><br><span class="line">* ```c++</span><br><span class="line">  int coinChange(vector&lt;int&gt;&amp; coins, int amount) &#123;</span><br><span class="line">      // 数组大小为 amount + 1，初始值也为 amount + 1</span><br><span class="line">      vector&lt;int&gt; dp(amount + 1, amount + 1);</span><br><span class="line">      // base case</span><br><span class="line">      dp<span class="comment">[0]</span> = 0;</span><br><span class="line">      for (int i = 0; i &lt; dp.size(); i++) &#123;</span><br><span class="line">          // 内层 for 在求所有子问题 + 1 的最小值</span><br><span class="line">          for (int coin : coins) &#123;</span><br><span class="line">              // 子问题无解，跳过</span><br><span class="line">              if (i - coin &lt; 0) continue;</span><br><span class="line">              dp<span class="comment">[i]</span> = min(dp<span class="comment">[i]</span>, 1 + dp<span class="comment">[i - coin]</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return (dp<span class="comment">[amount]</span> == amount + 1) ? -1 : dp<span class="comment">[amount]</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
     </div>
@@ -399,6 +384,8 @@
 
 
 
+
+  
 
 
 </body>

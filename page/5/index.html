@@ -97,14 +97,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -122,14 +118,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -170,20 +158,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -294,11 +279,14 @@
 </ol>
 <h2 id="如何访问静态成员"><a href="#如何访问静态成员" class="headerlink" title="如何访问静态成员"></a>如何访问静态成员</h2><ol>
 <li><p><strong>类名 :: 成员名</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CRectangle :: <span class="built_in">Print</span>();</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CRectangle :: <span class="built_in">Print</span>();</span><br></pre></td></tr></table></figure>
+</li>
 <li><p><strong>对象名. 成员名</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CRectangle r; r. <span class="built_in">Print</span>();</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CRectangle r; r. <span class="built_in">Print</span>();</span><br></pre></td></tr></table></figure>
+</li>
 <li><p><strong>指针-&gt;成员名</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CRectangle *p = &amp;r; </span><br><span class="line">p-&gt;<span class="built_in">Print</span>();</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CRectangle *p = &amp;r; </span><br><span class="line">p-&gt;<span class="built_in">Print</span>();</span><br></pre></td></tr></table></figure>
+</li>
 <li><p><strong>引用. 成员名</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CRectangle &amp;ref = r; </span><br><span class="line"><span class="keyword">int</span> n = ref.nTotal;</span><br></pre></td></tr></table></figure></li>
 </ol>
@@ -457,35 +445,28 @@
 </li>
 <li><p>对象生成时构造函数自动被调用，生成后无法再在其上执行构造函数 </p>
 </li>
-<li><p> 一个类可以有多个构造函数</p>
+<li><p>一个类可以有多个构造函数</p>
+<p><strong>例</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>  &#123;</span>     </span><br><span class="line">    <span class="keyword">double</span> real, imag;    </span><br><span class="line">    <span class="built_in">Complex</span>( <span class="keyword">double</span> r, <span class="keyword">double</span> i=<span class="number">0</span> );  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">Complex::<span class="built_in">Complex</span>( <span class="keyword">double</span> r, <span class="keyword">double</span> i )  &#123;    </span><br><span class="line">    real = r; imag = i;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Complex <span class="title">c1</span><span class="params">(<span class="number">1</span>, <span class="number">2</span>)</span></span>;<span class="comment">//定义对象时要有参数  Complex *pc = new Complex( 3, 4);</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在数组中使用构造函数  </p>
+<p><strong>例1</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CSample array1[<span class="number">2</span>];  </span><br><span class="line">CSample array2[<span class="number">2</span>] = &#123;<span class="number">4</span>, <span class="number">5</span>&#125;;<span class="comment">//&#123;&#125;里是构造函数初始化参数   </span></span><br><span class="line">CSample *array3 = <span class="keyword">new</span> CSample[<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
+<p><strong>例2</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span>  </span><br><span class="line">    <span class="built_in">Test</span>( <span class="keyword">int</span> n)&#123;&#125;;     </span><br><span class="line">    <span class="built_in">Test</span>( <span class="keyword">int</span> n, <span class="keyword">int</span> m)&#123;&#125;;     </span><br><span class="line">    <span class="built_in">Test</span>()&#123;&#125;;  </span><br><span class="line">&#125;</span><br><span class="line">Test array1[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="built_in">Test</span>( <span class="number">1</span>, <span class="number">2</span>)&#125;; <span class="comment">//当有两个参数时  </span></span><br><span class="line">Test *parray[<span class="number">3</span>] = &#123;<span class="keyword">new</span> <span class="built_in">Test</span>(<span class="number">4</span>), <span class="keyword">new</span> <span class="built_in">Test</span>(<span class="number">1</span>, <span class="number">2</span>)&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>   <strong>例</strong></p>
-   <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>  &#123;</span>     </span><br><span class="line">    <span class="keyword">double</span> real, imag;    </span><br><span class="line">    <span class="built_in">Complex</span>( <span class="keyword">double</span> r, <span class="keyword">double</span> i=<span class="number">0</span> );  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">Complex::<span class="built_in">Complex</span>( <span class="keyword">double</span> r, <span class="keyword">double</span> i )  &#123;    </span><br><span class="line">    real = r; imag = i;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Complex <span class="title">c1</span><span class="params">(<span class="number">1</span>, <span class="number">2</span>)</span></span>;<span class="comment">//定义对象时要有参数  Complex *pc = new Complex( 3, 4);</span></span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li> 在数组中使用构造函数  </li>
-</ol>
-<p>   <strong>例1</strong></p>
-   <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CSample array1[<span class="number">2</span>];  </span><br><span class="line">CSample array2[<span class="number">2</span>] = &#123;<span class="number">4</span>, <span class="number">5</span>&#125;;<span class="comment">//&#123;&#125;里是构造函数初始化参数   </span></span><br><span class="line">CSample *array3 = <span class="keyword">new</span> CSample[<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
-
-<p>   <strong>例2</strong></p>
-   <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> &#123;</span>  </span><br><span class="line">    <span class="built_in">Test</span>( <span class="keyword">int</span> n)&#123;&#125;;     </span><br><span class="line">    <span class="built_in">Test</span>( <span class="keyword">int</span> n, <span class="keyword">int</span> m)&#123;&#125;;     </span><br><span class="line">    <span class="built_in">Test</span>()&#123;&#125;;  </span><br><span class="line">&#125;</span><br><span class="line">Test array1[<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="built_in">Test</span>( <span class="number">1</span>, <span class="number">2</span>)&#125;; <span class="comment">//当有两个参数时  </span></span><br><span class="line">Test *parray[<span class="number">3</span>] = &#123;<span class="keyword">new</span> <span class="built_in">Test</span>(<span class="number">4</span>), <span class="keyword">new</span> <span class="built_in">Test</span>(<span class="number">1</span>, <span class="number">2</span>)&#125;;</span><br></pre></td></tr></table></figure>
-
 <h2 id="二、复制构造函数"><a href="#二、复制构造函数" class="headerlink" title="二、复制构造函数"></a>二、复制构造函数</h2><p><strong>定义</strong>：只有一个参数，即同类对象的引用（若没有定义则生成默认复制构造函数，复制）</p>
 <p>形如：<code>X::X( X&amp;)</code> 或 <code>X::X( const X&amp;)</code> //必须引用 </p>
 <p><strong>例</strong>：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Complex <span class="title">c2</span><span class="params">(c1)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p>用复制构造函数的情况用一个对象初始化同类的另一个对象若某函数有一个参数是类A的对象（除非引用），那么该函数被调用时，A的复制构造函数将被调用若函数的返回值是A的对象，则函数返回时，A的复制构造函数被调用（注：对象间赋值不调用复制构造函数，如c2 = c1）</p>
 <h2 id="三、类型转换构造函数"><a href="#三、类型转换构造函数" class="headerlink" title="三、类型转换构造函数"></a>三、类型转换构造函数</h2><p><strong>目的</strong>：实现类型的自动转换特点：只有一个参数</p>
 <p>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c1 = <span class="number">9</span>; <span class="comment">//9被自动转换成一个临时Complex对象</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="四、析构函数"><a href="#四、析构函数" class="headerlink" title="四、析构函数"></a>四、析构函数</h2><p>名字与类名相同，在前面加~，没有参数和返回值（只能有一个）对象消亡时自动调用析构函数用于释放空间等</p>
 <p><strong>例：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~<span class="built_in">String</span>();</span><br><span class="line">String :: ~<span class="built_in">String</span>() &#123;         </span><br><span class="line">    <span class="keyword">delete</span> []p; <span class="comment">//析构函数调用次数=p中对象数       </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -561,7 +542,6 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="C-成员对象和封闭类"><a href="#C-成员对象和封闭类" class="headerlink" title="C++ 成员对象和封闭类"></a>C++ 成员对象和封闭类</h1><h2 id="封闭类"><a href="#封闭类" class="headerlink" title="封闭类"></a>封闭类</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p><strong>有成员对象的类</strong>叫封闭类（有一个成员是其他类的对象）</p>
 <h4 id="例："><a href="#例：" class="headerlink" title="例："></a>例：</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CCar</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>: </span><br><span class="line">    <span class="keyword">int</span> price;<span class="comment">//价格</span></span><br><span class="line">    CTyre tyre;<span class="comment">//轮胎，成员对象</span></span><br><span class="line">    CEngine engine;<span class="comment">//引擎，成员对象</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">CCar</span>( <span class="keyword">int</span> p, <span class="keyword">int</span> tr, <span class="keyword">int</span> tw);</span><br><span class="line">&#125;;</span><br><span class="line">CCar :: <span class="built_in">CCar</span>( <span class="keyword">int</span> p, <span class="keyword">int</span> tr, <span class="keyword">int</span> w): <span class="built_in">price</span>(p), <span class="built_in">tyre</span>( tr, w)&#123;&#125;;</span><br><span class="line"><span class="comment">//tyre（成员对象）用它的构造函数初始化，所以CCar必须定义构造函数</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ol>
 <li><p>任何生成封闭类对象的语句，都要让编译器明白，对象中的<strong>成员对象</strong>是如何<strong>初始化</strong>的</p>
 <p>具体做法：通过<strong>封闭类的构造函数的初始化列表</strong></p>
@@ -652,7 +632,6 @@
 <li>常量成员函数中<strong>不能修改成员变量的值</strong>（除静态成员变量），也<strong>不能调用同类的非常量成员函数</strong>（除静态成员函数）</li>
 </ol>
 <h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GetValue</span><span class="params">()</span> <span class="keyword">const</span></span>;<span class="comment">//常量成员函数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">    <span class="built_in">Sample</span>()&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sample::GetValue</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    value=<span class="number">0</span>;<span class="comment">//error</span></span><br><span class="line">    <span class="built_in">func</span>();<span class="comment">//error</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> Sample o;</span><br><span class="line">    o.value=<span class="number">100</span>;<span class="comment">//error,常量对象不可被修改</span></span><br><span class="line">    <span class="number">0.f</span>unc();<span class="comment">//error，常量对象上不能执行非常量成员函数</span></span><br><span class="line">    o.<span class="built_in">GetValue</span>();<span class="comment">//ok,常量对象上可以执行常量成员函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="常量成员函数的重载"><a href="#常量成员函数的重载" class="headerlink" title="常量成员函数的重载"></a>常量成员函数的重载</h3><p><strong>名字和参数表都一样</strong>，一个是const一个不是，算<strong>重载</strong></p>
 <ul>
 <li>常量对象就调用const成员函数</li>
@@ -741,9 +720,7 @@
 </ul>
 <h2 id="this指针作用"><a href="#this指针作用" class="headerlink" title="this指针作用"></a>this指针作用</h2><p>指向成员函数所作用的<strong>对象</strong></p>
 <h3 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> real, imag;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">()</span></span>&#123; cout&lt;&lt;real&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;imag;&#125;</span><br><span class="line">    <span class="built_in">Complex</span>( <span class="keyword">double</span> r, <span class="keyword">double</span> i): <span class="built_in">real</span>(r), <span class="built_in">imag</span>(i) &#123;&#125;<span class="comment">//列表</span></span><br><span class="line">    <span class="function">Complex <span class="title">AddOne</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;real++;<span class="comment">//等价于real++</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;<span class="built_in">Print</span>();<span class="comment">//等价于Print()</span></span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;<span class="comment">//等价于作用的对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">void</span> Hello&#123; cout&lt;&lt;<span class="string">&quot;Hello&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    <span class="comment">//void Hello( A*this)&#123;cout&lt;&lt;&quot;Hello&quot;&lt;&lt;endl;&#125;</span></span><br><span class="line">    <span class="comment">//如果改为cout&lt;&lt;i&lt;&lt;&quot;Hello&quot;就会出错，因为会变成cout&lt;&lt;this-&gt;i，而this是空指针</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    A*p=<span class="literal">NULL</span>;<span class="comment">//p是空指针</span></span><br><span class="line">    p-&gt;<span class="built_in">Hello</span>();<span class="comment">//Hello(p)</span></span><br><span class="line">&#125;<span class="comment">//结果输出Hello</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="this指针和静态成员函数"><a href="#this指针和静态成员函数" class="headerlink" title="this指针和静态成员函数"></a>this指针和静态成员函数</h2><ul>
 <li>静态成员函数中不能使用this指针</li>
 <li>因为静态成员函数并不具体作用于某个对象</li>
@@ -823,12 +800,9 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="指针和引用"><a href="#指针和引用" class="headerlink" title="指针和引用"></a>指针和引用</h1><h2 id="指针的引用"><a href="#指针的引用" class="headerlink" title="指针的引用"></a>指针的引用</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span> <span class="params">( <span class="keyword">int</span> *&amp;p, <span class="keyword">int</span>*&amp; q)</span></span></span><br></pre></td></tr></table></figure>
-
-
 <p>改变指针所<strong>指向的地方</strong>，而不是改变指针所指变量的值</p>
 <h2 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h2><p>函数：<code>void fun(int);</code><br>函数指针：<code>void (*p)(int)=fun;</code></p>
 <h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;a = b;<span class="comment">//a和b等价，同时修改引用有传递性</span></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -912,7 +886,6 @@
 </ul>
 <h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>返回值类型 operator 运算符（形参表）<br>{<br>    ……<br>}</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> real, imag;</span><br><span class="line">    <span class="built_in">Complex</span>(<span class="keyword">double</span> r=<span class="number">0.0</span>, <span class="keyword">double</span> i=<span class="number">0.0</span>): <span class="built_in">real</span>(r), <span class="built_in">imag</span>(i)&#123;&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span>-(<span class="keyword">const</span> Complex &amp;c);</span><br><span class="line">&#125;;</span><br><span class="line">Complex <span class="keyword">operator</span>+(<span class="keyword">const</span> Complex &amp;a, <span class="keyword">const</span> Complex &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Complex</span>(a.real+b.real, a.imag+b.imag);<span class="comment">//返回一个临时对象，重载为普通函数</span></span><br><span class="line">&#125;</span><br><span class="line">Complex Complex::<span class="keyword">operator</span>-(<span class="keyword">const</span> Complex &amp;c)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Complex</span>(real-c.real, imag-c.imag);<span class="comment">//返回一个临时对象，重载为成员函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Complex a(4, 4), b(1, 1), c;</span><br><span class="line">    c=a+b;<span class="comment">//等价于c=operator+(a, b);</span></span><br><span class="line">    cout&lt;&lt;(a-b).real&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;(a-b).imag&lt;&lt;endl;<span class="comment">//a-b等价于a.operator-(b);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>重载为<strong>成员函数</strong>时，参数个数为运算符目数<strong>减一</strong></li>
 <li>重载为<strong>普通函数</strong>时，参数个数为运算符目数</li>
@@ -991,12 +964,9 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="C-动态内存分配"><a href="#C-动态内存分配" class="headerlink" title="C++动态内存分配"></a>C++动态内存分配</h1><h2 id="分配"><a href="#分配" class="headerlink" title="分配"></a>分配</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">T *p = <span class="keyword">new</span> T;<span class="comment">//T是类型名</span></span><br><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line"><span class="keyword">int</span> *p = <span class="keyword">new</span> <span class="keyword">int</span>[N];<span class="comment">//N为数组长度 </span></span><br></pre></td></tr></table></figure>
-
 <h2 id="释放"><a href="#释放" class="headerlink" title="释放"></a>释放</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> p;<span class="comment">//单变量</span></span><br><span class="line"><span class="keyword">delete</span> []p;<span class="comment">//数组（不可重复delete）</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>二维数组</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *a[] = &#123; <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>], <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>]&#125;;  </span><br><span class="line">*a[<span class="number">2</span>] = <span class="number">123</span>; </span><br><span class="line">a[<span class="number">3</span>][<span class="number">5</span>] = <span class="number">456</span>;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -1076,26 +1046,20 @@
 <li>远程仓库是<strong>惰性</strong>的，需要手动更新，无法自动同步更新</li>
 </ul>
 <h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><h3 id="法一：git-remote-add命令"><a href="#法一：git-remote-add命令" class="headerlink" title="法一：git remote add命令"></a>法一：<code>git remote add</code>命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add &lt;远程仓库名&gt; &lt;远程仓库链接&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>可将远程仓库与本地<strong>已有</strong>仓库关联起来</li>
 </ul>
 <h3 id="法二：git-clone命令"><a href="#法二：git-clone命令" class="headerlink" title="法二：git clone命令"></a>法二：<code>git clone</code>命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;远程仓库链接&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>相当于先<code>git init</code>，再<code>git remote add</code>，再<code>git fetch</code>，最后<code>git checkout</code>。克隆一个远程仓库到本地，会自动将远程仓库命名为origin。使用频率更高。</li>
 </ul>
 <h2 id="把本地内容推送到远程仓库（上传）"><a href="#把本地内容推送到远程仓库（上传）" class="headerlink" title="把本地内容推送到远程仓库（上传）"></a>把本地内容推送到远程仓库（上传）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;远程仓库名&gt; &lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
-
 <h2 id="拉取远程仓库（下载）"><a href="#拉取远程仓库（下载）" class="headerlink" title="拉取远程仓库（下载）"></a>拉取远程仓库（下载）</h2><h4 id="法一：git-fetch命令"><a href="#法一：git-fetch命令" class="headerlink" title="法一：git fetch命令"></a>法一：<code>git fetch</code>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch &lt;远程仓库名&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>仅仅拉取仓库，不会同步master和文件</li>
 </ul>
 <h5 id="master迁移到远程仓库的master"><a href="#master迁移到远程仓库的master" class="headerlink" title="master迁移到远程仓库的master"></a>master迁移到远程仓库的master</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -B master origin/master</span><br></pre></td></tr></table></figure>
-
 <h4 id="法二：git-pull命令"><a href="#法二：git-pull命令" class="headerlink" title="法二：git pull命令"></a>法二：<code>git pull</code>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull &lt;远程仓库名&gt; &lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><code>git pull</code>的功能是在<code>git fetch</code>的基础上自动应用远程修改，不过要谨慎使用，当心远程的修改和本地有冲突</li>
 </ul>
@@ -1185,6 +1149,8 @@
 
 
 
+
+  
 
 
 </body>

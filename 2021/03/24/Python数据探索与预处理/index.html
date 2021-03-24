@@ -100,14 +100,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -125,14 +121,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -174,20 +162,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -302,7 +287,6 @@
 </li>
 </ul>
 <h5 id="DataFrame缺失值处理"><a href="#DataFrame缺失值处理" class="headerlink" title="DataFrame缺失值处理"></a>DataFrame缺失值处理</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">quotesdf_nan=pd.read_csv(<span class="string">&quot;AXP_NaN.csv&quot;</span>, index_col=<span class="string">&quot;Date&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除缺失值</span></span><br><span class="line">quotesdf_nan.dropna(how=<span class="string">&quot;any&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#填充缺失值</span></span><br><span class="line"><span class="comment">#用均值填充</span></span><br><span class="line">quotesdf_nan.fillna(quotesdf_nan.mean(), inplace = <span class="literal">True</span>)<span class="comment">#inplace是修不修改原来的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用上一个非缺失值填充</span></span><br><span class="line">quotesdf_nan.fillna(method=<span class="string">&quot;ffill&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#用下一个非缺失值填充</span></span><br><span class="line">quotesdf_nan.fillna(method=<span class="string">&quot;bfill&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="异常值处理"><a href="#异常值处理" class="headerlink" title="异常值处理"></a>异常值处理</h4><h5 id="异常值的检测"><a href="#异常值的检测" class="headerlink" title="异常值的检测"></a>异常值的检测</h5><ul>
 <li>简单统计</li>
 <li>绘图</li>
@@ -314,7 +298,6 @@
 <li>用<strong>布尔索引</strong>筛选数据</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quotesdf_san[<span class="built_in">abs</span>(quotesdf_nan-quotesdf_nan.mean())&gt;<span class="number">3</span>*quotesdf_nan.std()]</span><br></pre></td></tr></table></figure>
-
 <h3 id="数据变换"><a href="#数据变换" class="headerlink" title="数据变换"></a>数据变换</h3><p>常见方式：</p>
 <ul>
 <li>规范化</li>
@@ -329,37 +312,32 @@
 <li>z-score规范化（标准化））</li>
 <li>小数定标规范化</li>
 </ul>
-<h5 id="最小-最大规范化"><a href="#最小-最大规范化" class="headerlink" title="最小-最大规范化"></a>最小-最大规范化</h5><p>$$<br>x’=\frac{x-\min}{\max -\min}<br>$$</p>
-<p>将属性值调整到[0, 1]范围内</p>
+<h5 id="最小-最大规范化"><a href="#最小-最大规范化" class="headerlink" title="最小-最大规范化"></a>最小-最大规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x-\min}{\max -\min}</script><p>将属性值调整到[0, 1]范围内</p>
 <ul>
 <li>适合不涉及距离度量的场景</li>
 </ul>
 <h6 id="自己写代码"><a href="#自己写代码" class="headerlink" title="自己写代码"></a>自己写代码</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最小-最大规范化</span></span><br><span class="line">(df-df.<span class="built_in">min</span>())/(df.<span class="built_in">max</span>()-df.<span class="built_in">min</span>())</span><br></pre></td></tr></table></figure>
-
 <h6 id="sklearn的preprocessing模块"><a href="#sklearn的preprocessing模块" class="headerlink" title="sklearn的preprocessing模块"></a>sklearn的preprocessing模块</h6><ul>
 <li>minmax_scale(df)函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最小-最大规范化</span></span><br><span class="line"><span class="built_in">print</span>(preprocessing.minmax_scale(df))</span><br></pre></td></tr></table></figure>
-
-<h5 id="z-score规范化"><a href="#z-score规范化" class="headerlink" title="z-score规范化"></a>z-score规范化</h5><p>$$<br>x’=\frac{x-\overline{x}}{\sigma}<br>$$</p>
-<ul>
+<h5 id="z-score规范化"><a href="#z-score规范化" class="headerlink" title="z-score规范化"></a>z-score规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x-\overline{x}}{\sigma}</script><ul>
 <li>处理后数据均值为0，标准差为1</li>
 </ul>
 <h6 id="自己写代码-1"><a href="#自己写代码-1" class="headerlink" title="自己写代码"></a>自己写代码</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#z-score规范化</span></span><br><span class="line"><span class="built_in">print</span>((df-df.mean())/df.std())</span><br></pre></td></tr></table></figure>
-
 <h6 id="sklearn的preprocessing模块-1"><a href="#sklearn的preprocessing模块-1" class="headerlink" title="sklearn的preprocessing模块"></a>sklearn的preprocessing模块</h6><ul>
 <li>scale(df)函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#z-score规范化</span></span><br><span class="line"><span class="built_in">print</span>(preprocessing.scale(df))</span><br></pre></td></tr></table></figure>
-
-<h5 id="小数定标规范化"><a href="#小数定标规范化" class="headerlink" title="小数定标规范化"></a>小数定标规范化</h5><p>$$<br>x’=\frac{x}{10^j}<br>$$</p>
-<p>（j是移动位数）</p>
+<h5 id="小数定标规范化"><a href="#小数定标规范化" class="headerlink" title="小数定标规范化"></a>小数定标规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x}{10^j}</script><p>（j是移动位数）</p>
 <ul>
 <li>移动小数点位置，移动位数取决于<strong>属性绝对值的最大值</strong></li>
 <li>常见落在[-1, 1]之间</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment">#10的多少次方是绝对值最大值</span></span><br><span class="line"><span class="built_in">print</span>(df/<span class="number">10</span>**np.ceil(np.log10(df.<span class="built_in">abs</span>().<span class="built_in">max</span>())))</span><br></pre></td></tr></table></figure>
-
 <h5 id="连续属性离散化"><a href="#连续属性离散化" class="headerlink" title="连续属性离散化"></a>连续属性离散化</h5><p>方法：</p>
 <ul>
 <li>分箱（binning）：等宽法、等频法<ul>
@@ -374,7 +352,6 @@
 <li>等频：qcut函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 等宽法，标签分别是0,1,2,3,4</span></span><br><span class="line"><span class="built_in">print</span>(pd.cut(df.AGE, <span class="number">5</span>, labels=<span class="built_in">range</span>(<span class="number">5</span>)))</span><br><span class="line"><span class="comment"># 分成五个区间，(1,2],(3,4],…</span></span><br><span class="line">bins = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#等频法</span></span><br><span class="line">pd.qcut(df.AGE, <span class="number">5</span>, labels=<span class="built_in">range</span>(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
-
 <h5 id="特征二值化binarization"><a href="#特征二值化binarization" class="headerlink" title="特征二值化binarization"></a>特征二值化binarization</h5><p>设定阈值threshold，大于阈值赋值为1，小于等于阈值赋值为0</p>
 <ul>
 <li>适用于将多分类问题转换成<strong>二分类</strong>问题</li>
@@ -405,7 +382,6 @@
 <li>用sklearn.decomposition模块中的PCA()函数</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">x=preprocessing.scale(boston.data)</span><br><span class="line"></span><br><span class="line"><span class="comment">#”mle&quot;：自动选择满足所要求的方差百分比的特征个数</span></span><br><span class="line">pca=PCA(n_components=<span class="string">&quot;mle&quot;</span>)</span><br><span class="line"><span class="comment">#用x训练pca</span></span><br><span class="line">pca.fit(x)</span><br><span class="line"><span class="comment">#各个成分的方差贡献率</span></span><br><span class="line"><span class="built_in">print</span>(pca.explained_variance_ratio_)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>(pca.explained_variance_ratio_))</span><br></pre></td></tr></table></figure>
-
 <h4 id="数值规约"><a href="#数值规约" class="headerlink" title="数值规约"></a>数值规约</h4><p>方法：</p>
 <ul>
 <li>有参方法（回归法，对数线性模型）<ul>
@@ -421,7 +397,6 @@
 <li>本质是分箱（每个箱子表示一个属性-频率对）</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line">bins = np.linspace(data.<span class="built_in">min</span>(), data.<span class="built_in">max</span>(), <span class="number">3</span>, endpoint=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(bins)</span><br><span class="line"><span class="comment">#&gt;[1. 5. 9.]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [1, 5)，[5, 9]</span></span><br><span class="line">plt.hist(data, bins=bins, rwidth=<span class="number">0.95</span>, edgecolor=<span class="string">&quot;k&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
 <h5 id="无参法"><a href="#无参法" class="headerlink" title="无参法"></a>无参法</h5><h6 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h6><p>方式：</p>
 <ul>
 <li>随机抽样（放回/不放回）</li>
@@ -437,10 +412,8 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#有放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>, replace = <span class="literal">True</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>, replace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
 <p>分层抽样：<br>先分层（利用DataFrame的<strong>筛选</strong>功能和<strong>append方法</strong>），再用sample()抽样</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A=iris_df[iris_df.target==<span class="number">0</span>].sample(frac=<span class="number">0.3</span>)</span><br><span class="line">B=iris_df[iris_df.target==<span class="number">1</span>].sample(frac=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">A.append(B)</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -534,6 +507,8 @@
 
 
 
+
+  
 
 
 </body>

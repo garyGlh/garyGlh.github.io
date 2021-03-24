@@ -23,12 +23,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"colahua.tech","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="Qt基础小技巧qDebug()-&gt;cout1#define cout qDebug()&lt;&lt;&quot;[&quot;&lt;&lt;__FILE__&lt;&lt;&quot;: &quot;&lt;&lt;__LINE__&lt;&lt;&quot;]&quot;  基类 QMainWindow：有菜单栏 QWidget：最简单 QDialog：不可缩放  数据类型转换QStr">
+<meta name="description" content="Qt基础小技巧qDebug()-&gt;cout1#define cout qDebug()&lt;&lt;&quot;[&quot;&lt;&lt;__FILE__&lt;&lt;&quot;: &quot;&lt;&lt;__LINE__&lt;&lt;&quot;]&quot; 基类 QMainWindow：有菜单栏 QWidget：最简单 QDialog：不可缩放  数据类型转换QStri">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt基础">
 <meta property="og:url" content="http://colahua.tech/2021/03/24/Qt%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="JKQ&#39;s Blog">
-<meta property="og:description" content="Qt基础小技巧qDebug()-&gt;cout1#define cout qDebug()&lt;&lt;&quot;[&quot;&lt;&lt;__FILE__&lt;&lt;&quot;: &quot;&lt;&lt;__LINE__&lt;&lt;&quot;]&quot;  基类 QMainWindow：有菜单栏 QWidget：最简单 QDialog：不可缩放  数据类型转换QStr">
+<meta property="og:description" content="Qt基础小技巧qDebug()-&gt;cout1#define cout qDebug()&lt;&lt;&quot;[&quot;&lt;&lt;__FILE__&lt;&lt;&quot;: &quot;&lt;&lt;__LINE__&lt;&lt;&quot;]&quot; 基类 QMainWindow：有菜单栏 QWidget：最简单 QDialog：不可缩放  数据类型转换QStri">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-24T08:27:17.000Z">
 <meta property="article:modified_time" content="2021-03-24T08:30:50.203Z">
@@ -101,14 +101,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -126,14 +122,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -175,20 +163,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -276,7 +261,6 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="Qt基础"><a href="#Qt基础" class="headerlink" title="Qt基础"></a>Qt基础</h1><h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><h3 id="qDebug-gt-cout"><a href="#qDebug-gt-cout" class="headerlink" title="qDebug()-&gt;cout"></a>qDebug()-&gt;cout</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cout qDebug()&lt;&lt;<span class="meta-string">&quot;[&quot;</span>&lt;&lt;__FILE__&lt;&lt;<span class="meta-string">&quot;: &quot;</span>&lt;&lt;__LINE__&lt;&lt;<span class="meta-string">&quot;]&quot;</span></span></span><br></pre></td></tr></table></figure>
-
 <h2 id="基类"><a href="#基类" class="headerlink" title="基类"></a>基类</h2><ul>
 <li>QMainWindow：有菜单栏</li>
 <li>QWidget：最简单</li>
@@ -286,27 +270,22 @@
 <li><code>toUtf8()</code><br>转换为utf8编码<br>例：</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QString buf=<span class="string">&quot;123&quot;</span>;</span><br><span class="line">QByteArray a=buf.<span class="built_in">toUtf8</span>();<span class="comment">//中文</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+<ol>
 <li><code>toLocal8Bit()</code><br>转换为本地平台编码<br>例：</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QString buf=<span class="string">&quot;123&quot;</span>;</span><br><span class="line">QByteArray a=buf.<span class="built_in">toLocal8Bit</span>();<span class="comment">//本地编码</span></span><br></pre></td></tr></table></figure>
-
 <h3 id="QByteArray-gt-char"><a href="#QByteArray-gt-char" class="headerlink" title="QByteArray-&gt;char*"></a>QByteArray-&gt;char*</h3><ol>
 <li><code>data()</code><br>例：</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QByteArray a=<span class="string">&quot;123&quot;</span>;</span><br><span class="line"><span class="keyword">char</span> *b=a.<span class="built_in">data</span>();</span><br></pre></td></tr></table></figure>
-
 <h3 id="char-gt-QString"><a href="#char-gt-QString" class="headerlink" title="char*-&gt;QString"></a>char*-&gt;QString</h3><p>例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span>*p=<span class="string">&quot;abc&quot;</span>;</span><br><span class="line">QString c=<span class="built_in">QString</span>(p);</span><br></pre></td></tr></table></figure>
-
 <h2 id="输出（打印）"><a href="#输出（打印）" class="headerlink" title="输出（打印）"></a>输出（打印）</h2><p><QDebug>：qDebug()，用法同cout，默认换行</p>
 <h3 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h3><p>%<u>数字</u>，<code>.arg()</code>输入替代%<u>数字</u>的值<br>例：<br><code>QString str=QString(&quot;abc %1 haha %2&quot;).arg(123).arg(&quot;mike&quot;);</code></p>
 <h3 id="打印中文"><a href="#打印中文" class="headerlink" title="打印中文"></a>打印中文</h3><h4 id="toUtf8"><a href="#toUtf8" class="headerlink" title="toUtf8"></a>toUtf8</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">QString a=<span class="string">&quot;哈哈&quot;</span>;</span><br><span class="line"><span class="built_in">qDebug</span>()&lt;&lt;a.<span class="built_in">toUtf8</span>().<span class="built_in">data</span>();</span><br><span class="line"><span class="comment">//a.toUtf8()-&gt;字节数组QByteArray</span></span><br><span class="line"><span class="comment">//.......data()-&gt;QByteArray-&gt;char*</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="QString函数-宏"><a href="#QString函数-宏" class="headerlink" title="QString函数/宏"></a>QString函数/宏</h4><p>在QString 类中</p>
 <ol>
-<li>有个静态字符转码函数  <code>QString::fromLocal8Bit</code>  –&gt; 转码成Unicode 这样就能解决中文乱码问题了</li>
+<li>有个静态字符转码函数  <code>QString::fromLocal8Bit</code>  —&gt; 转码成Unicode 这样就能解决中文乱码问题了</li>
 <li>QStringLiteral<br>在Qt5中，提供了一个专门的处理宏，来支持中文<strong>常量</strong>。<br><code>QMessageBox::information(this, QString::fromLocal8Bit(&quot;提示&quot;), QStringLiteral(&quot;中文显示&quot;));</code></li>
 </ol>
 <h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>int，而非enum</p>
@@ -405,6 +384,8 @@
 
 
 
+
+  
 
 
 </body>

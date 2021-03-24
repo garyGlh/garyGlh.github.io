@@ -100,14 +100,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -125,14 +121,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -174,20 +162,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -275,29 +260,29 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="C-字符串常用操作"><a href="#C-字符串常用操作" class="headerlink" title="C++ 字符串常用操作"></a>C++ 字符串常用操作</h1><h2 id="读入"><a href="#读入" class="headerlink" title="读入"></a>读入</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"></span><br><span class="line">cin &gt;&gt; s;<span class="comment">//遇到空格，tab，换行就停止</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">getline</span>(cin,s)<span class="comment">//读入一整行</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//三个参数的getline，以某个标志结束读取，且标志会被读掉</span></span><br><span class="line">string str1,str2,str3;</span><br><span class="line">getline(cin,str1,&#x27;&#x27;);</span><br><span class="line"><span class="built_in">getline</span>(cin,str2,<span class="string">&#x27;&quot;&#x27;</span>);</span><br><span class="line"><span class="built_in">getline</span>(cin,str3,<span class="string">&#x27;&quot;&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
 <p>getline示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p><a href="www.csdn.net">input</a>:Hello World!</p>
-<p><a href="Hello">output</a>:Hello World!</p>
+<p>[input]:Hello World!</p>
+<p>[output]:Hello World!</p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str, <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p><a href="www.csdn.net">input</a>:Hello World!</p>
+<p>[input]:Hello World!</p>
+<p>[output]:Hello</p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line"><span class="built_in">getline</span>(cin, str, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
+<p>[input]:www.csdn.net</p>
+<p>[output]:www</p>
 </blockquote>
-<p>**getline()**的用处：c++中没有自带的split函数，运用getline()函数可以帮助处理输入时需要切割的情况</p>
+<p><strong>getline()</strong>的用处：c++中没有自带的split函数，运用getline()函数可以帮助处理输入时需要切割的情况</p>
 <h2 id="获取字符"><a href="#获取字符" class="headerlink" title="获取字符"></a>获取字符</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;12345678&quot;</span>;</span><br><span class="line"><span class="comment">//str.at(int index);</span></span><br><span class="line"><span class="comment">//str[index]</span></span><br><span class="line">cout &lt;&lt; str[<span class="number">3</span>] &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">at</span>(<span class="number">2</span>) &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <h2 id="获取长度"><a href="#获取长度" class="headerlink" title="获取长度"></a>获取长度</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str;</span><br><span class="line">cin &gt;&gt; str;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">length</span>() &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; str.<span class="built_in">size</span>() &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
+<p>[input]:hello</p>
+<p>[output]:5</p>
+<p>[output]:5</p>
 </blockquote>
 <p><strong>注意</strong>：length()和size()返回的是均以字节的形式返回字符串的长度，两种方式返回的值是相同的，当字符串的字符编码包含如utf-8时返回的值将不等于字符串的长度</p>
 <p>example:</p>
@@ -306,145 +291,147 @@
 <p>output：4</p>
 <p>output：4</p>
 </blockquote>
-<h2 id="替换-replace"><a href="#替换-replace" class="headerlink" title="替换 replace"></a>替换 replace</h2><p><em><strong>case1</strong></em>:  从pos开始，替换len个位置的字符为str</p>
+<h2 id="替换-replace"><a href="#替换-replace" class="headerlink" title="替换 replace"></a>替换 replace</h2><p><strong><em>case1</em></strong>:  从pos开始，替换len个位置的字符为str</p>
 <p>即：string[pos:pos+len] -&gt; str</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//string&amp; replace (size_t pos,  size_t len,  const string&amp; str);</span></span><br><span class="line">string str = <span class="string">&quot;this is a test string&quot;</span>;</span><br><span class="line">string str2 = <span class="string">&quot;n example&quot;</span>;</span><br><span class="line">str.<span class="built_in">replace</span>(<span class="number">9</span>,<span class="number">5</span>,str2);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>output: this is an example string</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">0</th>
+<th style="text-align:center">0</th>
 <th>1</th>
-<th align="center">2</th>
-<th align="center">3</th>
-<th align="center">4</th>
-<th align="center">5</th>
-<th align="center">6</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
 <th>7</th>
-<th align="center">8</th>
-<th align="center">9</th>
-<th align="center">10</th>
-<th align="center">11</th>
-<th align="center">12</th>
-<th align="center">13</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+<th style="text-align:center">11</th>
+<th style="text-align:center">12</th>
+<th style="text-align:center">13</th>
 <th>14</th>
-<th align="center">15</th>
-<th align="center">…</th>
+<th style="text-align:center">15</th>
+<th style="text-align:center">…</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">t</td>
+<tbody>
+<tr>
+<td style="text-align:center">t</td>
 <td>h</td>
-<td align="center">i</td>
-<td align="center">s</td>
-<td align="center"></td>
-<td align="center">i</td>
-<td align="center">s</td>
+<td style="text-align:center">i</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">i</td>
+<td style="text-align:center">s</td>
 <td></td>
-<td align="center">a</td>
-<td align="center"></td>
-<td align="center">t</td>
-<td align="center">e</td>
-<td align="center">s</td>
-<td align="center">t</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">t</td>
+<td style="text-align:center">e</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">t</td>
 <td></td>
-<td align="center">s</td>
-<td align="center">…</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">…</td>
 </tr>
-</tbody></table>
-<p><em><strong>case2</strong></em>：从pos开始，替换len个位置的字符为str的从subpos开始长度为sublen的字符</p>
+</tbody>
+</table>
+</div>
+<p><strong><em>case2</em></strong>：从pos开始，替换len个位置的字符为str的从subpos开始长度为sublen的字符</p>
 <p>即：string[pos:pos+len] -&gt; str[subpos:subpos+sublen]</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//string&amp; replace (size_t pos,  size_t len,  const string&amp; str, size_t subpos, size_t sublen);</span></span><br><span class="line">str3 = <span class="string">&quot;example phrase&quot;</span>;</span><br><span class="line">str.<span class="built_in">replace</span>(<span class="number">19</span>,<span class="number">6</span>,str3,<span class="number">7</span>,<span class="number">6</span>);</span><br><span class="line">cout &lt;&lt; str &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>output: this is an example phrase</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">…</th>
+<th style="text-align:center">…</th>
 <th>13</th>
-<th align="center">14</th>
-<th align="center">15</th>
-<th align="center">16</th>
-<th align="center">17</th>
-<th align="center">18</th>
+<th style="text-align:center">14</th>
+<th style="text-align:center">15</th>
+<th style="text-align:center">16</th>
+<th style="text-align:center">17</th>
+<th style="text-align:center">18</th>
 <th>19</th>
-<th align="center">20</th>
-<th align="center">21</th>
-<th align="center">22</th>
-<th align="center">231</th>
-<th align="center">24</th>
-<th align="center">25</th>
+<th style="text-align:center">20</th>
+<th style="text-align:center">21</th>
+<th style="text-align:center">22</th>
+<th style="text-align:center">231</th>
+<th style="text-align:center">24</th>
+<th style="text-align:center">25</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">…</td>
+<tbody>
+<tr>
+<td style="text-align:center">…</td>
 <td>x</td>
-<td align="center">a</td>
-<td align="center">m</td>
-<td align="center">p</td>
-<td align="center">l</td>
-<td align="center">e</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">m</td>
+<td style="text-align:center">p</td>
+<td style="text-align:center">l</td>
+<td style="text-align:center">e</td>
 <td></td>
-<td align="center">s</td>
-<td align="center">t</td>
-<td align="center">r</td>
-<td align="center">i</td>
-<td align="center">n</td>
-<td align="center">g</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">t</td>
+<td style="text-align:center">r</td>
+<td style="text-align:center">i</td>
+<td style="text-align:center">n</td>
+<td style="text-align:center">g</td>
 </tr>
 <tr>
-<td align="center"><strong>0</strong></td>
+<td style="text-align:center"><strong>0</strong></td>
 <td><strong>1</strong></td>
-<td align="center"><strong>2</strong></td>
-<td align="center"><strong>3</strong></td>
-<td align="center"><strong>4</strong></td>
-<td align="center"><strong>5</strong></td>
-<td align="center"><strong>6</strong></td>
+<td style="text-align:center"><strong>2</strong></td>
+<td style="text-align:center"><strong>3</strong></td>
+<td style="text-align:center"><strong>4</strong></td>
+<td style="text-align:center"><strong>5</strong></td>
+<td style="text-align:center"><strong>6</strong></td>
 <td><strong>7</strong></td>
-<td align="center"><strong>8</strong></td>
-<td align="center"><strong>9</strong></td>
-<td align="center"><strong>10</strong></td>
-<td align="center"><strong>11</strong></td>
-<td align="center"><strong>12</strong></td>
-<td align="center"><strong>13</strong></td>
+<td style="text-align:center"><strong>8</strong></td>
+<td style="text-align:center"><strong>9</strong></td>
+<td style="text-align:center"><strong>10</strong></td>
+<td style="text-align:center"><strong>11</strong></td>
+<td style="text-align:center"><strong>12</strong></td>
+<td style="text-align:center"><strong>13</strong></td>
 </tr>
 <tr>
-<td align="center">e</td>
+<td style="text-align:center">e</td>
 <td>x</td>
-<td align="center">a</td>
-<td align="center">m</td>
-<td align="center">p</td>
-<td align="center">l</td>
-<td align="center">e</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">m</td>
+<td style="text-align:center">p</td>
+<td style="text-align:center">l</td>
+<td style="text-align:center">e</td>
 <td></td>
-<td align="center">p</td>
-<td align="center">h</td>
-<td align="center">r</td>
-<td align="center">a</td>
-<td align="center">s</td>
-<td align="center">e</td>
+<td style="text-align:center">p</td>
+<td style="text-align:center">h</td>
+<td style="text-align:center">r</td>
+<td style="text-align:center">a</td>
+<td style="text-align:center">s</td>
+<td style="text-align:center">e</td>
 </tr>
-</tbody></table>
-<p><em><strong>case3</strong></em>： </p>
+</tbody>
+</table>
+</div>
+<p><strong><em>case3</em></strong>： </p>
 <h2 id="删除-erase"><a href="#删除-erase" class="headerlink" title="删除 erase"></a>删除 erase</h2><h2 id="插入-insert"><a href="#插入-insert" class="headerlink" title="插入 insert"></a>插入 insert</h2><h2 id="比较-compare"><a href="#比较-compare" class="headerlink" title="比较 compare"></a>比较 compare</h2><h2 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h2><h2 id="查找-find-rfind"><a href="#查找-find-rfind" class="headerlink" title="查找 find,rfind"></a>查找 find,rfind</h2><h2 id="子串"><a href="#子串" class="headerlink" title="子串"></a>子串</h2><h2 id="转换-stoi-stol-stoll-stof-stod"><a href="#转换-stoi-stol-stoll-stof-stod" class="headerlink" title="转换 stoi,stol,stoll,stof,stod"></a>转换 stoi,stol,stoll,stof,stod</h2><p>string库内带函数可以将字符串转换为对应的数字类型</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//stoi: string to integer</span></span><br><span class="line"><span class="comment">//stol: string to long</span></span><br><span class="line"><span class="comment">//stoll:string to long long</span></span><br><span class="line"><span class="comment">//stof: string to float</span></span><br><span class="line"><span class="comment">//stof：string to stof</span></span><br><span class="line"><span class="comment">//stod: string to double</span></span><br></pre></td></tr></table></figure>
-
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">stoi</span> <span class="params">(<span class="keyword">const</span> string&amp;  str, <span class="keyword">size_t</span>* idx = <span class="number">0</span>, <span class="keyword">int</span> base = <span class="number">10</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p>其中，idx指向字符串中读取出一个整数后的下一个字符的下标，base可指定转换的基数，默认为10</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;2020 welcome!&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">std::string::size_type sz;</span><br><span class="line">a = <span class="built_in">stoi</span>(str, &amp;sz, <span class="number">10</span>);</span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; sz &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>output: 2002</p>
 <p>output: 4</p>
 </blockquote>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string str = <span class="string">&quot;101&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">a = <span class="built_in">stoi</span>(str, <span class="literal">nullptr</span>, <span class="number">2</span>);</span><br><span class="line">cout &lt;&lt; a &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>output: 5</p>
 </blockquote>
@@ -541,6 +528,8 @@
 
 
 
+
+  
 
 
 </body>

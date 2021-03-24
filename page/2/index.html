@@ -97,14 +97,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -122,14 +118,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -170,20 +158,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -270,7 +255,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="R-函数"><a href="#R-函数" class="headerlink" title="R 函数"></a>R 函数</h1><h2 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name_of_fuction=<span class="keyword">function</span>(形参表)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">return</span>(result)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h2 id="多次运行同一函数"><a href="#多次运行同一函数" class="headerlink" title="多次运行同一函数"></a>多次运行同一函数</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replicate(<span class="number">1000</span>, some_function)</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -351,7 +335,7 @@
 </ol>
 <h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ul>
 <li>+-*/：加减乘除</li>
-<li>^：幂</li>
+<li>\^：幂</li>
 <li>%%：求余</li>
 <li>%/%：整除</li>
 <li>%&gt;%：左边作为右边函数的第一个参数</li>
@@ -364,8 +348,7 @@
 <li>-&gt;&gt;</li>
 </ul>
 <h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><ul>
-<li><blockquote>
-</blockquote>
+<li><p>&gt;</p>
 </li>
 <li><p>&lt;</p>
 </li>
@@ -390,9 +373,7 @@
 <li>%in%：检查某个值是否在vector里</li>
 </ul>
 <h1 id="package"><a href="#package" class="headerlink" title="package"></a>package</h1><h2 id="安装package"><a href="#安装package" class="headerlink" title="安装package"></a>安装package</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages(<span class="string">&quot;package name&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="导入package"><a href="#导入package" class="headerlink" title="导入package"></a>导入package</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library(<span class="string">&quot;package name&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="使用package（不导入）"><a href="#使用package（不导入）" class="headerlink" title="使用package（不导入）"></a>使用package（不导入）</h2><p>用名空间 ::</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plyr::round_any()//名空间</span><br></pre></td></tr></table></figure>
       
@@ -500,16 +481,13 @@
 <li>等高线：geom_contour</li>
 </ul>
 <h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ggplot(data, aes(x=variable,y=variable, size/fill/color=variable))</span><br><span class="line">+geom_bar/histogram/…(color=, size=, fill=, shape=)</span><br><span class="line">+facet_warp(~变量，ncol=,nrow=) +labs(x=,y=,title=)</span><br></pre></td></tr></table></figure>
-
 <h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><h4 id="组距"><a href="#组距" class="headerlink" title="组距"></a>组距</h4><p><code>binwidth</code></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="密度直方图"><a href="#密度直方图" class="headerlink" title="密度直方图"></a>密度直方图</h4><p><code>y=..density..</code></p>
 <ul>
 <li>默认是<code>y=..count..</code>（计数）</li>
 </ul>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>, aes(y = ..density..))</span><br></pre></td></tr></table></figure>
-
 <h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p>Popular aesthetics for geom_point() are </p>
 <ul>
 <li>alpha: point visibility; 0 = invisible, 1 = opaque（不透明）</li>
@@ -533,7 +511,6 @@
 <li>用<code>\n</code>改变轴名和轴的距离</li>
 </ul>
 <h2 id="Scales"><a href="#Scales" class="headerlink" title="Scales"></a>Scales</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">scales_&#123;aes name&#125;_&#123;some option&#125;( </span><br><span class="line">	<span class="comment"># name of legend/axis </span></span><br><span class="line">	name = ... </span><br><span class="line">    </span><br><span class="line">	<span class="comment"># range of data values to map </span></span><br><span class="line">	limits = ...</span><br><span class="line">    </span><br><span class="line">	<span class="comment"># what aesthetic values to use for the limits </span></span><br><span class="line">	values = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># where to mark legend/axis </span></span><br><span class="line">	breaks = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># what to label the marks (breaks) ，图例</span></span><br><span class="line">	labels = ... </span><br><span class="line">) </span><br></pre></td></tr></table></figure>
-
 <h3 id="常见Scales"><a href="#常见Scales" class="headerlink" title="常见Scales"></a>常见Scales</h3><p>There are scales specifically for controling the x/y-axes (examples are given for <code>x</code>, but can be used for y by substituting x for y) </p>
 <ul>
 <li>scale_x_log10(): Plot x on log10 scale </li>
@@ -558,7 +535,6 @@
 </ul>
 <p>例：</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(mpg_suv, aes(x = hwy, y = cty)) + </span><br><span class="line">	geom_point(aes(color = issuv)) + </span><br><span class="line">	scale_color_manual(limits = <span class="built_in">c</span>(<span class="literal">FALSE</span>, <span class="literal">TRUE</span>),</span><br><span class="line">			                values = <span class="built_in">c</span>(<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>),</span><br><span class="line">					         breaks = <span class="built_in">c</span>(<span class="literal">TRUE</span>, <span class="literal">FALSE</span>), </span><br><span class="line">					         labels = <span class="built_in">c</span>(<span class="string">&#x27;SUV&#x27;</span>, <span class="string">&#x27;Other&#x27;</span>)</span><br><span class="line">			               ) </span><br></pre></td></tr></table></figure>
-
 <h2 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h2><ul>
 <li>坐标轴旋转：<br><code>coord_flip()</code></li>
 </ul>
@@ -568,10 +544,8 @@
 </ul>
 <h3 id="图例位置"><a href="#图例位置" class="headerlink" title="图例位置"></a>图例位置</h3><p>用一个0-1vector表示位置，第一位left(0)/right(1)，第二位bottom(0)/top(1)</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># specify either top/left/bottom/right, e.g., </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="string">&#x27;top&#x27;</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># or set x/y coordinates to position within plot </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">1</span>), </span><br><span class="line">                           legend.justification=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
-
-<h2 id="分面facet"><a href="#分面facet" class="headerlink" title="分面facet"></a>分面facet</h2><h3 id="facet-grid"><a href="#facet-grid" class="headerlink" title="facet_grid()"></a><code>facet_grid()</code></h3><p><strong>二维</strong>分面<br>例：行根据<code>year </code>，列根据<code>cyl</code>分面</p>
+<h2 id="分面facet"><a href="#分面facet" class="headerlink" title="分面facet"></a>分面facet</h2><h3 id="facet-grid"><a href="#facet-grid" class="headerlink" title="facet_grid()"></a><code>facet_grid()</code></h3><p><strong>二维</strong>分面<br>例：行根据<code>year</code>，列根据<code>cyl</code>分面</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">facet_grid(year ~ cyl)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>若只想一维分面，则用<code>.</code>代替变量<br>如：<code>facet_grid(year ~ .)</code></li>
 </ul>
@@ -583,7 +557,6 @@
 <h2 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h2><p>无法直接显示，应先手动算出来<br><code>prop.table(table(titanic$Survived))</code></p>
 <h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><p>用<code>ggsave()</code>保存图片，图片比例更好</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggsave(<span class="string">&quot;my_plot.png&quot;</span>,</span><br><span class="line">         width=<span class="number">5</span>,</span><br><span class="line">         height=<span class="number">5</span>,</span><br><span class="line">         plot=p)<span class="comment">#p是图片</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="地图ggmap"><a href="#地图ggmap" class="headerlink" title="地图ggmap"></a>地图ggmap</h2><p>Use the qmap function to initialize a ggplot object with a map layer </p>
 <ul>
 <li>The main arguments for qmap are <ul>
@@ -596,10 +569,9 @@
 </ul>
 </li>
 </ul>
-<p>see <code>?qmap</code>, <code>?ggmap</code>, and<code> ?get_map</code> for more details</p>
+<p>see <code>?qmap</code>, <code>?ggmap</code>, and<code>?get_map</code> for more details</p>
 <p>例：</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Bounding box around the US (I Googled the numbers) </span></span><br><span class="line">us &lt;- <span class="built_in">c</span>(left = -<span class="number">125</span>, bottom = <span class="number">25.75</span>, right = -<span class="number">67</span>, top = <span class="number">49</span>) </span><br><span class="line">p &lt;- qmap(us, zoom = <span class="number">5</span>, maptype = <span class="string">&quot;toner-lite&quot;</span>, </span><br><span class="line">		  source = <span class="string">&quot;stamen&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
 <li>factor类型在导入数据之后先as.factor()或as.character()</li>
 </ul>
@@ -684,10 +656,8 @@
 </ul>
 <h2 id="子窗口"><a href="#子窗口" class="headerlink" title="子窗口"></a>子窗口</h2><p>坐标系统相对于<strong>父窗口</strong></p>
 <ul>
-<li><p>原点：相对于窗口空白区域左上角（不包括边框）</p>
-</li>
-<li><p>x：往右递增</p>
-</li>
+<li>原点：相对于窗口空白区域左上角（不包括边框）</li>
+<li>x：往右递增</li>
 <li><p>y：往右递增</p>
 </li>
 <li><p><code>setGeometry()</code></p>
@@ -771,7 +741,6 @@
 <li>如果sender或receiver是指针，则无需加&amp;</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">QWidget w;</span><br><span class="line"><span class="function">QPushButton <span class="title">b</span><span class="params">(&amp;w)</span></span>;</span><br><span class="line"><span class="built_in">connect</span>(&amp;b, &amp;QPushButton::pressed, <span class="keyword">this</span>, &amp;MainWidget::close)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* &amp;b：信号发出者，指针类型</span></span><br><span class="line"><span class="comment">* &amp;QPushButton::pressed：处理的信号（&amp;发送者的类名::信号名）</span></span><br><span class="line"><span class="comment">* this：信号接受者（在类函数里）</span></span><br><span class="line"><span class="comment">* &amp;MainWidget::close：槽函数，信号处理函数（&amp;接收者的类名::槽函数名）</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="自定义槽函数"><a href="#自定义槽函数" class="headerlink" title="自定义槽函数"></a>自定义槽函数</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ul>
 <li>任意的<strong>成员函数</strong></li>
 <li>普通全局函数</li>
@@ -784,7 +753,6 @@
 </li>
 </ul>
 <h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">b1.<span class="built_in">setText</span>(<span class="string">&quot;我是好看的宝&quot;</span>);   b1.<span class="built_in">setParent</span>(<span class="keyword">this</span>);   b1.<span class="built_in">move</span>(<span class="number">100</span>,<span class="number">100</span>);   </span><br><span class="line"><span class="built_in">connect</span>(&amp;b1, &amp;QPushButton::pressed, <span class="keyword">this</span>, &amp;MyWidget::close);   </span><br><span class="line"><span class="comment">//按下b1主窗口关闭</span></span><br><span class="line"></span><br><span class="line">b2=<span class="keyword">new</span> QPushButton;   </span><br><span class="line">b2-&gt;<span class="built_in">setParent</span>(<span class="keyword">this</span>);   </span><br><span class="line">b2-&gt;<span class="built_in">setText</span>(<span class="string">&quot;abc&quot;</span>);   <span class="built_in">connect</span>(b2,&amp;QPushButton::released, <span class="keyword">this</span>, &amp;MyWidget::mySlot);   </span><br><span class="line"><span class="comment">//松开b2吧“abc”变“123”</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">connect</span>(b2,&amp;QPushButton::released, &amp;b1, &amp;QPushButton::hide);</span><br><span class="line"><span class="comment">//松开b2隐藏b1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MyWidget::mySlot</span><span class="params">()</span></span>&#123;    b2-&gt;<span class="built_in">setText</span>(<span class="string">&quot;123&quot;</span>);&#125;</span><br><span class="line"><span class="comment">//自定义槽函数</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="自定义信号"><a href="#自定义信号" class="headerlink" title="自定义信号"></a>自定义信号</h2><h3 id="信号特征"><a href="#信号特征" class="headerlink" title="信号特征"></a>信号特征</h3><ul>
 <li>信号必须由关键字<code>signals</code>声明</li>
 <li>信号没有返回值，但可以有参数</li>
@@ -793,7 +761,6 @@
 <h3 id="信号的发送（使用）"><a href="#信号的发送（使用）" class="headerlink" title="信号的发送（使用）"></a>信号的发送（使用）</h3><p>emit mySignal();</p>
 <h3 id="信号的重载"><a href="#信号的重载" class="headerlink" title="信号的重载"></a>信号的重载</h3><p>参数表不同</p>
 <h4 id="官方信号的重载"><a href="#官方信号的重载" class="headerlink" title="官方信号的重载"></a>官方信号的重载</h4><h4 id="自定义信号的重载"><a href="#自定义信号的重载" class="headerlink" title="自定义信号的重载"></a>自定义信号的重载</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不带参数的信号</span></span><br><span class="line"><span class="built_in"><span class="keyword">void</span></span>(SubWidget::*<span class="built_in">funSignal</span>()=&amp;SubWidget::mySignal;<span class="comment">//函数指针</span></span><br><span class="line"><span class="built_in">connect</span>(&amp;subWin,funSignal,<span class="keyword">this</span>,&amp;MyWidget::dealSub);   </span><br><span class="line"></span><br><span class="line"><span class="comment">//带参数的信号</span></span><br><span class="line"><span class="built_in"><span class="keyword">void</span></span>(SubWidget::*<span class="built_in">testSignal</span>(<span class="keyword">int</span>,QString)=&amp;SubWidget::mySignal;<span class="comment">//函数指针</span></span><br><span class="line"><span class="built_in">connect</span>(&amp;subWin,testSignal,<span class="keyword">this</span>,&amp;MyWidget::dealSlot);</span><br></pre></td></tr></table></figure>
-
 <p>用<strong>函数指针</strong>（前加类名）代替信号来重载</p>
 <ul>
 <li>信号名一样，函数指针名不一样</li>
@@ -1032,7 +999,7 @@
 </ul>
 <h2 id="事件的过滤"><a href="#事件的过滤" class="headerlink" title="事件的过滤"></a>事件的过滤</h2><h3 id="重写event"><a href="#重写event" class="headerlink" title="重写event()"></a>重写event()</h3><ul>
 <li>返回值可以设为<code>bool</code>，不想继续就return true，想继续就return 父类::event(e)</li>
-<li>已定义的事件要将e<strong>强制类型转换</strong>成该事件类型<br>如：<code>QKeyEvent *env=static_cast&lt;QKeyEvent *&gt;(e); </code>将e转为<code>QEvent*</code>类型</li>
+<li>已定义的事件要将e<strong>强制类型转换</strong>成该事件类型<br>如：<code>QKeyEvent *env=static_cast&lt;QKeyEvent *&gt;(e);</code>将e转为<code>QEvent*</code>类型</li>
 </ul>
 <h3 id="事件过滤器"><a href="#事件过滤器" class="headerlink" title="事件过滤器"></a>事件过滤器</h3><p><code>virtual bool QObject::eventFilter(QObject *watched, QEvent *event);</code><br>可以监视过滤哪个控件</p>
 <ul>
@@ -1273,6 +1240,8 @@
 
 
 
+
+  
 
 
 </body>

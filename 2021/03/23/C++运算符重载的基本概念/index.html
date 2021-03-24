@@ -101,14 +101,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -126,14 +122,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -175,20 +163,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -285,7 +270,6 @@
 </ul>
 <h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>返回值类型 operator 运算符（形参表）<br>{<br>    ……<br>}</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> real, imag;</span><br><span class="line">    <span class="built_in">Complex</span>(<span class="keyword">double</span> r=<span class="number">0.0</span>, <span class="keyword">double</span> i=<span class="number">0.0</span>): <span class="built_in">real</span>(r), <span class="built_in">imag</span>(i)&#123;&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span>-(<span class="keyword">const</span> Complex &amp;c);</span><br><span class="line">&#125;;</span><br><span class="line">Complex <span class="keyword">operator</span>+(<span class="keyword">const</span> Complex &amp;a, <span class="keyword">const</span> Complex &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Complex</span>(a.real+b.real, a.imag+b.imag);<span class="comment">//返回一个临时对象，重载为普通函数</span></span><br><span class="line">&#125;</span><br><span class="line">Complex Complex::<span class="keyword">operator</span>-(<span class="keyword">const</span> Complex &amp;c)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Complex</span>(real-c.real, imag-c.imag);<span class="comment">//返回一个临时对象，重载为成员函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Complex a(4, 4), b(1, 1), c;</span><br><span class="line">    c=a+b;<span class="comment">//等价于c=operator+(a, b);</span></span><br><span class="line">    cout&lt;&lt;(a-b).real&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;(a-b).imag&lt;&lt;endl;<span class="comment">//a-b等价于a.operator-(b);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>重载为<strong>成员函数</strong>时，参数个数为运算符目数<strong>减一</strong></li>
 <li>重载为<strong>普通函数</strong>时，参数个数为运算符目数</li>
@@ -384,6 +368,8 @@
 
 
 
+
+  
 
 
 </body>

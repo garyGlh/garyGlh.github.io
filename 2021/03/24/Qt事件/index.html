@@ -101,14 +101,10 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
   <div class="site-meta">
-      <img class="custom-logo-image" src="https://gary-pic.oss-cn-guangzhou.aliyuncs.com/img/jennykq.jpg" alt="JKQ's Blog">
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
@@ -126,14 +122,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
-  </ul>
-</nav>
 
 
 
@@ -175,20 +163,17 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-        
           <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/categories">
-          
+            <a href="/categories/">
         <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/tags">
-          
+            <a href="/tags/">
         <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -291,7 +276,7 @@
 </ul>
 <h2 id="事件的过滤"><a href="#事件的过滤" class="headerlink" title="事件的过滤"></a>事件的过滤</h2><h3 id="重写event"><a href="#重写event" class="headerlink" title="重写event()"></a>重写event()</h3><ul>
 <li>返回值可以设为<code>bool</code>，不想继续就return true，想继续就return 父类::event(e)</li>
-<li>已定义的事件要将e<strong>强制类型转换</strong>成该事件类型<br>如：<code>QKeyEvent *env=static_cast&lt;QKeyEvent *&gt;(e); </code>将e转为<code>QEvent*</code>类型</li>
+<li>已定义的事件要将e<strong>强制类型转换</strong>成该事件类型<br>如：<code>QKeyEvent *env=static_cast&lt;QKeyEvent *&gt;(e);</code>将e转为<code>QEvent*</code>类型</li>
 </ul>
 <h3 id="事件过滤器"><a href="#事件过滤器" class="headerlink" title="事件过滤器"></a>事件过滤器</h3><p><code>virtual bool QObject::eventFilter(QObject *watched, QEvent *event);</code><br>可以监视过滤哪个控件</p>
 <ul>
@@ -400,6 +385,8 @@
 
 
 
+
+  
 
 
 </body>
