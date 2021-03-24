@@ -641,111 +641,6 @@ r_{ij}=\left| a_{ij}-\beta _j \right|-\frac{\min_i \left| a_{ij}-\beta _j \right
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">动态规划</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-24 16:53:04 / 修改时间：16:59:12" itemprop="dateCreated datePublished" datetime="2021-03-24T16:53:04+08:00">2021-03-24</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="归纳"><a href="#归纳" class="headerlink" title="归纳"></a>归纳</h2><ul>
-<li>题目为<strong>连续</strong>时，dp一般为dp[i]为<strong>以nums[i]结尾的</strong></li>
-</ul>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="爬楼梯"><a href="#爬楼梯" class="headerlink" title="爬楼梯"></a>爬楼梯</h3><p>问题：n阶楼梯，每次可爬1或2层，求所有方法数</p>
-<ul>
-<li><p>dp[i]表示<strong>爬到i阶楼梯</strong>的方法数</p>
-</li>
-<li><p>dp[i]=dp[i-1]+dp[i-2]</p>
-</li>
-</ul>
-<h3 id="除数博弈"><a href="#除数博弈" class="headerlink" title="除数博弈"></a>除数博弈</h3><p>问题：A和B轮流选数字，每次可选N%k==0的k，另一人在N-k里选，问能否赢</p>
-<ul>
-<li><p>dp[i]为布尔数组，表示如果当前<strong>选择范围为0~i</strong>，则在自己与对手均以最佳状态参赛时将胜利/失败</p>
-</li>
-<li><p>```c++<br>for(int i=1;i&lt;=N;i++)<br>{</p>
-<pre><code>for(int j=1;j&lt;i;j++)
-&#123;
-    if(i%j==0)//可以选择j
-    &#123;
-        if(p[i-j]==false)//对手输的方法，找到则break，找不到则最终false
-        &#123;
-            p[i]=true;
-            break;
-        &#125;
-    &#125;
-&#125;
-</code></pre><p>}</p>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 硬币</span><br><span class="line"></span><br><span class="line">问题：用1分、5分、10分、20分凑成n分的方法数</span><br><span class="line"></span><br><span class="line">* f(i,v)表示用**前i种币**凑成价值为v的方法数，c<span class="comment">[i]</span>是第i种币的价值</span><br><span class="line">* if c<span class="comment">[i]</span>&gt;v，f(i,v)=f(i-1,v)</span><br><span class="line">* if c<span class="comment">[i]</span>&lt;=v，f(i,v)=f(i-1,v)+f(i,v-c<span class="comment">[i]</span>)//f(i,v-c<span class="comment">[i]</span>)表示至少用1个第i种币凑成v，所以在v-c<span class="comment">[i]</span>里减掉了</span><br><span class="line"></span><br><span class="line">### 连续子数组的最大和</span><br><span class="line"></span><br><span class="line">问题：求nums<span class="comment">[]</span>数组的连续子数组的最大和</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>是**以nums<span class="comment">[i]</span>结尾**的最大子数组和</span><br><span class="line">* dp<span class="comment">[i]</span>=max(dp<span class="comment">[i]</span>+nums<span class="comment">[i]</span>, nums<span class="comment">[i]</span>)</span><br><span class="line"></span><br><span class="line">### 零钱兑换</span><br><span class="line"></span><br><span class="line">问题：给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>是**金额i**的最小使用张数</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>=min(dp<span class="comment">[i-1]</span>, dp<span class="comment">[i-2]</span>, dp<span class="comment">[i-5]</span>, dp<span class="comment">[i-7]</span>, dp<span class="comment">[i-10]</span>)+1【假设coins=<span class="comment">[1, 2, 5, 7, 10]</span>时】</span><br><span class="line"></span><br><span class="line">* ```c++</span><br><span class="line">  int coinChange(vector&lt;int&gt;&amp; coins, int amount) &#123;</span><br><span class="line">      // 数组大小为 amount + 1，初始值也为 amount + 1</span><br><span class="line">      vector&lt;int&gt; dp(amount + 1, amount + 1);</span><br><span class="line">      // base case</span><br><span class="line">      dp<span class="comment">[0]</span> = 0;</span><br><span class="line">      for (int i = 0; i &lt; dp.size(); i++) &#123;</span><br><span class="line">          // 内层 for 在求所有子问题 + 1 的最小值</span><br><span class="line">          for (int coin : coins) &#123;</span><br><span class="line">              // 子问题无解，跳过</span><br><span class="line">              if (i - coin &lt; 0) continue;</span><br><span class="line">              dp<span class="comment">[i]</span> = min(dp<span class="comment">[i]</span>, 1 + dp<span class="comment">[i - coin]</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return (dp<span class="comment">[amount]</span> == amount + 1) ? -1 : dp<span class="comment">[amount]</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/R%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1424,6 +1319,208 @@ r_{ij}=\left| a_{ij}-\beta _j \right|-\frac{\min_i \left| a_{ij}-\beta _j \right
 <h2 id="导入package"><a href="#导入package" class="headerlink" title="导入package"></a>导入package</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library(<span class="string">&quot;package name&quot;</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="使用package（不导入）"><a href="#使用package（不导入）" class="headerlink" title="使用package（不导入）"></a>使用package（不导入）</h2><p>用名空间 ::</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plyr::round_any()//名空间</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/R%20ggplot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/24/R%20ggplot/" class="post-title-link" itemprop="url">R ggplot</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-24 16:37:07 / 修改时间：16:39:09" itemprop="dateCreated datePublished" datetime="2021-03-24T16:37:07+08:00">2021-03-24</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-ggplot"><a href="#R-ggplot" class="headerlink" title="R ggplot"></a>R ggplot</h1><h2 id="构成"><a href="#构成" class="headerlink" title="构成"></a>构成</h2><ul>
+<li>Data</li>
+<li>Layers图形类型</li>
+<li>Scales标度</li>
+<li>Coordinates坐标</li>
+<li>Faceting分面</li>
+<li>Themes主题</li>
+</ul>
+<h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><ul>
+<li>一张统计图形就是<strong>数据</strong>（data）到<strong>几何对象</strong>（geopmetric object，缩写为geom，包含点、线、条形等）的<strong>图形属性</strong>（aesthetic attributes，缩写为aes，包含横坐标，纵坐标，颜色、形状、大小等）的一个映射。</li>
+<li>图形中还可能包含<strong>统计变换</strong>（statictical transformation，缩写为stats），最后绘制在某个<strong>坐标系</strong>（coordinate system，缩写为cord）中，而<strong>分面</strong>（facet，指将绘图窗口划分成若干个子窗口）则可以用来生成数据不同子集的图形。</li>
+</ul>
+<h3 id="Aesthetics"><a href="#Aesthetics" class="headerlink" title="Aesthetics"></a>Aesthetics</h3><ul>
+<li>X-axis</li>
+<li>Y-axis</li>
+<li>fill</li>
+<li>col</li>
+<li>shape</li>
+<li>size</li>
+<li>alpha</li>
+</ul>
+<h3 id="几何对象"><a href="#几何对象" class="headerlink" title="几何对象"></a>几何对象</h3><ul>
+<li>柱状图、饼图：geom_bar</li>
+<li>箱型图：geom_boxplot</li>
+<li>直方图：geom_histogram</li>
+<li>频线图：geom_freqpoly</li>
+<li>密度函数平滑估计图：geom_density</li>
+<li>散点图：geom_point</li>
+<li>线图（数据出现顺序/横坐标大小）：geom_path/geom_line</li>
+<li>平滑曲线拟合图：geom_smooth</li>
+<li>等高线：geom_contour</li>
+</ul>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ggplot(data, aes(x=variable,y=variable, size/fill/color=variable))</span><br><span class="line">+geom_bar/histogram/…(color=, size=, fill=, shape=)</span><br><span class="line">+facet_warp(~变量，ncol=,nrow=) +labs(x=,y=,title=)</span><br></pre></td></tr></table></figure>
+<h2 id="画图"><a href="#画图" class="headerlink" title="画图"></a>画图</h2><h3 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h3><h4 id="组距"><a href="#组距" class="headerlink" title="组距"></a>组距</h4><p><code>binwidth</code></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="密度直方图"><a href="#密度直方图" class="headerlink" title="密度直方图"></a>密度直方图</h4><p><code>y=..density..</code></p>
+<ul>
+<li>默认是<code>y=..count..</code>（计数）</li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(quakes, aes(x = stations)) +</span><br><span class="line">    geom_histogram(binwidth = <span class="number">10</span>, aes(y = ..density..))</span><br></pre></td></tr></table></figure>
+<h3 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h3><p>Popular aesthetics for geom_point() are </p>
+<ul>
+<li>alpha: point visibility; 0 = invisible, 1 = opaque（不透明）</li>
+<li>color: color of the points (try colors() to see a list of some pre-defined colors) </li>
+<li>shape: shape of the points (predefined)【shape编号】</li>
+<li>size: size of the points【变量/fixed value】</li>
+<li>fill: color used to fill-in the points (only applies to certain shapes, i.e., shape numbers 21 to 25)</li>
+</ul>
+<h3 id="线图"><a href="#线图" class="headerlink" title="线图"></a>线图</h3><p>Popular aesthetics for geom_point() are </p>
+<ul>
+<li>alpha: line visibility; 0 = invisible, 1 = opaque </li>
+<li>color: color of the lines </li>
+<li>linetype: shape of lines (predefined)</li>
+<li>size: size (thickness) of the lines</li>
+</ul>
+<h3 id="平滑曲线拟合图geom-smooth"><a href="#平滑曲线拟合图geom-smooth" class="headerlink" title="平滑曲线拟合图geom_smooth"></a>平滑曲线拟合图geom_smooth</h3><ul>
+<li>去除置信区间：<code>se=FALSE</code></li>
+</ul>
+<h2 id="Labels"><a href="#Labels" class="headerlink" title="Labels"></a>Labels</h2><p><code>labs(title=&#39;title&#39;, x=&#39;x label&#39;, y=&#39;y label&#39;)</code></p>
+<ul>
+<li>用<code>\n</code>改变轴名和轴的距离</li>
+</ul>
+<h2 id="Scales"><a href="#Scales" class="headerlink" title="Scales"></a>Scales</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">scales_&#123;aes name&#125;_&#123;some option&#125;( </span><br><span class="line">	<span class="comment"># name of legend/axis </span></span><br><span class="line">	name = ... </span><br><span class="line">    </span><br><span class="line">	<span class="comment"># range of data values to map </span></span><br><span class="line">	limits = ...</span><br><span class="line">    </span><br><span class="line">	<span class="comment"># what aesthetic values to use for the limits </span></span><br><span class="line">	values = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># where to mark legend/axis </span></span><br><span class="line">	breaks = ..</span><br><span class="line">    . </span><br><span class="line">	<span class="comment"># what to label the marks (breaks) ，图例</span></span><br><span class="line">	labels = ... </span><br><span class="line">) </span><br></pre></td></tr></table></figure>
+<h3 id="常见Scales"><a href="#常见Scales" class="headerlink" title="常见Scales"></a>常见Scales</h3><p>There are scales specifically for controling the x/y-axes (examples are given for <code>x</code>, but can be used for y by substituting x for y) </p>
+<ul>
+<li>scale_x_log10(): Plot x on log10 scale </li>
+<li>scale_x_reverse(): Reverse the direction of the x axis </li>
+<li>scale_x_sqrt(): Plot x on square root scale </li>
+<li>scale_x_date(labels=date_format(“%Y/%m/%d”),<br>breaks=date_breaks(“2 weeks”)): For axes in date format. <ul>
+<li><code>date_format</code>是日期格式，<code>date_breaks</code>是坐标间隔</li>
+</ul>
+</li>
+</ul>
+<p>See <code>?strptime</code> for label formats, and scale_x_date for more details</p>
+<h3 id="常见功能Scales"><a href="#常见功能Scales" class="headerlink" title="常见功能Scales"></a>常见功能Scales</h3><p>Scales for specific <strong>aesthetics</strong> can be controled with the following functions (where * should be replaced with the desired aesthetic, e.g., color, shape) </p>
+<ul>
+<li><p>scale_*_continuous(): map continuous values to visual values </p>
+</li>
+<li><p>scale_*_discrete(): map discrete values to visual values </p>
+</li>
+<li><p>scale_*_identity(): map raw data to visual values (e.g., a data value of 1 equals shape #1) </p>
+</li>
+<li><p>scale_*_manual(): map discrete values to manually assigned visual values</p>
+</li>
+</ul>
+<p>例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p &lt;- ggplot(mpg_suv, aes(x = hwy, y = cty)) + </span><br><span class="line">	geom_point(aes(color = issuv)) + </span><br><span class="line">	scale_color_manual(limits = <span class="built_in">c</span>(<span class="literal">FALSE</span>, <span class="literal">TRUE</span>),</span><br><span class="line">			                values = <span class="built_in">c</span>(<span class="string">&#x27;blue&#x27;</span>, <span class="string">&#x27;red&#x27;</span>),</span><br><span class="line">					         breaks = <span class="built_in">c</span>(<span class="literal">TRUE</span>, <span class="literal">FALSE</span>), </span><br><span class="line">					         labels = <span class="built_in">c</span>(<span class="string">&#x27;SUV&#x27;</span>, <span class="string">&#x27;Other&#x27;</span>)</span><br><span class="line">			               ) </span><br></pre></td></tr></table></figure>
+<h2 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h2><ul>
+<li>坐标轴旋转：<br><code>coord_flip()</code></li>
+</ul>
+<h2 id="主题theme"><a href="#主题theme" class="headerlink" title="主题theme"></a>主题theme</h2><ul>
+<li>标题居中：<br><code>theme(plot.title=element_text(hjust=0.5))</code></li>
+<li>背景为白色：<br><code>theme_bw()</code></li>
+</ul>
+<h3 id="图例位置"><a href="#图例位置" class="headerlink" title="图例位置"></a>图例位置</h3><p>用一个0-1vector表示位置，第一位left(0)/right(1)，第二位bottom(0)/top(1)</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># specify either top/left/bottom/right, e.g., </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="string">&#x27;top&#x27;</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># or set x/y coordinates to position within plot </span></span><br><span class="line">p &lt;- p + theme(legend.position=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">1</span>), </span><br><span class="line">                           legend.justification=<span class="built_in">c</span>(<span class="number">0</span>, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="分面facet"><a href="#分面facet" class="headerlink" title="分面facet"></a>分面facet</h2><h3 id="facet-grid"><a href="#facet-grid" class="headerlink" title="facet_grid()"></a><code>facet_grid()</code></h3><p><strong>二维</strong>分面<br>例：行根据<code>year</code>，列根据<code>cyl</code>分面</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">facet_grid(year ~ cyl)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>若只想一维分面，则用<code>.</code>代替变量<br>如：<code>facet_grid(year ~ .)</code></li>
+</ul>
+<h3 id="facet-wrap"><a href="#facet-wrap" class="headerlink" title="facet_wrap()"></a><code>facet_wrap()</code></h3><ul>
+<li>facet_wrap(~变量)</li>
+<li>facet_wrap(变量1~变量2)</li>
+<li>facet_wrap(~变量, nrow=行数, ncol=列数)</li>
+</ul>
+<h2 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h2><p>无法直接显示，应先手动算出来<br><code>prop.table(table(titanic$Survived))</code></p>
+<h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><p>用<code>ggsave()</code>保存图片，图片比例更好</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggsave(<span class="string">&quot;my_plot.png&quot;</span>,</span><br><span class="line">         width=<span class="number">5</span>,</span><br><span class="line">         height=<span class="number">5</span>,</span><br><span class="line">         plot=p)<span class="comment">#p是图片</span></span><br></pre></td></tr></table></figure>
+<h2 id="地图ggmap"><a href="#地图ggmap" class="headerlink" title="地图ggmap"></a>地图ggmap</h2><p>Use the qmap function to initialize a ggplot object with a map layer </p>
+<ul>
+<li>The main arguments for qmap are <ul>
+<li><strong>location</strong>: an address, vector of longitude/latitude pair (in that order), or vector of left/bottom/right/top bounding box </li>
+<li><strong>zoom</strong>: the zoom level in integer values from 3 (continent) to 21 (building) </li>
+<li><strong>color</strong>: either ‘color’ or ‘bw’ (for grayscale) </li>
+<li><strong>maptype</strong>: character string providing map theme, e.g.,‘terrain’, ‘satellite’,‘roadmap’,‘hybrid’, etc. </li>
+<li><strong>legend</strong>: position for the legend, e.g.,‘top’,‘right’,‘topleft’,‘bottomright’,‘none’, etc. </li>
+<li><strong>source</strong>: Source to load maps from; google by default, but not recommended due to API requirements </li>
+</ul>
+</li>
+</ul>
+<p>see <code>?qmap</code>, <code>?ggmap</code>, and<code>?get_map</code> for more details</p>
+<p>例：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Bounding box around the US (I Googled the numbers) </span></span><br><span class="line">us &lt;- <span class="built_in">c</span>(left = -<span class="number">125</span>, bottom = <span class="number">25.75</span>, right = -<span class="number">67</span>, top = <span class="number">49</span>) </span><br><span class="line">p &lt;- qmap(us, zoom = <span class="number">5</span>, maptype = <span class="string">&quot;toner-lite&quot;</span>, </span><br><span class="line">		  source = <span class="string">&quot;stamen&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>factor类型在导入数据之后先as.factor()或as.character()</li>
+</ul>
+
       
     </div>
 

@@ -207,183 +207,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/11/30/Python%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%EF%BC%88%E7%88%AC%E5%8F%96%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/11/30/Python%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%EF%BC%88%E7%88%AC%E5%8F%96%EF%BC%89/" class="post-title-link" itemprop="url">Python网络数据获取（爬取）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-11-30 16:15:11" itemprop="dateCreated datePublished" datetime="2019-11-30T16:15:11+08:00">2019-11-30</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Python-网络数据获取（爬取）"><a href="#Python-网络数据获取（爬取）" class="headerlink" title="Python 网络数据获取（爬取）"></a>Python 网络数据获取（爬取）</h1><ul>
-<li><p>抓取</p>
-<ul>
-<li><p>urlib内建模块（被取代）</p>
-<ul>
-<li>urlib.request</li>
-</ul>
-</li>
-<li><p>Requests第三方库（中小型）</p>
-</li>
-<li>Scapy框架（大型）</li>
-</ul>
-</li>
-<li><p>解析</p>
-<ul>
-<li>BeautifulSoup库</li>
-<li>re模块（正则表达式）</li>
-</ul>
-</li>
-<li><p>或用第三方API抓取+解析</p>
-</li>
-</ul>
-<h2 id="抓取"><a href="#抓取" class="headerlink" title="抓取"></a>抓取</h2><h3 id="Requests库"><a href="#Requests库" class="headerlink" title="Requests库"></a>Requests库</h3><p>基本方法：</p>
-<ul>
-<li><code>r=requests.get(url)</code>：请求获取指定URL位置的资源，对应HTTP协议的GET方法</li>
-<li><code>r.status_code</code>：查看状态码（200为正常）</li>
-<li><code>r.encoding=...</code>：修改编码</li>
-<li><code>r.text</code>：查看内容</li>
-</ul>
-<h4 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h4><ul>
-<li>二进制：<code>r.content</code></li>
-<li>文本：<code>r.text</code></li>
-<li>json：<code>r.json()</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解码成中文</span></span><br><span class="line">r.text.encode(<span class="string">&quot;utf-8&quot;</span>).decode(<span class="string">&quot;unicode-escape&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="抓取网站的情况"><a href="#抓取网站的情况" class="headerlink" title="抓取网站的情况"></a>抓取网站的情况</h4><p>列举几种情况：</p>
-<ul>
-<li>假设获取的是二进制文件，则可以借鉴如下方法保存数据：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"> </span><br><span class="line">r = requests.get(<span class="string">&#x27;https://www.baidu.com/img/bd_logo1.png&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;baidu.png&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">   fp.write(r.content)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>有些网站会对http请求的Headers的User-Agent进行检测，需将<strong>headers</strong>信息传递给get函数的headers参数，例如豆瓣最近也有了此要求，例如知乎，直接访问会返回400，加上headers参数后可正确返回：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>re = requests.get(<span class="string">&#x27;https://www.zhihu.com&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.status_code</span><br><span class="line"><span class="number">400</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># headers可从http测试网站https://httpbin.org或浏览器的“开发者工具”获得</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>headers=&#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re = requests.get(<span class="string">&#x27;https://www.zhihu.com&#x27;</span>, headers = headers)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.status_code</span><br><span class="line"><span class="number">200</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>被JS渲染过的页面内容获取<br>可以通过浏览器的“开发者工具”功能寻找真正提供数据的页面，有时会有一定的难度。</li>
-</ul>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><h3 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h3><p>BeautifulSoup是一个可以从HTML或XML文件中提取数据的库</p>
-<ul>
-<li>HTML解析器最常用LXML</li>
-</ul>
-<p>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">markup=<span class="string">&quot;&lt;p class=&quot;</span>title<span class="string">&quot;&gt;&lt;b&gt;The Little Prince&lt;/b&gt;&lt;/p&gt;&quot;</span></span><br><span class="line">soup=BeautifulSoup(markup, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line"></span><br><span class="line">soup.b</span><br><span class="line">&gt;&gt;&gt;&lt;b&gt;The Little Prince</span><br><span class="line"></span><br><span class="line">soup.find(<span class="string">&quot;b&quot;</span>)</span><br><span class="line"><span class="comment"># 找到第一个&lt;b&gt;的内容</span></span><br><span class="line"></span><br><span class="line">soup.find_all(<span class="string">&quot;b&quot;</span>)</span><br><span class="line"><span class="comment"># 找到所有&lt;b&gt;的内容，返回列表</span></span><br></pre></td></tr></table></figure>
-<h4 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h4><ul>
-<li>Tag：标签</li>
-<li>NavigableString：Tag中的字符串</li>
-<li>BeautifulSoup</li>
-<li>Comment：NavigableString的子类</li>
-</ul>
-<h4 id="Tag属性"><a href="#Tag属性" class="headerlink" title="Tag属性"></a>Tag属性</h4><ul>
-<li>name</li>
-<li>attrs：类似字典</li>
-</ul>
-<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><ul>
-<li>贪婪模式：？，碰到第一个就结束</li>
-<li>非贪婪模式：没有？，直到找到最后一个</li>
-</ul>
-<h4 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h4><ul>
-<li>(.*)：捕获前后字符串夹着的字符串</li>
-<li>\s+：换行</li>
-</ul>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
-<li>获取的是清洗过的数据，而非源代码</li>
-</ul>
-<h3 id="API获取数据"><a href="#API获取数据" class="headerlink" title="API获取数据"></a>API获取数据</h3><ul>
-<li>pandas_datareader.data. DataReader( , )</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas_datareader.data <span class="keyword">as</span> web</span><br><span class="line"></span><br><span class="line">f = web.DataReader(<span class="string">&quot;AXP&quot;</span>, <span class="string">&quot;stooq&quot;</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>tushare</li>
-</ul>
-<h3 id="Restful-API"><a href="#Restful-API" class="headerlink" title="Restful API"></a>Restful API</h3><p>基于网页的API，返回类型是JSON（JavaScript Notation）<br>例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tianqi</span>(<span class="params">city</span>):</span></span><br><span class="line">    <span class="string">&quot;获取天气预报&quot;</span></span><br><span class="line">    url=<span class="string">&quot;http://t.weather.sojson.com/api/weather/city/101210101&quot;</span></span><br><span class="line">    <span class="keyword">import</span> requests</span><br><span class="line">    res=requests.get(url)</span><br><span class="line">    tq_text = res.text</span><br><span class="line">    <span class="keyword">import</span> json</span><br><span class="line">    <span class="comment">#把text转换为json对象</span></span><br><span class="line">    tq_json = json.loads(tq_text)</span><br><span class="line">    wendu=tq_json[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;wendu&quot;</span>]</span><br><span class="line">    pm25=tq_json[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;pm25&quot;</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;city&#125;</span>：温度是<span class="subst">&#123;wendu&#125;</span>，PM2.5是<span class="subst">&#123;pm25&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="数据获取有用的库-模块"><a href="#数据获取有用的库-模块" class="headerlink" title="数据获取有用的库/模块"></a>数据获取有用的库/模块</h2><h3 id="sklearn模块的datasets子模块"><a href="#sklearn模块的datasets子模块" class="headerlink" title="sklearn模块的datasets子模块"></a>sklearn模块的datasets子模块</h3><p>例：获取iris数据集</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"><span class="comment">#数据存储在data属性中</span></span><br><span class="line"><span class="built_in">print</span>(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(iris.feature_names)</span><br><span class="line"><span class="built_in">print</span>(iris.data.shape)</span><br><span class="line"><span class="comment">#数据所属种类在target属性中</span></span><br><span class="line"><span class="built_in">print</span>(iris.target)</span><br></pre></td></tr></table></figure>
-<h3 id="NLTK语料库"><a href="#NLTK语料库" class="headerlink" title="NLTK语料库"></a>NLTK语料库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"></span><br><span class="line"><span class="comment">#打开下载器</span></span><br><span class="line">nltk.download()</span><br><span class="line"></span><br><span class="line"><span class="comment">#在下载器中打开Corpora选项卡，都是可下载的语料库</span></span><br></pre></td></tr></table></figure>
-<p>例：加载古腾堡语料库</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> gutenberg</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看语料库中收录了哪些古藤堡项目的图书</span></span><br><span class="line"><span class="built_in">print</span>(gutenberg.fileids())</span><br><span class="line"></span><br><span class="line"><span class="comment">#把《哈姆雷特》中的单词列出来</span></span><br><span class="line">texts=gutenberg.words(<span class="string">&quot;shakespeare-hamlet.txt&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(texts)</span><br></pre></td></tr></table></figure>
-<h2 id="本地文件"><a href="#本地文件" class="headerlink" title="本地文件"></a>本地文件</h2><h3 id="csv文件"><a href="#csv文件" class="headerlink" title="csv文件"></a>csv文件</h3><h4 id="csv-gt-DataFrame"><a href="#csv-gt-DataFrame" class="headerlink" title="csv-&gt;DataFrame"></a>csv-&gt;DataFrame</h4><ul>
-<li>.read_csv(path, sep=”,”)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&quot;../test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="DataFrame-gt-csv"><a href="#DataFrame-gt-csv" class="headerlink" title="DataFrame-&gt;csv"></a>DataFrame-&gt;csv</h4><ul>
-<li>.to_csv(path)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&quot;../test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="excel文件"><a href="#excel文件" class="headerlink" title="excel文件"></a>excel文件</h3><h4 id="excel-gt-DataFrame"><a href="#excel-gt-DataFrame" class="headerlink" title="excel-&gt;DataFrame"></a>excel-&gt;DataFrame</h4><ul>
-<li>.read_excel(path, sheet_name)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_excel(<span class="string">&quot;../test.xls&quot;</span>, sheet_name=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="DataFrame-gt-excel"><a href="#DataFrame-gt-excel" class="headerlink" title="DataFrame-&gt;excel"></a>DataFrame-&gt;excel</h4><ul>
-<li>.to_excel(path)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_excel(<span class="string">&quot;../test.xls&quot;</span>)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/11/23/Python%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -587,6 +410,110 @@ x'=\frac{x}{10^j}</script><p>（j是移动位数）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#有放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>, replace = <span class="literal">True</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>, replace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
 <p>分层抽样：<br>先分层（利用DataFrame的<strong>筛选</strong>功能和<strong>append方法</strong>），再用sample()抽样</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A=iris_df[iris_df.target==<span class="number">0</span>].sample(frac=<span class="number">0.3</span>)</span><br><span class="line">B=iris_df[iris_df.target==<span class="number">1</span>].sample(frac=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">A.append(B)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/11/17/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/11/17/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">动态规划</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-17 16:53:04" itemprop="dateCreated datePublished" datetime="2019-11-17T16:53:04+08:00">2019-11-17</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="归纳"><a href="#归纳" class="headerlink" title="归纳"></a>归纳</h2><ul>
+<li>题目为<strong>连续</strong>时，dp一般为dp[i]为<strong>以nums[i]结尾的</strong></li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="爬楼梯"><a href="#爬楼梯" class="headerlink" title="爬楼梯"></a>爬楼梯</h3><p>问题：n阶楼梯，每次可爬1或2层，求所有方法数</p>
+<ul>
+<li><p>dp[i]表示<strong>爬到i阶楼梯</strong>的方法数</p>
+</li>
+<li><p>dp[i]=dp[i-1]+dp[i-2]</p>
+</li>
+</ul>
+<h3 id="除数博弈"><a href="#除数博弈" class="headerlink" title="除数博弈"></a>除数博弈</h3><p>问题：A和B轮流选数字，每次可选N%k==0的k，另一人在N-k里选，问能否赢</p>
+<ul>
+<li><p>dp[i]为布尔数组，表示如果当前<strong>选择范围为0~i</strong>，则在自己与对手均以最佳状态参赛时将胜利/失败</p>
+</li>
+<li><p>```c++<br>for(int i=1;i&lt;=N;i++)<br>{</p>
+<pre><code>for(int j=1;j&lt;i;j++)
+&#123;
+    if(i%j==0)//可以选择j
+    &#123;
+        if(p[i-j]==false)//对手输的方法，找到则break，找不到则最终false
+        &#123;
+            p[i]=true;
+            break;
+        &#125;
+    &#125;
+&#125;
+</code></pre><p>}</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 硬币</span><br><span class="line"></span><br><span class="line">问题：用1分、5分、10分、20分凑成n分的方法数</span><br><span class="line"></span><br><span class="line">* f(i,v)表示用**前i种币**凑成价值为v的方法数，c<span class="comment">[i]</span>是第i种币的价值</span><br><span class="line">* if c<span class="comment">[i]</span>&gt;v，f(i,v)=f(i-1,v)</span><br><span class="line">* if c<span class="comment">[i]</span>&lt;=v，f(i,v)=f(i-1,v)+f(i,v-c<span class="comment">[i]</span>)//f(i,v-c<span class="comment">[i]</span>)表示至少用1个第i种币凑成v，所以在v-c<span class="comment">[i]</span>里减掉了</span><br><span class="line"></span><br><span class="line">### 连续子数组的最大和</span><br><span class="line"></span><br><span class="line">问题：求nums<span class="comment">[]</span>数组的连续子数组的最大和</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>是**以nums<span class="comment">[i]</span>结尾**的最大子数组和</span><br><span class="line">* dp<span class="comment">[i]</span>=max(dp<span class="comment">[i]</span>+nums<span class="comment">[i]</span>, nums<span class="comment">[i]</span>)</span><br><span class="line"></span><br><span class="line">### 零钱兑换</span><br><span class="line"></span><br><span class="line">问题：给定不同面额的硬币 coins 和一个总金额 amount。编写一个函数来计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>是**金额i**的最小使用张数</span><br><span class="line"></span><br><span class="line">* dp<span class="comment">[i]</span>=min(dp<span class="comment">[i-1]</span>, dp<span class="comment">[i-2]</span>, dp<span class="comment">[i-5]</span>, dp<span class="comment">[i-7]</span>, dp<span class="comment">[i-10]</span>)+1【假设coins=<span class="comment">[1, 2, 5, 7, 10]</span>时】</span><br><span class="line"></span><br><span class="line">* ```c++</span><br><span class="line">  int coinChange(vector&lt;int&gt;&amp; coins, int amount) &#123;</span><br><span class="line">      // 数组大小为 amount + 1，初始值也为 amount + 1</span><br><span class="line">      vector&lt;int&gt; dp(amount + 1, amount + 1);</span><br><span class="line">      // base case</span><br><span class="line">      dp<span class="comment">[0]</span> = 0;</span><br><span class="line">      for (int i = 0; i &lt; dp.size(); i++) &#123;</span><br><span class="line">          // 内层 for 在求所有子问题 + 1 的最小值</span><br><span class="line">          for (int coin : coins) &#123;</span><br><span class="line">              // 子问题无解，跳过</span><br><span class="line">              if (i - coin &lt; 0) continue;</span><br><span class="line">              dp<span class="comment">[i]</span> = min(dp<span class="comment">[i]</span>, 1 + dp<span class="comment">[i - coin]</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return (dp<span class="comment">[amount]</span> == amount + 1) ? -1 : dp<span class="comment">[amount]</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>

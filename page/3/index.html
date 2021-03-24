@@ -207,149 +207,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/Qt%E6%A0%B7%E5%BC%8F%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/24/Qt%E6%A0%B7%E5%BC%8F%E8%A1%A8/" class="post-title-link" itemprop="url">Qt样式表</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-03-24 16:27:23 / 修改时间：16:31:19" itemprop="dateCreated datePublished" datetime="2021-03-24T16:27:23+08:00">2021-03-24</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Qt-样式表"><a href="#Qt-样式表" class="headerlink" title="Qt 样式表"></a>Qt 样式表</h1><p>通过调用<code>QWidget::setStyleSheet()</code>为一个独立的子部件、整个窗口，或调用<code>QApplication::setStyleSheet()</code>，为整个应用程序指定一个样式表</p>
-<h2 id="样式表语法基础"><a href="#样式表语法基础" class="headerlink" title="样式表语法基础"></a>样式表语法基础</h2><p>与CSS语法规则几乎完全相同<br><code>selector&#123; attribute: value&#125;</code></p>
-<ul>
-<li>selector：通常是<strong>类名</strong></li>
-<li>attribute：属性名</li>
-<li>value：赋给该属性的值</li>
-</ul>
-<p>例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">QCheckBox, QComboBox, QSpinBox&#123;</span><br><span class="line">    color: red;</span><br><span class="line">    background-color: white;</span><br><span class="line">    font: bold;<span class="comment">//字体：加粗</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="方箱模型"><a href="#方箱模型" class="headerlink" title="方箱模型"></a>方箱模型</h2><p>样式表中，每个部件被看做是一个由四个同心相似的矩阵组成的箱体</p>
-<ul>
-<li>空白margin：<br>空白区域位于边框外，是透明的</li>
-<li><p>边框border：<br>边框为部件提供了四周的框架，其border-style属性可以设置为一些内置框架风格，如inset, outset, solid和ridge</p>
-</li>
-<li><p>填充padding：<br>填充在边框和内容区域之间提供了空白间隔</p>
-</li>
-<li><p>内容content：<br>对于一个平面部件，例如一个空白、边框和填充都是0像素的部件而言，这四个矩形是完全重合的</p>
-</li>
-</ul>
-<h2 id="前景与背景"><a href="#前景与背景" class="headerlink" title="前景与背景"></a>前景与背景</h2><h3 id="前景色：color"><a href="#前景色：color" class="headerlink" title="前景色：color"></a>前景色：color</h3><p>可以用rgb配（0-255）<br>例：<br><code>ui-&gt;label-&gt;setStyleSheet(&quot;QLabel&#123;color:rgb(0,255,255);&#125;&quot;);</code></p>
-<ul>
-<li>如果把<code>ui</code>改成<code>this</code>，则<strong>窗口</strong>中所有label都是这个样式<ul>
-<li><code>this</code>是通用，仍可通过<code>ui</code>对某些进行特殊处理</li>
-</ul>
-</li>
-<li>如果要设定<strong>整个应用程序</strong>的，则在main函数里<code>a.setStyleSheet();</code></li>
-</ul>
-<h3 id="背景色：background-color"><a href="#背景色：background-color" class="headerlink" title="背景色：background-color"></a>背景色：background-color</h3><h3 id="背景图片background-image"><a href="#背景图片background-image" class="headerlink" title="背景图片background-image"></a>背景图片background-image</h3><p><code>&quot;background-image: url(图片路径);&quot;</code>（不用双引号）</p>
-<ul>
-<li>对齐：background-position</li>
-<li>平铺方式：background-repeat<br>默认重复平铺</li>
-</ul>
-<h2 id="创建可缩放样式"><a href="#创建可缩放样式" class="headerlink" title="创建可缩放样式"></a>创建可缩放样式</h2><p>例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;QPushButton&#123;&quot;</span></span><br><span class="line">   <span class="string">&quot;border-width: 4px;&quot;</span></span><br><span class="line">   <span class="string">&quot; border-image: url(图片路径) ;&quot;</span></span><br><span class="line"> <span class="string">&quot;&#125;&quot;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>裁剪原图片：<br><code>border-image: url(图片路径) 4 4 4 4 strech strrech;</code></li>
-</ul>
-<h2 id="控制大小"><a href="#控制大小" class="headerlink" title="控制大小"></a>控制大小</h2><p><code>min-width</code>和<code>min-height</code>指定一个部件内容区域的最小大小。这两个值将影响部件的<code>minimumSizeHint()</code>。</p>
-<h2 id="处理伪状态"><a href="#处理伪状态" class="headerlink" title="处理伪状态"></a>处理伪状态</h2><p>部件的<strong>外观</strong>按照用户界面元素<strong>状态</strong>的不同来分别定义</p>
-<p>格式：<code>selector: 伪状态&#123; attribute: value&#125;</code><br>例（按压改变图片）：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ui-&gt;pushButton-&gt;<span class="built_in">setStyleSheet</span>(<span class="string">&quot;QPushButton&#123;&quot;</span>                       </span><br><span class="line">                                         <span class="string">&quot;border-image:url(图片路径);&quot;</span></span><br><span class="line">                                         <span class="string">&quot;&#125;&quot;</span>                   </span><br><span class="line">                                         <span class="string">&quot;QPushButton: hover&#123;&quot;</span></span><br><span class="line">                                         <span class="string">&quot;border-image:url(图片路径);&quot;</span></span><br><span class="line">                                         <span class="string">&quot;&#125;&quot;</span>                                </span><br><span class="line">                                         )</span><br></pre></td></tr></table></figure>
-<h3 id="可用伪状态列表"><a href="#可用伪状态列表" class="headerlink" title="可用伪状态列表"></a>可用伪状态列表</h3><ul>
-<li>checked：button部件被选中</li>
-<li>disabled：部件被禁用</li>
-<li>enabled：部件被启用</li>
-<li>focus：部件获得焦点</li>
-<li>hover：鼠标位于部件上</li>
-<li>indeterminate：checkbox或radiobutton被选中</li>
-<li>off：部件可以切换，且处于off状态</li>
-<li>on：部件可以切换，且处于on状态</li>
-<li>pressed：部件被鼠标按下</li>
-<li>unchecked：button部件未被选中</li>
-</ul>
-<h2 id="使用子部件定义微观样式"><a href="#使用子部件定义微观样式" class="headerlink" title="使用子部件定义微观样式"></a>使用子部件定义微观样式</h2><ul>
-<li>用法类似伪状态<br>例：<code>QDateTimeEdit::up-button</code></li>
-<li>可和伪状态联合使用<br>例：<code>QDateTimeEdit::up-button: hover</code></li>
-</ul>
-<h3 id="子部件列表"><a href="#子部件列表" class="headerlink" title="子部件列表"></a>子部件列表</h3><ul>
-<li>down-arrow：combo box或spin box的下拉箭头</li>
-<li>up-arrow：combo box或spin box的向上箭头</li>
-<li>down-button：spin box的向下按钮</li>
-<li>up-button：spin box的向上按钮</li>
-<li>drop-down：combo box的下拉箭头</li>
-<li>indicatior：checkbox, radio button或可选择group box的指示器</li>
-<li>item：menu, menu bar或status bar的子项目</li>
-<li>menu-indicator：push button的菜单指示器</li>
-<li>title：group box的标题</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/24/Qt%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1355,6 +1212,183 @@
 <li>多用于测试函数<br>例：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">assert</span> isRunNian(<span class="number">2004</span>==<span class="literal">True</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/11/30/Python%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%EF%BC%88%E7%88%AC%E5%8F%96%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/11/30/Python%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%EF%BC%88%E7%88%AC%E5%8F%96%EF%BC%89/" class="post-title-link" itemprop="url">Python网络数据获取（爬取）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-30 16:15:11" itemprop="dateCreated datePublished" datetime="2019-11-30T16:15:11+08:00">2019-11-30</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Python-网络数据获取（爬取）"><a href="#Python-网络数据获取（爬取）" class="headerlink" title="Python 网络数据获取（爬取）"></a>Python 网络数据获取（爬取）</h1><ul>
+<li><p>抓取</p>
+<ul>
+<li><p>urlib内建模块（被取代）</p>
+<ul>
+<li>urlib.request</li>
+</ul>
+</li>
+<li><p>Requests第三方库（中小型）</p>
+</li>
+<li>Scapy框架（大型）</li>
+</ul>
+</li>
+<li><p>解析</p>
+<ul>
+<li>BeautifulSoup库</li>
+<li>re模块（正则表达式）</li>
+</ul>
+</li>
+<li><p>或用第三方API抓取+解析</p>
+</li>
+</ul>
+<h2 id="抓取"><a href="#抓取" class="headerlink" title="抓取"></a>抓取</h2><h3 id="Requests库"><a href="#Requests库" class="headerlink" title="Requests库"></a>Requests库</h3><p>基本方法：</p>
+<ul>
+<li><code>r=requests.get(url)</code>：请求获取指定URL位置的资源，对应HTTP协议的GET方法</li>
+<li><code>r.status_code</code>：查看状态码（200为正常）</li>
+<li><code>r.encoding=...</code>：修改编码</li>
+<li><code>r.text</code>：查看内容</li>
+</ul>
+<h4 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h4><ul>
+<li>二进制：<code>r.content</code></li>
+<li>文本：<code>r.text</code></li>
+<li>json：<code>r.json()</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#解码成中文</span></span><br><span class="line">r.text.encode(<span class="string">&quot;utf-8&quot;</span>).decode(<span class="string">&quot;unicode-escape&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="抓取网站的情况"><a href="#抓取网站的情况" class="headerlink" title="抓取网站的情况"></a>抓取网站的情况</h4><p>列举几种情况：</p>
+<ul>
+<li>假设获取的是二进制文件，则可以借鉴如下方法保存数据：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"> </span><br><span class="line">r = requests.get(<span class="string">&#x27;https://www.baidu.com/img/bd_logo1.png&#x27;</span>)</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;baidu.png&#x27;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">   fp.write(r.content)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>有些网站会对http请求的Headers的User-Agent进行检测，需将<strong>headers</strong>信息传递给get函数的headers参数，例如豆瓣最近也有了此要求，例如知乎，直接访问会返回400，加上headers参数后可正确返回：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>re = requests.get(<span class="string">&#x27;https://www.zhihu.com&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.status_code</span><br><span class="line"><span class="number">400</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># headers可从http测试网站https://httpbin.org或浏览器的“开发者工具”获得</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>headers=&#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re = requests.get(<span class="string">&#x27;https://www.zhihu.com&#x27;</span>, headers = headers)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>re.status_code</span><br><span class="line"><span class="number">200</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>被JS渲染过的页面内容获取<br>可以通过浏览器的“开发者工具”功能寻找真正提供数据的页面，有时会有一定的难度。</li>
+</ul>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><h3 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h3><p>BeautifulSoup是一个可以从HTML或XML文件中提取数据的库</p>
+<ul>
+<li>HTML解析器最常用LXML</li>
+</ul>
+<p>例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">markup=<span class="string">&quot;&lt;p class=&quot;</span>title<span class="string">&quot;&gt;&lt;b&gt;The Little Prince&lt;/b&gt;&lt;/p&gt;&quot;</span></span><br><span class="line">soup=BeautifulSoup(markup, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line"></span><br><span class="line">soup.b</span><br><span class="line">&gt;&gt;&gt;&lt;b&gt;The Little Prince</span><br><span class="line"></span><br><span class="line">soup.find(<span class="string">&quot;b&quot;</span>)</span><br><span class="line"><span class="comment"># 找到第一个&lt;b&gt;的内容</span></span><br><span class="line"></span><br><span class="line">soup.find_all(<span class="string">&quot;b&quot;</span>)</span><br><span class="line"><span class="comment"># 找到所有&lt;b&gt;的内容，返回列表</span></span><br></pre></td></tr></table></figure>
+<h4 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h4><ul>
+<li>Tag：标签</li>
+<li>NavigableString：Tag中的字符串</li>
+<li>BeautifulSoup</li>
+<li>Comment：NavigableString的子类</li>
+</ul>
+<h4 id="Tag属性"><a href="#Tag属性" class="headerlink" title="Tag属性"></a>Tag属性</h4><ul>
+<li>name</li>
+<li>attrs：类似字典</li>
+</ul>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><ul>
+<li>贪婪模式：？，碰到第一个就结束</li>
+<li>非贪婪模式：没有？，直到找到最后一个</li>
+</ul>
+<h4 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h4><ul>
+<li>(.*)：捕获前后字符串夹着的字符串</li>
+<li>\s+：换行</li>
+</ul>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ul>
+<li>获取的是清洗过的数据，而非源代码</li>
+</ul>
+<h3 id="API获取数据"><a href="#API获取数据" class="headerlink" title="API获取数据"></a>API获取数据</h3><ul>
+<li>pandas_datareader.data. DataReader( , )</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas_datareader.data <span class="keyword">as</span> web</span><br><span class="line"></span><br><span class="line">f = web.DataReader(<span class="string">&quot;AXP&quot;</span>, <span class="string">&quot;stooq&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>tushare</li>
+</ul>
+<h3 id="Restful-API"><a href="#Restful-API" class="headerlink" title="Restful API"></a>Restful API</h3><p>基于网页的API，返回类型是JSON（JavaScript Notation）<br>例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tianqi</span>(<span class="params">city</span>):</span></span><br><span class="line">    <span class="string">&quot;获取天气预报&quot;</span></span><br><span class="line">    url=<span class="string">&quot;http://t.weather.sojson.com/api/weather/city/101210101&quot;</span></span><br><span class="line">    <span class="keyword">import</span> requests</span><br><span class="line">    res=requests.get(url)</span><br><span class="line">    tq_text = res.text</span><br><span class="line">    <span class="keyword">import</span> json</span><br><span class="line">    <span class="comment">#把text转换为json对象</span></span><br><span class="line">    tq_json = json.loads(tq_text)</span><br><span class="line">    wendu=tq_json[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;wendu&quot;</span>]</span><br><span class="line">    pm25=tq_json[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;pm25&quot;</span>]</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;city&#125;</span>：温度是<span class="subst">&#123;wendu&#125;</span>，PM2.5是<span class="subst">&#123;pm25&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="数据获取有用的库-模块"><a href="#数据获取有用的库-模块" class="headerlink" title="数据获取有用的库/模块"></a>数据获取有用的库/模块</h2><h3 id="sklearn模块的datasets子模块"><a href="#sklearn模块的datasets子模块" class="headerlink" title="sklearn模块的datasets子模块"></a>sklearn模块的datasets子模块</h3><p>例：获取iris数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"><span class="comment">#数据存储在data属性中</span></span><br><span class="line"><span class="built_in">print</span>(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(iris.feature_names)</span><br><span class="line"><span class="built_in">print</span>(iris.data.shape)</span><br><span class="line"><span class="comment">#数据所属种类在target属性中</span></span><br><span class="line"><span class="built_in">print</span>(iris.target)</span><br></pre></td></tr></table></figure>
+<h3 id="NLTK语料库"><a href="#NLTK语料库" class="headerlink" title="NLTK语料库"></a>NLTK语料库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"></span><br><span class="line"><span class="comment">#打开下载器</span></span><br><span class="line">nltk.download()</span><br><span class="line"></span><br><span class="line"><span class="comment">#在下载器中打开Corpora选项卡，都是可下载的语料库</span></span><br></pre></td></tr></table></figure>
+<p>例：加载古腾堡语料库</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> gutenberg</span><br><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看语料库中收录了哪些古藤堡项目的图书</span></span><br><span class="line"><span class="built_in">print</span>(gutenberg.fileids())</span><br><span class="line"></span><br><span class="line"><span class="comment">#把《哈姆雷特》中的单词列出来</span></span><br><span class="line">texts=gutenberg.words(<span class="string">&quot;shakespeare-hamlet.txt&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(texts)</span><br></pre></td></tr></table></figure>
+<h2 id="本地文件"><a href="#本地文件" class="headerlink" title="本地文件"></a>本地文件</h2><h3 id="csv文件"><a href="#csv文件" class="headerlink" title="csv文件"></a>csv文件</h3><h4 id="csv-gt-DataFrame"><a href="#csv-gt-DataFrame" class="headerlink" title="csv-&gt;DataFrame"></a>csv-&gt;DataFrame</h4><ul>
+<li>.read_csv(path, sep=”,”)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&quot;../test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="DataFrame-gt-csv"><a href="#DataFrame-gt-csv" class="headerlink" title="DataFrame-&gt;csv"></a>DataFrame-&gt;csv</h4><ul>
+<li>.to_csv(path)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&quot;../test.csv&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="excel文件"><a href="#excel文件" class="headerlink" title="excel文件"></a>excel文件</h3><h4 id="excel-gt-DataFrame"><a href="#excel-gt-DataFrame" class="headerlink" title="excel-&gt;DataFrame"></a>excel-&gt;DataFrame</h4><ul>
+<li>.read_excel(path, sheet_name)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_excel(<span class="string">&quot;../test.xls&quot;</span>, sheet_name=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="DataFrame-gt-excel"><a href="#DataFrame-gt-excel" class="headerlink" title="DataFrame-&gt;excel"></a>DataFrame-&gt;excel</h4><ul>
+<li>.to_excel(path)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_excel(<span class="string">&quot;../test.xls&quot;</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
 
