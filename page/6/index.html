@@ -171,20 +171,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -213,6 +213,134 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2021/03/23/Git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/03/23/Git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Git分支操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-03-23 10:32:17 / 修改时间：10:37:16" itemprop="dateCreated datePublished" datetime="2021-03-23T10:32:17+08:00">2021-03-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Git分支操作"><a href="#Git分支操作" class="headerlink" title="Git分支操作"></a>Git分支操作</h1><h2 id="分支的本质"><a href="#分支的本质" class="headerlink" title="分支的本质"></a>分支的本质</h2><p>分支的本质是指向<code>commit</code>的引用（指针）</p>
+<ul>
+<li>可通过<code>git branch</code>命令查看分支</li>
+</ul>
+<h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><h3 id="只创建分支，不切换过去"><a href="#只创建分支，不切换过去" class="headerlink" title="只创建分支，不切换过去"></a>只创建分支，不切换过去</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch &lt;分支名&gt; &lt;所基于commit&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>不带<code>&lt;所基于commit&gt;</code>参数时默认从距当前最近的commit创建分支</li>
+</ul>
+<h3 id="创建分支的同时切换到新分支"><a href="#创建分支的同时切换到新分支" class="headerlink" title="创建分支的同时切换到新分支"></a>创建分支的同时切换到新分支</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><ul>
+<li>切换分支前必须先<code>git status</code>保证工作区是干净的（先add,，commit）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可用<code>git log &lt;分支名&gt;</code>查看该分支的log</li>
+</ul>
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><ul>
+<li>先切换到主干分支，再吸收被合并吸收的分支</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout &lt;主干分支&gt;</span><br><span class="line"></span><br><span class="line">$ git merge &lt;被合并吸收的分支&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="合并时有冲突的情况"><a href="#合并时有冲突的情况" class="headerlink" title="合并时有冲突的情况"></a>合并时有冲突的情况</h3><p>例：初始a.txt中内容为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hh</span><br></pre></td></tr></table></figure>
+
+<p>切换到<code>bugfix</code>分支并将a.txt内容改为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hha</span><br></pre></td></tr></table></figure>
+
+<p>切换到<code>master</code>分支并将a.txt中内容改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hhh</span><br></pre></td></tr></table></figure>
+
+<h4 id="合并有冲突的分支步骤如下："><a href="#合并有冲突的分支步骤如下：" class="headerlink" title="合并有冲突的分支步骤如下："></a>合并有冲突的分支步骤如下：</h4><ol>
+<li><p>用命令<code>git merge &lt;分支名&gt;</code>，令<code>master</code>分支吸收<code>bugfix</code>分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git merge bugfix</span><br><span class="line">Auto-merging a.txt</span><br><span class="line">CONFLICT (content): Merge conflict <span class="keyword">in</span> a.txt</span><br><span class="line">Automatic merge failed; fix conflicts and <span class="keyword">then</span> commit the result.</span><br></pre></td></tr></table></figure>
+
+<p>此时a.txt中变成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; <span class="string">HEAD</span></span><br><span class="line"><span class="string">hhh</span></span><br><span class="line"><span class="string">=======</span></span><br><span class="line"><span class="string">hha</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;&gt;&gt;&gt;&gt; bugfix</span></span><br></pre></td></tr></table></figure></li>
+<li><p>需手动编辑共同修改的文件，处理被</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt; ...（主干分支）</span><br><span class="line"></span><br><span class="line">=====</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;&gt;&gt; ...（被吸收分支）</span><br></pre></td></tr></table></figure>
+
+<p>包裹的内容</p>
+</li>
+<li><p>最后再将手动修改后的文件<code>add</code>和<code>commit</code></p>
+</li>
+</ol>
+<ul>
+<li>可用<code>git log --graph</code>命令直观地查看分支合并过程</li>
+</ul>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d &lt;分支&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除分支不会删除其commit（删除指针不会删除指针所指对象）</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
