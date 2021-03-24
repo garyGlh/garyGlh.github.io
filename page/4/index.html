@@ -158,7 +158,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -198,235 +198,6 @@
 
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/11/23/Python%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/11/23/Python%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">Python数据探索与预处理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-11-23 16:15:01" itemprop="dateCreated datePublished" datetime="2019-11-23T16:15:01+08:00">2019-11-23</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Python-数据探索与预处理"><a href="#Python-数据探索与预处理" class="headerlink" title="Python 数据探索与预处理"></a>Python 数据探索与预处理</h1><h2 id="数据探索"><a href="#数据探索" class="headerlink" title="数据探索"></a>数据探索</h2><p>任务：</p>
-<ul>
-<li>检查数据错误</li>
-<li>了解数据分布特征和内在规律</li>
-</ul>
-<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>任务：</p>
-<ul>
-<li>数据清洗（包含了检查数据错误）</li>
-<li>数据集成</li>
-<li>数据变换</li>
-<li>数据规约</li>
-</ul>
-<h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><ul>
-<li>数据缺失值的检测与处理</li>
-<li>数据异常值的检测与处理</li>
-</ul>
-<h4 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h4><ul>
-<li>删除：缺失得多或缺失关键属性</li>
-<li>填充<ul>
-<li>固定值</li>
-<li>均值、中位数/众数</li>
-<li>上下数据</li>
-<li>插值函数（拉格朗日）</li>
-<li>最可能的值（最近邻、回归分析）</li>
-</ul>
-</li>
-</ul>
-<h5 id="DataFrame缺失值处理"><a href="#DataFrame缺失值处理" class="headerlink" title="DataFrame缺失值处理"></a>DataFrame缺失值处理</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">quotesdf_nan=pd.read_csv(<span class="string">&quot;AXP_NaN.csv&quot;</span>, index_col=<span class="string">&quot;Date&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除缺失值</span></span><br><span class="line">quotesdf_nan.dropna(how=<span class="string">&quot;any&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#填充缺失值</span></span><br><span class="line"><span class="comment">#用均值填充</span></span><br><span class="line">quotesdf_nan.fillna(quotesdf_nan.mean(), inplace = <span class="literal">True</span>)<span class="comment">#inplace是修不修改原来的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用上一个非缺失值填充</span></span><br><span class="line">quotesdf_nan.fillna(method=<span class="string">&quot;ffill&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#用下一个非缺失值填充</span></span><br><span class="line">quotesdf_nan.fillna(method=<span class="string">&quot;bfill&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="异常值处理"><a href="#异常值处理" class="headerlink" title="异常值处理"></a>异常值处理</h4><h5 id="异常值的检测"><a href="#异常值的检测" class="headerlink" title="异常值的检测"></a>异常值的检测</h5><ul>
-<li>简单统计</li>
-<li>绘图</li>
-<li>基于密度，最近邻和聚类等方法</li>
-</ul>
-<h5 id="describe-方法"><a href="#describe-方法" class="headerlink" title="describe()方法"></a>describe()方法</h5><h5 id="boxplot-方法"><a href="#boxplot-方法" class="headerlink" title="boxplot()方法"></a>boxplot()方法</h5><p>Serirs或DataFrame的boxplot()方法</p>
-<h5 id="3-sigma-原则"><a href="#3-sigma-原则" class="headerlink" title="3$\sigma$原则"></a>3$\sigma$原则</h5><ul>
-<li>正态分布</li>
-<li>用<strong>布尔索引</strong>筛选数据</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quotesdf_san[<span class="built_in">abs</span>(quotesdf_nan-quotesdf_nan.mean())&gt;<span class="number">3</span>*quotesdf_nan.std()]</span><br></pre></td></tr></table></figure>
-<h3 id="数据变换"><a href="#数据变换" class="headerlink" title="数据变换"></a>数据变换</h3><p>常见方式：</p>
-<ul>
-<li>规范化</li>
-<li>连续属性离散化</li>
-<li>特征二值化</li>
-</ul>
-<h4 id="数据规范化"><a href="#数据规范化" class="headerlink" title="数据规范化"></a>数据规范化</h4><p>解决：</p>
-<ul>
-<li>量纲不同</li>
-<li>数值范围差异大<br>规范化常用方法：</li>
-<li>最小-最大规范化</li>
-<li>z-score规范化（标准化））</li>
-<li>小数定标规范化</li>
-</ul>
-<h5 id="最小-最大规范化"><a href="#最小-最大规范化" class="headerlink" title="最小-最大规范化"></a>最小-最大规范化</h5><script type="math/tex; mode=display">
-x'=\frac{x-\min}{\max -\min}</script><p>将属性值调整到[0, 1]范围内</p>
-<ul>
-<li>适合不涉及距离度量的场景</li>
-</ul>
-<h6 id="自己写代码"><a href="#自己写代码" class="headerlink" title="自己写代码"></a>自己写代码</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最小-最大规范化</span></span><br><span class="line">(df-df.<span class="built_in">min</span>())/(df.<span class="built_in">max</span>()-df.<span class="built_in">min</span>())</span><br></pre></td></tr></table></figure>
-<h6 id="sklearn的preprocessing模块"><a href="#sklearn的preprocessing模块" class="headerlink" title="sklearn的preprocessing模块"></a>sklearn的preprocessing模块</h6><ul>
-<li>minmax_scale(df)函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最小-最大规范化</span></span><br><span class="line"><span class="built_in">print</span>(preprocessing.minmax_scale(df))</span><br></pre></td></tr></table></figure>
-<h5 id="z-score规范化"><a href="#z-score规范化" class="headerlink" title="z-score规范化"></a>z-score规范化</h5><script type="math/tex; mode=display">
-x'=\frac{x-\overline{x}}{\sigma}</script><ul>
-<li>处理后数据均值为0，标准差为1</li>
-</ul>
-<h6 id="自己写代码-1"><a href="#自己写代码-1" class="headerlink" title="自己写代码"></a>自己写代码</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#z-score规范化</span></span><br><span class="line"><span class="built_in">print</span>((df-df.mean())/df.std())</span><br></pre></td></tr></table></figure>
-<h6 id="sklearn的preprocessing模块-1"><a href="#sklearn的preprocessing模块-1" class="headerlink" title="sklearn的preprocessing模块"></a>sklearn的preprocessing模块</h6><ul>
-<li>scale(df)函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#z-score规范化</span></span><br><span class="line"><span class="built_in">print</span>(preprocessing.scale(df))</span><br></pre></td></tr></table></figure>
-<h5 id="小数定标规范化"><a href="#小数定标规范化" class="headerlink" title="小数定标规范化"></a>小数定标规范化</h5><script type="math/tex; mode=display">
-x'=\frac{x}{10^j}</script><p>（j是移动位数）</p>
-<ul>
-<li>移动小数点位置，移动位数取决于<strong>属性绝对值的最大值</strong></li>
-<li>常见落在[-1, 1]之间</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment">#10的多少次方是绝对值最大值</span></span><br><span class="line"><span class="built_in">print</span>(df/<span class="number">10</span>**np.ceil(np.log10(df.<span class="built_in">abs</span>().<span class="built_in">max</span>())))</span><br></pre></td></tr></table></figure>
-<h5 id="连续属性离散化"><a href="#连续属性离散化" class="headerlink" title="连续属性离散化"></a>连续属性离散化</h5><p>方法：</p>
-<ul>
-<li>分箱（binning）：等宽法、等频法<ul>
-<li>等宽法：把数据区间按设定的<strong>箱子数</strong>划分（变异性较大）</li>
-<li>等频法：放进<strong>每个箱子的记录数</strong>相同（相同的值可能分到不同箱子）</li>
-</ul>
-</li>
-<li>聚类</li>
-</ul>
-<h6 id="分箱法"><a href="#分箱法" class="headerlink" title="分箱法"></a>分箱法</h6><ul>
-<li>等宽：cut函数</li>
-<li>等频：qcut函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 等宽法，标签分别是0,1,2,3,4</span></span><br><span class="line"><span class="built_in">print</span>(pd.cut(df.AGE, <span class="number">5</span>, labels=<span class="built_in">range</span>(<span class="number">5</span>)))</span><br><span class="line"><span class="comment"># 分成五个区间，(1,2],(3,4],…</span></span><br><span class="line">bins = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#等频法</span></span><br><span class="line">pd.qcut(df.AGE, <span class="number">5</span>, labels=<span class="built_in">range</span>(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
-<h5 id="特征二值化binarization"><a href="#特征二值化binarization" class="headerlink" title="特征二值化binarization"></a>特征二值化binarization</h5><p>设定阈值threshold，大于阈值赋值为1，小于等于阈值赋值为0</p>
-<ul>
-<li>适用于将多分类问题转换成<strong>二分类</strong>问题</li>
-<li>可用preprocessing的Binarizer()函数或LabelEncoder()函数</li>
-</ul>
-<h3 id="数据规约"><a href="#数据规约" class="headerlink" title="数据规约"></a>数据规约</h3><p>分类：</p>
-<ul>
-<li>属性规约</li>
-<li>数值规约</li>
-</ul>
-<h4 id="属性规约"><a href="#属性规约" class="headerlink" title="属性规约"></a>属性规约</h4><p>方法：</p>
-<ul>
-<li>向前选择<ul>
-<li>从空的属性集开始，每次选一个当前最优的属性加入，直到选不到最优属性或达到阈值</li>
-</ul>
-</li>
-<li>向后删除<ul>
-<li>从当前属性集开始，每次选一个最差的属性删除，直到选不到最差属性或达到阈值</li>
-</ul>
-</li>
-<li>决策树<ul>
-<li>机器学期的专门算法</li>
-</ul>
-</li>
-<li>PCA</li>
-</ul>
-<h5 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h5><ul>
-<li>用sklearn.decomposition模块中的PCA()函数</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">x=preprocessing.scale(boston.data)</span><br><span class="line"></span><br><span class="line"><span class="comment">#”mle&quot;：自动选择满足所要求的方差百分比的特征个数</span></span><br><span class="line">pca=PCA(n_components=<span class="string">&quot;mle&quot;</span>)</span><br><span class="line"><span class="comment">#用x训练pca</span></span><br><span class="line">pca.fit(x)</span><br><span class="line"><span class="comment">#各个成分的方差贡献率</span></span><br><span class="line"><span class="built_in">print</span>(pca.explained_variance_ratio_)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>(pca.explained_variance_ratio_))</span><br></pre></td></tr></table></figure>
-<h4 id="数值规约"><a href="#数值规约" class="headerlink" title="数值规约"></a>数值规约</h4><p>方法：</p>
-<ul>
-<li>有参方法（回归法，对数线性模型）<ul>
-<li>用模型，不需存放实际数据</li>
-</ul>
-</li>
-<li>无参法（直方图，聚类，抽样）<ul>
-<li>要存放实际数据</li>
-</ul>
-</li>
-</ul>
-<h5 id="有参方法"><a href="#有参方法" class="headerlink" title="有参方法"></a>有参方法</h5><h6 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h6><ul>
-<li>本质是分箱（每个箱子表示一个属性-频率对）</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line">bins = np.linspace(data.<span class="built_in">min</span>(), data.<span class="built_in">max</span>(), <span class="number">3</span>, endpoint=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(bins)</span><br><span class="line"><span class="comment">#&gt;[1. 5. 9.]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [1, 5)，[5, 9]</span></span><br><span class="line">plt.hist(data, bins=bins, rwidth=<span class="number">0.95</span>, edgecolor=<span class="string">&quot;k&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h5 id="无参法"><a href="#无参法" class="headerlink" title="无参法"></a>无参法</h5><h6 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h6><p>方式：</p>
-<ul>
-<li>随机抽样（放回/不放回）</li>
-<li>聚类抽样</li>
-<li>分层抽样</li>
-</ul>
-<p>随机抽样：</p>
-<ul>
-<li>sample()函数<ul>
-<li>n：抽样条数</li>
-<li>frac：抽样占百分比</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#有放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>, replace = <span class="literal">True</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>, replace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-<p>分层抽样：<br>先分层（利用DataFrame的<strong>筛选</strong>功能和<strong>append方法</strong>），再用sample()抽样</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A=iris_df[iris_df.target==<span class="number">0</span>].sample(frac=<span class="number">0.3</span>)</span><br><span class="line">B=iris_df[iris_df.target==<span class="number">1</span>].sample(frac=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">A.append(B)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -1722,6 +1493,94 @@ x'=\frac{x}{10^j}</script><p>（j是移动位数）</p>
 <li>python -m pip list：查看已安装模块</li>
 <li>python -m pip install 模块名：按照模块</li>
 <li>python test.py 3：用sys.argv[1]获取3</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/06/15/C++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/06/15/C++%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">C++运算符重载的基本概念</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-15 10:46:10" itemprop="dateCreated datePublished" datetime="2019-06-15T10:46:10+08:00">2019-06-15</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="运算符重载的基本概念"><a href="#运算符重载的基本概念" class="headerlink" title="运算符重载的基本概念"></a>运算符重载的基本概念</h1><h2 id="运算符重载的作用"><a href="#运算符重载的作用" class="headerlink" title="运算符重载的作用"></a>运算符重载的作用</h2><p>使运算符能够作用于<strong>对象</strong></p>
+<h2 id="运算符重载的形式"><a href="#运算符重载的形式" class="headerlink" title="运算符重载的形式"></a>运算符重载的形式</h2><ul>
+<li>运算符重载的实质是<strong>函数重载</strong></li>
+<li>可以重载为普通函数，也可以重载为成员函数</li>
+<li>把含运算符的表达式转换成对<strong>运算符函数</strong>的调用</li>
+<li>把运算符的操作数转换成运算符函数的<strong>参数</strong></li>
+<li>运算符被<strong>多次重载</strong>时，根据实参的类型决定调用哪个运算符函数</li>
+</ul>
+<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>返回值类型 operator 运算符（形参表）<br>{<br>    ……<br>}</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> real, imag;</span><br><span class="line">    <span class="built_in">Complex</span>(<span class="keyword">double</span> r=<span class="number">0.0</span>, <span class="keyword">double</span> i=<span class="number">0.0</span>): <span class="built_in">real</span>(r), <span class="built_in">imag</span>(i)&#123;&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span>-(<span class="keyword">const</span> Complex &amp;c);</span><br><span class="line">&#125;;</span><br><span class="line">Complex <span class="keyword">operator</span>+(<span class="keyword">const</span> Complex &amp;a, <span class="keyword">const</span> Complex &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Complex</span>(a.real+b.real, a.imag+b.imag);<span class="comment">//返回一个临时对象，重载为普通函数</span></span><br><span class="line">&#125;</span><br><span class="line">Complex Complex::<span class="keyword">operator</span>-(<span class="keyword">const</span> Complex &amp;c)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Complex</span>(real-c.real, imag-c.imag);<span class="comment">//返回一个临时对象，重载为成员函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Complex a(4, 4), b(1, 1), c;</span><br><span class="line">    c=a+b;<span class="comment">//等价于c=operator+(a, b);</span></span><br><span class="line">    cout&lt;&lt;(a-b).real&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;(a-b).imag&lt;&lt;endl;<span class="comment">//a-b等价于a.operator-(b);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重载为<strong>成员函数</strong>时，参数个数为运算符目数<strong>减一</strong></li>
+<li>重载为<strong>普通函数</strong>时，参数个数为运算符目数</li>
 </ul>
 
       
