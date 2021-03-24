@@ -207,82 +207,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/03/10/C++%E5%87%BD%E6%95%B0%E7%9A%84%E7%BC%BA%E7%9C%81%E5%8F%82%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="这是老子做的非常好的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/03/10/C++%E5%87%BD%E6%95%B0%E7%9A%84%E7%BC%BA%E7%9C%81%E5%8F%82%E6%95%B0/" class="post-title-link" itemprop="url">C++函数的缺省参数</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-03-10 11:03:36" itemprop="dateCreated datePublished" datetime="2019-03-10T11:03:36+08:00">2019-03-10</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="C-函数的缺省参数"><a href="#C-函数的缺省参数" class="headerlink" title="C++ 函数的缺省参数"></a>C++ 函数的缺省参数</h1><p>定义：函数最右边连续若干个参数可以有缺省值。（作用：提高可扩充性）</p>
-<p><strong>例子</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> n1, <span class="keyword">int</span> n2=<span class="number">2</span>, <span class="keyword">int</span> n3=<span class="number">3</span>)</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">func</span><span class="params">(<span class="number">10</span>)</span></span>;<span class="comment">//相当于func(10,2,3)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">func</span>(<span class="number">10</span>,<span class="number">8</span>);<span class="comment">//相当于func(10,8,3)</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/03/09/C++%E6%8C%87%E9%92%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -410,6 +334,109 @@
     
     <div class="post-body" itemprop="articleBody">
           <h1 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; a,b;</span><br><span class="line"><span class="comment">//b为向量，将b的0-2个元素赋值给向量a</span></span><br><span class="line">a.<span class="built_in">assign</span>(b.<span class="built_in">begin</span>(),b.<span class="built_in">begin</span>()+<span class="number">3</span>);</span><br><span class="line"><span class="comment">//a含有4个值为2的元素</span></span><br><span class="line">a.<span class="built_in">assign</span>(<span class="number">4</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//返回a的最后一个元素</span></span><br><span class="line">a.<span class="built_in">back</span>();</span><br><span class="line"><span class="comment">//返回a的第一个元素</span></span><br><span class="line">a.<span class="built_in">front</span>();</span><br><span class="line"><span class="comment">//返回a的第i元素,当且仅当a存在</span></span><br><span class="line">a[i];</span><br><span class="line"><span class="comment">//清空a中的元素</span></span><br><span class="line">a.<span class="built_in">clear</span>();</span><br><span class="line"><span class="comment">//判断a是否为空，空则返回true，非空则返回false</span></span><br><span class="line">a.<span class="built_in">empty</span>();</span><br><span class="line"><span class="comment">//删除a向量的最后一个元素</span></span><br><span class="line">a.<span class="built_in">pop_back</span>();</span><br><span class="line"><span class="comment">//删除a中第一个（从第0个算起）到第二个元素，也就是说删除的元素从a.begin()+1算起（包括它）一直到a.begin()+3（不包括它）结束</span></span><br><span class="line">a.<span class="built_in">erase</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,a.<span class="built_in">begin</span>()+<span class="number">3</span>);</span><br><span class="line"><span class="comment">//在a的最后一个向量后插入一个元素，其值为5</span></span><br><span class="line">a.<span class="built_in">push_back</span>(<span class="number">5</span>);</span><br><span class="line"><span class="comment">//在a的第一个元素（从第0个算起）位置插入数值5,</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//在a的第一个元素（从第0个算起）位置插入3个数，其值都为5</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>);</span><br><span class="line"><span class="comment">//b为数组，在a的第一个元素（从第0个元素算起）的位置插入b的第三个元素到第5个元素（不包括b+6）</span></span><br><span class="line">a.<span class="built_in">insert</span>(a.<span class="built_in">begin</span>()+<span class="number">1</span>,b+<span class="number">3</span>,b+<span class="number">6</span>);</span><br><span class="line"><span class="comment">//返回a中元素的个数</span></span><br><span class="line">a.<span class="built_in">size</span>();</span><br><span class="line"><span class="comment">//返回a在内存中总共可以容纳的元素个数</span></span><br><span class="line">a.<span class="built_in">capacity</span>();</span><br><span class="line"><span class="comment">//将a的现有元素个数调整至10个，多则删，少则补，其值随机</span></span><br><span class="line">a.<span class="built_in">resize</span>(<span class="number">10</span>);</span><br><span class="line"><span class="comment">//将a的现有元素个数调整至10个，多则删，少则补，其值为2</span></span><br><span class="line">a.<span class="built_in">resize</span>(<span class="number">10</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//将a的容量扩充至100，</span></span><br><span class="line">a.<span class="built_in">reserve</span>(<span class="number">100</span>);</span><br><span class="line"><span class="comment">//b为向量，将a中的元素和b中的元素整体交换</span></span><br><span class="line">a.<span class="built_in">swap</span>(b);</span><br><span class="line"><span class="comment">//b为向量，向量的比较操作还有 != &gt;= &gt; &lt;= &lt;</span></span><br><span class="line">a==b;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"> <span class="comment">//对a中的从a.begin()（包括它）到a.end()（不包括它）的元素进行从小到大排列</span></span><br><span class="line"> <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>());</span><br><span class="line"> <span class="comment">//对a中的从a.begin()（包括它）到a.end()（不包括它）的元素倒置，但不排列，如a中元素为1,3,2,4,倒置后为4,2,3,1</span></span><br><span class="line"> <span class="built_in">reverse</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>());</span><br><span class="line">  <span class="comment">//把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开始复制，覆盖掉原有元素</span></span><br><span class="line"> <span class="built_in">copy</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>(),b.<span class="built_in">begin</span>()+<span class="number">1</span>);</span><br><span class="line"> <span class="comment">//在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置</span></span><br><span class="line">  <span class="built_in">find</span>(a.<span class="built_in">begin</span>(),a.<span class="built_in">end</span>(),<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/0202/03/21/Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/0202/03/21/Git%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Git远程仓库操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：0202-03-21 10:31:41" itemprop="dateCreated datePublished" datetime="0202-03-21T10:31:41+08:00">0202-03-21</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Git远程仓库操作"><a href="#Git远程仓库操作" class="headerlink" title="Git远程仓库操作"></a>Git远程仓库操作</h1><ul>
+<li>远程仓库可看成一个普通<strong>分支</strong>，只是形式为<code>&lt;远程仓库名&gt;/master</code></li>
+<li>远程分支可通过<code>git remote</code>查看，无法通过<code>git branch</code>查看</li>
+<li>远程仓库是<strong>惰性</strong>的，需要手动更新，无法自动同步更新</li>
+</ul>
+<h2 id="添加远程仓库"><a href="#添加远程仓库" class="headerlink" title="添加远程仓库"></a>添加远程仓库</h2><h3 id="法一：git-remote-add命令"><a href="#法一：git-remote-add命令" class="headerlink" title="法一：git remote add命令"></a>法一：<code>git remote add</code>命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add &lt;远程仓库名&gt; &lt;远程仓库链接&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可将远程仓库与本地<strong>已有</strong>仓库关联起来</li>
+</ul>
+<h3 id="法二：git-clone命令"><a href="#法二：git-clone命令" class="headerlink" title="法二：git clone命令"></a>法二：<code>git clone</code>命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> &lt;远程仓库链接&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>相当于先<code>git init</code>，再<code>git remote add</code>，再<code>git fetch</code>，最后<code>git checkout</code>。克隆一个远程仓库到本地，会自动将远程仓库命名为origin。使用频率更高。</li>
+</ul>
+<h2 id="把本地内容推送到远程仓库（上传）"><a href="#把本地内容推送到远程仓库（上传）" class="headerlink" title="把本地内容推送到远程仓库（上传）"></a>把本地内容推送到远程仓库（上传）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;远程仓库名&gt; &lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="拉取远程仓库（下载）"><a href="#拉取远程仓库（下载）" class="headerlink" title="拉取远程仓库（下载）"></a>拉取远程仓库（下载）</h2><h4 id="法一：git-fetch命令"><a href="#法一：git-fetch命令" class="headerlink" title="法一：git fetch命令"></a>法一：<code>git fetch</code>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch &lt;远程仓库名&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>仅仅拉取仓库，不会同步master和文件</li>
+</ul>
+<h5 id="master迁移到远程仓库的master"><a href="#master迁移到远程仓库的master" class="headerlink" title="master迁移到远程仓库的master"></a>master迁移到远程仓库的master</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -B master origin/master</span><br></pre></td></tr></table></figure>
+<h4 id="法二：git-pull命令"><a href="#法二：git-pull命令" class="headerlink" title="法二：git pull命令"></a>法二：<code>git pull</code>命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull &lt;远程仓库名&gt; &lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>git pull</code>的功能是在<code>git fetch</code>的基础上自动应用远程修改，不过要谨慎使用，当心远程的修改和本地有冲突</li>
+</ul>
+<h2 id="远程仓库之间的交流"><a href="#远程仓库之间的交流" class="headerlink" title="远程仓库之间的交流"></a>远程仓库之间的交流</h2><h3 id="把别人的仓库复制到自己的账户下"><a href="#把别人的仓库复制到自己的账户下" class="headerlink" title="把别人的仓库复制到自己的账户下"></a>把别人的仓库复制到自己的账户下</h3><ul>
+<li>用<code>fork</code></li>
+</ul>
+<h3 id="把自己账户下的修改提交给上游维护者，由他审核后并入他的远程仓库内"><a href="#把自己账户下的修改提交给上游维护者，由他审核后并入他的远程仓库内" class="headerlink" title="把自己账户下的修改提交给上游维护者，由他审核后并入他的远程仓库内"></a>把自己账户下的修改提交给上游维护者，由他审核后并入他的远程仓库内</h3><ul>
+<li>用<code>pull request</code></li>
+</ul>
+
       
     </div>
 
