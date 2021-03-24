@@ -207,109 +207,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/05/24/Qt%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="Jenny&quot;s tech Record">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/05/24/Qt%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/" class="post-title-link" itemprop="url">Qt事件与槽</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-05-24 16:28:24" itemprop="dateCreated datePublished" datetime="2020-05-24T16:28:24+08:00">2020-05-24</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><h2 id="connect函数"><a href="#connect函数" class="headerlink" title="connect函数"></a>connect函数</h2><p><code>connect(&amp;sender, &amp;senderclass::signal, &amp;receiver, &amp;receiverclass::slot)</code></p>
-<ul>
-<li>如果sender或receiver是指针，则无需加&amp;</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">QWidget w;</span><br><span class="line"><span class="function">QPushButton <span class="title">b</span><span class="params">(&amp;w)</span></span>;</span><br><span class="line"><span class="built_in">connect</span>(&amp;b, &amp;QPushButton::pressed, <span class="keyword">this</span>, &amp;MainWidget::close)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* &amp;b：信号发出者，指针类型</span></span><br><span class="line"><span class="comment">* &amp;QPushButton::pressed：处理的信号（&amp;发送者的类名::信号名）</span></span><br><span class="line"><span class="comment">* this：信号接受者（在类函数里）</span></span><br><span class="line"><span class="comment">* &amp;MainWidget::close：槽函数，信号处理函数（&amp;接收者的类名::槽函数名）</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h2 id="自定义槽函数"><a href="#自定义槽函数" class="headerlink" title="自定义槽函数"></a>自定义槽函数</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ul>
-<li>任意的<strong>成员函数</strong></li>
-<li>普通全局函数</li>
-<li>静态函数</li>
-</ul>
-<h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><ul>
-<li>需和信号一致（<strong>参数</strong>，<strong>返回值</strong>）<ul>
-<li>由于信号无返回值，槽函数也<strong>没有返回值</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">b1.<span class="built_in">setText</span>(<span class="string">&quot;我是好看的宝&quot;</span>);   b1.<span class="built_in">setParent</span>(<span class="keyword">this</span>);   b1.<span class="built_in">move</span>(<span class="number">100</span>,<span class="number">100</span>);   </span><br><span class="line"><span class="built_in">connect</span>(&amp;b1, &amp;QPushButton::pressed, <span class="keyword">this</span>, &amp;MyWidget::close);   </span><br><span class="line"><span class="comment">//按下b1主窗口关闭</span></span><br><span class="line"></span><br><span class="line">b2=<span class="keyword">new</span> QPushButton;   </span><br><span class="line">b2-&gt;<span class="built_in">setParent</span>(<span class="keyword">this</span>);   </span><br><span class="line">b2-&gt;<span class="built_in">setText</span>(<span class="string">&quot;abc&quot;</span>);   <span class="built_in">connect</span>(b2,&amp;QPushButton::released, <span class="keyword">this</span>, &amp;MyWidget::mySlot);   </span><br><span class="line"><span class="comment">//松开b2吧“abc”变“123”</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">connect</span>(b2,&amp;QPushButton::released, &amp;b1, &amp;QPushButton::hide);</span><br><span class="line"><span class="comment">//松开b2隐藏b1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MyWidget::mySlot</span><span class="params">()</span></span>&#123;    b2-&gt;<span class="built_in">setText</span>(<span class="string">&quot;123&quot;</span>);&#125;</span><br><span class="line"><span class="comment">//自定义槽函数</span></span><br></pre></td></tr></table></figure>
-<h2 id="自定义信号"><a href="#自定义信号" class="headerlink" title="自定义信号"></a>自定义信号</h2><h3 id="信号特征"><a href="#信号特征" class="headerlink" title="信号特征"></a>信号特征</h3><ul>
-<li>信号必须由关键字<code>signals</code>声明</li>
-<li>信号没有返回值，但可以有参数</li>
-<li>信号就是函数的声明，只需声明，无需定义</li>
-</ul>
-<h3 id="信号的发送（使用）"><a href="#信号的发送（使用）" class="headerlink" title="信号的发送（使用）"></a>信号的发送（使用）</h3><p>emit mySignal();</p>
-<h3 id="信号的重载"><a href="#信号的重载" class="headerlink" title="信号的重载"></a>信号的重载</h3><p>参数表不同</p>
-<h4 id="官方信号的重载"><a href="#官方信号的重载" class="headerlink" title="官方信号的重载"></a>官方信号的重载</h4><h4 id="自定义信号的重载"><a href="#自定义信号的重载" class="headerlink" title="自定义信号的重载"></a>自定义信号的重载</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不带参数的信号</span></span><br><span class="line"><span class="built_in"><span class="keyword">void</span></span>(SubWidget::*<span class="built_in">funSignal</span>()=&amp;SubWidget::mySignal;<span class="comment">//函数指针</span></span><br><span class="line"><span class="built_in">connect</span>(&amp;subWin,funSignal,<span class="keyword">this</span>,&amp;MyWidget::dealSub);   </span><br><span class="line"></span><br><span class="line"><span class="comment">//带参数的信号</span></span><br><span class="line"><span class="built_in"><span class="keyword">void</span></span>(SubWidget::*<span class="built_in">testSignal</span>(<span class="keyword">int</span>,QString)=&amp;SubWidget::mySignal;<span class="comment">//函数指针</span></span><br><span class="line"><span class="built_in">connect</span>(&amp;subWin,testSignal,<span class="keyword">this</span>,&amp;MyWidget::dealSlot);</span><br></pre></td></tr></table></figure>
-<p>用<strong>函数指针</strong>（前加类名）代替信号来重载</p>
-<ul>
-<li>信号名一样，函数指针名不一样</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/05/17/R%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1268,6 +1165,102 @@
 <li>构造函数：<code>QPushButton b(&amp;w);</code></li>
 </ol>
 
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/04/05/Qt%E7%AA%97%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="Jenny&quot;s tech Record">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/04/05/Qt%E7%AA%97%E5%8F%A3/" class="post-title-link" itemprop="url">Qt窗口</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-05 16:27:30" itemprop="dateCreated datePublished" datetime="2020-04-05T16:27:30+08:00">2020-04-05</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Qt-窗口"><a href="#Qt-窗口" class="headerlink" title="Qt 窗口"></a>Qt 窗口</h1><h2 id="主窗口与子窗口"><a href="#主窗口与子窗口" class="headerlink" title="主窗口与子窗口"></a>主窗口与子窗口</h2><p>子窗口是父窗口的成员对象，在父窗口中show</p>
+<h3 id="主窗口与子窗口间的切换"><a href="#主窗口与子窗口间的切换" class="headerlink" title="主窗口与子窗口间的切换"></a>主窗口与子窗口间的切换</h3><h4 id="主窗口-gt-子窗口"><a href="#主窗口-gt-子窗口" class="headerlink" title="主窗口-&gt;子窗口"></a>主窗口-&gt;子窗口</h4><p>子窗口显示，本窗口隐藏</p>
+<h4 id="子窗口-gt-主窗口"><a href="#子窗口-gt-主窗口" class="headerlink" title="子窗口-&gt;主窗口"></a>子窗口-&gt;主窗口</h4><ol>
+<li>子窗口中根据<strong>真实信号</strong>定义槽函数，给主窗口发“邮件”</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SubWidget::<span class="built_in">SubWidget</span>(QWidget *parent) : <span class="built_in">QWidget</span>(parent)</span><br><span class="line">&#123;    </span><br><span class="line">    <span class="built_in">setWindowTitle</span>(<span class="string">&quot;小弟&quot;</span>);   </span><br><span class="line">    b4.<span class="built_in">setParent</span>(<span class="keyword">this</span>);   </span><br><span class="line">    b4.<span class="built_in">setText</span>(<span class="string">&quot;切换到主窗口&quot;</span>);                                       <span class="built_in">connect</span>(&amp;b4,&amp;QPushButton::clicked,<span class="keyword">this</span> ,&amp;SubWidget::sendSlot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SubWidget::sendSlot</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="function">emit <span class="title">mySignal</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在主窗口connect子窗口发来的“邮件”</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理子窗口的信号    connect(&amp;w,&amp;SubWidget::mySignal,this,&amp;MyWidget::dealSub);</span></span><br></pre></td></tr></table></figure>
+<h2 id="模态对话框和非模态对话框"><a href="#模态对话框和非模态对话框" class="headerlink" title="模态对话框和非模态对话框"></a>模态对话框和非模态对话框</h2><h3 id="模态对话框"><a href="#模态对话框" class="headerlink" title="模态对话框"></a>模态对话框</h3><p>只能操作当前窗口，无法操作其他窗口<br><code>dlg.exec();</code></p>
+<h3 id="非模态对话框"><a href="#非模态对话框" class="headerlink" title="非模态对话框"></a>非模态对话框</h3><ol>
+<li>将dlg定义为成员【好】</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类里定义QDialog dlg;</span></span><br><span class="line">dlg.<span class="built_in">show</span>();               </span><br><span class="line"><span class="built_in">qDebug</span>()&lt;&lt;<span class="built_in">QStringLiteral</span>(<span class="string">&quot;非模态对话框&quot;</span>);   </span><br></pre></td></tr></table></figure>
+<ol>
+<li>动态分配空间（指定父对象）【不好】   </li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> <span class="built_in">QDialog</span>(<span class="keyword">this</span>);<span class="comment">//多次点击会内存越界</span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();     </span><br></pre></td></tr></table></figure>
+<ol>
+<li>动态分配空间（不指定父对象）【好】</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> QDialog;              </span><br><span class="line">p-&gt;<span class="built_in">setAttribute</span>(Qt::WA_DeleteOnClose);<span class="comment">//关闭才释放  </span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();</span><br></pre></td></tr></table></figure>
       
     </div>
 

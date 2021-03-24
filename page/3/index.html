@@ -207,102 +207,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/04/05/Qt%E7%AA%97%E5%8F%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="Jenny&quot;s tech Record">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/04/05/Qt%E7%AA%97%E5%8F%A3/" class="post-title-link" itemprop="url">Qt窗口</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-04-05 16:27:30" itemprop="dateCreated datePublished" datetime="2020-04-05T16:27:30+08:00">2020-04-05</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Qt-窗口"><a href="#Qt-窗口" class="headerlink" title="Qt 窗口"></a>Qt 窗口</h1><h2 id="主窗口与子窗口"><a href="#主窗口与子窗口" class="headerlink" title="主窗口与子窗口"></a>主窗口与子窗口</h2><p>子窗口是父窗口的成员对象，在父窗口中show</p>
-<h3 id="主窗口与子窗口间的切换"><a href="#主窗口与子窗口间的切换" class="headerlink" title="主窗口与子窗口间的切换"></a>主窗口与子窗口间的切换</h3><h4 id="主窗口-gt-子窗口"><a href="#主窗口-gt-子窗口" class="headerlink" title="主窗口-&gt;子窗口"></a>主窗口-&gt;子窗口</h4><p>子窗口显示，本窗口隐藏</p>
-<h4 id="子窗口-gt-主窗口"><a href="#子窗口-gt-主窗口" class="headerlink" title="子窗口-&gt;主窗口"></a>子窗口-&gt;主窗口</h4><ol>
-<li>子窗口中根据<strong>真实信号</strong>定义槽函数，给主窗口发“邮件”</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SubWidget::<span class="built_in">SubWidget</span>(QWidget *parent) : <span class="built_in">QWidget</span>(parent)</span><br><span class="line">&#123;    </span><br><span class="line">    <span class="built_in">setWindowTitle</span>(<span class="string">&quot;小弟&quot;</span>);   </span><br><span class="line">    b4.<span class="built_in">setParent</span>(<span class="keyword">this</span>);   </span><br><span class="line">    b4.<span class="built_in">setText</span>(<span class="string">&quot;切换到主窗口&quot;</span>);                                       <span class="built_in">connect</span>(&amp;b4,&amp;QPushButton::clicked,<span class="keyword">this</span> ,&amp;SubWidget::sendSlot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SubWidget::sendSlot</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;   </span><br><span class="line">    <span class="function">emit <span class="title">mySignal</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在主窗口connect子窗口发来的“邮件”</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//处理子窗口的信号    connect(&amp;w,&amp;SubWidget::mySignal,this,&amp;MyWidget::dealSub);</span></span><br></pre></td></tr></table></figure>
-<h2 id="模态对话框和非模态对话框"><a href="#模态对话框和非模态对话框" class="headerlink" title="模态对话框和非模态对话框"></a>模态对话框和非模态对话框</h2><h3 id="模态对话框"><a href="#模态对话框" class="headerlink" title="模态对话框"></a>模态对话框</h3><p>只能操作当前窗口，无法操作其他窗口<br><code>dlg.exec();</code></p>
-<h3 id="非模态对话框"><a href="#非模态对话框" class="headerlink" title="非模态对话框"></a>非模态对话框</h3><ol>
-<li>将dlg定义为成员【好】</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类里定义QDialog dlg;</span></span><br><span class="line">dlg.<span class="built_in">show</span>();               </span><br><span class="line"><span class="built_in">qDebug</span>()&lt;&lt;<span class="built_in">QStringLiteral</span>(<span class="string">&quot;非模态对话框&quot;</span>);   </span><br></pre></td></tr></table></figure>
-<ol>
-<li>动态分配空间（指定父对象）【不好】   </li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> <span class="built_in">QDialog</span>(<span class="keyword">this</span>);<span class="comment">//多次点击会内存越界</span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();     </span><br></pre></td></tr></table></figure>
-<ol>
-<li>动态分配空间（不指定父对象）【好】</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> QDialog;              </span><br><span class="line">p-&gt;<span class="built_in">setAttribute</span>(Qt::WA_DeleteOnClose);<span class="comment">//关闭才释放  </span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/03/29/Qt%E6%8E%A7%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,6 +369,173 @@
 </ol>
 <h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>int，而非enum</p>
 <h2 id="资源文件"><a href="#资源文件" class="headerlink" title="资源文件"></a>资源文件</h2><p>新建文件-&gt;Qt-&gt;Qt source file-&gt;右键复制链接到剪贴板</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/03/24/R%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="Jenny&quot;s tech Record">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/03/24/R%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">R数据类型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-24 16:37:45" itemprop="dateCreated datePublished" datetime="2020-03-24T16:37:45+08:00">2020-03-24</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="R-数据类型"><a href="#R-数据类型" class="headerlink" title="R 数据类型"></a>R 数据类型</h1><h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p><strong>同类型</strong>序列</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h4 id="seq"><a href="#seq" class="headerlink" title="seq()"></a>seq()</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vtr1=<span class="built_in">c</span>(<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>)（num）</span><br><span class="line">vtr2=seq(<span class="number">1</span>, <span class="number">5</span>)//<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>（int）</span><br><span class="line">vtr3=seq(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>)//<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>（int）第三个参数是间隔</span><br><span class="line">vtr4=<span class="built_in">c</span>(<span class="number">1</span>:<span class="number">5</span>)//<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>（int）</span><br></pre></td></tr></table></figure>
+<h4 id="rep"><a href="#rep" class="headerlink" title="rep()"></a>rep()</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vtr1=<span class="built_in">rep</span>(<span class="number">13</span>, <span class="number">4</span>)//<span class="number">13</span>, <span class="number">13</span>, <span class="number">13</span>, <span class="number">13</span></span><br><span class="line">vtr2=<span class="built_in">rep</span>(<span class="built_in">c</span>(<span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>), <span class="number">2</span>)//Sat, Sun, Sat, Sun</span><br></pre></td></tr></table></figure>
+<h4 id="rdist"><a href="#rdist" class="headerlink" title="rdist()"></a>r<em>dist</em>()</h4><p>查看分布的指令：<code>?Distributions</code></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//标准分布</span><br><span class="line">runif(n=<span class="number">10</span>)//<span class="number">10</span>个样本from Unif(<span class="number">0</span>, <span class="number">1</span>)，均匀分布</span><br><span class="line">rnorm(n=<span class="number">10</span>)//<span class="number">10</span>个样本from Norm(<span class="number">0</span>, <span class="number">1</span>)，正态分布</span><br><span class="line">rpois(n=<span class="number">10</span>)//<span class="number">10</span>个样本from Poission(<span class="number">1</span>)，泊松分布</span><br><span class="line">rexp(n=<span class="number">10</span>)//<span class="number">10</span>个样本from Exp(<span class="number">1</span>)，指数分布</span><br><span class="line"></span><br><span class="line">//自定义分布</span><br><span class="line">rnorm(n=<span class="number">10</span>, mean=<span class="number">20</span>, sd=<span class="number">5</span>)//<span class="number">10</span>个样本from Norm(<span class="number">20</span>, <span class="number">5</span>)，正态分布</span><br></pre></td></tr></table></figure>
+<h3 id="可存储数据类型"><a href="#可存储数据类型" class="headerlink" title="可存储数据类型"></a>可存储数据类型</h3><ul>
+<li>logical逻辑：TRUE, FALSE</li>
+<li>numeric数值（float或int）：5, 3.14</li>
+<li>integer整数：2L, 34L（<strong>后面要加L</strong>表示是整数）</li>
+<li>complex复数：3+2i</li>
+<li>character字符或字符串：”Hello”, ‘a’</li>
+</ul>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
+<li>默认全部转为character型：vtr1=c(“hi”, 3, TRUE)</li>
+</ul>
+<h4 id="数量操作（每个元素）"><a href="#数量操作（每个元素）" class="headerlink" title="数量操作（每个元素）"></a>数量操作（每个元素）</h4><p>+, -, ^, *, %*%（数量积）</p>
+<pre><code><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X=<span class="built_in">c</span>(<span class="number">1</span>:<span class="number">4</span>)</span><br><span class="line">X+X//<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span></span><br><span class="line">X-X//<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">X^<span class="number">3</span>//<span class="number">1</span>, <span class="number">8</span>, <span class="number">27</span>, <span class="number">64</span></span><br><span class="line">X*X//<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span></span><br><span class="line">X%*%//<span class="number">30</span></span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="比较（每个元素）"><a href="#比较（每个元素）" class="headerlink" title="比较（每个元素）"></a>比较（每个元素）</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">c</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)&lt;<span class="built_in">c</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>)//<span class="literal">FALSE</span>, <span class="literal">FALSE</span>, <span class="literal">TRUE</span></span><br></pre></td></tr></table></figure>
+<h4 id="访问元素"><a href="#访问元素" class="headerlink" title="访问元素"></a>访问元素</h4><ol>
+<li>访问某个位置的元素：vtr[2]（<strong>下标从1开始</strong>，而非从0开始）</li>
+<li>访问某个范围的元素：vtr[2:6]（<strong>闭区间</strong>）</li>
+</ol>
+<ul>
+<li>若插入元素<strong>越界</strong>，则在有元素之后到新访问的元素之间都显示<strong>NA</strong></li>
+<li>replace多个元素：X[2:3]=c(22, 33)</li>
+</ul>
+<ol>
+<li><p>排除该位元素：下标为<strong>负</strong></p>
+</li>
+<li><p>取多个位置的元素：下标为c(a, b)</p>
+</li>
+<li><p>增加元素：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X=(<span class="number">1</span>:<span class="number">4</span>)</span><br><span class="line">X[<span class="number">5</span>]=<span class="number">555</span>//插入</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><h5 id="一般函数"><a href="#一般函数" class="headerlink" title="一般函数"></a>一般函数</h5><ul>
+<li>排序：sort(X)</li>
+<li>长度：length(X)</li>
+<li>范围：range(X)</li>
+<li>取前n个元素：head(X, n=5)</li>
+<li>取后n个元素：tail(X, n=5)</li>
+<li>展示vector类型及元素：str(X)</li>
+</ul>
+<h5 id="数学函数（整体）"><a href="#数学函数（整体）" class="headerlink" title="数学函数（整体）"></a>数学函数（整体）</h5><ul>
+<li>均值：mean(X)</li>
+<li>标准差：sd(X)</li>
+<li>方差：var(X)</li>
+<li>最大值/最小值：max(X)/min(X)</li>
+<li>中位数：median（X）</li>
+<li>求和：sum(X)</li>
+<li>求积：prod(X)</li>
+<li>百分比：quantitlle(X, probs=0.5)</li>
+<li>均值及四个分位点：summary(X)</li>
+</ul>
+<h5 id="数学函数（每个元素）"><a href="#数学函数（每个元素）" class="headerlink" title="数学函数（每个元素）"></a>数学函数（每个元素）</h5><ul>
+<li>log(X)</li>
+<li>exp(X)</li>
+<li>sqrt(X)</li>
+</ul>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p><strong>不同类型</strong>元素构成的序列</p>
+<ul>
+<li>list<strong>不能排序</strong></li>
+</ul>
+<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>x=list(“hi”, 3, TRUE)</p>
+<h3 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h3><h4 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h4><ul>
+<li>合并两个list：<ul>
+<li>merge（list1, list2）</li>
+<li>list3=c(list1, list2)</li>
+</ul>
+</li>
+</ul>
+<h2 id="array"><a href="#array" class="headerlink" title="array"></a>array</h2><p>存储两维及以上的数据，通常以<strong>vector</strong>作为输入</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>result=array(c(vtr1, vtr2), dim=c(3, 3, 2))</p>
+<ul>
+<li>dim是维</li>
+</ul>
+<h2 id="matrice"><a href="#matrice" class="headerlink" title="matrice"></a>matrice</h2><p>二维</p>
+<h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>x=matrix(data, nrow, ncol, byrow, dimnames)</p>
+<ul>
+<li>byrow是逻辑：默认FALSE（按列）</li>
+</ul>
+<h4 id="例-1"><a href="#例-1" class="headerlink" title="例"></a>例</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vtr1=<span class="built_in">c</span>(<span class="number">2</span>, <span class="number">6</span>, <span class="number">14</span>, <span class="number">18</span>, <span class="number">22</span>)</span><br><span class="line">vtr2=<span class="built_in">c</span>(<span class="number">5</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">45</span>, <span class="number">36</span>)</span><br><span class="line">mtr=matrix(<span class="built_in">c</span>(vtr1, vtr2),<span class="number">5</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="factor"><a href="#factor" class="headerlink" title="factor"></a>factor</h2><p>将元素按等级分类</p>
+<h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><p>fct=factor(vtr1)</p>
+<h2 id="data-frame"><a href="#data-frame" class="headerlink" title="data frame"></a>data frame</h2><p>变量属性表（多个变量，多个属性）</p>
+<h3 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h3><p>x=data.frame(<u>属性1</u>，<u>属性2</u>）</p>
+<ul>
+<li>不同属性的<strong>元素数量</strong>一定要<strong>相同</strong></li>
+</ul>
+<h4 id="例-2"><a href="#例-2" class="headerlink" title="例"></a>例</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">id=<span class="built_in">c</span>(<span class="number">100</span>:<span class="number">150</span>)</span><br><span class="line">name=<span class="built_in">c</span>(<span class="string">&quot;Neel&quot;</span>, <span class="string">&quot;Eric&quot;</span>, <span class="string">&quot;Dave&quot;</span>, <span class="string">&quot;Roshni&quot;</span>, <span class="string">&quot;Pankaj&quot;</span>, <span class="string">&quot;Rashma&quot;</span>)</span><br><span class="line">classstd=data.frame(id, name)</span><br></pre></td></tr></table></figure>
+<h3 id="函数-2"><a href="#函数-2" class="headerlink" title="函数"></a>函数</h3><ul>
+<li>展示：str(X)<h1 id="Name-c-“唐碧泉”-”金军”-”郭礼华”-”金可乔”-”纪灵希”"><a href="#Name-c-“唐碧泉”-”金军”-”郭礼华”-”金可乔”-”纪灵希”" class="headerlink" title="Name=c(“唐碧泉”,”金军”,”郭礼华”,”金可乔”,”纪灵希”),"></a>Name=c(“唐碧泉”,”金军”,”郭礼华”,”金可乔”,”纪灵希”),</h1></li>
+</ul>
 
       
     </div>
