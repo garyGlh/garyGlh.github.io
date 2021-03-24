@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"colahua.tech","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="Python 数据可视化绘图Matplotlib 主要用于二维绘图 绘图API：pyplot模块  折线图12345678import matplotlib.pyplot as pltplt.plot([3, 4, 7, 6, 2, 8, 9])#相当于plt.plot(range(7), [3, 4, 7, 6, 2, 8, 9])plt.show()#不加这条看不到图plt.savefig(&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python数据可视化">
+<meta property="og:url" content="http://colahua.tech/2019/11/09/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/index.html">
+<meta property="og:site_name" content="JKQ&#39;s Blog">
+<meta property="og:description" content="Python 数据可视化绘图Matplotlib 主要用于二维绘图 绘图API：pyplot模块  折线图12345678import matplotlib.pyplot as pltplt.plot([3, 4, 7, 6, 2, 8, 9])#相当于plt.plot(range(7), [3, 4, 7, 6, 2, 8, 9])plt.show()#不加这条看不到图plt.savefig(&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-09T08:14:45.000Z">
+<meta property="article:modified_time" content="2021-03-24T12:59:35.442Z">
+<meta property="article:author" content="JennyKQ">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="数据可视化">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://colahua.tech/2019/11/09/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Python数据可视化 | JKQ's Blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">JKQ's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">这是老子的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">Python 数据可视化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%98%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Matplotlib"><span class="nav-number">1.1.1.</span> <span class="nav-text">Matplotlib</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%98%E7%BA%BF%E5%9B%BE"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">折线图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%9A%E7%BB%84%E6%95%B0%E6%8D%AE"><span class="nav-number">1.1.1.1.1.</span> <span class="nav-text">多组数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">散点图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#scatter%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.2.1.</span> <span class="nav-text">scatter函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#plot%E5%87%BD%E6%95%B0%E5%8A%A0%E5%8F%82%E6%95%B0%E2%80%9Do%E2%80%9D"><span class="nav-number">1.1.1.2.2.</span> <span class="nav-text">plot函数加参数”o”</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E5%BD%A2%E5%9B%BE"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">条形图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Matplotlib%E5%B1%9E%E6%80%A7"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">Matplotlib属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%89%B2%E5%BD%A9%E5%92%8C%E6%A0%B7%E5%BC%8F%EF%BC%88%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BD%A2%E5%BC%8F%EF%BC%89"><span class="nav-number">1.1.1.4.1.</span> <span class="nav-text">色彩和样式（字符串形式）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%89%B2%E5%BD%A9%E5%92%8C%E6%A0%B7%E5%BC%8F%EF%BC%88%E5%8F%82%E6%95%B0%E5%BD%A2%E5%BC%8F%EF%BC%89"><span class="nav-number">1.1.1.4.2.</span> <span class="nav-text">色彩和样式（参数形式）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%87%E5%AD%97"><span class="nav-number">1.1.1.4.3.</span> <span class="nav-text">文字</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.4.3.1.</span> <span class="nav-text">函数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E5%AF%B9%E8%B1%A1%E7%9A%84set%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.1.4.4.</span> <span class="nav-text">图对象的set方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%AD%90%E5%9B%BE"><span class="nav-number">1.1.1.4.5.</span> <span class="nav-text">绘制子图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pandas"><span class="nav-number">1.1.2.</span> <span class="nav-text">pandas</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8DataFrame%E7%9A%84loc%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">用DataFrame的loc方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8plot%E6%96%B9%E6%B3%95%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">用plot方法的参数</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JennyKQ</p>
+  <div class="site-description" itemprop="description">这是老子做的非常好的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/11/09/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python数据可视化
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-09 16:14:45" itemprop="dateCreated datePublished" datetime="2019-11-09T16:14:45+08:00">2019-11-09</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Python-数据可视化"><a href="#Python-数据可视化" class="headerlink" title="Python 数据可视化"></a>Python 数据可视化</h1><h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><h3 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h3><ul>
+<li>主要用于<strong>二维</strong>绘图</li>
+<li>绘图API：pyplot模块</li>
+</ul>
+<h4 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot([<span class="number">3</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">9</span>])</span><br><span class="line"><span class="comment">#相当于plt.plot(range(7), [3, 4, 7, 6, 2, 8, 9])</span></span><br><span class="line"></span><br><span class="line">plt.show()<span class="comment">#不加这条看不到图</span></span><br><span class="line"></span><br><span class="line">plt.savefig(<span class="string">&quot;test.jpg&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="多组数据"><a href="#多组数据" class="headerlink" title="多组数据"></a>多组数据</h5><ul>
+<li>NumPy数组可以作为Matplotlib的参数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">t=np.arange(<span class="number">0.</span>, <span class="number">4.</span>, <span class="number">0.1</span>)</span><br><span class="line">plt.plot(t, t, t, t+<span class="number">2</span>, t, t**<span class="number">2</span>)</span><br><span class="line"><span class="comment">#3条曲线在同一个图，两两一组</span></span><br></pre></td></tr></table></figure>
+<h4 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h4><h5 id="scatter函数"><a href="#scatter函数" class="headerlink" title="scatter函数"></a>scatter函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.scatter([<span class="number">3</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">9</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h5 id="plot函数加参数”o”"><a href="#plot函数加参数”o”" class="headerlink" title="plot函数加参数”o”"></a>plot函数加参数”o”</h5><h4 id="条形图"><a href="#条形图" class="headerlink" title="条形图"></a>条形图</h4><p>plot函数换成bar</p>
+<h4 id="Matplotlib属性"><a href="#Matplotlib属性" class="headerlink" title="Matplotlib属性"></a>Matplotlib属性</h4><ul>
+<li>文字和字体</li>
+<li>坐标轴和网格</li>
+<li>子图</li>
+<li>子区</li>
+<li>色彩和样式</li>
+<li>线宽</li>
+<li>每英寸点数</li>
+<li>图像大小</li>
+</ul>
+<h5 id="色彩和样式（字符串形式）"><a href="#色彩和样式（字符串形式）" class="headerlink" title="色彩和样式（字符串形式）"></a>色彩和样式（字符串形式）</h5><ul>
+<li>plot函数的第3个参数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绿色虚线</span></span><br><span class="line">plt.plot(x, y, <span class="string">&quot;g--&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#红色钻石散点</span></span><br><span class="line">plt.plot(x, y, <span class="string">&quot;rD&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="色彩和样式（参数形式）"><a href="#色彩和样式（参数形式）" class="headerlink" title="色彩和样式（参数形式）"></a>色彩和样式（参数形式）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># figsize是图的大小，dpi是图的精度</span></span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>), dpi=<span class="number">100</span>)</span><br><span class="line">t = np.arange(<span class="number">0.</span>, <span class="number">4.</span>, <span class="number">0.1</span>)</span><br><span class="line">plt.plot(t, t, color=<span class="string">&quot;red&quot;</span>, linestyle=<span class="string">&quot;-&quot;</span>, linewidth=<span class="number">3</span>, label=<span class="string">&quot;Line1&quot;</span>)</span><br><span class="line">plt.plot(t, t+<span class="number">2</span>, color=<span class="string">&quot;green&quot;</span>, linestyle=<span class="string">&quot;&quot;</span>,</span><br><span class="line">         marker=<span class="string">&quot;*&quot;</span>, linewidth=<span class="number">3</span>, label=<span class="string">&quot;Line2&quot;</span>)</span><br><span class="line">plt.plot(t, t**<span class="number">2</span>, color=<span class="string">&quot;blue&quot;</span>, linestyle=<span class="string">&quot;&quot;</span>,</span><br><span class="line">         marker=<span class="string">&quot;+&quot;</span>, linewidth=<span class="number">3</span>, label=<span class="string">&quot;Line3&quot;</span>)</span><br><span class="line">         </span><br><span class="line"><span class="comment"># 图例，best是自动找最佳位置</span></span><br><span class="line">plt.legend(loc=<span class="string">&quot;upper left&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h5 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h5><h6 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h6><ul>
+<li>标题：<code>plt.title(&quot;title&quot;)</code></li>
+<li>x轴名：<code>plt.xlabel(&quot;X&quot;)</code></li>
+<li>y轴名：<code>plt.ylabel(&quot;Y&quot;)</code></li>
+</ul>
+<h5 id="图对象的set方法"><a href="#图对象的set方法" class="headerlink" title="图对象的set方法"></a>图对象的set方法</h5><p><code>ax.set(title=&quot;title&quot;, xlabel=&quot;x&quot;)</code></p>
+<h5 id="绘制子图"><a href="#绘制子图" class="headerlink" title="绘制子图"></a>绘制子图</h5><ul>
+<li>subplot()/subplots()函数（区域完全分开）<ul>
+<li>3个分别为行数、列数、所在区域编号</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#均匀产生区间内一组数据</span></span><br><span class="line">x=np.linspace(-np.pi, np.pi, <span class="number">300</span>)</span><br><span class="line"></span><br><span class="line">plt.figure(<span class="number">1</span>)<span class="comment">#默认创建，缺省</span></span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">211</span>)<span class="comment">#第一个子图</span></span><br><span class="line">plt.plot(x, np.sin(x), color=<span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.subplot(<span class="number">212</span>)<span class="comment">#第二个子图</span></span><br><span class="line">plt.plot(x, np.cos(x), color=<span class="string">&quot;g&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>subplots()函数（区域完全分开）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#均匀产生区间内一组数据</span></span><br><span class="line">x=np.linspace(-np.pi, np.pi, <span class="number">300</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#产生2行1列的两个子图（ax为子图对象）</span></span><br><span class="line">fig, (ax0, ax1)=plt.subplots(<span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第一个子图</span></span><br><span class="line">ax0.plot(x, np.sin(x), color=<span class="string">&quot;r&quot;</span>)</span><br><span class="line">ax0.set_title(<span class="string">&quot;subplot1&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置垂直间距</span></span><br><span class="line">plt.subplots_adjust(hspace=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第二个子图</span></span><br><span class="line">ax1.plot(x, np.cos(x), color=<span class="string">&quot;g&quot;</span>)</span><br><span class="line">ax1.set_title(<span class="string">&quot;subplot2&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>axes()函数（子图区域可能重叠）<ul>
+<li><code>axes([left, bottom, width, height])</code>，参数范围为(0, 1)，是<strong>相对坐标轴的百分比</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#均匀产生区间内一组数据</span></span><br><span class="line">x=np.linspace(-np.pi, np.pi, <span class="number">300</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第一个子图</span></span><br><span class="line">plt.axes([<span class="number">.1</span>, <span class="number">.1</span>, <span class="number">0.8</span>, <span class="number">0.8</span>])</span><br><span class="line">plt.plot(x, np.sin(x), color = <span class="string">&quot;r&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#第二个子图</span></span><br><span class="line">plt.axes([<span class="number">.3</span>, <span class="number">.15</span>, <span class="number">0.4</span>, <span class="number">0.3</span>])</span><br><span class="line">plt.plot(x, np.cos(x), color = <span class="string">&quot;g&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h3><ul>
+<li>基于<strong>DataFrame</strong>或<strong>Series</strong>绘图</li>
+</ul>
+<h4 id="用DataFrame的loc方法"><a href="#用DataFrame的loc方法" class="headerlink" title="用DataFrame的loc方法"></a>用DataFrame的loc方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#选择前10条记录中的收盘价close</span></span><br><span class="line"><span class="comment">#DataFrame的loc方法是基于标签选择数据（行标签为0-9，列标签为close）</span></span><br><span class="line">quotesdf.loc[:<span class="number">9</span>, <span class="string">&quot;close&quot;</span>].plot()</span><br><span class="line"></span><br><span class="line"><span class="comment">#选择前10条记录中的收盘价close和开盘价open</span></span><br><span class="line">quotesdf.loc[:<span class="number">9</span>, [<span class="string">&quot;close&quot;</span>, <span class="string">&quot;open&quot;</span>]].plot()</span><br></pre></td></tr></table></figure>
+<h4 id="用plot方法的参数"><a href="#用plot方法的参数" class="headerlink" title="用plot方法的参数"></a>用plot方法的参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ax=djidf.plot(kind=<span class="string">&quot;bar&quot;</span>, x=<span class="string">&quot;code&quot;</span>, y=<span class="string">&quot;price&quot;</span>, color=<span class="string">&quot;g&quot;</span>)</span><br><span class="line">ax.<span class="built_in">set</span>(ylabel=<span class="string">&quot;Price&quot;</span>, title=<span class="string">&quot;Stock Statistics of ^DJI)</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="tag"># 数据可视化</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/10/27/Python%E6%A8%A1%E5%9D%97%E3%80%81%E5%8C%85%E5%92%8C%E5%BA%93/" rel="prev" title="Python模块、包和库">
+                  <i class="fa fa-chevron-left"></i> Python模块、包和库
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/23/Python%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/" rel="next" title="Python数据探索与预处理">
+                  Python数据探索与预处理 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JennyKQ</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+</body>
+</html>

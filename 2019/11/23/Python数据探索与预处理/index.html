@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"colahua.tech","root":"/","images":"/images","scheme":"Muse","version":"8.2.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="Python 数据探索与预处理数据探索任务：  检查数据错误 了解数据分布特征和内在规律  数据预处理任务：  数据清洗（包含了检查数据错误） 数据集成 数据变换 数据规约  数据清洗 数据缺失值的检测与处理 数据异常值的检测与处理  缺失值处理 删除：缺失得多或缺失关键属性 填充 固定值 均值、中位数&#x2F;众数 上下数据 插值函数（拉格朗日） 最可能的值（最近邻、回归分析）    DataFrame">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python数据探索与预处理">
+<meta property="og:url" content="http://colahua.tech/2019/11/23/Python%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="JKQ&#39;s Blog">
+<meta property="og:description" content="Python 数据探索与预处理数据探索任务：  检查数据错误 了解数据分布特征和内在规律  数据预处理任务：  数据清洗（包含了检查数据错误） 数据集成 数据变换 数据规约  数据清洗 数据缺失值的检测与处理 数据异常值的检测与处理  缺失值处理 删除：缺失得多或缺失关键属性 填充 固定值 均值、中位数&#x2F;众数 上下数据 插值函数（拉格朗日） 最可能的值（最近邻、回归分析）    DataFrame">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-23T08:15:01.000Z">
+<meta property="article:modified_time" content="2021-03-24T12:59:46.709Z">
+<meta property="article:author" content="JennyKQ">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://colahua.tech/2019/11/23/Python%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Python数据探索与预处理 | JKQ's Blog</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">JKQ's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">这是老子的博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">Python 数据探索与预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2"><span class="nav-number">1.1.</span> <span class="nav-text">数据探索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据清洗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">缺失值处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DataFrame%E7%BC%BA%E5%A4%B1%E5%80%BC%E5%A4%84%E7%90%86"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">DataFrame缺失值处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%80%BC%E5%A4%84%E7%90%86"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">异常值处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%80%BC%E7%9A%84%E6%A3%80%E6%B5%8B"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">异常值的检测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#describe-%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.2.2.</span> <span class="nav-text">describe()方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#boxplot-%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.2.3.</span> <span class="nav-text">boxplot()方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-sigma-%E5%8E%9F%E5%88%99"><span class="nav-number">1.2.1.2.4.</span> <span class="nav-text">3$\sigma$原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8F%98%E6%8D%A2"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">数据规范化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F-%E6%9C%80%E5%A4%A7%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">最小-最大规范化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E5%86%99%E4%BB%A3%E7%A0%81"><span class="nav-number">1.2.2.1.1.1.</span> <span class="nav-text">自己写代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#sklearn%E7%9A%84preprocessing%E6%A8%A1%E5%9D%97"><span class="nav-number">1.2.2.1.1.2.</span> <span class="nav-text">sklearn的preprocessing模块</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#z-score%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">z-score规范化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E5%86%99%E4%BB%A3%E7%A0%81-1"><span class="nav-number">1.2.2.1.2.1.</span> <span class="nav-text">自己写代码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#sklearn%E7%9A%84preprocessing%E6%A8%A1%E5%9D%97-1"><span class="nav-number">1.2.2.1.2.2.</span> <span class="nav-text">sklearn的preprocessing模块</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E6%95%B0%E5%AE%9A%E6%A0%87%E8%A7%84%E8%8C%83%E5%8C%96"><span class="nav-number">1.2.2.1.3.</span> <span class="nav-text">小数定标规范化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%B1%9E%E6%80%A7%E7%A6%BB%E6%95%A3%E5%8C%96"><span class="nav-number">1.2.2.1.4.</span> <span class="nav-text">连续属性离散化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%86%E7%AE%B1%E6%B3%95"><span class="nav-number">1.2.2.1.4.1.</span> <span class="nav-text">分箱法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E4%BA%8C%E5%80%BC%E5%8C%96binarization"><span class="nav-number">1.2.2.1.5.</span> <span class="nav-text">特征二值化binarization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A7%84%E7%BA%A6"><span class="nav-number">1.2.3.</span> <span class="nav-text">数据规约</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E8%A7%84%E7%BA%A6"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">属性规约</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PCA"><span class="nav-number">1.2.3.1.1.</span> <span class="nav-text">PCA</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E8%A7%84%E7%BA%A6"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">数值规约</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%89%E5%8F%82%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.3.2.1.</span> <span class="nav-text">有参方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE"><span class="nav-number">1.2.3.2.1.1.</span> <span class="nav-text">直方图</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E5%8F%82%E6%B3%95"><span class="nav-number">1.2.3.2.2.</span> <span class="nav-text">无参法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%8A%BD%E6%A0%B7"><span class="nav-number">1.2.3.2.2.1.</span> <span class="nav-text">抽样</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JennyKQ</p>
+  <div class="site-description" itemprop="description">这是老子做的非常好的博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2019/11/23/Python%E6%95%B0%E6%8D%AE%E6%8E%A2%E7%B4%A2%E4%B8%8E%E9%A2%84%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="这是老子做的非常好的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python数据探索与预处理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-23 16:15:01" itemprop="dateCreated datePublished" datetime="2019-11-23T16:15:01+08:00">2019-11-23</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Python-数据探索与预处理"><a href="#Python-数据探索与预处理" class="headerlink" title="Python 数据探索与预处理"></a>Python 数据探索与预处理</h1><h2 id="数据探索"><a href="#数据探索" class="headerlink" title="数据探索"></a>数据探索</h2><p>任务：</p>
+<ul>
+<li>检查数据错误</li>
+<li>了解数据分布特征和内在规律</li>
+</ul>
+<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><p>任务：</p>
+<ul>
+<li>数据清洗（包含了检查数据错误）</li>
+<li>数据集成</li>
+<li>数据变换</li>
+<li>数据规约</li>
+</ul>
+<h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><ul>
+<li>数据缺失值的检测与处理</li>
+<li>数据异常值的检测与处理</li>
+</ul>
+<h4 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h4><ul>
+<li>删除：缺失得多或缺失关键属性</li>
+<li>填充<ul>
+<li>固定值</li>
+<li>均值、中位数/众数</li>
+<li>上下数据</li>
+<li>插值函数（拉格朗日）</li>
+<li>最可能的值（最近邻、回归分析）</li>
+</ul>
+</li>
+</ul>
+<h5 id="DataFrame缺失值处理"><a href="#DataFrame缺失值处理" class="headerlink" title="DataFrame缺失值处理"></a>DataFrame缺失值处理</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">quotesdf_nan=pd.read_csv(<span class="string">&quot;AXP_NaN.csv&quot;</span>, index_col=<span class="string">&quot;Date&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除缺失值</span></span><br><span class="line">quotesdf_nan.dropna(how=<span class="string">&quot;any&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#填充缺失值</span></span><br><span class="line"><span class="comment">#用均值填充</span></span><br><span class="line">quotesdf_nan.fillna(quotesdf_nan.mean(), inplace = <span class="literal">True</span>)<span class="comment">#inplace是修不修改原来的</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用上一个非缺失值填充</span></span><br><span class="line">quotesdf_nan.fillna(method=<span class="string">&quot;ffill&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#用下一个非缺失值填充</span></span><br><span class="line">quotesdf_nan.fillna(method=<span class="string">&quot;bfill&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="异常值处理"><a href="#异常值处理" class="headerlink" title="异常值处理"></a>异常值处理</h4><h5 id="异常值的检测"><a href="#异常值的检测" class="headerlink" title="异常值的检测"></a>异常值的检测</h5><ul>
+<li>简单统计</li>
+<li>绘图</li>
+<li>基于密度，最近邻和聚类等方法</li>
+</ul>
+<h5 id="describe-方法"><a href="#describe-方法" class="headerlink" title="describe()方法"></a>describe()方法</h5><h5 id="boxplot-方法"><a href="#boxplot-方法" class="headerlink" title="boxplot()方法"></a>boxplot()方法</h5><p>Serirs或DataFrame的boxplot()方法</p>
+<h5 id="3-sigma-原则"><a href="#3-sigma-原则" class="headerlink" title="3$\sigma$原则"></a>3$\sigma$原则</h5><ul>
+<li>正态分布</li>
+<li>用<strong>布尔索引</strong>筛选数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quotesdf_san[<span class="built_in">abs</span>(quotesdf_nan-quotesdf_nan.mean())&gt;<span class="number">3</span>*quotesdf_nan.std()]</span><br></pre></td></tr></table></figure>
+<h3 id="数据变换"><a href="#数据变换" class="headerlink" title="数据变换"></a>数据变换</h3><p>常见方式：</p>
+<ul>
+<li>规范化</li>
+<li>连续属性离散化</li>
+<li>特征二值化</li>
+</ul>
+<h4 id="数据规范化"><a href="#数据规范化" class="headerlink" title="数据规范化"></a>数据规范化</h4><p>解决：</p>
+<ul>
+<li>量纲不同</li>
+<li>数值范围差异大<br>规范化常用方法：</li>
+<li>最小-最大规范化</li>
+<li>z-score规范化（标准化））</li>
+<li>小数定标规范化</li>
+</ul>
+<h5 id="最小-最大规范化"><a href="#最小-最大规范化" class="headerlink" title="最小-最大规范化"></a>最小-最大规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x-\min}{\max -\min}</script><p>将属性值调整到[0, 1]范围内</p>
+<ul>
+<li>适合不涉及距离度量的场景</li>
+</ul>
+<h6 id="自己写代码"><a href="#自己写代码" class="headerlink" title="自己写代码"></a>自己写代码</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最小-最大规范化</span></span><br><span class="line">(df-df.<span class="built_in">min</span>())/(df.<span class="built_in">max</span>()-df.<span class="built_in">min</span>())</span><br></pre></td></tr></table></figure>
+<h6 id="sklearn的preprocessing模块"><a href="#sklearn的preprocessing模块" class="headerlink" title="sklearn的preprocessing模块"></a>sklearn的preprocessing模块</h6><ul>
+<li>minmax_scale(df)函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#最小-最大规范化</span></span><br><span class="line"><span class="built_in">print</span>(preprocessing.minmax_scale(df))</span><br></pre></td></tr></table></figure>
+<h5 id="z-score规范化"><a href="#z-score规范化" class="headerlink" title="z-score规范化"></a>z-score规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x-\overline{x}}{\sigma}</script><ul>
+<li>处理后数据均值为0，标准差为1</li>
+</ul>
+<h6 id="自己写代码-1"><a href="#自己写代码-1" class="headerlink" title="自己写代码"></a>自己写代码</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#z-score规范化</span></span><br><span class="line"><span class="built_in">print</span>((df-df.mean())/df.std())</span><br></pre></td></tr></table></figure>
+<h6 id="sklearn的preprocessing模块-1"><a href="#sklearn的preprocessing模块-1" class="headerlink" title="sklearn的preprocessing模块"></a>sklearn的preprocessing模块</h6><ul>
+<li>scale(df)函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">boston = datasets.load_boston()</span><br><span class="line">df = pd.DataFrame(boston.data[:, <span class="number">4</span>:<span class="number">7</span>])</span><br><span class="line">df.columns = boston.feature_names[<span class="number">4</span>:<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#z-score规范化</span></span><br><span class="line"><span class="built_in">print</span>(preprocessing.scale(df))</span><br></pre></td></tr></table></figure>
+<h5 id="小数定标规范化"><a href="#小数定标规范化" class="headerlink" title="小数定标规范化"></a>小数定标规范化</h5><script type="math/tex; mode=display">
+x'=\frac{x}{10^j}</script><p>（j是移动位数）</p>
+<ul>
+<li>移动小数点位置，移动位数取决于<strong>属性绝对值的最大值</strong></li>
+<li>常见落在[-1, 1]之间</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment">#10的多少次方是绝对值最大值</span></span><br><span class="line"><span class="built_in">print</span>(df/<span class="number">10</span>**np.ceil(np.log10(df.<span class="built_in">abs</span>().<span class="built_in">max</span>())))</span><br></pre></td></tr></table></figure>
+<h5 id="连续属性离散化"><a href="#连续属性离散化" class="headerlink" title="连续属性离散化"></a>连续属性离散化</h5><p>方法：</p>
+<ul>
+<li>分箱（binning）：等宽法、等频法<ul>
+<li>等宽法：把数据区间按设定的<strong>箱子数</strong>划分（变异性较大）</li>
+<li>等频法：放进<strong>每个箱子的记录数</strong>相同（相同的值可能分到不同箱子）</li>
+</ul>
+</li>
+<li>聚类</li>
+</ul>
+<h6 id="分箱法"><a href="#分箱法" class="headerlink" title="分箱法"></a>分箱法</h6><ul>
+<li>等宽：cut函数</li>
+<li>等频：qcut函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 等宽法，标签分别是0,1,2,3,4</span></span><br><span class="line"><span class="built_in">print</span>(pd.cut(df.AGE, <span class="number">5</span>, labels=<span class="built_in">range</span>(<span class="number">5</span>)))</span><br><span class="line"><span class="comment"># 分成五个区间，(1,2],(3,4],…</span></span><br><span class="line">bins = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#等频法</span></span><br><span class="line">pd.qcut(df.AGE, <span class="number">5</span>, labels=<span class="built_in">range</span>(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+<h5 id="特征二值化binarization"><a href="#特征二值化binarization" class="headerlink" title="特征二值化binarization"></a>特征二值化binarization</h5><p>设定阈值threshold，大于阈值赋值为1，小于等于阈值赋值为0</p>
+<ul>
+<li>适用于将多分类问题转换成<strong>二分类</strong>问题</li>
+<li>可用preprocessing的Binarizer()函数或LabelEncoder()函数</li>
+</ul>
+<h3 id="数据规约"><a href="#数据规约" class="headerlink" title="数据规约"></a>数据规约</h3><p>分类：</p>
+<ul>
+<li>属性规约</li>
+<li>数值规约</li>
+</ul>
+<h4 id="属性规约"><a href="#属性规约" class="headerlink" title="属性规约"></a>属性规约</h4><p>方法：</p>
+<ul>
+<li>向前选择<ul>
+<li>从空的属性集开始，每次选一个当前最优的属性加入，直到选不到最优属性或达到阈值</li>
+</ul>
+</li>
+<li>向后删除<ul>
+<li>从当前属性集开始，每次选一个最差的属性删除，直到选不到最差属性或达到阈值</li>
+</ul>
+</li>
+<li>决策树<ul>
+<li>机器学期的专门算法</li>
+</ul>
+</li>
+<li>PCA</li>
+</ul>
+<h5 id="PCA"><a href="#PCA" class="headerlink" title="PCA"></a>PCA</h5><ul>
+<li>用sklearn.decomposition模块中的PCA()函数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line">x=preprocessing.scale(boston.data)</span><br><span class="line"></span><br><span class="line"><span class="comment">#”mle&quot;：自动选择满足所要求的方差百分比的特征个数</span></span><br><span class="line">pca=PCA(n_components=<span class="string">&quot;mle&quot;</span>)</span><br><span class="line"><span class="comment">#用x训练pca</span></span><br><span class="line">pca.fit(x)</span><br><span class="line"><span class="comment">#各个成分的方差贡献率</span></span><br><span class="line"><span class="built_in">print</span>(pca.explained_variance_ratio_)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">sum</span>(pca.explained_variance_ratio_))</span><br></pre></td></tr></table></figure>
+<h4 id="数值规约"><a href="#数值规约" class="headerlink" title="数值规约"></a>数值规约</h4><p>方法：</p>
+<ul>
+<li>有参方法（回归法，对数线性模型）<ul>
+<li>用模型，不需存放实际数据</li>
+</ul>
+</li>
+<li>无参法（直方图，聚类，抽样）<ul>
+<li>要存放实际数据</li>
+</ul>
+</li>
+</ul>
+<h5 id="有参方法"><a href="#有参方法" class="headerlink" title="有参方法"></a>有参方法</h5><h6 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h6><ul>
+<li>本质是分箱（每个箱子表示一个属性-频率对）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">data = np.random.randint(<span class="number">1</span>, <span class="number">10</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line">bins = np.linspace(data.<span class="built_in">min</span>(), data.<span class="built_in">max</span>(), <span class="number">3</span>, endpoint=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(bins)</span><br><span class="line"><span class="comment">#&gt;[1. 5. 9.]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># [1, 5)，[5, 9]</span></span><br><span class="line">plt.hist(data, bins=bins, rwidth=<span class="number">0.95</span>, edgecolor=<span class="string">&quot;k&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h5 id="无参法"><a href="#无参法" class="headerlink" title="无参法"></a>无参法</h5><h6 id="抽样"><a href="#抽样" class="headerlink" title="抽样"></a>抽样</h6><p>方式：</p>
+<ul>
+<li>随机抽样（放回/不放回）</li>
+<li>聚类抽样</li>
+<li>分层抽样</li>
+</ul>
+<p>随机抽样：</p>
+<ul>
+<li>sample()函数<ul>
+<li>n：抽样条数</li>
+<li>frac：抽样占百分比</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#有放回</span></span><br><span class="line">iris_df.sample(n=<span class="number">10</span>, replace = <span class="literal">True</span>)</span><br><span class="line">iris_df.sample(frac=<span class="number">0.3</span>, replace = <span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<p>分层抽样：<br>先分层（利用DataFrame的<strong>筛选</strong>功能和<strong>append方法</strong>），再用sample()抽样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A=iris_df[iris_df.target==<span class="number">0</span>].sample(frac=<span class="number">0.3</span>)</span><br><span class="line">B=iris_df[iris_df.target==<span class="number">1</span>].sample(frac=<span class="number">0.2</span>)</span><br><span class="line"></span><br><span class="line">A.append(B)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/09/Python%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="prev" title="Python数据可视化">
+                  <i class="fa fa-chevron-left"></i> Python数据可视化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/30/Python%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%EF%BC%88%E7%88%AC%E5%8F%96%EF%BC%89/" rel="next" title="Python网络数据获取（爬取）">
+                  Python网络数据获取（爬取） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JennyKQ</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+
+</body>
+</html>
