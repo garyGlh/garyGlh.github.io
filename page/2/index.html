@@ -207,90 +207,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/05/17/R%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="JennyKQ">
-      <meta itemprop="description" content="Jenny&quot;s tech Record">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKQ's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/05/17/R%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/" class="post-title-link" itemprop="url">R流程控制语句</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-05-17 16:37:26" itemprop="dateCreated datePublished" datetime="2020-05-17T16:37:26+08:00">2020-05-17</time>
-    </span>
-
-  
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h1><h2 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><p>同C++</p>
-<h3 id="if…else"><a href="#if…else" class="headerlink" title="if…else"></a>if…else</h3><p>同C++</p>
-<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">switch</span>(<span class="built_in">expression</span>,</span><br><span class="line">value1: Stament <span class="number">1</span></span><br><span class="line">value2: Stament <span class="number">2</span></span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">, default-Stament</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h3><p>相当于while(1)</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">repeat</span>&#123;</span><br><span class="line">    commands//退出条件</span><br><span class="line">    <span class="keyword">if</span>(condition)&#123;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(commands)&#123;//退出条件</span><br><span class="line">    \\操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><p>知道循环几次</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vtr=<span class="built_in">c</span>(<span class="number">7</span>, <span class="number">9</span>, <span class="number">25</span>, <span class="number">65</span>, <span class="number">45</span>)</span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> vtr)&#123;</span><br><span class="line">    \\操作</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> <span class="number">1</span>:<span class="number">15</span>)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="break"><a href="#break" class="headerlink" title="break"></a>break</h3><p>同C++</p>
-<h3 id="next"><a href="#next" class="headerlink" title="next"></a>next</h3><p>同continue</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/05/09/R%E5%8F%98%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1261,6 +1177,90 @@
 <li>动态分配空间（不指定父对象）【好】</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QDialog *p=<span class="keyword">new</span> QDialog;              </span><br><span class="line">p-&gt;<span class="built_in">setAttribute</span>(Qt::WA_DeleteOnClose);<span class="comment">//关闭才释放  </span></span><br><span class="line">p-&gt;<span class="built_in">show</span>();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://colahua.tech/2020/03/29/Qt%E6%8E%A7%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JennyKQ">
+      <meta itemprop="description" content="Jenny&quot;s tech Record">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKQ's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/03/29/Qt%E6%8E%A7%E4%BB%B6/" class="post-title-link" itemprop="url">Qt控件</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-29 16:27:48" itemprop="dateCreated datePublished" datetime="2020-03-29T16:27:48+08:00">2020-03-29</time>
+    </span>
+
+  
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Qt/" itemprop="url" rel="index"><span itemprop="name">Qt</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="控件"><a href="#控件" class="headerlink" title="控件"></a>控件</h1><h2 id="按钮QPushBotton"><a href="#按钮QPushBotton" class="headerlink" title="按钮QPushBotton"></a>按钮QPushBotton</h2><ul>
+<li>文字：<code>b.setText(&quot;&lt;u&gt;文字&lt;/u&gt;&quot;);</code></li>
+<li>移动：<code>b.move(100, 100);</code>//单位是<strong>像素</strong></li>
+<li>设置大小：<code>b.resize(100, 100);</code></li>
+</ul>
+<p>定义按钮对象（子对象）时可在父类中定义成员（private），不可在构造函数中直接定义<br>（定义指针时要new：<code>b= new QPushButton(this)</code>）</p>
+<ul>
+<li>最后一个括号的参数是<strong>父对象</strong>，可以为空（默认this）</li>
+<li>动态分配的变量直接或间接继承于QObject，则空间自动释放</li>
+</ul>
+<h2 id="标签QLabel"><a href="#标签QLabel" class="headerlink" title="标签QLabel"></a>标签QLabel</h2>
       
     </div>
 
